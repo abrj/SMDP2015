@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<configModel:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:configModel="http://www.example.org/configModel" xsi:schemaLocation="http://www.example.org/configModel configModel.ecore">
+  <contains>
+    <contains>
+      <possibleValues xsi:type="configModel:Enum">
+        <enumerated xsi:type="configModel:String"/>
+        <enumerated xsi:type="configModel:String"/>
+      </possibleValues>
+    </contains>
+    <contains>
+      <possibleValues xsi:type="configModel:Boolean"/>
+    </contains>
+    <has>
+      <constrains/>
+      <if xsi:type="configModel:BinaryExpression">
+        <lExpression xsi:type="configModel:Assignment"/>
+        <rExpression xsi:type="configModel:BinaryExpression">
+          <lExpression xsi:type="configModel:Assignment"/>
+          <rExpression xsi:type="configModel:Assignment"/>
+        </rExpression>
+      </if>
+    </has>
+  </contains>
+</configModel:Model>

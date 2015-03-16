@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ConfigModel/src" modelPluginID="ConfigModel" modelName="ConfigModel"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>configModel.ecore</foreignModel>
+  <genPackages prefix="ConfigModel" disposableProviderFactory="true" ecorePackage="configModel.ecore#/">
+    <genClasses ecoreClass="configModel.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configModel.ecore#//Model/contains"/>
+    </genClasses>
+    <genClasses ecoreClass="configModel.ecore#//Object">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configModel.ecore#//Object/contains"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configModel.ecore#//Object/has"/>
+    </genClasses>
+    <genClasses ecoreClass="configModel.ecore#//Attribute">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configModel.ecore#//Attribute/possibleValues"/>
+    </genClasses>
+    <genClasses ecoreClass="configModel.ecore#//Value"/>
+    <genClasses ecoreClass="configModel.ecore#//Assignment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configModel.ecore#//Assignment/contains"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configModel.ecore#//Assignment/has"/>
+    </genClasses>
+    <genClasses ecoreClass="configModel.ecore#//Constraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configModel.ecore#//Constraint/constrains"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configModel.ecore#//Constraint/if"/>
+    </genClasses>
+    <genClasses ecoreClass="configModel.ecore#//Expression"/>
+    <genClasses ecoreClass="configModel.ecore#//BinaryExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configModel.ecore#//BinaryExpression/lExpression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configModel.ecore#//BinaryExpression/rExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="configModel.ecore#//UnaryExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configModel.ecore#//UnaryExpression/contains"/>
+    </genClasses>
+    <genClasses ecoreClass="configModel.ecore#//Integer"/>
+    <genClasses ecoreClass="configModel.ecore#//Enum">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configModel.ecore#//Enum/enumerated"/>
+    </genClasses>
+    <genClasses ecoreClass="configModel.ecore#//Range"/>
+    <genClasses ecoreClass="configModel.ecore#//Boolean"/>
+    <genClasses ecoreClass="configModel.ecore#//String"/>
+  </genPackages>
+</genmodel:GenModel>
