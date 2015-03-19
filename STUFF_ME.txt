@@ -1,0 +1,3 @@
+USEFUL LINKS:
+https://sistemas.uniandes.edu.co/~isis4712/dokuwiki/doku.php?id=xtext-petrinets-tutorial
+https://eclipse.org/Xtext/documentation/104_jvmdomainmodel.html
