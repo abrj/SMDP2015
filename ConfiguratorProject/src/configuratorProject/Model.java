@@ -4,8 +4,6 @@ package configuratorProject;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Model</b></em>'.
@@ -22,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Model extends EObject {
+public interface Model extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Contains</b></em>' containment reference list.
 	 * The list contents are of type {@link configuratorProject.Object}.

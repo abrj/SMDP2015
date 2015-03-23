@@ -49,16 +49,16 @@
     <genClasses ecoreClass="configuratorProject.ecore#//Int">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//Int/value"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//Boolean">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//Boolean/value"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//BoolLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//BoolLiteral/value"/>
     </genClasses>
     <genClasses ecoreClass="configuratorProject.ecore#//Value"/>
     <genClasses ecoreClass="configuratorProject.ecore#//Enum">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//Enum/values"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//Boolean.1">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//Boolean.1/trueValue"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//Boolean.1/falseValue"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//BooleanValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//BooleanValue/trueValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//BooleanValue/falseValue"/>
     </genClasses>
     <genClasses ecoreClass="configuratorProject.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//NamedElement/name"/>

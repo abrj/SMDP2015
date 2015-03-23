@@ -83,6 +83,7 @@ public class ConfiguratorProjectSwitch<T> extends Switch<T> {
 			case ConfiguratorProjectPackage.MODEL: {
 				Model model = (Model)theEObject;
 				T result = caseModel(model);
+				if (result == null) result = caseNamedElement(model);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

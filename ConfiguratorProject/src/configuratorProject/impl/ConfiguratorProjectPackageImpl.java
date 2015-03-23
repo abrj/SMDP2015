@@ -694,6 +694,7 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		modelEClass.getESuperTypes().add(this.getNamedElement());
 		objectEClass.getESuperTypes().add(this.getNamedElement());
 		attributeEClass.getESuperTypes().add(this.getNamedElement());
 		binaryEClass.getESuperTypes().add(this.getExpression());
