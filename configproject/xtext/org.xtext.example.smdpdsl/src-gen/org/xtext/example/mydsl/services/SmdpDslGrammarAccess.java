@@ -22,78 +22,60 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMyModelAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cMyModelKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cMyModelContainsKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
-		private final Assignment cMyModelContainsAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
-		private final RuleCall cMyModelContainsMyObjectParserRuleCall_4_2_0 = (RuleCall)cMyModelContainsAssignment_4_2.eContents().get(0);
-		private final Group cGroup_4_3 = (Group)cGroup_4.eContents().get(3);
-		private final Keyword cCommaKeyword_4_3_0 = (Keyword)cGroup_4_3.eContents().get(0);
-		private final Assignment cMyModelContainsAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
-		private final RuleCall cMyModelContainsMyObjectParserRuleCall_4_3_1_0 = (RuleCall)cMyModelContainsAssignment_4_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cLeftCurlyBracketKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cMyModelContainsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cMyModelContainsMyObjectParserRuleCall_2_1_0 = (RuleCall)cMyModelContainsAssignment_2_1.eContents().get(0);
+		private final Group cGroup_2_2 = (Group)cGroup_2.eContents().get(2);
+		private final Keyword cCommaKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
+		private final Assignment cMyModelContainsAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
+		private final RuleCall cMyModelContainsMyObjectParserRuleCall_2_2_1_0 = (RuleCall)cMyModelContainsAssignment_2_2_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_2_3 = (Keyword)cGroup_2.eContents().get(3);
 		
 		//myModel:
-		//	{myModel} "myModel" name=EString "{" ("myModelContains" "{" myModelContains+=myObject (","
-		//	myModelContains+=myObject)* "}")? "}";
+		//	{myModel} name=EString ("{" myModelContains+=myObject ("," myModelContains+=myObject)* "}")?;
 		public ParserRule getRule() { return rule; }
 
-		//{myModel} "myModel" name=EString "{" ("myModelContains" "{" myModelContains+=myObject ("," myModelContains+=myObject)*
-		//"}")? "}"
+		//{myModel} name=EString ("{" myModelContains+=myObject ("," myModelContains+=myObject)* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//{myModel}
 		public Action getMyModelAction_0() { return cMyModelAction_0; }
 
-		//"myModel"
-		public Keyword getMyModelKeyword_1() { return cMyModelKeyword_1; }
-
 		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
+		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
+
+		//("{" myModelContains+=myObject ("," myModelContains+=myObject)* "}")?
+		public Group getGroup_2() { return cGroup_2; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-
-		//("myModelContains" "{" myModelContains+=myObject ("," myModelContains+=myObject)* "}")?
-		public Group getGroup_4() { return cGroup_4; }
-
-		//"myModelContains"
-		public Keyword getMyModelContainsKeyword_4_0() { return cMyModelContainsKeyword_4_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_4_1() { return cLeftCurlyBracketKeyword_4_1; }
+		public Keyword getLeftCurlyBracketKeyword_2_0() { return cLeftCurlyBracketKeyword_2_0; }
 
 		//myModelContains+=myObject
-		public Assignment getMyModelContainsAssignment_4_2() { return cMyModelContainsAssignment_4_2; }
+		public Assignment getMyModelContainsAssignment_2_1() { return cMyModelContainsAssignment_2_1; }
 
 		//myObject
-		public RuleCall getMyModelContainsMyObjectParserRuleCall_4_2_0() { return cMyModelContainsMyObjectParserRuleCall_4_2_0; }
+		public RuleCall getMyModelContainsMyObjectParserRuleCall_2_1_0() { return cMyModelContainsMyObjectParserRuleCall_2_1_0; }
 
 		//("," myModelContains+=myObject)*
-		public Group getGroup_4_3() { return cGroup_4_3; }
+		public Group getGroup_2_2() { return cGroup_2_2; }
 
 		//","
-		public Keyword getCommaKeyword_4_3_0() { return cCommaKeyword_4_3_0; }
+		public Keyword getCommaKeyword_2_2_0() { return cCommaKeyword_2_2_0; }
 
 		//myModelContains+=myObject
-		public Assignment getMyModelContainsAssignment_4_3_1() { return cMyModelContainsAssignment_4_3_1; }
+		public Assignment getMyModelContainsAssignment_2_2_1() { return cMyModelContainsAssignment_2_2_1; }
 
 		//myObject
-		public RuleCall getMyModelContainsMyObjectParserRuleCall_4_3_1_0() { return cMyModelContainsMyObjectParserRuleCall_4_3_1_0; }
+		public RuleCall getMyModelContainsMyObjectParserRuleCall_2_2_1_0() { return cMyModelContainsMyObjectParserRuleCall_2_2_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		public Keyword getRightCurlyBracketKeyword_2_3() { return cRightCurlyBracketKeyword_2_3; }
 	}
 
 	public class MyExpressionElements extends AbstractParserRuleElementFinder {
@@ -180,12 +162,19 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myObject");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMyObjectAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cMyObjectKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameEStringParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cHasKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cMyAttributeContainsAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cMyAttributeContainsMyAttributeParserRuleCall_3_1_0 = (RuleCall)cMyAttributeContainsAssignment_3_1.eContents().get(0);
+		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
+		private final Keyword cCommaKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Assignment cMyAttributeContainsAssignment_3_2_1 = (Assignment)cGroup_3_2.eContents().get(1);
+		private final RuleCall cMyAttributeContainsMyAttributeParserRuleCall_3_2_1_0 = (RuleCall)cMyAttributeContainsAssignment_3_2_1.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cMyObjectHasKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Keyword cMyAttributeContainsKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_4_1 = (Keyword)cGroup_4.eContents().get(1);
 		private final Assignment cMyObjectHasAssignment_4_2 = (Assignment)cGroup_4.eContents().get(2);
 		private final RuleCall cMyObjectHasMyConstraintParserRuleCall_4_2_0 = (RuleCall)cMyObjectHasAssignment_4_2.eContents().get(0);
@@ -194,47 +183,58 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cMyObjectHasAssignment_4_3_1 = (Assignment)cGroup_4_3.eContents().get(1);
 		private final RuleCall cMyObjectHasMyConstraintParserRuleCall_4_3_1_0 = (RuleCall)cMyObjectHasAssignment_4_3_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4_4 = (Keyword)cGroup_4.eContents().get(4);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cMyAttributeContainsKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
-		private final Assignment cMyAttributeContainsAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
-		private final RuleCall cMyAttributeContainsMyAttributeParserRuleCall_5_2_0 = (RuleCall)cMyAttributeContainsAssignment_5_2.eContents().get(0);
-		private final Group cGroup_5_3 = (Group)cGroup_5.eContents().get(3);
-		private final Keyword cCommaKeyword_5_3_0 = (Keyword)cGroup_5_3.eContents().get(0);
-		private final Assignment cMyAttributeContainsAssignment_5_3_1 = (Assignment)cGroup_5_3.eContents().get(1);
-		private final RuleCall cMyAttributeContainsMyAttributeParserRuleCall_5_3_1_0 = (RuleCall)cMyAttributeContainsAssignment_5_3_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5_4 = (Keyword)cGroup_5.eContents().get(4);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//myObject:
-		//	{myObject} "myObject" name=EString "{" ("myObjectHas" "{" myObjectHas+=myConstraint ("," myObjectHas+=myConstraint)*
-		//	"}")? ("myAttributeContains" "{" myAttributeContains+=myAttribute ("," myAttributeContains+=myAttribute)* "}")? "}";
+		//	{myObject} name=EString "{" ("has" myAttributeContains+=myAttribute ("," myAttributeContains+=myAttribute)*)?
+		//	("myAttributeContains" "{" myObjectHas+=myConstraint ("," myObjectHas+=myConstraint)* "}")? "}";
 		public ParserRule getRule() { return rule; }
 
-		//{myObject} "myObject" name=EString "{" ("myObjectHas" "{" myObjectHas+=myConstraint ("," myObjectHas+=myConstraint)*
-		//"}")? ("myAttributeContains" "{" myAttributeContains+=myAttribute ("," myAttributeContains+=myAttribute)* "}")? "}"
+		//{myObject} name=EString "{" ("has" myAttributeContains+=myAttribute ("," myAttributeContains+=myAttribute)*)?
+		//("myAttributeContains" "{" myObjectHas+=myConstraint ("," myObjectHas+=myConstraint)* "}")? "}"
 		public Group getGroup() { return cGroup; }
 
 		//{myObject}
 		public Action getMyObjectAction_0() { return cMyObjectAction_0; }
 
-		//"myObject"
-		public Keyword getMyObjectKeyword_1() { return cMyObjectKeyword_1; }
-
 		//name=EString
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//EString
-		public RuleCall getNameEStringParserRuleCall_2_0() { return cNameEStringParserRuleCall_2_0; }
+		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//("myObjectHas" "{" myObjectHas+=myConstraint ("," myObjectHas+=myConstraint)* "}")?
+		//("has" myAttributeContains+=myAttribute ("," myAttributeContains+=myAttribute)*)?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"has"
+		public Keyword getHasKeyword_3_0() { return cHasKeyword_3_0; }
+
+		//myAttributeContains+=myAttribute
+		public Assignment getMyAttributeContainsAssignment_3_1() { return cMyAttributeContainsAssignment_3_1; }
+
+		//myAttribute
+		public RuleCall getMyAttributeContainsMyAttributeParserRuleCall_3_1_0() { return cMyAttributeContainsMyAttributeParserRuleCall_3_1_0; }
+
+		//("," myAttributeContains+=myAttribute)*
+		public Group getGroup_3_2() { return cGroup_3_2; }
+
+		//","
+		public Keyword getCommaKeyword_3_2_0() { return cCommaKeyword_3_2_0; }
+
+		//myAttributeContains+=myAttribute
+		public Assignment getMyAttributeContainsAssignment_3_2_1() { return cMyAttributeContainsAssignment_3_2_1; }
+
+		//myAttribute
+		public RuleCall getMyAttributeContainsMyAttributeParserRuleCall_3_2_1_0() { return cMyAttributeContainsMyAttributeParserRuleCall_3_2_1_0; }
+
+		//("myAttributeContains" "{" myObjectHas+=myConstraint ("," myObjectHas+=myConstraint)* "}")?
 		public Group getGroup_4() { return cGroup_4; }
 
-		//"myObjectHas"
-		public Keyword getMyObjectHasKeyword_4_0() { return cMyObjectHasKeyword_4_0; }
+		//"myAttributeContains"
+		public Keyword getMyAttributeContainsKeyword_4_0() { return cMyAttributeContainsKeyword_4_0; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_4_1() { return cLeftCurlyBracketKeyword_4_1; }
@@ -260,38 +260,8 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4_4() { return cRightCurlyBracketKeyword_4_4; }
 
-		//("myAttributeContains" "{" myAttributeContains+=myAttribute ("," myAttributeContains+=myAttribute)* "}")?
-		public Group getGroup_5() { return cGroup_5; }
-
-		//"myAttributeContains"
-		public Keyword getMyAttributeContainsKeyword_5_0() { return cMyAttributeContainsKeyword_5_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_5_1() { return cLeftCurlyBracketKeyword_5_1; }
-
-		//myAttributeContains+=myAttribute
-		public Assignment getMyAttributeContainsAssignment_5_2() { return cMyAttributeContainsAssignment_5_2; }
-
-		//myAttribute
-		public RuleCall getMyAttributeContainsMyAttributeParserRuleCall_5_2_0() { return cMyAttributeContainsMyAttributeParserRuleCall_5_2_0; }
-
-		//("," myAttributeContains+=myAttribute)*
-		public Group getGroup_5_3() { return cGroup_5_3; }
-
-		//","
-		public Keyword getCommaKeyword_5_3_0() { return cCommaKeyword_5_3_0; }
-
-		//myAttributeContains+=myAttribute
-		public Assignment getMyAttributeContainsAssignment_5_3_1() { return cMyAttributeContainsAssignment_5_3_1; }
-
-		//myAttribute
-		public RuleCall getMyAttributeContainsMyAttributeParserRuleCall_5_3_1_0() { return cMyAttributeContainsMyAttributeParserRuleCall_5_3_1_0; }
-
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_5_4() { return cRightCurlyBracketKeyword_5_4; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
 	public class MyConstraintElements extends AbstractParserRuleElementFinder {
@@ -333,45 +303,37 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class MyAttributeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myAttribute");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cMyAttributeKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cMyAttributeContainsKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cMyAttributeContainsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cMyAttributeContainsMyValueParserRuleCall_4_0 = (RuleCall)cMyAttributeContainsAssignment_4.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameEStringParserRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cMyAttributeContainsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cMyAttributeContainsMyValueParserRuleCall_2_0 = (RuleCall)cMyAttributeContainsAssignment_2.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//myAttribute:
-		//	"myAttribute" name=EString "{" "myAttributeContains" myAttributeContains=myValue "}";
+		//	name=EString "[" myAttributeContains=myValue "]";
 		public ParserRule getRule() { return rule; }
 
-		//"myAttribute" name=EString "{" "myAttributeContains" myAttributeContains=myValue "}"
+		//name=EString "[" myAttributeContains=myValue "]"
 		public Group getGroup() { return cGroup; }
 
-		//"myAttribute"
-		public Keyword getMyAttributeKeyword_0() { return cMyAttributeKeyword_0; }
-
 		//name=EString
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 
 		//EString
-		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
+		public RuleCall getNameEStringParserRuleCall_0_0() { return cNameEStringParserRuleCall_0_0; }
 
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
-
-		//"myAttributeContains"
-		public Keyword getMyAttributeContainsKeyword_3() { return cMyAttributeContainsKeyword_3; }
+		//"["
+		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
 
 		//myAttributeContains=myValue
-		public Assignment getMyAttributeContainsAssignment_4() { return cMyAttributeContainsAssignment_4; }
+		public Assignment getMyAttributeContainsAssignment_2() { return cMyAttributeContainsAssignment_2; }
 
 		//myValue
-		public RuleCall getMyAttributeContainsMyValueParserRuleCall_4_0() { return cMyAttributeContainsMyValueParserRuleCall_4_0; }
+		public RuleCall getMyAttributeContainsMyValueParserRuleCall_2_0() { return cMyAttributeContainsMyValueParserRuleCall_2_0; }
 
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		//"]"
+		public Keyword getRightSquareBracketKeyword_3() { return cRightSquareBracketKeyword_3; }
 	}
 
 	public class MyBinaryElements extends AbstractParserRuleElementFinder {
@@ -679,145 +641,101 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class MyEnumElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myEnum");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cMyEnumKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cValuesKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cValuesAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cValuesAnySimpleTypeParserRuleCall_4_0 = (RuleCall)cValuesAssignment_4.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cCommaKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cValuesAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cValuesAnySimpleTypeParserRuleCall_5_1_0 = (RuleCall)cValuesAssignment_5_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cValuesAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cValuesAnySimpleTypeParserRuleCall_0_0 = (RuleCall)cValuesAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cValuesAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cValuesAnySimpleTypeParserRuleCall_1_1_0 = (RuleCall)cValuesAssignment_1_1.eContents().get(0);
 		
 		//myEnum:
-		//	"myEnum" "{" "values" "{" values+=AnySimpleType ("," values+=AnySimpleType)* "}" "}";
+		//	values+=AnySimpleType ("," values+=AnySimpleType)*;
 		public ParserRule getRule() { return rule; }
 
-		//"myEnum" "{" "values" "{" values+=AnySimpleType ("," values+=AnySimpleType)* "}" "}"
+		//values+=AnySimpleType ("," values+=AnySimpleType)*
 		public Group getGroup() { return cGroup; }
 
-		//"myEnum"
-		public Keyword getMyEnumKeyword_0() { return cMyEnumKeyword_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
-
-		//"values"
-		public Keyword getValuesKeyword_2() { return cValuesKeyword_2; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
-
 		//values+=AnySimpleType
-		public Assignment getValuesAssignment_4() { return cValuesAssignment_4; }
+		public Assignment getValuesAssignment_0() { return cValuesAssignment_0; }
 
 		//AnySimpleType
-		public RuleCall getValuesAnySimpleTypeParserRuleCall_4_0() { return cValuesAnySimpleTypeParserRuleCall_4_0; }
+		public RuleCall getValuesAnySimpleTypeParserRuleCall_0_0() { return cValuesAnySimpleTypeParserRuleCall_0_0; }
 
 		//("," values+=AnySimpleType)*
-		public Group getGroup_5() { return cGroup_5; }
+		public Group getGroup_1() { return cGroup_1; }
 
 		//","
-		public Keyword getCommaKeyword_5_0() { return cCommaKeyword_5_0; }
+		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
 
 		//values+=AnySimpleType
-		public Assignment getValuesAssignment_5_1() { return cValuesAssignment_5_1; }
+		public Assignment getValuesAssignment_1_1() { return cValuesAssignment_1_1; }
 
 		//AnySimpleType
-		public RuleCall getValuesAnySimpleTypeParserRuleCall_5_1_0() { return cValuesAnySimpleTypeParserRuleCall_5_1_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
+		public RuleCall getValuesAnySimpleTypeParserRuleCall_1_1_0() { return cValuesAnySimpleTypeParserRuleCall_1_1_0; }
 	}
 
 	public class BooleanValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BooleanValue");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cBooleanValueKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cTrueValueKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cTrueValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cTrueValueAnyURIParserRuleCall_3_0 = (RuleCall)cTrueValueAssignment_3.eContents().get(0);
-		private final Keyword cFalseValueKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cFalseValueAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cFalseValueAnyURIParserRuleCall_5_0 = (RuleCall)cFalseValueAssignment_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cTrueValueAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTrueValueAnyURIParserRuleCall_0_0 = (RuleCall)cTrueValueAssignment_0.eContents().get(0);
+		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cFalseValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cFalseValueAnyURIParserRuleCall_2_0 = (RuleCall)cFalseValueAssignment_2.eContents().get(0);
 		
 		//BooleanValue:
-		//	"BooleanValue" "{" "trueValue" trueValue=AnyURI "falseValue" falseValue=AnyURI "}";
+		//	trueValue=AnyURI ":" falseValue=AnyURI;
 		public ParserRule getRule() { return rule; }
 
-		//"BooleanValue" "{" "trueValue" trueValue=AnyURI "falseValue" falseValue=AnyURI "}"
+		//trueValue=AnyURI ":" falseValue=AnyURI
 		public Group getGroup() { return cGroup; }
 
-		//"BooleanValue"
-		public Keyword getBooleanValueKeyword_0() { return cBooleanValueKeyword_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
-
-		//"trueValue"
-		public Keyword getTrueValueKeyword_2() { return cTrueValueKeyword_2; }
-
 		//trueValue=AnyURI
-		public Assignment getTrueValueAssignment_3() { return cTrueValueAssignment_3; }
+		public Assignment getTrueValueAssignment_0() { return cTrueValueAssignment_0; }
 
 		//AnyURI
-		public RuleCall getTrueValueAnyURIParserRuleCall_3_0() { return cTrueValueAnyURIParserRuleCall_3_0; }
+		public RuleCall getTrueValueAnyURIParserRuleCall_0_0() { return cTrueValueAnyURIParserRuleCall_0_0; }
 
-		//"falseValue"
-		public Keyword getFalseValueKeyword_4() { return cFalseValueKeyword_4; }
+		//":"
+		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
 
 		//falseValue=AnyURI
-		public Assignment getFalseValueAssignment_5() { return cFalseValueAssignment_5; }
+		public Assignment getFalseValueAssignment_2() { return cFalseValueAssignment_2; }
 
 		//AnyURI
-		public RuleCall getFalseValueAnyURIParserRuleCall_5_0() { return cFalseValueAnyURIParserRuleCall_5_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public RuleCall getFalseValueAnyURIParserRuleCall_2_0() { return cFalseValueAnyURIParserRuleCall_2_0; }
 	}
 
 	public class MyRangeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myRange");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cMyRangeKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cRangeKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cRangeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cRangeAnySimpleTypeParserRuleCall_3_0 = (RuleCall)cRangeAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cRangeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cRangeAnySimpleTypeParserRuleCall_0_0 = (RuleCall)cRangeAssignment_0.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cRangeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cRangeAnySimpleTypeParserRuleCall_2_0 = (RuleCall)cRangeAssignment_2.eContents().get(0);
 		
 		//myRange:
-		//	"myRange" "{" "range" range=AnySimpleType "}";
+		//	range=AnySimpleType "-" range=AnySimpleType;
 		public ParserRule getRule() { return rule; }
 
-		//"myRange" "{" "range" range=AnySimpleType "}"
+		//range=AnySimpleType "-" range=AnySimpleType
 		public Group getGroup() { return cGroup; }
 
-		//"myRange"
-		public Keyword getMyRangeKeyword_0() { return cMyRangeKeyword_0; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
-
-		//"range"
-		public Keyword getRangeKeyword_2() { return cRangeKeyword_2; }
-
 		//range=AnySimpleType
-		public Assignment getRangeAssignment_3() { return cRangeAssignment_3; }
+		public Assignment getRangeAssignment_0() { return cRangeAssignment_0; }
 
 		//AnySimpleType
-		public RuleCall getRangeAnySimpleTypeParserRuleCall_3_0() { return cRangeAnySimpleTypeParserRuleCall_3_0; }
+		public RuleCall getRangeAnySimpleTypeParserRuleCall_0_0() { return cRangeAnySimpleTypeParserRuleCall_0_0; }
 
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		//"-"
+		public Keyword getHyphenMinusKeyword_1() { return cHyphenMinusKeyword_1; }
+
+		//range=AnySimpleType
+		public Assignment getRangeAssignment_2() { return cRangeAssignment_2; }
+
+		//AnySimpleType
+		public RuleCall getRangeAnySimpleTypeParserRuleCall_2_0() { return cRangeAnySimpleTypeParserRuleCall_2_0; }
 	}
 
 	public class AnySimpleTypeElements extends AbstractParserRuleElementFinder {
@@ -987,8 +905,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//myModel:
-	//	{myModel} "myModel" name=EString "{" ("myModelContains" "{" myModelContains+=myObject (","
-	//	myModelContains+=myObject)* "}")? "}";
+	//	{myModel} name=EString ("{" myModelContains+=myObject ("," myModelContains+=myObject)* "}")?;
 	public MyModelElements getMyModelAccess() {
 		return (pMyModel != null) ? pMyModel : (pMyModel = new MyModelElements());
 	}
@@ -1028,8 +945,8 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//myObject:
-	//	{myObject} "myObject" name=EString "{" ("myObjectHas" "{" myObjectHas+=myConstraint ("," myObjectHas+=myConstraint)*
-	//	"}")? ("myAttributeContains" "{" myAttributeContains+=myAttribute ("," myAttributeContains+=myAttribute)* "}")? "}";
+	//	{myObject} name=EString "{" ("has" myAttributeContains+=myAttribute ("," myAttributeContains+=myAttribute)*)?
+	//	("myAttributeContains" "{" myObjectHas+=myConstraint ("," myObjectHas+=myConstraint)* "}")? "}";
 	public MyObjectElements getMyObjectAccess() {
 		return (pMyObject != null) ? pMyObject : (pMyObject = new MyObjectElements());
 	}
@@ -1049,7 +966,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//myAttribute:
-	//	"myAttribute" name=EString "{" "myAttributeContains" myAttributeContains=myValue "}";
+	//	name=EString "[" myAttributeContains=myValue "]";
 	public MyAttributeElements getMyAttributeAccess() {
 		return (pMyAttribute != null) ? pMyAttribute : (pMyAttribute = new MyAttributeElements());
 	}
@@ -1170,7 +1087,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//myEnum:
-	//	"myEnum" "{" "values" "{" values+=AnySimpleType ("," values+=AnySimpleType)* "}" "}";
+	//	values+=AnySimpleType ("," values+=AnySimpleType)*;
 	public MyEnumElements getMyEnumAccess() {
 		return (pMyEnum != null) ? pMyEnum : (pMyEnum = new MyEnumElements());
 	}
@@ -1180,7 +1097,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BooleanValue:
-	//	"BooleanValue" "{" "trueValue" trueValue=AnyURI "falseValue" falseValue=AnyURI "}";
+	//	trueValue=AnyURI ":" falseValue=AnyURI;
 	public BooleanValueElements getBooleanValueAccess() {
 		return (pBooleanValue != null) ? pBooleanValue : (pBooleanValue = new BooleanValueElements());
 	}
@@ -1190,7 +1107,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//myRange:
-	//	"myRange" "{" "range" range=AnySimpleType "}";
+	//	range=AnySimpleType "-" range=AnySimpleType;
 	public MyRangeElements getMyRangeAccess() {
 		return (pMyRange != null) ? pMyRange : (pMyRange = new MyRangeElements());
 	}

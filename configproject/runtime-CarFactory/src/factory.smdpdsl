@@ -1,4 +1,12 @@
-myModel adf {
-	
-	
+carfactory {
+ 	bmw {
+ 		has 
+ 			seatheat [AnySimpleType,AnySimpleType],
+ 			doors [AnyURI:AnyURI],
+ 			wheel [AnySimpleType-AnySimpleType],
+ 		
+ 		myAttributeContains {
+ 			
+ 		} 
+ 	}	
 }

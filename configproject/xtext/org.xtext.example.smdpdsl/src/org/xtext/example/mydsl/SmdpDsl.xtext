@@ -7,11 +7,9 @@ import "http://www.eclipse.org/emf/2003/XMLType" as type
 
 myModel returns myModel:
 	{myModel}
-	'myModel'
 	name=EString
-	'{'
-		('myModelContains' '{' myModelContains+=myObject ( "," myModelContains+=myObject)* '}' )?
-	'}';
+		('{' myModelContains+=myObject ( "," myModelContains+=myObject)* '}' )?
+	;
 
 
 
@@ -27,11 +25,10 @@ EString returns ecore::EString:
 
 myObject returns myObject:
 	{myObject}
-	'myObject'
 	name=EString
 	'{'
-		('myObjectHas' '{' myObjectHas+=myConstraint ( "," myObjectHas+=myConstraint)* '}' )?
-		('myAttributeContains' '{' myAttributeContains+=myAttribute ( "," myAttributeContains+=myAttribute)* '}' )?
+		('has' myAttributeContains+=myAttribute  ( "," myAttributeContains+=myAttribute)* )?
+		('myAttributeContains' '{' myObjectHas+=myConstraint ( "," myObjectHas+=myConstraint)* '}' )?	
 	'}';
 
 myConstraint returns myConstraint:
@@ -40,12 +37,11 @@ myConstraint returns myConstraint:
 		'myConstraintContains' myConstraintContains=myExpression
 	'}';
 
-myAttribute returns myAttribute:
-	'myAttribute'
+myAttribute returns myAttribute:	
 	name=EString
-	'{'
-		'myAttributeContains' myAttributeContains=myValue
-	'}';
+	'['
+		myAttributeContains=myValue
+	']';
 
 myBinary returns myBinary:
 	'myBinary'
@@ -101,24 +97,18 @@ Int0 returns type::Int:
 Boolean returns type::Boolean:
 	'Boolean' /* TODO: implement this rule and an appropriate IValueConverter */;
 
-myEnum returns myEnum:
-	'myEnum'
-	'{'
-		'values' '{' values+=AnySimpleType ( "," values+=AnySimpleType)* '}' 
-	'}';
+myEnum returns myEnum:	
+		values+=AnySimpleType ( "," values+=AnySimpleType)* 
+	;
 
 BooleanValue returns BooleanValue:
-	'BooleanValue'
-	'{'
-		'trueValue' trueValue=AnyURI
-		'falseValue' falseValue=AnyURI
-	'}';
+		trueValue=AnyURI ':'
+		falseValue=AnyURI
+	;
 
 myRange returns myRange:
-	'myRange'
-	'{'
-		'range' range=AnySimpleType
-	'}';
+		range=AnySimpleType '-' range=AnySimpleType
+	;
 
 AnySimpleType returns type::AnySimpleType:
 	'AnySimpleType' /* TODO: implement this rule and an appropriate IValueConverter */;
