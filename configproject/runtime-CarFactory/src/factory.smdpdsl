@@ -1,13 +1,18 @@
 carfactory {
  	bmw {
  		has 
- 			seatheat [AnySimpleType,AnySimpleType],
- 			doors [AnyURI:AnyURI],
- 			wheel [AnySimpleType-AnySimpleType],
+ 			seatheat ["10","11", "12"],
+ 			doors ["4-Door":"2-Door"],
+ 			wheel [40-34] 			
  		
- 		Constrained by {
- 			if wheel > AnySimpleType
- 			then seatheat can [AnySimpleType-AnySimpleType]
- 		} 
+ 		Constrained by 
+ 			if left doors = right "4-Door"
+ 			then left seatheat can right 4,
+ 			
+ 			if left wheel < right 39 
+ 			then left doors can right not single AnyURI
+
  	}	
 }
+
+	

@@ -49,6 +49,7 @@ public class SmdpDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMyObjectAccess().getGroup_3_2(), "rule__MyObject__Group_3_2__0");
 					put(grammarAccess.getMyObjectAccess().getGroup_4(), "rule__MyObject__Group_4__0");
 					put(grammarAccess.getMyObjectAccess().getGroup_4_2(), "rule__MyObject__Group_4_2__0");
+					put(grammarAccess.getMyConstraintAccess().getGroup(), "rule__MyConstraint__Group__0");
 					put(grammarAccess.getMyAttributeAccess().getGroup(), "rule__MyAttribute__Group__0");
 					put(grammarAccess.getMyBinaryAccess().getGroup(), "rule__MyBinary__Group__0");
 					put(grammarAccess.getMyUnaryAccess().getGroup(), "rule__MyUnary__Group__0");
@@ -64,7 +65,8 @@ public class SmdpDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMyObjectAccess().getMyAttributeContainsAssignment_3_2_1(), "rule__MyObject__MyAttributeContainsAssignment_3_2_1");
 					put(grammarAccess.getMyObjectAccess().getMyObjectHasAssignment_4_1(), "rule__MyObject__MyObjectHasAssignment_4_1");
 					put(grammarAccess.getMyObjectAccess().getMyObjectHasAssignment_4_2_1(), "rule__MyObject__MyObjectHasAssignment_4_2_1");
-					put(grammarAccess.getMyConstraintAccess().getMyConstraintContainsAssignment(), "rule__MyConstraint__MyConstraintContainsAssignment");
+					put(grammarAccess.getMyConstraintAccess().getMyConstraintContainsAssignment_1(), "rule__MyConstraint__MyConstraintContainsAssignment_1");
+					put(grammarAccess.getMyConstraintAccess().getMyConstraintContainsAssignment_3(), "rule__MyConstraint__MyConstraintContainsAssignment_3");
 					put(grammarAccess.getMyAttributeAccess().getNameAssignment_0(), "rule__MyAttribute__NameAssignment_0");
 					put(grammarAccess.getMyAttributeAccess().getMyAttributeContainsAssignment_2(), "rule__MyAttribute__MyAttributeContainsAssignment_2");
 					put(grammarAccess.getMyBinaryAccess().getMyBinaryLeftAssignment_1(), "rule__MyBinary__MyBinaryLeftAssignment_1");

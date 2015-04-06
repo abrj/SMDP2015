@@ -258,18 +258,38 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class MyConstraintElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myConstraint");
-		private final Assignment cMyConstraintContainsAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cMyConstraintContainsMyExpressionParserRuleCall_0 = (RuleCall)cMyConstraintContainsAssignment.eContents().get(0);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cIfKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cMyConstraintContainsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cMyConstraintContainsMyExpressionParserRuleCall_1_0 = (RuleCall)cMyConstraintContainsAssignment_1.eContents().get(0);
+		private final Keyword cThenKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cMyConstraintContainsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMyConstraintContainsMyExpressionParserRuleCall_3_0 = (RuleCall)cMyConstraintContainsAssignment_3.eContents().get(0);
 		
 		//myConstraint:
-		//	myConstraintContains=myExpression;
+		//	"if" myConstraintContains=myExpression "then" myConstraintContains=myExpression;
 		public ParserRule getRule() { return rule; }
 
+		//"if" myConstraintContains=myExpression "then" myConstraintContains=myExpression
+		public Group getGroup() { return cGroup; }
+
+		//"if"
+		public Keyword getIfKeyword_0() { return cIfKeyword_0; }
+
 		//myConstraintContains=myExpression
-		public Assignment getMyConstraintContainsAssignment() { return cMyConstraintContainsAssignment; }
+		public Assignment getMyConstraintContainsAssignment_1() { return cMyConstraintContainsAssignment_1; }
 
 		//myExpression
-		public RuleCall getMyConstraintContainsMyExpressionParserRuleCall_0() { return cMyConstraintContainsMyExpressionParserRuleCall_0; }
+		public RuleCall getMyConstraintContainsMyExpressionParserRuleCall_1_0() { return cMyConstraintContainsMyExpressionParserRuleCall_1_0; }
+
+		//"then"
+		public Keyword getThenKeyword_2() { return cThenKeyword_2; }
+
+		//myConstraintContains=myExpression
+		public Assignment getMyConstraintContainsAssignment_3() { return cMyConstraintContainsAssignment_3; }
+
+		//myExpression
+		public RuleCall getMyConstraintContainsMyExpressionParserRuleCall_3_0() { return cMyConstraintContainsMyExpressionParserRuleCall_3_0; }
 	}
 
 	public class MyAttributeElements extends AbstractParserRuleElementFinder {
@@ -411,17 +431,17 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class MyIntElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myInt");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueInt0ParserRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		private final RuleCall cValueINTTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
 		//myInt:
-		//	value=Int0;
+		//	value=INT;
 		public ParserRule getRule() { return rule; }
 
-		//value=Int0
+		//value=INT
 		public Assignment getValueAssignment() { return cValueAssignment; }
 
-		//Int0
-		public RuleCall getValueInt0ParserRuleCall_0() { return cValueInt0ParserRuleCall_0; }
+		//INT
+		public RuleCall getValueINTTerminalRuleCall_0() { return cValueINTTerminalRuleCall_0; }
 	}
 
 	public class BoolLiteralElements extends AbstractParserRuleElementFinder {
@@ -500,100 +520,100 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myEnum");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cValuesAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cValuesAnySimpleTypeParserRuleCall_0_0 = (RuleCall)cValuesAssignment_0.eContents().get(0);
+		private final RuleCall cValuesEStringParserRuleCall_0_0 = (RuleCall)cValuesAssignment_0.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cValuesAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cValuesAnySimpleTypeParserRuleCall_1_1_0 = (RuleCall)cValuesAssignment_1_1.eContents().get(0);
+		private final RuleCall cValuesEStringParserRuleCall_1_1_0 = (RuleCall)cValuesAssignment_1_1.eContents().get(0);
 		
 		//myEnum:
-		//	values+=AnySimpleType ("," values+=AnySimpleType)*;
+		//	values+=EString ("," values+=EString)*;
 		public ParserRule getRule() { return rule; }
 
-		//values+=AnySimpleType ("," values+=AnySimpleType)*
+		//values+=EString ("," values+=EString)*
 		public Group getGroup() { return cGroup; }
 
-		//values+=AnySimpleType
+		//values+=EString
 		public Assignment getValuesAssignment_0() { return cValuesAssignment_0; }
 
-		//AnySimpleType
-		public RuleCall getValuesAnySimpleTypeParserRuleCall_0_0() { return cValuesAnySimpleTypeParserRuleCall_0_0; }
+		//EString
+		public RuleCall getValuesEStringParserRuleCall_0_0() { return cValuesEStringParserRuleCall_0_0; }
 
-		//("," values+=AnySimpleType)*
+		//("," values+=EString)*
 		public Group getGroup_1() { return cGroup_1; }
 
 		//","
 		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
 
-		//values+=AnySimpleType
+		//values+=EString
 		public Assignment getValuesAssignment_1_1() { return cValuesAssignment_1_1; }
 
-		//AnySimpleType
-		public RuleCall getValuesAnySimpleTypeParserRuleCall_1_1_0() { return cValuesAnySimpleTypeParserRuleCall_1_1_0; }
+		//EString
+		public RuleCall getValuesEStringParserRuleCall_1_1_0() { return cValuesEStringParserRuleCall_1_1_0; }
 	}
 
 	public class BooleanValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BooleanValue");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTrueValueAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cTrueValueAnyURIParserRuleCall_0_0 = (RuleCall)cTrueValueAssignment_0.eContents().get(0);
+		private final RuleCall cTrueValueEStringParserRuleCall_0_0 = (RuleCall)cTrueValueAssignment_0.eContents().get(0);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cFalseValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cFalseValueAnyURIParserRuleCall_2_0 = (RuleCall)cFalseValueAssignment_2.eContents().get(0);
+		private final RuleCall cFalseValueEStringParserRuleCall_2_0 = (RuleCall)cFalseValueAssignment_2.eContents().get(0);
 		
 		//BooleanValue:
-		//	trueValue=AnyURI ":" falseValue=AnyURI;
+		//	trueValue=EString ":" falseValue=EString;
 		public ParserRule getRule() { return rule; }
 
-		//trueValue=AnyURI ":" falseValue=AnyURI
+		//trueValue=EString ":" falseValue=EString
 		public Group getGroup() { return cGroup; }
 
-		//trueValue=AnyURI
+		//trueValue=EString
 		public Assignment getTrueValueAssignment_0() { return cTrueValueAssignment_0; }
 
-		//AnyURI
-		public RuleCall getTrueValueAnyURIParserRuleCall_0_0() { return cTrueValueAnyURIParserRuleCall_0_0; }
+		//EString
+		public RuleCall getTrueValueEStringParserRuleCall_0_0() { return cTrueValueEStringParserRuleCall_0_0; }
 
 		//":"
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
 
-		//falseValue=AnyURI
+		//falseValue=EString
 		public Assignment getFalseValueAssignment_2() { return cFalseValueAssignment_2; }
 
-		//AnyURI
-		public RuleCall getFalseValueAnyURIParserRuleCall_2_0() { return cFalseValueAnyURIParserRuleCall_2_0; }
+		//EString
+		public RuleCall getFalseValueEStringParserRuleCall_2_0() { return cFalseValueEStringParserRuleCall_2_0; }
 	}
 
 	public class MyRangeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myRange");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cRangeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cRangeAnySimpleTypeParserRuleCall_0_0 = (RuleCall)cRangeAssignment_0.eContents().get(0);
+		private final RuleCall cRangeINTTerminalRuleCall_0_0 = (RuleCall)cRangeAssignment_0.eContents().get(0);
 		private final Keyword cHyphenMinusKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cRangeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cRangeAnySimpleTypeParserRuleCall_2_0 = (RuleCall)cRangeAssignment_2.eContents().get(0);
+		private final RuleCall cRangeINTTerminalRuleCall_2_0 = (RuleCall)cRangeAssignment_2.eContents().get(0);
 		
 		//myRange:
-		//	range=AnySimpleType "-" range=AnySimpleType;
+		//	range=INT "-" range=INT;
 		public ParserRule getRule() { return rule; }
 
-		//range=AnySimpleType "-" range=AnySimpleType
+		//range=INT "-" range=INT
 		public Group getGroup() { return cGroup; }
 
-		//range=AnySimpleType
+		//range=INT
 		public Assignment getRangeAssignment_0() { return cRangeAssignment_0; }
 
-		//AnySimpleType
-		public RuleCall getRangeAnySimpleTypeParserRuleCall_0_0() { return cRangeAnySimpleTypeParserRuleCall_0_0; }
+		//INT
+		public RuleCall getRangeINTTerminalRuleCall_0_0() { return cRangeINTTerminalRuleCall_0_0; }
 
 		//"-"
 		public Keyword getHyphenMinusKeyword_1() { return cHyphenMinusKeyword_1; }
 
-		//range=AnySimpleType
+		//range=INT
 		public Assignment getRangeAssignment_2() { return cRangeAssignment_2; }
 
-		//AnySimpleType
-		public RuleCall getRangeAnySimpleTypeParserRuleCall_2_0() { return cRangeAnySimpleTypeParserRuleCall_2_0; }
+		//INT
+		public RuleCall getRangeINTTerminalRuleCall_2_0() { return cRangeINTTerminalRuleCall_2_0; }
 	}
 
 	public class AnySimpleTypeElements extends AbstractParserRuleElementFinder {
@@ -814,7 +834,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//myConstraint:
-	//	myConstraintContains=myExpression;
+	//	"if" myConstraintContains=myExpression "then" myConstraintContains=myExpression;
 	public MyConstraintElements getMyConstraintAccess() {
 		return (pMyConstraint != null) ? pMyConstraint : (pMyConstraint = new MyConstraintElements());
 	}
@@ -866,7 +886,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//myInt:
-	//	value=Int0;
+	//	value=INT;
 	public MyIntElements getMyIntAccess() {
 		return (pMyInt != null) ? pMyInt : (pMyInt = new MyIntElements());
 	}
@@ -946,7 +966,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//myEnum:
-	//	values+=AnySimpleType ("," values+=AnySimpleType)*;
+	//	values+=EString ("," values+=EString)*;
 	public MyEnumElements getMyEnumAccess() {
 		return (pMyEnum != null) ? pMyEnum : (pMyEnum = new MyEnumElements());
 	}
@@ -956,7 +976,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//BooleanValue:
-	//	trueValue=AnyURI ":" falseValue=AnyURI;
+	//	trueValue=EString ":" falseValue=EString;
 	public BooleanValueElements getBooleanValueAccess() {
 		return (pBooleanValue != null) ? pBooleanValue : (pBooleanValue = new BooleanValueElements());
 	}
@@ -966,7 +986,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//myRange:
-	//	range=AnySimpleType "-" range=AnySimpleType;
+	//	range=INT "-" range=INT;
 	public MyRangeElements getMyRangeAccess() {
 		return (pMyRange != null) ? pMyRange : (pMyRange = new MyRangeElements());
 	}

@@ -146,7 +146,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 	
 	/**
 	 * Constraint:
-	 *     (trueValue=AnyURI falseValue=AnyURI)
+	 *     (trueValue=EString falseValue=EString)
 	 */
 	protected void sequence_BooleanValue(EObject context, BooleanValue semanticObject) {
 		if(errorAcceptor != null) {
@@ -157,8 +157,8 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getBooleanValueAccess().getTrueValueAnyURIParserRuleCall_0_0(), semanticObject.getTrueValue());
-		feeder.accept(grammarAccess.getBooleanValueAccess().getFalseValueAnyURIParserRuleCall_2_0(), semanticObject.getFalseValue());
+		feeder.accept(grammarAccess.getBooleanValueAccess().getTrueValueEStringParserRuleCall_0_0(), semanticObject.getTrueValue());
+		feeder.accept(grammarAccess.getBooleanValueAccess().getFalseValueEStringParserRuleCall_2_0(), semanticObject.getFalseValue());
 		feeder.finish();
 	}
 	
@@ -193,23 +193,16 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 	
 	/**
 	 * Constraint:
-	 *     myConstraintContains=myExpression
+	 *     (myConstraintContains=myExpression myConstraintContains=myExpression)
 	 */
 	protected void sequence_myConstraint(EObject context, myConstraint semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_CONSTRAINT__MY_CONSTRAINT_CONTAINS) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_CONSTRAINT__MY_CONSTRAINT_CONTAINS));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyConstraintAccess().getMyConstraintContainsMyExpressionParserRuleCall_0(), semanticObject.getMyConstraintContains());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (values+=AnySimpleType values+=AnySimpleType*)
+	 *     (values+=EString values+=EString*)
 	 */
 	protected void sequence_myEnum(EObject context, myEnum semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -234,7 +227,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 	
 	/**
 	 * Constraint:
-	 *     value=Int0
+	 *     value=INT
 	 */
 	protected void sequence_myInt(EObject context, myInt semanticObject) {
 		if(errorAcceptor != null) {
@@ -243,7 +236,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyIntAccess().getValueInt0ParserRuleCall_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getMyIntAccess().getValueINTTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -268,7 +261,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 	
 	/**
 	 * Constraint:
-	 *     (range=AnySimpleType range=AnySimpleType)
+	 *     (range=INT range=INT)
 	 */
 	protected void sequence_myRange(EObject context, myRange semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

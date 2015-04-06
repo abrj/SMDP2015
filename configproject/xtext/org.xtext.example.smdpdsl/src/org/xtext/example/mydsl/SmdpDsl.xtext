@@ -32,7 +32,8 @@ myObject returns myObject:
 	'}';
 
 myConstraint returns myConstraint:
-	myConstraintContains=myExpression
+	'if' myConstraintContains=myExpression
+	'then' myConstraintContains=myExpression
 	;
 
 myAttribute returns myAttribute:	
@@ -56,7 +57,7 @@ myString returns myString:
 	value=AnyURI;
 
 myInt returns myInt:
-	value=Int0;
+	value=INT;
 
 BoolLiteral returns BoolLiteral:
 value=Boolean;
@@ -80,16 +81,16 @@ Boolean returns type::Boolean:
 	'Boolean' /* TODO: implement this rule and an appropriate IValueConverter */;
 
 myEnum returns myEnum:	
-		values+=AnySimpleType ( "," values+=AnySimpleType)* 
+		values+=EString ( "," values+=EString)* 
 	;
 
 BooleanValue returns BooleanValue:
-		trueValue=AnyURI ':'
-		falseValue=AnyURI
+		trueValue=EString ':'
+		falseValue=EString
 	;
 
 myRange returns myRange:
-		range=AnySimpleType '-' range=AnySimpleType
+		range=INT '-' range=INT
 	;
 
 AnySimpleType returns type::AnySimpleType:

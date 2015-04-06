@@ -212,9 +212,9 @@ rulemyConstraint
     }
 	:
 (
-{ before(grammarAccess.getMyConstraintAccess().getMyConstraintContainsAssignment()); }
-(rule__MyConstraint__MyConstraintContainsAssignment)
-{ after(grammarAccess.getMyConstraintAccess().getMyConstraintContainsAssignment()); }
+{ before(grammarAccess.getMyConstraintAccess().getGroup()); }
+(rule__MyConstraint__Group__0)
+{ after(grammarAccess.getMyConstraintAccess().getGroup()); }
 )
 
 ;
@@ -450,34 +450,6 @@ finally {
 
 
 
-// Entry rule entryRuleInt0
-entryRuleInt0 
-:
-{ before(grammarAccess.getInt0Rule()); }
-	 ruleInt0
-{ after(grammarAccess.getInt0Rule()); } 
-	 EOF 
-;
-
-// Rule Int0
-ruleInt0
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getInt0Access().getIntKeyword()); }
-
-	'Int' 
-
-{ after(grammarAccess.getInt0Access().getIntKeyword()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
 
 
 // Entry rule entryRuleBoolean
@@ -593,34 +565,6 @@ finally {
 }
 
 
-
-// Entry rule entryRuleAnySimpleType
-entryRuleAnySimpleType 
-:
-{ before(grammarAccess.getAnySimpleTypeRule()); }
-	 ruleAnySimpleType
-{ after(grammarAccess.getAnySimpleTypeRule()); } 
-	 EOF 
-;
-
-// Rule AnySimpleType
-ruleAnySimpleType
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getAnySimpleTypeAccess().getAnySimpleTypeKeyword()); }
-
-	'AnySimpleType' 
-
-{ after(grammarAccess.getAnySimpleTypeAccess().getAnySimpleTypeKeyword()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
 
 
 
@@ -1617,6 +1561,133 @@ finally {
 
 
 
+rule__MyConstraint__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__MyConstraint__Group__0__Impl
+	rule__MyConstraint__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__MyConstraint__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getMyConstraintAccess().getIfKeyword_0()); }
+
+	'if' 
+
+{ after(grammarAccess.getMyConstraintAccess().getIfKeyword_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__MyConstraint__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__MyConstraint__Group__1__Impl
+	rule__MyConstraint__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__MyConstraint__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getMyConstraintAccess().getMyConstraintContainsAssignment_1()); }
+(rule__MyConstraint__MyConstraintContainsAssignment_1)
+{ after(grammarAccess.getMyConstraintAccess().getMyConstraintContainsAssignment_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__MyConstraint__Group__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__MyConstraint__Group__2__Impl
+	rule__MyConstraint__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__MyConstraint__Group__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getMyConstraintAccess().getThenKeyword_2()); }
+
+	'then' 
+
+{ after(grammarAccess.getMyConstraintAccess().getThenKeyword_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__MyConstraint__Group__3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__MyConstraint__Group__3__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__MyConstraint__Group__3__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getMyConstraintAccess().getMyConstraintContainsAssignment_3()); }
+(rule__MyConstraint__MyConstraintContainsAssignment_3)
+{ after(grammarAccess.getMyConstraintAccess().getMyConstraintContainsAssignment_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+
+
 rule__MyAttribute__Group__0
     @init {
 		int stackSize = keepStackSize();
@@ -2429,14 +2500,29 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MyConstraint__MyConstraintContainsAssignment
+rule__MyConstraint__MyConstraintContainsAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getMyConstraintAccess().getMyConstraintContainsMyExpressionParserRuleCall_0()); }
-	rulemyExpression{ after(grammarAccess.getMyConstraintAccess().getMyConstraintContainsMyExpressionParserRuleCall_0()); }
+{ before(grammarAccess.getMyConstraintAccess().getMyConstraintContainsMyExpressionParserRuleCall_1_0()); }
+	rulemyExpression{ after(grammarAccess.getMyConstraintAccess().getMyConstraintContainsMyExpressionParserRuleCall_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__MyConstraint__MyConstraintContainsAssignment_3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getMyConstraintAccess().getMyConstraintContainsMyExpressionParserRuleCall_3_0()); }
+	rulemyExpression{ after(grammarAccess.getMyConstraintAccess().getMyConstraintContainsMyExpressionParserRuleCall_3_0()); }
 )
 
 ;
@@ -2570,8 +2656,8 @@ rule__MyInt__ValueAssignment
     }
 :
 (
-{ before(grammarAccess.getMyIntAccess().getValueInt0ParserRuleCall_0()); }
-	ruleInt0{ after(grammarAccess.getMyIntAccess().getValueInt0ParserRuleCall_0()); }
+{ before(grammarAccess.getMyIntAccess().getValueINTTerminalRuleCall_0()); }
+	RULE_INT{ after(grammarAccess.getMyIntAccess().getValueINTTerminalRuleCall_0()); }
 )
 
 ;
@@ -2619,8 +2705,8 @@ rule__MyEnum__ValuesAssignment_0
     }
 :
 (
-{ before(grammarAccess.getMyEnumAccess().getValuesAnySimpleTypeParserRuleCall_0_0()); }
-	ruleAnySimpleType{ after(grammarAccess.getMyEnumAccess().getValuesAnySimpleTypeParserRuleCall_0_0()); }
+{ before(grammarAccess.getMyEnumAccess().getValuesEStringParserRuleCall_0_0()); }
+	ruleEString{ after(grammarAccess.getMyEnumAccess().getValuesEStringParserRuleCall_0_0()); }
 )
 
 ;
@@ -2634,8 +2720,8 @@ rule__MyEnum__ValuesAssignment_1_1
     }
 :
 (
-{ before(grammarAccess.getMyEnumAccess().getValuesAnySimpleTypeParserRuleCall_1_1_0()); }
-	ruleAnySimpleType{ after(grammarAccess.getMyEnumAccess().getValuesAnySimpleTypeParserRuleCall_1_1_0()); }
+{ before(grammarAccess.getMyEnumAccess().getValuesEStringParserRuleCall_1_1_0()); }
+	ruleEString{ after(grammarAccess.getMyEnumAccess().getValuesEStringParserRuleCall_1_1_0()); }
 )
 
 ;
@@ -2649,8 +2735,8 @@ rule__BooleanValue__TrueValueAssignment_0
     }
 :
 (
-{ before(grammarAccess.getBooleanValueAccess().getTrueValueAnyURIParserRuleCall_0_0()); }
-	ruleAnyURI{ after(grammarAccess.getBooleanValueAccess().getTrueValueAnyURIParserRuleCall_0_0()); }
+{ before(grammarAccess.getBooleanValueAccess().getTrueValueEStringParserRuleCall_0_0()); }
+	ruleEString{ after(grammarAccess.getBooleanValueAccess().getTrueValueEStringParserRuleCall_0_0()); }
 )
 
 ;
@@ -2664,8 +2750,8 @@ rule__BooleanValue__FalseValueAssignment_2
     }
 :
 (
-{ before(grammarAccess.getBooleanValueAccess().getFalseValueAnyURIParserRuleCall_2_0()); }
-	ruleAnyURI{ after(grammarAccess.getBooleanValueAccess().getFalseValueAnyURIParserRuleCall_2_0()); }
+{ before(grammarAccess.getBooleanValueAccess().getFalseValueEStringParserRuleCall_2_0()); }
+	ruleEString{ after(grammarAccess.getBooleanValueAccess().getFalseValueEStringParserRuleCall_2_0()); }
 )
 
 ;
@@ -2679,8 +2765,8 @@ rule__MyRange__RangeAssignment_0
     }
 :
 (
-{ before(grammarAccess.getMyRangeAccess().getRangeAnySimpleTypeParserRuleCall_0_0()); }
-	ruleAnySimpleType{ after(grammarAccess.getMyRangeAccess().getRangeAnySimpleTypeParserRuleCall_0_0()); }
+{ before(grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_0_0()); }
+	RULE_INT{ after(grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_0_0()); }
 )
 
 ;
@@ -2694,8 +2780,8 @@ rule__MyRange__RangeAssignment_2
     }
 :
 (
-{ before(grammarAccess.getMyRangeAccess().getRangeAnySimpleTypeParserRuleCall_2_0()); }
-	ruleAnySimpleType{ after(grammarAccess.getMyRangeAccess().getRangeAnySimpleTypeParserRuleCall_2_0()); }
+{ before(grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_2_0()); }
+	RULE_INT{ after(grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_2_0()); }
 )
 
 ;
