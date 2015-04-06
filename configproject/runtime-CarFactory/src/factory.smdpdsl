@@ -5,8 +5,9 @@ carfactory {
  			doors [AnyURI:AnyURI],
  			wheel [AnySimpleType-AnySimpleType],
  		
- 		myAttributeContains {
- 			
+ 		Constrained by {
+ 			if wheel > AnySimpleType
+ 			then seatheat can [AnySimpleType-AnySimpleType]
  		} 
  	}	
 }

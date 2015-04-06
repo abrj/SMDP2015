@@ -409,61 +409,53 @@ rulemyObject returns [EObject current=null]
 	    }
 
 )
-))*)?(	otherlv_7='myAttributeContains' 
+))*)?(	otherlv_7='Constrained by' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getMyObjectAccess().getMyAttributeContainsKeyword_4_0());
-    }
-	otherlv_8='{' 
-    {
-    	newLeafNode(otherlv_8, grammarAccess.getMyObjectAccess().getLeftCurlyBracketKeyword_4_1());
+    	newLeafNode(otherlv_7, grammarAccess.getMyObjectAccess().getConstrainedByKeyword_4_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyObjectAccess().getMyObjectHasMyConstraintParserRuleCall_4_2_0()); 
+	        newCompositeNode(grammarAccess.getMyObjectAccess().getMyObjectHasMyConstraintParserRuleCall_4_1_0()); 
 	    }
-		lv_myObjectHas_9_0=rulemyConstraint		{
+		lv_myObjectHas_8_0=rulemyConstraint		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyObjectRule());
 	        }
        		add(
        			$current, 
        			"myObjectHas",
-        		lv_myObjectHas_9_0, 
+        		lv_myObjectHas_8_0, 
         		"myConstraint");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_10=',' 
+)(	otherlv_9=',' 
     {
-    	newLeafNode(otherlv_10, grammarAccess.getMyObjectAccess().getCommaKeyword_4_3_0());
+    	newLeafNode(otherlv_9, grammarAccess.getMyObjectAccess().getCommaKeyword_4_2_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyObjectAccess().getMyObjectHasMyConstraintParserRuleCall_4_3_1_0()); 
+	        newCompositeNode(grammarAccess.getMyObjectAccess().getMyObjectHasMyConstraintParserRuleCall_4_2_1_0()); 
 	    }
-		lv_myObjectHas_11_0=rulemyConstraint		{
+		lv_myObjectHas_10_0=rulemyConstraint		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyObjectRule());
 	        }
        		add(
        			$current, 
        			"myObjectHas",
-        		lv_myObjectHas_11_0, 
+        		lv_myObjectHas_10_0, 
         		"myConstraint");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))*	otherlv_12='}' 
+))*)?	otherlv_11='}' 
     {
-    	newLeafNode(otherlv_12, grammarAccess.getMyObjectAccess().getRightCurlyBracketKeyword_4_4());
-    }
-)?	otherlv_13='}' 
-    {
-    	newLeafNode(otherlv_13, grammarAccess.getMyObjectAccess().getRightCurlyBracketKeyword_5());
+    	newLeafNode(otherlv_11, grammarAccess.getMyObjectAccess().getRightCurlyBracketKeyword_5());
     }
 )
 ;
@@ -486,40 +478,24 @@ rulemyConstraint returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='myConstraint' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getMyConstraintAccess().getMyConstraintKeyword_0());
-    }
-	otherlv_1='{' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getMyConstraintAccess().getLeftCurlyBracketKeyword_1());
-    }
-	otherlv_2='myConstraintContains' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getMyConstraintAccess().getMyConstraintContainsKeyword_2());
-    }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyConstraintAccess().getMyConstraintContainsMyExpressionParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getMyConstraintAccess().getMyConstraintContainsMyExpressionParserRuleCall_0()); 
 	    }
-		lv_myConstraintContains_3_0=rulemyExpression		{
+		lv_myConstraintContains_0_0=rulemyExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyConstraintRule());
 	        }
        		set(
        			$current, 
        			"myConstraintContains",
-        		lv_myConstraintContains_3_0, 
+        		lv_myConstraintContains_0_0, 
         		"myExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_4='}' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getMyConstraintAccess().getRightCurlyBracketKeyword_4());
-    }
 )
 ;
 
@@ -606,85 +582,69 @@ rulemyBinary returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='myBinary' 
+(	otherlv_0='left' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getMyBinaryAccess().getMyBinaryKeyword_0());
-    }
-	otherlv_1='{' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getMyBinaryAccess().getLeftCurlyBracketKeyword_1());
-    }
-(	otherlv_2='Oparand' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getMyBinaryAccess().getOparandKeyword_2_0());
+    	newLeafNode(otherlv_0, grammarAccess.getMyBinaryAccess().getLeftKeyword_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyBinaryAccess().getOparandMyBinaryOparatorsEnumRuleCall_2_1_0()); 
+	        newCompositeNode(grammarAccess.getMyBinaryAccess().getMyBinaryLeftMyExpressionParserRuleCall_1_0()); 
 	    }
-		lv_Oparand_3_0=rulemyBinaryOparators		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMyBinaryRule());
-	        }
-       		set(
-       			$current, 
-       			"Oparand",
-        		lv_Oparand_3_0, 
-        		"myBinaryOparators");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))?	otherlv_4='myBinaryLeft' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getMyBinaryAccess().getMyBinaryLeftKeyword_3());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getMyBinaryAccess().getMyBinaryLeftMyExpressionParserRuleCall_4_0()); 
-	    }
-		lv_myBinaryLeft_5_0=rulemyExpression		{
+		lv_myBinaryLeft_1_0=rulemyExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyBinaryRule());
 	        }
        		set(
        			$current, 
        			"myBinaryLeft",
-        		lv_myBinaryLeft_5_0, 
+        		lv_myBinaryLeft_1_0, 
         		"myExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_6='myBinaryRight' 
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getMyBinaryAccess().getOparandMyBinaryOparatorsEnumRuleCall_2_0()); 
+	    }
+		lv_Oparand_2_0=rulemyBinaryOparators		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMyBinaryRule());
+	        }
+       		set(
+       			$current, 
+       			"Oparand",
+        		lv_Oparand_2_0, 
+        		"myBinaryOparators");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?	otherlv_3='right' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getMyBinaryAccess().getMyBinaryRightKeyword_5());
+    	newLeafNode(otherlv_3, grammarAccess.getMyBinaryAccess().getRightKeyword_3());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyBinaryAccess().getMyBinaryRightMyExpressionParserRuleCall_6_0()); 
+	        newCompositeNode(grammarAccess.getMyBinaryAccess().getMyBinaryRightMyExpressionParserRuleCall_4_0()); 
 	    }
-		lv_myBinaryRight_7_0=rulemyExpression		{
+		lv_myBinaryRight_4_0=rulemyExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyBinaryRule());
 	        }
        		set(
        			$current, 
        			"myBinaryRight",
-        		lv_myBinaryRight_7_0, 
+        		lv_myBinaryRight_4_0, 
         		"myExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_8='}' 
-    {
-    	newLeafNode(otherlv_8, grammarAccess.getMyBinaryAccess().getRightCurlyBracketKeyword_7());
-    }
-)
+))
 ;
 
 
@@ -705,63 +665,47 @@ rulemyUnary returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='myUnary' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getMyUnaryAccess().getMyUnaryKeyword_0());
-    }
-	otherlv_1='{' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getMyUnaryAccess().getLeftCurlyBracketKeyword_1());
-    }
-(	otherlv_2='Oparand' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getMyUnaryAccess().getOparandKeyword_2_0());
-    }
-(
+((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyUnaryAccess().getOparandMyUnaryOparatorsEnumRuleCall_2_1_0()); 
+	        newCompositeNode(grammarAccess.getMyUnaryAccess().getOparandMyUnaryOparatorsEnumRuleCall_0_0()); 
 	    }
-		lv_Oparand_3_0=rulemyUnaryOparators		{
+		lv_Oparand_0_0=rulemyUnaryOparators		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyUnaryRule());
 	        }
        		set(
        			$current, 
        			"Oparand",
-        		lv_Oparand_3_0, 
+        		lv_Oparand_0_0, 
         		"myUnaryOparators");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))?	otherlv_4='myUnaryExpression' 
+)?	otherlv_1='single' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getMyUnaryAccess().getMyUnaryExpressionKeyword_3());
+    	newLeafNode(otherlv_1, grammarAccess.getMyUnaryAccess().getSingleKeyword_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyUnaryAccess().getMyUnaryExpressionMyExpressionParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getMyUnaryAccess().getMyUnaryExpressionMyExpressionParserRuleCall_2_0()); 
 	    }
-		lv_myUnaryExpression_5_0=rulemyExpression		{
+		lv_myUnaryExpression_2_0=rulemyExpression		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyUnaryRule());
 	        }
        		set(
        			$current, 
        			"myUnaryExpression",
-        		lv_myUnaryExpression_5_0, 
+        		lv_myUnaryExpression_2_0, 
         		"myExpression");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_6='}' 
-    {
-    	newLeafNode(otherlv_6, grammarAccess.getMyUnaryAccess().getRightCurlyBracketKeyword_5());
-    }
-)
+))
 ;
 
 
@@ -782,40 +726,24 @@ rulemyString returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='myString' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getMyStringAccess().getMyStringKeyword_0());
-    }
-	otherlv_1='{' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getMyStringAccess().getLeftCurlyBracketKeyword_1());
-    }
-	otherlv_2='value' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getMyStringAccess().getValueKeyword_2());
-    }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyStringAccess().getValueAnyURIParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getMyStringAccess().getValueAnyURIParserRuleCall_0()); 
 	    }
-		lv_value_3_0=ruleAnyURI		{
+		lv_value_0_0=ruleAnyURI		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyStringRule());
 	        }
        		set(
        			$current, 
        			"value",
-        		lv_value_3_0, 
+        		lv_value_0_0, 
         		"AnyURI");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_4='}' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getMyStringAccess().getRightCurlyBracketKeyword_4());
-    }
 )
 ;
 
@@ -837,40 +765,24 @@ rulemyInt returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='myInt' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getMyIntAccess().getMyIntKeyword_0());
-    }
-	otherlv_1='{' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getMyIntAccess().getLeftCurlyBracketKeyword_1());
-    }
-	otherlv_2='value' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getMyIntAccess().getValueKeyword_2());
-    }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyIntAccess().getValueInt0ParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getMyIntAccess().getValueInt0ParserRuleCall_0()); 
 	    }
-		lv_value_3_0=ruleInt0		{
+		lv_value_0_0=ruleInt0		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyIntRule());
 	        }
        		set(
        			$current, 
        			"value",
-        		lv_value_3_0, 
+        		lv_value_0_0, 
         		"Int0");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_4='}' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getMyIntAccess().getRightCurlyBracketKeyword_4());
-    }
 )
 ;
 
@@ -892,40 +804,24 @@ ruleBoolLiteral returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='BoolLiteral' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getBoolLiteralAccess().getBoolLiteralKeyword_0());
-    }
-	otherlv_1='{' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getBoolLiteralAccess().getLeftCurlyBracketKeyword_1());
-    }
-	otherlv_2='value' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getBoolLiteralAccess().getValueKeyword_2());
-    }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getBoolLiteralAccess().getValueBooleanParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getBoolLiteralAccess().getValueBooleanParserRuleCall_0()); 
 	    }
-		lv_value_3_0=ruleBoolean		{
+		lv_value_0_0=ruleBoolean		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getBoolLiteralRule());
 	        }
        		set(
        			$current, 
        			"value",
-        		lv_value_3_0, 
+        		lv_value_0_0, 
         		"Boolean");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_4='}' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getBoolLiteralAccess().getRightCurlyBracketKeyword_4());
-    }
 )
 ;
 
@@ -947,18 +843,6 @@ rulemyIdentifier returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='myIdentifier' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getMyIdentifierAccess().getMyIdentifierKeyword_0());
-    }
-	otherlv_1='{' 
-    {
-    	newLeafNode(otherlv_1, grammarAccess.getMyIdentifierAccess().getLeftCurlyBracketKeyword_1());
-    }
-	otherlv_2='myIntentifierIs' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getMyIdentifierAccess().getMyIntentifierIsKeyword_2());
-    }
 (
 (
 		{
@@ -967,17 +851,13 @@ rulemyIdentifier returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getMyIdentifierAccess().getMyIntentifierIsMyAttributeCrossReference_3_0()); 
+	        newCompositeNode(grammarAccess.getMyIdentifierAccess().getMyIntentifierIsMyAttributeCrossReference_0()); 
 	    }
 		ruleEString		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_4='}' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getMyIdentifierAccess().getRightCurlyBracketKeyword_4());
-    }
 )
 ;
 
@@ -1280,37 +1160,37 @@ ruleAnySimpleType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleT
 rulemyBinaryOparators returns [Enumerator current=null] 
     @init { enterRule(); }
     @after { leaveRule(); }:
-((	enumLiteral_0='and' 
+((	enumLiteral_0='&&' 
 	{
         $current = grammarAccess.getMyBinaryOparatorsAccess().getAndEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_0, grammarAccess.getMyBinaryOparatorsAccess().getAndEnumLiteralDeclaration_0()); 
     }
 )
-    |(	enumLiteral_1='or' 
+    |(	enumLiteral_1='|' 
 	{
         $current = grammarAccess.getMyBinaryOparatorsAccess().getOrEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_1, grammarAccess.getMyBinaryOparatorsAccess().getOrEnumLiteralDeclaration_1()); 
     }
 )
-    |(	enumLiteral_2='gt' 
+    |(	enumLiteral_2='<' 
 	{
         $current = grammarAccess.getMyBinaryOparatorsAccess().getGtEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_2, grammarAccess.getMyBinaryOparatorsAccess().getGtEnumLiteralDeclaration_2()); 
     }
 )
-    |(	enumLiteral_3='lt' 
+    |(	enumLiteral_3='>' 
 	{
         $current = grammarAccess.getMyBinaryOparatorsAccess().getLtEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_3, grammarAccess.getMyBinaryOparatorsAccess().getLtEnumLiteralDeclaration_3()); 
     }
 )
-    |(	enumLiteral_4='eq' 
+    |(	enumLiteral_4='=' 
 	{
         $current = grammarAccess.getMyBinaryOparatorsAccess().getEqEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_4, grammarAccess.getMyBinaryOparatorsAccess().getEqEnumLiteralDeclaration_4()); 
     }
 )
-    |(	enumLiteral_5='is' 
+    |(	enumLiteral_5='can' 
 	{
         $current = grammarAccess.getMyBinaryOparatorsAccess().getIsEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_5, grammarAccess.getMyBinaryOparatorsAccess().getIsEnumLiteralDeclaration_5()); 

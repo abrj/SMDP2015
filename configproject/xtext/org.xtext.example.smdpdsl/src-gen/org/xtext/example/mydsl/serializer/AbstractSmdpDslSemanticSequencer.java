@@ -139,7 +139,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getBoolLiteralAccess().getValueBooleanParserRuleCall_3_0(), semanticObject.isValue());
+		feeder.accept(grammarAccess.getBoolLiteralAccess().getValueBooleanParserRuleCall_0(), semanticObject.isValue());
 		feeder.finish();
 	}
 	
@@ -184,7 +184,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 	
 	/**
 	 * Constraint:
-	 *     (Oparand=myBinaryOparators? myBinaryLeft=myExpression myBinaryRight=myExpression)
+	 *     (myBinaryLeft=myExpression Oparand=myBinaryOparators? myBinaryRight=myExpression)
 	 */
 	protected void sequence_myBinary(EObject context, myBinary semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -202,7 +202,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyConstraintAccess().getMyConstraintContainsMyExpressionParserRuleCall_3_0(), semanticObject.getMyConstraintContains());
+		feeder.accept(grammarAccess.getMyConstraintAccess().getMyConstraintContainsMyExpressionParserRuleCall_0(), semanticObject.getMyConstraintContains());
 		feeder.finish();
 	}
 	
@@ -227,7 +227,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyIdentifierAccess().getMyIntentifierIsMyAttributeEStringParserRuleCall_3_0_1(), semanticObject.getMyIntentifierIs());
+		feeder.accept(grammarAccess.getMyIdentifierAccess().getMyIntentifierIsMyAttributeEStringParserRuleCall_0_1(), semanticObject.getMyIntentifierIs());
 		feeder.finish();
 	}
 	
@@ -243,7 +243,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyIntAccess().getValueInt0ParserRuleCall_3_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getMyIntAccess().getValueInt0ParserRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -286,7 +286,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyStringAccess().getValueAnyURIParserRuleCall_3_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getMyStringAccess().getValueAnyURIParserRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

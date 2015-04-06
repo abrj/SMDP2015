@@ -28,14 +28,12 @@ myObject returns myObject:
 	name=EString
 	'{'
 		('has' myAttributeContains+=myAttribute  ( "," myAttributeContains+=myAttribute)* )?
-		('myAttributeContains' '{' myObjectHas+=myConstraint ( "," myObjectHas+=myConstraint)* '}' )?	
+		('Constrained by' myObjectHas+=myConstraint ( "," myObjectHas+=myConstraint)* )?	
 	'}';
 
 myConstraint returns myConstraint:
-	'myConstraint'
-	'{'
-		'myConstraintContains' myConstraintContains=myExpression
-	'}';
+	myConstraintContains=myExpression
+	;
 
 myAttribute returns myAttribute:	
 	name=EString
@@ -44,46 +42,30 @@ myAttribute returns myAttribute:
 	']';
 
 myBinary returns myBinary:
-	'myBinary'
-	'{'
-		('Oparand' Oparand=myBinaryOparators)?
-		'myBinaryLeft' myBinaryLeft=myExpression
-		'myBinaryRight' myBinaryRight=myExpression
-	'}';
+		'left' myBinaryLeft=myExpression // Fix left rec, remove empty quote
+		( Oparand=myBinaryOparators)?
+		'right' myBinaryRight=myExpression
+	;
 
 myUnary returns myUnary:
-	'myUnary'
-	'{'
-		('Oparand' Oparand=myUnaryOparators)?
-		'myUnaryExpression' myUnaryExpression=myExpression
-	'}';
+		(Oparand=myUnaryOparators)?
+		'single' myUnaryExpression=myExpression // Fix left rec, remove empty quote
+;
 
 myString returns myString:
-	'myString'
-	'{'
-		'value' value=AnyURI
-	'}';
+	value=AnyURI;
 
 myInt returns myInt:
-	'myInt'
-	'{'
-		'value' value=Int0
-	'}';
+	value=Int0;
 
 BoolLiteral returns BoolLiteral:
-	'BoolLiteral'
-	'{'
-		'value' value=Boolean
-	'}';
+value=Boolean;
 
 myIdentifier returns myIdentifier:
-	'myIdentifier'
-	'{'
-		'myIntentifierIs' myIntentifierIs=[myAttribute|EString]
-	'}';
+	myIntentifierIs=[myAttribute|EString];
 
 enum myBinaryOparators returns myBinaryOparators:
-				and = 'and' | or = 'or' | gt = 'gt' | lt = 'lt' | eq = 'eq' | is = 'is' | if = 'if' | then = 'then';
+				and = '&&' | or = '|' | gt = '<' | lt = '>' | eq = '=' | is = 'can' | if = 'if' | then = 'then';
 
 enum myUnaryOparators returns myUnaryOparators:
 				not = 'not';
