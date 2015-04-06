@@ -22,76 +22,76 @@ public interface ConfiguratorProjectFactory extends EFactory {
 	ConfiguratorProjectFactory eINSTANCE = configuratorProject.impl.ConfiguratorProjectFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Model</em>'.
+	 * Returns a new object of class '<em>my Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Model</em>'.
+	 * @return a new object of class '<em>my Model</em>'.
 	 * @generated
 	 */
-	Model createModel();
+	myModel createmyModel();
 
 	/**
-	 * Returns a new object of class '<em>Object</em>'.
+	 * Returns a new object of class '<em>my Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Object</em>'.
+	 * @return a new object of class '<em>my Object</em>'.
 	 * @generated
 	 */
-	Object createObject();
+	myObject createmyObject();
 
 	/**
-	 * Returns a new object of class '<em>Constraint</em>'.
+	 * Returns a new object of class '<em>my Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Constraint</em>'.
+	 * @return a new object of class '<em>my Constraint</em>'.
 	 * @generated
 	 */
-	Constraint createConstraint();
+	myConstraint createmyConstraint();
 
 	/**
-	 * Returns a new object of class '<em>Attribute</em>'.
+	 * Returns a new object of class '<em>my Attribute</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Attribute</em>'.
+	 * @return a new object of class '<em>my Attribute</em>'.
 	 * @generated
 	 */
-	Attribute createAttribute();
+	myAttribute createmyAttribute();
 
 	/**
-	 * Returns a new object of class '<em>Binary</em>'.
+	 * Returns a new object of class '<em>my Binary</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Binary</em>'.
+	 * @return a new object of class '<em>my Binary</em>'.
 	 * @generated
 	 */
-	Binary createBinary();
+	myBinary createmyBinary();
 
 	/**
-	 * Returns a new object of class '<em>Unary</em>'.
+	 * Returns a new object of class '<em>my Unary</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Unary</em>'.
+	 * @return a new object of class '<em>my Unary</em>'.
 	 * @generated
 	 */
-	Unary createUnary();
+	myUnary createmyUnary();
 
 	/**
-	 * Returns a new object of class '<em>String</em>'.
+	 * Returns a new object of class '<em>my String</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>String</em>'.
+	 * @return a new object of class '<em>my String</em>'.
 	 * @generated
 	 */
-	String createString();
+	myString createmyString();
 
 	/**
-	 * Returns a new object of class '<em>Int</em>'.
+	 * Returns a new object of class '<em>my Int</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Int</em>'.
+	 * @return a new object of class '<em>my Int</em>'.
 	 * @generated
 	 */
-	Int createInt();
+	myInt createmyInt();
 
 	/**
 	 * Returns a new object of class '<em>Bool Literal</em>'.
@@ -103,13 +103,13 @@ public interface ConfiguratorProjectFactory extends EFactory {
 	BoolLiteral createBoolLiteral();
 
 	/**
-	 * Returns a new object of class '<em>Enum</em>'.
+	 * Returns a new object of class '<em>my Enum</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Enum</em>'.
+	 * @return a new object of class '<em>my Enum</em>'.
 	 * @generated
 	 */
-	Enum createEnum();
+	myEnum createmyEnum();
 
 	/**
 	 * Returns a new object of class '<em>Boolean Value</em>'.
@@ -121,22 +121,22 @@ public interface ConfiguratorProjectFactory extends EFactory {
 	BooleanValue createBooleanValue();
 
 	/**
-	 * Returns a new object of class '<em>Identifier</em>'.
+	 * Returns a new object of class '<em>my Identifier</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Identifier</em>'.
+	 * @return a new object of class '<em>my Identifier</em>'.
 	 * @generated
 	 */
-	Identifier createIdentifier();
+	myIdentifier createmyIdentifier();
 
 	/**
-	 * Returns a new object of class '<em>Range</em>'.
+	 * Returns a new object of class '<em>my Range</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Range</em>'.
+	 * @return a new object of class '<em>my Range</em>'.
 	 * @generated
 	 */
-	Range createRange();
+	myRange createmyRange();
 
 	/**
 	 * Returns the package supported by this factory.

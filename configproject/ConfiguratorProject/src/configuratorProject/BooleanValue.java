@@ -2,7 +2,6 @@
  */
 package configuratorProject;
 
-import java.lang.String;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +20,7 @@ import java.lang.String;
  * @model
  * @generated
  */
-public interface BooleanValue extends Value {
+public interface BooleanValue extends myValue {
 	/**
 	 * Returns the value of the '<em><b>True Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->

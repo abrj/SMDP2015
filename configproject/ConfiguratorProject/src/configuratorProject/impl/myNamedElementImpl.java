@@ -2,55 +2,56 @@
  */
 package configuratorProject.impl;
 
-import configuratorProject.BoolLiteral;
 import configuratorProject.ConfiguratorProjectPackage;
+import configuratorProject.myNamedElement;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Bool Literal</b></em>'.
+ * An implementation of the model object '<em><b>my Named Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link configuratorProject.impl.BoolLiteralImpl#isValue <em>Value</em>}</li>
+ *   <li>{@link configuratorProject.impl.myNamedElementImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class BoolLiteralImpl extends myLiteralImpl implements BoolLiteral {
+public abstract class myNamedElementImpl extends MinimalEObjectImpl.Container implements myNamedElement {
 	/**
-	 * The default value of the '{@link #isValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isValue()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean VALUE_EDEFAULT = false;
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isValue()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean value = VALUE_EDEFAULT;
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BoolLiteralImpl() {
+	protected myNamedElementImpl() {
 		super();
 	}
 
@@ -61,7 +62,7 @@ public class BoolLiteralImpl extends myLiteralImpl implements BoolLiteral {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ConfiguratorProjectPackage.Literals.BOOL_LITERAL;
+		return ConfiguratorProjectPackage.Literals.MY_NAMED_ELEMENT;
 	}
 
 	/**
@@ -69,8 +70,8 @@ public class BoolLiteralImpl extends myLiteralImpl implements BoolLiteral {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isValue() {
-		return value;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -78,11 +79,11 @@ public class BoolLiteralImpl extends myLiteralImpl implements BoolLiteral {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(boolean newValue) {
-		boolean oldValue = value;
-		value = newValue;
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorProjectPackage.BOOL_LITERAL__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorProjectPackage.MY_NAMED_ELEMENT__NAME, oldName, name));
 	}
 
 	/**
@@ -93,8 +94,8 @@ public class BoolLiteralImpl extends myLiteralImpl implements BoolLiteral {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfiguratorProjectPackage.BOOL_LITERAL__VALUE:
-				return isValue();
+			case ConfiguratorProjectPackage.MY_NAMED_ELEMENT__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -107,8 +108,8 @@ public class BoolLiteralImpl extends myLiteralImpl implements BoolLiteral {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfiguratorProjectPackage.BOOL_LITERAL__VALUE:
-				setValue((Boolean)newValue);
+			case ConfiguratorProjectPackage.MY_NAMED_ELEMENT__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,8 +123,8 @@ public class BoolLiteralImpl extends myLiteralImpl implements BoolLiteral {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfiguratorProjectPackage.BOOL_LITERAL__VALUE:
-				setValue(VALUE_EDEFAULT);
+			case ConfiguratorProjectPackage.MY_NAMED_ELEMENT__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -137,8 +138,8 @@ public class BoolLiteralImpl extends myLiteralImpl implements BoolLiteral {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfiguratorProjectPackage.BOOL_LITERAL__VALUE:
-				return value != VALUE_EDEFAULT;
+			case ConfiguratorProjectPackage.MY_NAMED_ELEMENT__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -153,10 +154,10 @@ public class BoolLiteralImpl extends myLiteralImpl implements BoolLiteral {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
-		result.append(value);
+		result.append(" (name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}
 
-} //BoolLiteralImpl
+} //myNamedElementImpl

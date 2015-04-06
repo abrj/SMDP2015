@@ -2,20 +2,7 @@
  */
 package configuratorProject.impl;
 
-import configuratorProject.Attribute;
-import configuratorProject.Binary;
-import configuratorProject.BinaryOparators;
-import configuratorProject.BoolLiteral;
-import configuratorProject.BooleanValue;
-import configuratorProject.ConfiguratorProjectFactory;
-import configuratorProject.ConfiguratorProjectPackage;
-import configuratorProject.Constraint;
-import configuratorProject.Identifier;
-import configuratorProject.Int;
-import configuratorProject.Model;
-import configuratorProject.Range;
-import configuratorProject.Unary;
-import configuratorProject.UnaryOparators;
+import configuratorProject.*;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -70,19 +57,19 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ConfiguratorProjectPackage.MODEL: return createModel();
-			case ConfiguratorProjectPackage.OBJECT: return createObject();
-			case ConfiguratorProjectPackage.CONSTRAINT: return createConstraint();
-			case ConfiguratorProjectPackage.ATTRIBUTE: return createAttribute();
-			case ConfiguratorProjectPackage.BINARY: return createBinary();
-			case ConfiguratorProjectPackage.UNARY: return createUnary();
-			case ConfiguratorProjectPackage.STRING: return createString();
-			case ConfiguratorProjectPackage.INT: return createInt();
+			case ConfiguratorProjectPackage.MY_MODEL: return createmyModel();
+			case ConfiguratorProjectPackage.MY_OBJECT: return createmyObject();
+			case ConfiguratorProjectPackage.MY_CONSTRAINT: return createmyConstraint();
+			case ConfiguratorProjectPackage.MY_ATTRIBUTE: return createmyAttribute();
+			case ConfiguratorProjectPackage.MY_BINARY: return createmyBinary();
+			case ConfiguratorProjectPackage.MY_UNARY: return createmyUnary();
+			case ConfiguratorProjectPackage.MY_STRING: return createmyString();
+			case ConfiguratorProjectPackage.MY_INT: return createmyInt();
 			case ConfiguratorProjectPackage.BOOL_LITERAL: return createBoolLiteral();
-			case ConfiguratorProjectPackage.ENUM: return createEnum();
+			case ConfiguratorProjectPackage.MY_ENUM: return createmyEnum();
 			case ConfiguratorProjectPackage.BOOLEAN_VALUE: return createBooleanValue();
-			case ConfiguratorProjectPackage.IDENTIFIER: return createIdentifier();
-			case ConfiguratorProjectPackage.RANGE: return createRange();
+			case ConfiguratorProjectPackage.MY_IDENTIFIER: return createmyIdentifier();
+			case ConfiguratorProjectPackage.MY_RANGE: return createmyRange();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -96,10 +83,10 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case ConfiguratorProjectPackage.BINARY_OPARATORS:
-				return createBinaryOparatorsFromString(eDataType, initialValue);
-			case ConfiguratorProjectPackage.UNARY_OPARATORS:
-				return createUnaryOparatorsFromString(eDataType, initialValue);
+			case ConfiguratorProjectPackage.MY_BINARY_OPARATORS:
+				return createmyBinaryOparatorsFromString(eDataType, initialValue);
+			case ConfiguratorProjectPackage.MY_UNARY_OPARATORS:
+				return createmyUnaryOparatorsFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -113,10 +100,10 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case ConfiguratorProjectPackage.BINARY_OPARATORS:
-				return convertBinaryOparatorsToString(eDataType, instanceValue);
-			case ConfiguratorProjectPackage.UNARY_OPARATORS:
-				return convertUnaryOparatorsToString(eDataType, instanceValue);
+			case ConfiguratorProjectPackage.MY_BINARY_OPARATORS:
+				return convertmyBinaryOparatorsToString(eDataType, instanceValue);
+			case ConfiguratorProjectPackage.MY_UNARY_OPARATORS:
+				return convertmyUnaryOparatorsToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -127,9 +114,9 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Model createModel() {
-		ModelImpl model = new ModelImpl();
-		return model;
+	public myModel createmyModel() {
+		myModelImpl myModel = new myModelImpl();
+		return myModel;
 	}
 
 	/**
@@ -137,9 +124,9 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public configuratorProject.Object createObject() {
-		ObjectImpl object = new ObjectImpl();
-		return object;
+	public myObject createmyObject() {
+		myObjectImpl myObject = new myObjectImpl();
+		return myObject;
 	}
 
 	/**
@@ -147,9 +134,9 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Constraint createConstraint() {
-		ConstraintImpl constraint = new ConstraintImpl();
-		return constraint;
+	public myConstraint createmyConstraint() {
+		myConstraintImpl myConstraint = new myConstraintImpl();
+		return myConstraint;
 	}
 
 	/**
@@ -157,9 +144,9 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Attribute createAttribute() {
-		AttributeImpl attribute = new AttributeImpl();
-		return attribute;
+	public myAttribute createmyAttribute() {
+		myAttributeImpl myAttribute = new myAttributeImpl();
+		return myAttribute;
 	}
 
 	/**
@@ -167,9 +154,9 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Binary createBinary() {
-		BinaryImpl binary = new BinaryImpl();
-		return binary;
+	public myBinary createmyBinary() {
+		myBinaryImpl myBinary = new myBinaryImpl();
+		return myBinary;
 	}
 
 	/**
@@ -177,9 +164,9 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Unary createUnary() {
-		UnaryImpl unary = new UnaryImpl();
-		return unary;
+	public myUnary createmyUnary() {
+		myUnaryImpl myUnary = new myUnaryImpl();
+		return myUnary;
 	}
 
 	/**
@@ -187,9 +174,9 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public configuratorProject.String createString() {
-		StringImpl string = new StringImpl();
-		return string;
+	public myString createmyString() {
+		myStringImpl myString = new myStringImpl();
+		return myString;
 	}
 
 	/**
@@ -197,9 +184,9 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Int createInt() {
-		IntImpl int_ = new IntImpl();
-		return int_;
+	public myInt createmyInt() {
+		myIntImpl myInt = new myIntImpl();
+		return myInt;
 	}
 
 	/**
@@ -217,9 +204,9 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public configuratorProject.Enum createEnum() {
-		EnumImpl enum_ = new EnumImpl();
-		return enum_;
+	public myEnum createmyEnum() {
+		myEnumImpl myEnum = new myEnumImpl();
+		return myEnum;
 	}
 
 	/**
@@ -237,9 +224,9 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Identifier createIdentifier() {
-		IdentifierImpl identifier = new IdentifierImpl();
-		return identifier;
+	public myIdentifier createmyIdentifier() {
+		myIdentifierImpl myIdentifier = new myIdentifierImpl();
+		return myIdentifier;
 	}
 
 	/**
@@ -247,9 +234,9 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Range createRange() {
-		RangeImpl range = new RangeImpl();
-		return range;
+	public myRange createmyRange() {
+		myRangeImpl myRange = new myRangeImpl();
+		return myRange;
 	}
 
 	/**
@@ -257,8 +244,8 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BinaryOparators createBinaryOparatorsFromString(EDataType eDataType, String initialValue) {
-		BinaryOparators result = BinaryOparators.get(initialValue);
+	public myBinaryOparators createmyBinaryOparatorsFromString(EDataType eDataType, String initialValue) {
+		myBinaryOparators result = myBinaryOparators.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -268,7 +255,7 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertBinaryOparatorsToString(EDataType eDataType, Object instanceValue) {
+	public String convertmyBinaryOparatorsToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -277,8 +264,8 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UnaryOparators createUnaryOparatorsFromString(EDataType eDataType, String initialValue) {
-		UnaryOparators result = UnaryOparators.get(initialValue);
+	public myUnaryOparators createmyUnaryOparatorsFromString(EDataType eDataType, String initialValue) {
+		myUnaryOparators result = myUnaryOparators.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -288,7 +275,7 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertUnaryOparatorsToString(EDataType eDataType, Object instanceValue) {
+	public String convertmyUnaryOparatorsToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

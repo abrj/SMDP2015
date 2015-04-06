@@ -2,24 +2,27 @@
  */
 package configuratorProject.impl;
 
-import configuratorProject.Attribute;
-import configuratorProject.Binary;
-import configuratorProject.BinaryOparators;
 import configuratorProject.BoolLiteral;
 import configuratorProject.BooleanValue;
 import configuratorProject.ConfiguratorProjectFactory;
 import configuratorProject.ConfiguratorProjectPackage;
-import configuratorProject.Constraint;
-import configuratorProject.Expression;
-import configuratorProject.Identifier;
-import configuratorProject.Int;
-import configuratorProject.Literal;
-import configuratorProject.Model;
-import configuratorProject.NamedElement;
-import configuratorProject.Range;
-import configuratorProject.Unary;
-import configuratorProject.UnaryOparators;
-import configuratorProject.Value;
+import configuratorProject.myAttribute;
+import configuratorProject.myBinary;
+import configuratorProject.myBinaryOparators;
+import configuratorProject.myConstraint;
+import configuratorProject.myEnum;
+import configuratorProject.myExpression;
+import configuratorProject.myIdentifier;
+import configuratorProject.myInt;
+import configuratorProject.myLiteral;
+import configuratorProject.myModel;
+import configuratorProject.myNamedElement;
+import configuratorProject.myObject;
+import configuratorProject.myRange;
+import configuratorProject.myString;
+import configuratorProject.myUnary;
+import configuratorProject.myUnaryOparators;
+import configuratorProject.myValue;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -43,70 +46,70 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass modelEClass = null;
+	private EClass myModelEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass objectEClass = null;
+	private EClass myObjectEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass constraintEClass = null;
+	private EClass myConstraintEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass attributeEClass = null;
+	private EClass myAttributeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass expressionEClass = null;
+	private EClass myExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass binaryEClass = null;
+	private EClass myBinaryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass unaryEClass = null;
+	private EClass myUnaryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass literalEClass = null;
+	private EClass myLiteralEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass stringEClass = null;
+	private EClass myStringEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass intEClass = null;
+	private EClass myIntEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -120,14 +123,14 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass valueEClass = null;
+	private EClass myValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass enumEClass = null;
+	private EClass myEnumEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -141,35 +144,35 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass namedElementEClass = null;
+	private EClass myNamedElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass identifierEClass = null;
+	private EClass myIdentifierEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass rangeEClass = null;
+	private EClass myRangeEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum binaryOparatorsEEnum = null;
+	private EEnum myBinaryOparatorsEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum unaryOparatorsEEnum = null;
+	private EEnum myUnaryOparatorsEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -240,8 +243,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getModel() {
-		return modelEClass;
+	public EClass getmyModel() {
+		return myModelEClass;
 	}
 
 	/**
@@ -249,8 +252,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModel_Contains() {
-		return (EReference)modelEClass.getEStructuralFeatures().get(0);
+	public EReference getmyModel_MyModelContains() {
+		return (EReference)myModelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -258,8 +261,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getObject() {
-		return objectEClass;
+	public EClass getmyObject() {
+		return myObjectEClass;
 	}
 
 	/**
@@ -267,8 +270,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getObject_Has() {
-		return (EReference)objectEClass.getEStructuralFeatures().get(0);
+	public EReference getmyObject_MyObjectHas() {
+		return (EReference)myObjectEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -276,8 +279,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getObject_Contains() {
-		return (EReference)objectEClass.getEStructuralFeatures().get(1);
+	public EReference getmyObject_MyAttributeContains() {
+		return (EReference)myObjectEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -285,8 +288,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getConstraint() {
-		return constraintEClass;
+	public EClass getmyConstraint() {
+		return myConstraintEClass;
 	}
 
 	/**
@@ -294,8 +297,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getConstraint_Contains() {
-		return (EReference)constraintEClass.getEStructuralFeatures().get(0);
+	public EReference getmyConstraint_MyConstraintContains() {
+		return (EReference)myConstraintEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -303,8 +306,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getAttribute() {
-		return attributeEClass;
+	public EClass getmyAttribute() {
+		return myAttributeEClass;
 	}
 
 	/**
@@ -312,8 +315,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAttribute_Contains() {
-		return (EReference)attributeEClass.getEStructuralFeatures().get(0);
+	public EReference getmyAttribute_MyAttributeContains() {
+		return (EReference)myAttributeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -321,8 +324,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getExpression() {
-		return expressionEClass;
+	public EClass getmyExpression() {
+		return myExpressionEClass;
 	}
 
 	/**
@@ -330,8 +333,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getBinary() {
-		return binaryEClass;
+	public EClass getmyBinary() {
+		return myBinaryEClass;
 	}
 
 	/**
@@ -339,8 +342,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getBinary_Oparand() {
-		return (EAttribute)binaryEClass.getEStructuralFeatures().get(0);
+	public EAttribute getmyBinary_Oparand() {
+		return (EAttribute)myBinaryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -348,8 +351,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBinary_Left() {
-		return (EReference)binaryEClass.getEStructuralFeatures().get(1);
+	public EReference getmyBinary_MyBinaryLeft() {
+		return (EReference)myBinaryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -357,8 +360,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBinary_Right() {
-		return (EReference)binaryEClass.getEStructuralFeatures().get(2);
+	public EReference getmyBinary_MyBinaryRight() {
+		return (EReference)myBinaryEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -366,8 +369,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getUnary() {
-		return unaryEClass;
+	public EClass getmyUnary() {
+		return myUnaryEClass;
 	}
 
 	/**
@@ -375,8 +378,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getUnary_Oparand() {
-		return (EAttribute)unaryEClass.getEStructuralFeatures().get(0);
+	public EAttribute getmyUnary_Oparand() {
+		return (EAttribute)myUnaryEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -384,8 +387,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getUnary_Expression() {
-		return (EReference)unaryEClass.getEStructuralFeatures().get(1);
+	public EReference getmyUnary_MyUnaryExpression() {
+		return (EReference)myUnaryEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -393,8 +396,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getLiteral() {
-		return literalEClass;
+	public EClass getmyLiteral() {
+		return myLiteralEClass;
 	}
 
 	/**
@@ -402,8 +405,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getString() {
-		return stringEClass;
+	public EClass getmyString() {
+		return myStringEClass;
 	}
 
 	/**
@@ -411,8 +414,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getString_Value() {
-		return (EAttribute)stringEClass.getEStructuralFeatures().get(0);
+	public EAttribute getmyString_Value() {
+		return (EAttribute)myStringEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -420,8 +423,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getInt() {
-		return intEClass;
+	public EClass getmyInt() {
+		return myIntEClass;
 	}
 
 	/**
@@ -429,8 +432,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInt_Value() {
-		return (EAttribute)intEClass.getEStructuralFeatures().get(0);
+	public EAttribute getmyInt_Value() {
+		return (EAttribute)myIntEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -456,8 +459,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getValue() {
-		return valueEClass;
+	public EClass getmyValue() {
+		return myValueEClass;
 	}
 
 	/**
@@ -465,8 +468,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getEnum() {
-		return enumEClass;
+	public EClass getmyEnum() {
+		return myEnumEClass;
 	}
 
 	/**
@@ -474,8 +477,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getEnum_Values() {
-		return (EAttribute)enumEClass.getEStructuralFeatures().get(0);
+	public EAttribute getmyEnum_Values() {
+		return (EAttribute)myEnumEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -510,8 +513,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getNamedElement() {
-		return namedElementEClass;
+	public EClass getmyNamedElement() {
+		return myNamedElementEClass;
 	}
 
 	/**
@@ -519,8 +522,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNamedElement_Name() {
-		return (EAttribute)namedElementEClass.getEStructuralFeatures().get(0);
+	public EAttribute getmyNamedElement_Name() {
+		return (EAttribute)myNamedElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -528,8 +531,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getIdentifier() {
-		return identifierEClass;
+	public EClass getmyIdentifier() {
+		return myIdentifierEClass;
 	}
 
 	/**
@@ -537,8 +540,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIdentifier_Is() {
-		return (EReference)identifierEClass.getEStructuralFeatures().get(0);
+	public EReference getmyIdentifier_MyIntentifierIs() {
+		return (EReference)myIdentifierEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -546,8 +549,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getRange() {
-		return rangeEClass;
+	public EClass getmyRange() {
+		return myRangeEClass;
 	}
 
 	/**
@@ -555,8 +558,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getRange_Range() {
-		return (EAttribute)rangeEClass.getEStructuralFeatures().get(0);
+	public EAttribute getmyRange_Range() {
+		return (EAttribute)myRangeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -564,8 +567,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getBinaryOparators() {
-		return binaryOparatorsEEnum;
+	public EEnum getmyBinaryOparators() {
+		return myBinaryOparatorsEEnum;
 	}
 
 	/**
@@ -573,8 +576,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getUnaryOparators() {
-		return unaryOparatorsEEnum;
+	public EEnum getmyUnaryOparators() {
+		return myUnaryOparatorsEEnum;
 	}
 
 	/**
@@ -605,62 +608,62 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		isCreated = true;
 
 		// Create classes and their features
-		modelEClass = createEClass(MODEL);
-		createEReference(modelEClass, MODEL__CONTAINS);
+		myModelEClass = createEClass(MY_MODEL);
+		createEReference(myModelEClass, MY_MODEL__MY_MODEL_CONTAINS);
 
-		objectEClass = createEClass(OBJECT);
-		createEReference(objectEClass, OBJECT__HAS);
-		createEReference(objectEClass, OBJECT__CONTAINS);
+		myObjectEClass = createEClass(MY_OBJECT);
+		createEReference(myObjectEClass, MY_OBJECT__MY_OBJECT_HAS);
+		createEReference(myObjectEClass, MY_OBJECT__MY_ATTRIBUTE_CONTAINS);
 
-		constraintEClass = createEClass(CONSTRAINT);
-		createEReference(constraintEClass, CONSTRAINT__CONTAINS);
+		myConstraintEClass = createEClass(MY_CONSTRAINT);
+		createEReference(myConstraintEClass, MY_CONSTRAINT__MY_CONSTRAINT_CONTAINS);
 
-		attributeEClass = createEClass(ATTRIBUTE);
-		createEReference(attributeEClass, ATTRIBUTE__CONTAINS);
+		myAttributeEClass = createEClass(MY_ATTRIBUTE);
+		createEReference(myAttributeEClass, MY_ATTRIBUTE__MY_ATTRIBUTE_CONTAINS);
 
-		expressionEClass = createEClass(EXPRESSION);
+		myExpressionEClass = createEClass(MY_EXPRESSION);
 
-		binaryEClass = createEClass(BINARY);
-		createEAttribute(binaryEClass, BINARY__OPARAND);
-		createEReference(binaryEClass, BINARY__LEFT);
-		createEReference(binaryEClass, BINARY__RIGHT);
+		myBinaryEClass = createEClass(MY_BINARY);
+		createEAttribute(myBinaryEClass, MY_BINARY__OPARAND);
+		createEReference(myBinaryEClass, MY_BINARY__MY_BINARY_LEFT);
+		createEReference(myBinaryEClass, MY_BINARY__MY_BINARY_RIGHT);
 
-		unaryEClass = createEClass(UNARY);
-		createEAttribute(unaryEClass, UNARY__OPARAND);
-		createEReference(unaryEClass, UNARY__EXPRESSION);
+		myUnaryEClass = createEClass(MY_UNARY);
+		createEAttribute(myUnaryEClass, MY_UNARY__OPARAND);
+		createEReference(myUnaryEClass, MY_UNARY__MY_UNARY_EXPRESSION);
 
-		literalEClass = createEClass(LITERAL);
+		myLiteralEClass = createEClass(MY_LITERAL);
 
-		stringEClass = createEClass(STRING);
-		createEAttribute(stringEClass, STRING__VALUE);
+		myStringEClass = createEClass(MY_STRING);
+		createEAttribute(myStringEClass, MY_STRING__VALUE);
 
-		intEClass = createEClass(INT);
-		createEAttribute(intEClass, INT__VALUE);
+		myIntEClass = createEClass(MY_INT);
+		createEAttribute(myIntEClass, MY_INT__VALUE);
 
 		boolLiteralEClass = createEClass(BOOL_LITERAL);
 		createEAttribute(boolLiteralEClass, BOOL_LITERAL__VALUE);
 
-		valueEClass = createEClass(VALUE);
+		myValueEClass = createEClass(MY_VALUE);
 
-		enumEClass = createEClass(ENUM);
-		createEAttribute(enumEClass, ENUM__VALUES);
+		myEnumEClass = createEClass(MY_ENUM);
+		createEAttribute(myEnumEClass, MY_ENUM__VALUES);
 
 		booleanValueEClass = createEClass(BOOLEAN_VALUE);
 		createEAttribute(booleanValueEClass, BOOLEAN_VALUE__TRUE_VALUE);
 		createEAttribute(booleanValueEClass, BOOLEAN_VALUE__FALSE_VALUE);
 
-		namedElementEClass = createEClass(NAMED_ELEMENT);
-		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
+		myNamedElementEClass = createEClass(MY_NAMED_ELEMENT);
+		createEAttribute(myNamedElementEClass, MY_NAMED_ELEMENT__NAME);
 
-		identifierEClass = createEClass(IDENTIFIER);
-		createEReference(identifierEClass, IDENTIFIER__IS);
+		myIdentifierEClass = createEClass(MY_IDENTIFIER);
+		createEReference(myIdentifierEClass, MY_IDENTIFIER__MY_INTENTIFIER_IS);
 
-		rangeEClass = createEClass(RANGE);
-		createEAttribute(rangeEClass, RANGE__RANGE);
+		myRangeEClass = createEClass(MY_RANGE);
+		createEAttribute(myRangeEClass, MY_RANGE__RANGE);
 
 		// Create enums
-		binaryOparatorsEEnum = createEEnum(BINARY_OPARATORS);
-		unaryOparatorsEEnum = createEEnum(UNARY_OPARATORS);
+		myBinaryOparatorsEEnum = createEEnum(MY_BINARY_OPARATORS);
+		myUnaryOparatorsEEnum = createEEnum(MY_UNARY_OPARATORS);
 	}
 
 	/**
@@ -694,87 +697,87 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		modelEClass.getESuperTypes().add(this.getNamedElement());
-		objectEClass.getESuperTypes().add(this.getNamedElement());
-		attributeEClass.getESuperTypes().add(this.getNamedElement());
-		binaryEClass.getESuperTypes().add(this.getExpression());
-		unaryEClass.getESuperTypes().add(this.getExpression());
-		literalEClass.getESuperTypes().add(this.getExpression());
-		stringEClass.getESuperTypes().add(this.getLiteral());
-		intEClass.getESuperTypes().add(this.getLiteral());
-		boolLiteralEClass.getESuperTypes().add(this.getLiteral());
-		enumEClass.getESuperTypes().add(this.getValue());
-		booleanValueEClass.getESuperTypes().add(this.getValue());
-		identifierEClass.getESuperTypes().add(this.getExpression());
-		rangeEClass.getESuperTypes().add(this.getValue());
+		myModelEClass.getESuperTypes().add(this.getmyNamedElement());
+		myObjectEClass.getESuperTypes().add(this.getmyNamedElement());
+		myAttributeEClass.getESuperTypes().add(this.getmyNamedElement());
+		myBinaryEClass.getESuperTypes().add(this.getmyExpression());
+		myUnaryEClass.getESuperTypes().add(this.getmyExpression());
+		myLiteralEClass.getESuperTypes().add(this.getmyExpression());
+		myStringEClass.getESuperTypes().add(this.getmyLiteral());
+		myIntEClass.getESuperTypes().add(this.getmyLiteral());
+		boolLiteralEClass.getESuperTypes().add(this.getmyLiteral());
+		myEnumEClass.getESuperTypes().add(this.getmyValue());
+		booleanValueEClass.getESuperTypes().add(this.getmyValue());
+		myIdentifierEClass.getESuperTypes().add(this.getmyExpression());
+		myRangeEClass.getESuperTypes().add(this.getmyValue());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModel_Contains(), this.getObject(), null, "Contains", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myModelEClass, myModel.class, "myModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getmyModel_MyModelContains(), this.getmyObject(), null, "myModelContains", null, 0, -1, myModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(objectEClass, configuratorProject.Object.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getObject_Has(), this.getConstraint(), null, "Has", null, 0, -1, configuratorProject.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getObject_Contains(), this.getAttribute(), null, "Contains", null, 0, -1, configuratorProject.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myObjectEClass, myObject.class, "myObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getmyObject_MyObjectHas(), this.getmyConstraint(), null, "myObjectHas", null, 0, -1, myObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmyObject_MyAttributeContains(), this.getmyAttribute(), null, "myAttributeContains", null, 0, -1, myObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConstraint_Contains(), this.getExpression(), null, "Contains", null, 1, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myConstraintEClass, myConstraint.class, "myConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getmyConstraint_MyConstraintContains(), this.getmyExpression(), null, "myConstraintContains", null, 1, 1, myConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAttribute_Contains(), this.getValue(), null, "Contains", null, 1, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myAttributeEClass, myAttribute.class, "myAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getmyAttribute_MyAttributeContains(), this.getmyValue(), null, "myAttributeContains", null, 1, 1, myAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(expressionEClass, Expression.class, "Expression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(myExpressionEClass, myExpression.class, "myExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(binaryEClass, Binary.class, "Binary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBinary_Oparand(), this.getBinaryOparators(), "Oparand", "if", 0, 1, Binary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBinary_Left(), this.getExpression(), null, "Left", null, 1, 1, Binary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBinary_Right(), this.getExpression(), null, "Right", null, 1, 1, Binary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myBinaryEClass, myBinary.class, "myBinary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getmyBinary_Oparand(), this.getmyBinaryOparators(), "Oparand", "if", 0, 1, myBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmyBinary_MyBinaryLeft(), this.getmyExpression(), null, "myBinaryLeft", null, 1, 1, myBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmyBinary_MyBinaryRight(), this.getmyExpression(), null, "myBinaryRight", null, 1, 1, myBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(unaryEClass, Unary.class, "Unary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getUnary_Oparand(), this.getUnaryOparators(), "Oparand", null, 0, 1, Unary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getUnary_Expression(), this.getExpression(), null, "Expression", null, 1, 1, Unary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myUnaryEClass, myUnary.class, "myUnary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getmyUnary_Oparand(), this.getmyUnaryOparators(), "Oparand", null, 0, 1, myUnary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmyUnary_MyUnaryExpression(), this.getmyExpression(), null, "myUnaryExpression", null, 1, 1, myUnary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(literalEClass, Literal.class, "Literal", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(myLiteralEClass, myLiteral.class, "myLiteral", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(stringEClass, configuratorProject.String.class, "String", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getString_Value(), theXMLTypePackage.getAnyURI(), "value", null, 1, 1, configuratorProject.String.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myStringEClass, myString.class, "myString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getmyString_Value(), theXMLTypePackage.getAnyURI(), "value", null, 1, 1, myString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(intEClass, Int.class, "Int", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getInt_Value(), theXMLTypePackage.getInt(), "value", null, 1, 1, Int.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myIntEClass, myInt.class, "myInt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getmyInt_Value(), theXMLTypePackage.getInt(), "value", null, 1, 1, myInt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(boolLiteralEClass, BoolLiteral.class, "BoolLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBoolLiteral_Value(), theXMLTypePackage.getBoolean(), "value", null, 1, 1, BoolLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(valueEClass, Value.class, "Value", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(myValueEClass, myValue.class, "myValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(enumEClass, configuratorProject.Enum.class, "Enum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getEnum_Values(), theXMLTypePackage.getAnySimpleType(), "values", null, 1, -1, configuratorProject.Enum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myEnumEClass, myEnum.class, "myEnum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getmyEnum_Values(), theXMLTypePackage.getAnySimpleType(), "values", null, 1, -1, myEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(booleanValueEClass, BooleanValue.class, "BooleanValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBooleanValue_TrueValue(), theXMLTypePackage.getAnyURI(), "trueValue", null, 1, 1, BooleanValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBooleanValue_FalseValue(), theXMLTypePackage.getAnyURI(), "falseValue", null, 1, 1, BooleanValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myNamedElementEClass, myNamedElement.class, "myNamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getmyNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, myNamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(identifierEClass, Identifier.class, "Identifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIdentifier_Is(), this.getAttribute(), null, "Is", null, 1, 1, Identifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myIdentifierEClass, myIdentifier.class, "myIdentifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getmyIdentifier_MyIntentifierIs(), this.getmyAttribute(), null, "myIntentifierIs", null, 1, 1, myIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(rangeEClass, Range.class, "Range", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRange_Range(), theXMLTypePackage.getAnySimpleType(), "range", null, 1, 1, Range.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myRangeEClass, myRange.class, "myRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getmyRange_Range(), theXMLTypePackage.getAnySimpleType(), "range", null, 1, 1, myRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(binaryOparatorsEEnum, BinaryOparators.class, "BinaryOparators");
-		addEEnumLiteral(binaryOparatorsEEnum, BinaryOparators.AND);
-		addEEnumLiteral(binaryOparatorsEEnum, BinaryOparators.OR);
-		addEEnumLiteral(binaryOparatorsEEnum, BinaryOparators.GT);
-		addEEnumLiteral(binaryOparatorsEEnum, BinaryOparators.LT);
-		addEEnumLiteral(binaryOparatorsEEnum, BinaryOparators.EQ);
-		addEEnumLiteral(binaryOparatorsEEnum, BinaryOparators.IS);
-		addEEnumLiteral(binaryOparatorsEEnum, BinaryOparators.IF);
-		addEEnumLiteral(binaryOparatorsEEnum, BinaryOparators.THEN);
+		initEEnum(myBinaryOparatorsEEnum, myBinaryOparators.class, "myBinaryOparators");
+		addEEnumLiteral(myBinaryOparatorsEEnum, myBinaryOparators.AND);
+		addEEnumLiteral(myBinaryOparatorsEEnum, myBinaryOparators.OR);
+		addEEnumLiteral(myBinaryOparatorsEEnum, myBinaryOparators.GT);
+		addEEnumLiteral(myBinaryOparatorsEEnum, myBinaryOparators.LT);
+		addEEnumLiteral(myBinaryOparatorsEEnum, myBinaryOparators.EQ);
+		addEEnumLiteral(myBinaryOparatorsEEnum, myBinaryOparators.IS);
+		addEEnumLiteral(myBinaryOparatorsEEnum, myBinaryOparators.IF);
+		addEEnumLiteral(myBinaryOparatorsEEnum, myBinaryOparators.THEN);
 
-		initEEnum(unaryOparatorsEEnum, UnaryOparators.class, "UnaryOparators");
-		addEEnumLiteral(unaryOparatorsEEnum, UnaryOparators.NOT);
+		initEEnum(myUnaryOparatorsEEnum, myUnaryOparators.class, "myUnaryOparators");
+		addEEnumLiteral(myUnaryOparatorsEEnum, myUnaryOparators.NOT);
 
 		// Create resource
 		createResource(eNS_URI);

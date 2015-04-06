@@ -2,34 +2,34 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="configuratorProject" nsURI="http://www.example.org/configuratorProject"
     nsPrefix="configuratorProject">
-  <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Contains" upperBound="-1"
-        eType="#//Object" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="myModel" eSuperTypes="#//myNamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myModelContains" upperBound="-1"
+        eType="#//myObject" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Object" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Has" upperBound="-1" eType="#//Constraint"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Contains" upperBound="-1"
-        eType="#//Attribute" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="myObject" eSuperTypes="#//myNamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myObjectHas" upperBound="-1"
+        eType="#//myConstraint" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myAttributeContains" upperBound="-1"
+        eType="#//myAttribute" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Constraint">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Contains" lowerBound="1"
-        eType="#//Expression" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="myConstraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myConstraintContains" lowerBound="1"
+        eType="#//myExpression" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Contains" lowerBound="1"
-        eType="#//Value" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="myAttribute" eSuperTypes="#//myNamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myAttributeContains" lowerBound="1"
+        eType="#//myValue" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Binary" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Oparand" eType="#//BinaryOparators"
+  <eClassifiers xsi:type="ecore:EClass" name="myExpression" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="myBinary" eSuperTypes="#//myExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Oparand" eType="#//myBinaryOparators"
         defaultValueLiteral="if"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Left" lowerBound="1" eType="#//Expression"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Right" lowerBound="1" eType="#//Expression"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myBinaryLeft" lowerBound="1"
+        eType="#//myExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myBinaryRight" lowerBound="1"
+        eType="#//myExpression" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="BinaryOparators">
+  <eClassifiers xsi:type="ecore:EEnum" name="myBinaryOparators">
     <eLiterals name="and"/>
     <eLiterals name="or" value="1"/>
     <eLiterals name="gt" value="2"/>
@@ -39,42 +39,43 @@
     <eLiterals name="if" value="6"/>
     <eLiterals name="then" value="7"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Unary" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Oparand" eType="#//UnaryOparators"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Expression" lowerBound="1"
-        eType="#//Expression" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="myUnary" eSuperTypes="#//myExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Oparand" eType="#//myUnaryOparators"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myUnaryExpression" lowerBound="1"
+        eType="#//myExpression" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="UnaryOparators">
+  <eClassifiers xsi:type="ecore:EEnum" name="myUnaryOparators">
     <eLiterals name="not"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Literal" abstract="true" eSuperTypes="#//Expression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="String" eSuperTypes="#//Literal">
+  <eClassifiers xsi:type="ecore:EClass" name="myLiteral" abstract="true" eSuperTypes="#//myExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="myString" eSuperTypes="#//myLiteral">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnyURI"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Int" eSuperTypes="#//Literal">
+  <eClassifiers xsi:type="ecore:EClass" name="myInt" eSuperTypes="#//myLiteral">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BoolLiteral" eSuperTypes="#//Literal">
+  <eClassifiers xsi:type="ecore:EClass" name="BoolLiteral" eSuperTypes="#//myLiteral">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Value" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Enum" eSuperTypes="#//Value">
+  <eClassifiers xsi:type="ecore:EClass" name="myValue" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="myEnum" eSuperTypes="#//myValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" lowerBound="1"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanValue" eSuperTypes="#//Value">
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanValue" eSuperTypes="#//myValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="trueValue" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnyURI"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="falseValue" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnyURI"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="myNamedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Identifier" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="Is" lowerBound="1" eType="#//Attribute"/>
+  <eClassifiers xsi:type="ecore:EClass" name="myIdentifier" eSuperTypes="#//myExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myIntentifierIs" lowerBound="1"
+        eType="#//myAttribute"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Range" eSuperTypes="#//Value">
+  <eClassifiers xsi:type="ecore:EClass" name="myRange" eSuperTypes="#//myValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="range" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"/>
   </eClassifiers>
 </ecore:EPackage>

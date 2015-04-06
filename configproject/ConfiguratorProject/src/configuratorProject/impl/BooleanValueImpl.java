@@ -5,8 +5,6 @@ package configuratorProject.impl;
 import configuratorProject.BooleanValue;
 import configuratorProject.ConfiguratorProjectPackage;
 
-import java.lang.String;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -27,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class BooleanValueImpl extends ValueImpl implements BooleanValue {
+public class BooleanValueImpl extends myValueImpl implements BooleanValue {
 	/**
 	 * The default value of the '{@link #getTrueValue() <em>True Value</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -6,68 +6,68 @@
     operationReflection="true" importOrganizing="true">
   <foreignModel>configuratorProject.ecore</foreignModel>
   <genPackages prefix="ConfiguratorProject" disposableProviderFactory="true" ecorePackage="configuratorProject.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="configuratorProject.ecore#//BinaryOparators">
-      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//BinaryOparators/and"/>
-      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//BinaryOparators/or"/>
-      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//BinaryOparators/gt"/>
-      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//BinaryOparators/lt"/>
-      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//BinaryOparators/eq"/>
-      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//BinaryOparators/is"/>
-      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//BinaryOparators/if"/>
-      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//BinaryOparators/then"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="configuratorProject.ecore#//myBinaryOparators">
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/and"/>
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/or"/>
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/gt"/>
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/lt"/>
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/eq"/>
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/is"/>
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/if"/>
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/then"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="configuratorProject.ecore#//UnaryOparators">
-      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//UnaryOparators/not"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="configuratorProject.ecore#//myUnaryOparators">
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myUnaryOparators/not"/>
     </genEnums>
-    <genClasses ecoreClass="configuratorProject.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//Model/Contains"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myModel/myModelContains"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//Object">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//Object/Has"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//Object/Contains"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myObject">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myObject/myObjectHas"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myObject/myAttributeContains"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//Constraint">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//Constraint/Contains"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myConstraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myConstraint/myConstraintContains"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//Attribute">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//Attribute/Contains"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myAttribute">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myAttribute/myAttributeContains"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//Expression"/>
-    <genClasses ecoreClass="configuratorProject.ecore#//Binary">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//Binary/Oparand"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//Binary/Left"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//Binary/Right"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myExpression"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myBinary">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myBinary/Oparand"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myBinary/myBinaryLeft"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myBinary/myBinaryRight"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//Unary">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//Unary/Oparand"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//Unary/Expression"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myUnary">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myUnary/Oparand"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myUnary/myUnaryExpression"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//Literal"/>
-    <genClasses ecoreClass="configuratorProject.ecore#//String">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//String/value"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myLiteral"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myString">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myString/value"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//Int">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//Int/value"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myInt">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myInt/value"/>
     </genClasses>
     <genClasses ecoreClass="configuratorProject.ecore#//BoolLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//BoolLiteral/value"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//Value"/>
-    <genClasses ecoreClass="configuratorProject.ecore#//Enum">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//Enum/values"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myValue"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myEnum">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myEnum/values"/>
     </genClasses>
     <genClasses ecoreClass="configuratorProject.ecore#//BooleanValue">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//BooleanValue/trueValue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//BooleanValue/falseValue"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//NamedElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//NamedElement/name"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myNamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myNamedElement/name"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//Identifier">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//Identifier/Is"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myIdentifier">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myIdentifier/myIntentifierIs"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//Range">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//Range/range"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myRange">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myRange/range"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

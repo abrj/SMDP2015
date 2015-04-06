@@ -2,21 +2,7 @@
  */
 package configuratorProject.util;
 
-import configuratorProject.Attribute;
-import configuratorProject.Binary;
-import configuratorProject.BoolLiteral;
-import configuratorProject.BooleanValue;
-import configuratorProject.ConfiguratorProjectPackage;
-import configuratorProject.Constraint;
-import configuratorProject.Expression;
-import configuratorProject.Identifier;
-import configuratorProject.Int;
-import configuratorProject.Literal;
-import configuratorProject.Model;
-import configuratorProject.NamedElement;
-import configuratorProject.Range;
-import configuratorProject.Unary;
-import configuratorProject.Value;
+import configuratorProject.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -82,72 +68,72 @@ public class ConfiguratorProjectAdapterFactory extends AdapterFactoryImpl {
 	protected ConfiguratorProjectSwitch<Adapter> modelSwitch =
 		new ConfiguratorProjectSwitch<Adapter>() {
 			@Override
-			public Adapter caseModel(Model object) {
-				return createModelAdapter();
+			public Adapter casemyModel(myModel object) {
+				return createmyModelAdapter();
 			}
 			@Override
-			public Adapter caseObject(configuratorProject.Object object) {
-				return createObjectAdapter();
+			public Adapter casemyObject(myObject object) {
+				return createmyObjectAdapter();
 			}
 			@Override
-			public Adapter caseConstraint(Constraint object) {
-				return createConstraintAdapter();
+			public Adapter casemyConstraint(myConstraint object) {
+				return createmyConstraintAdapter();
 			}
 			@Override
-			public Adapter caseAttribute(Attribute object) {
-				return createAttributeAdapter();
+			public Adapter casemyAttribute(myAttribute object) {
+				return createmyAttributeAdapter();
 			}
 			@Override
-			public Adapter caseExpression(Expression object) {
-				return createExpressionAdapter();
+			public Adapter casemyExpression(myExpression object) {
+				return createmyExpressionAdapter();
 			}
 			@Override
-			public Adapter caseBinary(Binary object) {
-				return createBinaryAdapter();
+			public Adapter casemyBinary(myBinary object) {
+				return createmyBinaryAdapter();
 			}
 			@Override
-			public Adapter caseUnary(Unary object) {
-				return createUnaryAdapter();
+			public Adapter casemyUnary(myUnary object) {
+				return createmyUnaryAdapter();
 			}
 			@Override
-			public Adapter caseLiteral(Literal object) {
-				return createLiteralAdapter();
+			public Adapter casemyLiteral(myLiteral object) {
+				return createmyLiteralAdapter();
 			}
 			@Override
-			public Adapter caseString(configuratorProject.String object) {
-				return createStringAdapter();
+			public Adapter casemyString(myString object) {
+				return createmyStringAdapter();
 			}
 			@Override
-			public Adapter caseInt(Int object) {
-				return createIntAdapter();
+			public Adapter casemyInt(myInt object) {
+				return createmyIntAdapter();
 			}
 			@Override
 			public Adapter caseBoolLiteral(BoolLiteral object) {
 				return createBoolLiteralAdapter();
 			}
 			@Override
-			public Adapter caseValue(Value object) {
-				return createValueAdapter();
+			public Adapter casemyValue(myValue object) {
+				return createmyValueAdapter();
 			}
 			@Override
-			public Adapter caseEnum(configuratorProject.Enum object) {
-				return createEnumAdapter();
+			public Adapter casemyEnum(myEnum object) {
+				return createmyEnumAdapter();
 			}
 			@Override
 			public Adapter caseBooleanValue(BooleanValue object) {
 				return createBooleanValueAdapter();
 			}
 			@Override
-			public Adapter caseNamedElement(NamedElement object) {
-				return createNamedElementAdapter();
+			public Adapter casemyNamedElement(myNamedElement object) {
+				return createmyNamedElementAdapter();
 			}
 			@Override
-			public Adapter caseIdentifier(Identifier object) {
-				return createIdentifierAdapter();
+			public Adapter casemyIdentifier(myIdentifier object) {
+				return createmyIdentifierAdapter();
 			}
 			@Override
-			public Adapter caseRange(Range object) {
-				return createRangeAdapter();
+			public Adapter casemyRange(myRange object) {
+				return createmyRangeAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -170,142 +156,142 @@ public class ConfiguratorProjectAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.Model <em>Model</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myModel <em>my Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.Model
+	 * @see configuratorProject.myModel
 	 * @generated
 	 */
-	public Adapter createModelAdapter() {
+	public Adapter createmyModelAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.Object <em>Object</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myObject <em>my Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.Object
+	 * @see configuratorProject.myObject
 	 * @generated
 	 */
-	public Adapter createObjectAdapter() {
+	public Adapter createmyObjectAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.Constraint <em>Constraint</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myConstraint <em>my Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.Constraint
+	 * @see configuratorProject.myConstraint
 	 * @generated
 	 */
-	public Adapter createConstraintAdapter() {
+	public Adapter createmyConstraintAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.Attribute <em>Attribute</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myAttribute <em>my Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.Attribute
+	 * @see configuratorProject.myAttribute
 	 * @generated
 	 */
-	public Adapter createAttributeAdapter() {
+	public Adapter createmyAttributeAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.Expression <em>Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myExpression <em>my Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.Expression
+	 * @see configuratorProject.myExpression
 	 * @generated
 	 */
-	public Adapter createExpressionAdapter() {
+	public Adapter createmyExpressionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.Binary <em>Binary</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myBinary <em>my Binary</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.Binary
+	 * @see configuratorProject.myBinary
 	 * @generated
 	 */
-	public Adapter createBinaryAdapter() {
+	public Adapter createmyBinaryAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.Unary <em>Unary</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myUnary <em>my Unary</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.Unary
+	 * @see configuratorProject.myUnary
 	 * @generated
 	 */
-	public Adapter createUnaryAdapter() {
+	public Adapter createmyUnaryAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.Literal <em>Literal</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myLiteral <em>my Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.Literal
+	 * @see configuratorProject.myLiteral
 	 * @generated
 	 */
-	public Adapter createLiteralAdapter() {
+	public Adapter createmyLiteralAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.String <em>String</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myString <em>my String</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.String
+	 * @see configuratorProject.myString
 	 * @generated
 	 */
-	public Adapter createStringAdapter() {
+	public Adapter createmyStringAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.Int <em>Int</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myInt <em>my Int</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.Int
+	 * @see configuratorProject.myInt
 	 * @generated
 	 */
-	public Adapter createIntAdapter() {
+	public Adapter createmyIntAdapter() {
 		return null;
 	}
 
@@ -324,30 +310,30 @@ public class ConfiguratorProjectAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.Value <em>Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myValue <em>my Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.Value
+	 * @see configuratorProject.myValue
 	 * @generated
 	 */
-	public Adapter createValueAdapter() {
+	public Adapter createmyValueAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.Enum <em>Enum</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myEnum <em>my Enum</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.Enum
+	 * @see configuratorProject.myEnum
 	 * @generated
 	 */
-	public Adapter createEnumAdapter() {
+	public Adapter createmyEnumAdapter() {
 		return null;
 	}
 
@@ -366,44 +352,44 @@ public class ConfiguratorProjectAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.NamedElement <em>Named Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myNamedElement <em>my Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.NamedElement
+	 * @see configuratorProject.myNamedElement
 	 * @generated
 	 */
-	public Adapter createNamedElementAdapter() {
+	public Adapter createmyNamedElementAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.Identifier <em>Identifier</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myIdentifier <em>my Identifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.Identifier
+	 * @see configuratorProject.myIdentifier
 	 * @generated
 	 */
-	public Adapter createIdentifierAdapter() {
+	public Adapter createmyIdentifierAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.Range <em>Range</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myRange <em>my Range</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.Range
+	 * @see configuratorProject.myRange
 	 * @generated
 	 */
-	public Adapter createRangeAdapter() {
+	public Adapter createmyRangeAdapter() {
 		return null;
 	}
 

@@ -5,21 +5,21 @@ package configuratorProject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Bool Literal</b></em>'.
+ * A representation of the model object '<em><b>my Int</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link configuratorProject.BoolLiteral#isValue <em>Value</em>}</li>
+ *   <li>{@link configuratorProject.myInt#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
- * @see configuratorProject.ConfiguratorProjectPackage#getBoolLiteral()
+ * @see configuratorProject.ConfiguratorProjectPackage#getmyInt()
  * @model
  * @generated
  */
-public interface BoolLiteral extends myLiteral {
+public interface myInt extends myLiteral {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -29,21 +29,21 @@ public interface BoolLiteral extends myLiteral {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(boolean)
-	 * @see configuratorProject.ConfiguratorProjectPackage#getBoolLiteral_Value()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.Boolean" required="true"
+	 * @see #setValue(int)
+	 * @see configuratorProject.ConfiguratorProjectPackage#getmyInt_Value()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
 	 * @generated
 	 */
-	boolean isValue();
+	int getValue();
 
 	/**
-	 * Sets the value of the '{@link configuratorProject.BoolLiteral#isValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link configuratorProject.myInt#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #isValue()
+	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(boolean value);
+	void setValue(int value);
 
-} // BoolLiteral
+} // myInt

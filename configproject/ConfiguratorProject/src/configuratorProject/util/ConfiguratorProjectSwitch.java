@@ -2,21 +2,7 @@
  */
 package configuratorProject.util;
 
-import configuratorProject.Attribute;
-import configuratorProject.Binary;
-import configuratorProject.BoolLiteral;
-import configuratorProject.BooleanValue;
-import configuratorProject.ConfiguratorProjectPackage;
-import configuratorProject.Constraint;
-import configuratorProject.Expression;
-import configuratorProject.Identifier;
-import configuratorProject.Int;
-import configuratorProject.Literal;
-import configuratorProject.Model;
-import configuratorProject.NamedElement;
-import configuratorProject.Range;
-import configuratorProject.Unary;
-import configuratorProject.Value;
+import configuratorProject.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -80,121 +66,121 @@ public class ConfiguratorProjectSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ConfiguratorProjectPackage.MODEL: {
-				Model model = (Model)theEObject;
-				T result = caseModel(model);
-				if (result == null) result = caseNamedElement(model);
+			case ConfiguratorProjectPackage.MY_MODEL: {
+				myModel myModel = (myModel)theEObject;
+				T result = casemyModel(myModel);
+				if (result == null) result = casemyNamedElement(myModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.OBJECT: {
-				configuratorProject.Object object = (configuratorProject.Object)theEObject;
-				T result = caseObject(object);
-				if (result == null) result = caseNamedElement(object);
+			case ConfiguratorProjectPackage.MY_OBJECT: {
+				myObject myObject = (myObject)theEObject;
+				T result = casemyObject(myObject);
+				if (result == null) result = casemyNamedElement(myObject);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.CONSTRAINT: {
-				Constraint constraint = (Constraint)theEObject;
-				T result = caseConstraint(constraint);
+			case ConfiguratorProjectPackage.MY_CONSTRAINT: {
+				myConstraint myConstraint = (myConstraint)theEObject;
+				T result = casemyConstraint(myConstraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.ATTRIBUTE: {
-				Attribute attribute = (Attribute)theEObject;
-				T result = caseAttribute(attribute);
-				if (result == null) result = caseNamedElement(attribute);
+			case ConfiguratorProjectPackage.MY_ATTRIBUTE: {
+				myAttribute myAttribute = (myAttribute)theEObject;
+				T result = casemyAttribute(myAttribute);
+				if (result == null) result = casemyNamedElement(myAttribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.EXPRESSION: {
-				Expression expression = (Expression)theEObject;
-				T result = caseExpression(expression);
+			case ConfiguratorProjectPackage.MY_EXPRESSION: {
+				myExpression myExpression = (myExpression)theEObject;
+				T result = casemyExpression(myExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.BINARY: {
-				Binary binary = (Binary)theEObject;
-				T result = caseBinary(binary);
-				if (result == null) result = caseExpression(binary);
+			case ConfiguratorProjectPackage.MY_BINARY: {
+				myBinary myBinary = (myBinary)theEObject;
+				T result = casemyBinary(myBinary);
+				if (result == null) result = casemyExpression(myBinary);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.UNARY: {
-				Unary unary = (Unary)theEObject;
-				T result = caseUnary(unary);
-				if (result == null) result = caseExpression(unary);
+			case ConfiguratorProjectPackage.MY_UNARY: {
+				myUnary myUnary = (myUnary)theEObject;
+				T result = casemyUnary(myUnary);
+				if (result == null) result = casemyExpression(myUnary);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.LITERAL: {
-				Literal literal = (Literal)theEObject;
-				T result = caseLiteral(literal);
-				if (result == null) result = caseExpression(literal);
+			case ConfiguratorProjectPackage.MY_LITERAL: {
+				myLiteral myLiteral = (myLiteral)theEObject;
+				T result = casemyLiteral(myLiteral);
+				if (result == null) result = casemyExpression(myLiteral);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.STRING: {
-				configuratorProject.String string = (configuratorProject.String)theEObject;
-				T result = caseString(string);
-				if (result == null) result = caseLiteral(string);
-				if (result == null) result = caseExpression(string);
+			case ConfiguratorProjectPackage.MY_STRING: {
+				myString myString = (myString)theEObject;
+				T result = casemyString(myString);
+				if (result == null) result = casemyLiteral(myString);
+				if (result == null) result = casemyExpression(myString);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.INT: {
-				Int int_ = (Int)theEObject;
-				T result = caseInt(int_);
-				if (result == null) result = caseLiteral(int_);
-				if (result == null) result = caseExpression(int_);
+			case ConfiguratorProjectPackage.MY_INT: {
+				myInt myInt = (myInt)theEObject;
+				T result = casemyInt(myInt);
+				if (result == null) result = casemyLiteral(myInt);
+				if (result == null) result = casemyExpression(myInt);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ConfiguratorProjectPackage.BOOL_LITERAL: {
 				BoolLiteral boolLiteral = (BoolLiteral)theEObject;
 				T result = caseBoolLiteral(boolLiteral);
-				if (result == null) result = caseLiteral(boolLiteral);
-				if (result == null) result = caseExpression(boolLiteral);
+				if (result == null) result = casemyLiteral(boolLiteral);
+				if (result == null) result = casemyExpression(boolLiteral);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.VALUE: {
-				Value value = (Value)theEObject;
-				T result = caseValue(value);
+			case ConfiguratorProjectPackage.MY_VALUE: {
+				myValue myValue = (myValue)theEObject;
+				T result = casemyValue(myValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.ENUM: {
-				configuratorProject.Enum enum_ = (configuratorProject.Enum)theEObject;
-				T result = caseEnum(enum_);
-				if (result == null) result = caseValue(enum_);
+			case ConfiguratorProjectPackage.MY_ENUM: {
+				myEnum myEnum = (myEnum)theEObject;
+				T result = casemyEnum(myEnum);
+				if (result == null) result = casemyValue(myEnum);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ConfiguratorProjectPackage.BOOLEAN_VALUE: {
 				BooleanValue booleanValue = (BooleanValue)theEObject;
 				T result = caseBooleanValue(booleanValue);
-				if (result == null) result = caseValue(booleanValue);
+				if (result == null) result = casemyValue(booleanValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.NAMED_ELEMENT: {
-				NamedElement namedElement = (NamedElement)theEObject;
-				T result = caseNamedElement(namedElement);
+			case ConfiguratorProjectPackage.MY_NAMED_ELEMENT: {
+				myNamedElement myNamedElement = (myNamedElement)theEObject;
+				T result = casemyNamedElement(myNamedElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.IDENTIFIER: {
-				Identifier identifier = (Identifier)theEObject;
-				T result = caseIdentifier(identifier);
-				if (result == null) result = caseExpression(identifier);
+			case ConfiguratorProjectPackage.MY_IDENTIFIER: {
+				myIdentifier myIdentifier = (myIdentifier)theEObject;
+				T result = casemyIdentifier(myIdentifier);
+				if (result == null) result = casemyExpression(myIdentifier);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.RANGE: {
-				Range range = (Range)theEObject;
-				T result = caseRange(range);
-				if (result == null) result = caseValue(range);
+			case ConfiguratorProjectPackage.MY_RANGE: {
+				myRange myRange = (myRange)theEObject;
+				T result = casemyRange(myRange);
+				if (result == null) result = casemyValue(myRange);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -203,152 +189,152 @@ public class ConfiguratorProjectSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Model</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Model</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseModel(Model object) {
+	public T casemyModel(myModel object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Object</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Object</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Object</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseObject(configuratorProject.Object object) {
+	public T casemyObject(myObject object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Constraint</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Constraint</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseConstraint(Constraint object) {
+	public T casemyConstraint(myConstraint object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Attribute</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Attribute</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Attribute</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAttribute(Attribute object) {
+	public T casemyAttribute(myAttribute object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExpression(Expression object) {
+	public T casemyExpression(myExpression object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Binary</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Binary</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Binary</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Binary</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBinary(Binary object) {
+	public T casemyBinary(myBinary object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Unary</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Unary</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Unary</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Unary</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseUnary(Unary object) {
+	public T casemyUnary(myUnary object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Literal</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Literal</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLiteral(Literal object) {
+	public T casemyLiteral(myLiteral object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>String</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my String</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>String</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my String</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseString(configuratorProject.String object) {
+	public T casemyString(myString object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Int</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Int</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Int</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Int</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseInt(Int object) {
+	public T casemyInt(myInt object) {
 		return null;
 	}
 
@@ -368,32 +354,32 @@ public class ConfiguratorProjectSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Value</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Value</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseValue(Value object) {
+	public T casemyValue(myValue object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Enum</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Enum</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Enum</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Enum</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseEnum(configuratorProject.Enum object) {
+	public T casemyEnum(myEnum object) {
 		return null;
 	}
 
@@ -413,47 +399,47 @@ public class ConfiguratorProjectSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Named Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Named Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseNamedElement(NamedElement object) {
+	public T casemyNamedElement(myNamedElement object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Identifier</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Identifier</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Identifier</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Identifier</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIdentifier(Identifier object) {
+	public T casemyIdentifier(myIdentifier object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Range</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Range</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Range</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Range</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseRange(Range object) {
+	public T casemyRange(myRange object) {
 		return null;
 	}
 
