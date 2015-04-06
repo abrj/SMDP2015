@@ -2303,9 +2303,9 @@ rule__MyRange__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getMyRangeAccess().getRangeAssignment_0()); }
-(rule__MyRange__RangeAssignment_0)
-{ after(grammarAccess.getMyRangeAccess().getRangeAssignment_0()); }
+{ before(grammarAccess.getMyRangeAccess().getFromAssignment_0()); }
+(rule__MyRange__FromAssignment_0)
+{ after(grammarAccess.getMyRangeAccess().getFromAssignment_0()); }
 )
 
 ;
@@ -2362,9 +2362,9 @@ rule__MyRange__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getMyRangeAccess().getRangeAssignment_2()); }
-(rule__MyRange__RangeAssignment_2)
-{ after(grammarAccess.getMyRangeAccess().getRangeAssignment_2()); }
+{ before(grammarAccess.getMyRangeAccess().getToAssignment_2()); }
+(rule__MyRange__ToAssignment_2)
+{ after(grammarAccess.getMyRangeAccess().getToAssignment_2()); }
 )
 
 ;
@@ -2759,14 +2759,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MyRange__RangeAssignment_0
+rule__MyRange__FromAssignment_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_0_0()); }
-	RULE_INT{ after(grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_0_0()); }
+{ before(grammarAccess.getMyRangeAccess().getFromINTTerminalRuleCall_0_0()); }
+	RULE_INT{ after(grammarAccess.getMyRangeAccess().getFromINTTerminalRuleCall_0_0()); }
 )
 
 ;
@@ -2774,14 +2774,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MyRange__RangeAssignment_2
+rule__MyRange__ToAssignment_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_2_0()); }
-	RULE_INT{ after(grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_2_0()); }
+{ before(grammarAccess.getMyRangeAccess().getToINTTerminalRuleCall_2_0()); }
+	RULE_INT{ after(grammarAccess.getMyRangeAccess().getToINTTerminalRuleCall_2_0()); }
 )
 
 ;

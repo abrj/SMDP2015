@@ -6148,31 +6148,31 @@ public class InternalSmdpDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MyRange__Group__0__Impl"
-    // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2300:1: rule__MyRange__Group__0__Impl : ( ( rule__MyRange__RangeAssignment_0 ) ) ;
+    // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2300:1: rule__MyRange__Group__0__Impl : ( ( rule__MyRange__FromAssignment_0 ) ) ;
     public final void rule__MyRange__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2304:1: ( ( ( rule__MyRange__RangeAssignment_0 ) ) )
-            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2305:1: ( ( rule__MyRange__RangeAssignment_0 ) )
+            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2304:1: ( ( ( rule__MyRange__FromAssignment_0 ) ) )
+            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2305:1: ( ( rule__MyRange__FromAssignment_0 ) )
             {
-            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2305:1: ( ( rule__MyRange__RangeAssignment_0 ) )
-            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2306:1: ( rule__MyRange__RangeAssignment_0 )
+            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2305:1: ( ( rule__MyRange__FromAssignment_0 ) )
+            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2306:1: ( rule__MyRange__FromAssignment_0 )
             {
-             before(grammarAccess.getMyRangeAccess().getRangeAssignment_0()); 
-            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2307:1: ( rule__MyRange__RangeAssignment_0 )
-            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2307:2: rule__MyRange__RangeAssignment_0
+             before(grammarAccess.getMyRangeAccess().getFromAssignment_0()); 
+            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2307:1: ( rule__MyRange__FromAssignment_0 )
+            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2307:2: rule__MyRange__FromAssignment_0
             {
-            pushFollow(FollowSets000.FOLLOW_rule__MyRange__RangeAssignment_0_in_rule__MyRange__Group__0__Impl4654);
-            rule__MyRange__RangeAssignment_0();
+            pushFollow(FollowSets000.FOLLOW_rule__MyRange__FromAssignment_0_in_rule__MyRange__Group__0__Impl4654);
+            rule__MyRange__FromAssignment_0();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getMyRangeAccess().getRangeAssignment_0()); 
+             after(grammarAccess.getMyRangeAccess().getFromAssignment_0()); 
 
             }
 
@@ -6303,31 +6303,31 @@ public class InternalSmdpDslParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MyRange__Group__2__Impl"
-    // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2359:1: rule__MyRange__Group__2__Impl : ( ( rule__MyRange__RangeAssignment_2 ) ) ;
+    // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2359:1: rule__MyRange__Group__2__Impl : ( ( rule__MyRange__ToAssignment_2 ) ) ;
     public final void rule__MyRange__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2363:1: ( ( ( rule__MyRange__RangeAssignment_2 ) ) )
-            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2364:1: ( ( rule__MyRange__RangeAssignment_2 ) )
+            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2363:1: ( ( ( rule__MyRange__ToAssignment_2 ) ) )
+            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2364:1: ( ( rule__MyRange__ToAssignment_2 ) )
             {
-            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2364:1: ( ( rule__MyRange__RangeAssignment_2 ) )
-            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2365:1: ( rule__MyRange__RangeAssignment_2 )
+            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2364:1: ( ( rule__MyRange__ToAssignment_2 ) )
+            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2365:1: ( rule__MyRange__ToAssignment_2 )
             {
-             before(grammarAccess.getMyRangeAccess().getRangeAssignment_2()); 
-            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2366:1: ( rule__MyRange__RangeAssignment_2 )
-            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2366:2: rule__MyRange__RangeAssignment_2
+             before(grammarAccess.getMyRangeAccess().getToAssignment_2()); 
+            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2366:1: ( rule__MyRange__ToAssignment_2 )
+            // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2366:2: rule__MyRange__ToAssignment_2
             {
-            pushFollow(FollowSets000.FOLLOW_rule__MyRange__RangeAssignment_2_in_rule__MyRange__Group__2__Impl4773);
-            rule__MyRange__RangeAssignment_2();
+            pushFollow(FollowSets000.FOLLOW_rule__MyRange__ToAssignment_2_in_rule__MyRange__Group__2__Impl4773);
+            rule__MyRange__ToAssignment_2();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getMyRangeAccess().getRangeAssignment_2()); 
+             after(grammarAccess.getMyRangeAccess().getToAssignment_2()); 
 
             }
 
@@ -7378,9 +7378,9 @@ public class InternalSmdpDslParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__BooleanValue__FalseValueAssignment_2"
 
 
-    // $ANTLR start "rule__MyRange__RangeAssignment_0"
-    // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2762:1: rule__MyRange__RangeAssignment_0 : ( RULE_INT ) ;
-    public final void rule__MyRange__RangeAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__MyRange__FromAssignment_0"
+    // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2762:1: rule__MyRange__FromAssignment_0 : ( RULE_INT ) ;
+    public final void rule__MyRange__FromAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -7391,9 +7391,9 @@ public class InternalSmdpDslParser extends AbstractInternalContentAssistParser {
             // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2767:1: ( RULE_INT )
             // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2768:1: RULE_INT
             {
-             before(grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_0_0()); 
-            match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_rule__MyRange__RangeAssignment_05597); 
-             after(grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_0_0()); 
+             before(grammarAccess.getMyRangeAccess().getFromINTTerminalRuleCall_0_0()); 
+            match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_rule__MyRange__FromAssignment_05597); 
+             after(grammarAccess.getMyRangeAccess().getFromINTTerminalRuleCall_0_0()); 
 
             }
 
@@ -7412,12 +7412,12 @@ public class InternalSmdpDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__MyRange__RangeAssignment_0"
+    // $ANTLR end "rule__MyRange__FromAssignment_0"
 
 
-    // $ANTLR start "rule__MyRange__RangeAssignment_2"
-    // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2777:1: rule__MyRange__RangeAssignment_2 : ( RULE_INT ) ;
-    public final void rule__MyRange__RangeAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__MyRange__ToAssignment_2"
+    // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2777:1: rule__MyRange__ToAssignment_2 : ( RULE_INT ) ;
+    public final void rule__MyRange__ToAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -7428,9 +7428,9 @@ public class InternalSmdpDslParser extends AbstractInternalContentAssistParser {
             // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2782:1: ( RULE_INT )
             // ../org.xtext.example.smdpdsl.ui/src-gen/org/xtext/example/mydsl/ui/contentassist/antlr/internal/InternalSmdpDsl.g:2783:1: RULE_INT
             {
-             before(grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_2_0()); 
-            match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_rule__MyRange__RangeAssignment_25628); 
-             after(grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_2_0()); 
+             before(grammarAccess.getMyRangeAccess().getToINTTerminalRuleCall_2_0()); 
+            match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_rule__MyRange__ToAssignment_25628); 
+             after(grammarAccess.getMyRangeAccess().getToINTTerminalRuleCall_2_0()); 
 
             }
 
@@ -7449,7 +7449,7 @@ public class InternalSmdpDslParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__MyRange__RangeAssignment_2"
+    // $ANTLR end "rule__MyRange__ToAssignment_2"
 
     // Delegated rules
 
@@ -7662,12 +7662,12 @@ public class InternalSmdpDslParser extends AbstractInternalContentAssistParser {
         public static final BitSet FOLLOW_rule__BooleanValue__FalseValueAssignment_2_in_rule__BooleanValue__Group__2__Impl4588 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__MyRange__Group__0__Impl_in_rule__MyRange__Group__04624 = new BitSet(new long[]{0x0000000200000000L});
         public static final BitSet FOLLOW_rule__MyRange__Group__1_in_rule__MyRange__Group__04627 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__MyRange__RangeAssignment_0_in_rule__MyRange__Group__0__Impl4654 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__MyRange__FromAssignment_0_in_rule__MyRange__Group__0__Impl4654 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__MyRange__Group__1__Impl_in_rule__MyRange__Group__14684 = new BitSet(new long[]{0x0000000000000040L});
         public static final BitSet FOLLOW_rule__MyRange__Group__2_in_rule__MyRange__Group__14687 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_33_in_rule__MyRange__Group__1__Impl4715 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rule__MyRange__Group__2__Impl_in_rule__MyRange__Group__24746 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_rule__MyRange__RangeAssignment_2_in_rule__MyRange__Group__2__Impl4773 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_rule__MyRange__ToAssignment_2_in_rule__MyRange__Group__2__Impl4773 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleEString_in_rule__MyModel__NameAssignment_14814 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rulemyObject_in_rule__MyModel__MyModelContainsAssignment_2_14845 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_rulemyObject_in_rule__MyModel__MyModelContainsAssignment_2_2_14876 = new BitSet(new long[]{0x0000000000000002L});
@@ -7693,8 +7693,8 @@ public class InternalSmdpDslParser extends AbstractInternalContentAssistParser {
         public static final BitSet FOLLOW_ruleEString_in_rule__MyEnum__ValuesAssignment_1_15504 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleEString_in_rule__BooleanValue__TrueValueAssignment_05535 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleEString_in_rule__BooleanValue__FalseValueAssignment_25566 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_INT_in_rule__MyRange__RangeAssignment_05597 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_RULE_INT_in_rule__MyRange__RangeAssignment_25628 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_INT_in_rule__MyRange__FromAssignment_05597 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_RULE_INT_in_rule__MyRange__ToAssignment_25628 = new BitSet(new long[]{0x0000000000000002L});
     }
 
 

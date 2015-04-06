@@ -31,7 +31,7 @@ public interface myString extends myLiteral {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
 	 * @see configuratorProject.ConfiguratorProjectPackage#getmyString_Value()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	String getValue();

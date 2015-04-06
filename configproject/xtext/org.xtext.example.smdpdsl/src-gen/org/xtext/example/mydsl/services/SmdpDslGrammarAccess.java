@@ -587,33 +587,33 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	public class MyRangeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myRange");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cRangeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cRangeINTTerminalRuleCall_0_0 = (RuleCall)cRangeAssignment_0.eContents().get(0);
+		private final Assignment cFromAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cFromINTTerminalRuleCall_0_0 = (RuleCall)cFromAssignment_0.eContents().get(0);
 		private final Keyword cHyphenMinusKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cRangeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cRangeINTTerminalRuleCall_2_0 = (RuleCall)cRangeAssignment_2.eContents().get(0);
+		private final Assignment cToAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cToINTTerminalRuleCall_2_0 = (RuleCall)cToAssignment_2.eContents().get(0);
 		
 		//myRange:
-		//	range=INT "-" range=INT;
+		//	from=INT "-" to=INT;
 		public ParserRule getRule() { return rule; }
 
-		//range=INT "-" range=INT
+		//from=INT "-" to=INT
 		public Group getGroup() { return cGroup; }
 
-		//range=INT
-		public Assignment getRangeAssignment_0() { return cRangeAssignment_0; }
+		//from=INT
+		public Assignment getFromAssignment_0() { return cFromAssignment_0; }
 
 		//INT
-		public RuleCall getRangeINTTerminalRuleCall_0_0() { return cRangeINTTerminalRuleCall_0_0; }
+		public RuleCall getFromINTTerminalRuleCall_0_0() { return cFromINTTerminalRuleCall_0_0; }
 
 		//"-"
 		public Keyword getHyphenMinusKeyword_1() { return cHyphenMinusKeyword_1; }
 
-		//range=INT
-		public Assignment getRangeAssignment_2() { return cRangeAssignment_2; }
+		//to=INT
+		public Assignment getToAssignment_2() { return cToAssignment_2; }
 
 		//INT
-		public RuleCall getRangeINTTerminalRuleCall_2_0() { return cRangeINTTerminalRuleCall_2_0; }
+		public RuleCall getToINTTerminalRuleCall_2_0() { return cToINTTerminalRuleCall_2_0; }
 	}
 
 	public class AnySimpleTypeElements extends AbstractParserRuleElementFinder {
@@ -986,7 +986,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//myRange:
-	//	range=INT "-" range=INT;
+	//	from=INT "-" to=INT;
 	public MyRangeElements getMyRangeAccess() {
 		return (pMyRange != null) ? pMyRange : (pMyRange = new MyRangeElements());
 	}

@@ -1085,9 +1085,9 @@ rulemyRange returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		lv_range_0_0=RULE_INT
+		lv_from_0_0=RULE_INT
 		{
-			newLeafNode(lv_range_0_0, grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_0_0()); 
+			newLeafNode(lv_from_0_0, grammarAccess.getMyRangeAccess().getFromINTTerminalRuleCall_0_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -1095,8 +1095,8 @@ rulemyRange returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"range",
-        		lv_range_0_0, 
+       			"from",
+        		lv_from_0_0, 
         		"INT");
 	    }
 
@@ -1107,9 +1107,9 @@ rulemyRange returns [EObject current=null]
     }
 (
 (
-		lv_range_2_0=RULE_INT
+		lv_to_2_0=RULE_INT
 		{
-			newLeafNode(lv_range_2_0, grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_2_0()); 
+			newLeafNode(lv_to_2_0, grammarAccess.getMyRangeAccess().getToINTTerminalRuleCall_2_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -1117,8 +1117,8 @@ rulemyRange returns [EObject current=null]
 	        }
        		setWithLastConsumed(
        			$current, 
-       			"range",
-        		lv_range_2_0, 
+       			"to",
+        		lv_to_2_0, 
         		"INT");
 	    }
 

@@ -705,13 +705,22 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	int MY_RANGE = 16;
 
 	/**
-	 * The feature id for the '<em><b>Range</b></em>' attribute.
+	 * The feature id for the '<em><b>From</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MY_RANGE__RANGE = MY_VALUE_FEATURE_COUNT + 0;
+	int MY_RANGE__FROM = MY_VALUE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>To</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_RANGE__TO = MY_VALUE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>my Range</em>' class.
@@ -720,7 +729,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MY_RANGE_FEATURE_COUNT = MY_VALUE_FEATURE_COUNT + 1;
+	int MY_RANGE_FEATURE_COUNT = MY_VALUE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>my Range</em>' class.
@@ -1121,15 +1130,26 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	EClass getmyRange();
 
 	/**
-	 * Returns the meta object for the attribute '{@link configuratorProject.myRange#getRange <em>Range</em>}'.
+	 * Returns the meta object for the attribute '{@link configuratorProject.myRange#getFrom <em>From</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Range</em>'.
-	 * @see configuratorProject.myRange#getRange()
+	 * @return the meta object for the attribute '<em>From</em>'.
+	 * @see configuratorProject.myRange#getFrom()
 	 * @see #getmyRange()
 	 * @generated
 	 */
-	EAttribute getmyRange_Range();
+	EAttribute getmyRange_From();
+
+	/**
+	 * Returns the meta object for the attribute '{@link configuratorProject.myRange#getTo <em>To</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>To</em>'.
+	 * @see configuratorProject.myRange#getTo()
+	 * @see #getmyRange()
+	 * @generated
+	 */
+	EAttribute getmyRange_To();
 
 	/**
 	 * Returns the meta object for enum '{@link configuratorProject.myBinaryOparators <em>my Binary Oparators</em>}'.
@@ -1489,12 +1509,20 @@ public interface ConfiguratorProjectPackage extends EPackage {
 		EClass MY_RANGE = eINSTANCE.getmyRange();
 
 		/**
-		 * The meta object literal for the '<em><b>Range</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>From</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MY_RANGE__RANGE = eINSTANCE.getmyRange_Range();
+		EAttribute MY_RANGE__FROM = eINSTANCE.getmyRange_From();
+
+		/**
+		 * The meta object literal for the '<em><b>To</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MY_RANGE__TO = eINSTANCE.getmyRange_To();
 
 		/**
 		 * The meta object literal for the '{@link configuratorProject.myBinaryOparators <em>my Binary Oparators</em>}' enum.

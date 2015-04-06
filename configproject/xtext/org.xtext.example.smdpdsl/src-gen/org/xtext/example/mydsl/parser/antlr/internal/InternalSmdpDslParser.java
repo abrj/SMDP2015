@@ -2719,32 +2719,32 @@ public class InternalSmdpDslParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulemyRange"
-    // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1082:1: rulemyRange returns [EObject current=null] : ( ( (lv_range_0_0= RULE_INT ) ) otherlv_1= '-' ( (lv_range_2_0= RULE_INT ) ) ) ;
+    // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1082:1: rulemyRange returns [EObject current=null] : ( ( (lv_from_0_0= RULE_INT ) ) otherlv_1= '-' ( (lv_to_2_0= RULE_INT ) ) ) ;
     public final EObject rulemyRange() throws RecognitionException {
         EObject current = null;
 
-        Token lv_range_0_0=null;
+        Token lv_from_0_0=null;
         Token otherlv_1=null;
-        Token lv_range_2_0=null;
+        Token lv_to_2_0=null;
 
          enterRule(); 
             
         try {
-            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1085:28: ( ( ( (lv_range_0_0= RULE_INT ) ) otherlv_1= '-' ( (lv_range_2_0= RULE_INT ) ) ) )
-            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1086:1: ( ( (lv_range_0_0= RULE_INT ) ) otherlv_1= '-' ( (lv_range_2_0= RULE_INT ) ) )
+            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1085:28: ( ( ( (lv_from_0_0= RULE_INT ) ) otherlv_1= '-' ( (lv_to_2_0= RULE_INT ) ) ) )
+            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1086:1: ( ( (lv_from_0_0= RULE_INT ) ) otherlv_1= '-' ( (lv_to_2_0= RULE_INT ) ) )
             {
-            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1086:1: ( ( (lv_range_0_0= RULE_INT ) ) otherlv_1= '-' ( (lv_range_2_0= RULE_INT ) ) )
-            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1086:2: ( (lv_range_0_0= RULE_INT ) ) otherlv_1= '-' ( (lv_range_2_0= RULE_INT ) )
+            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1086:1: ( ( (lv_from_0_0= RULE_INT ) ) otherlv_1= '-' ( (lv_to_2_0= RULE_INT ) ) )
+            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1086:2: ( (lv_from_0_0= RULE_INT ) ) otherlv_1= '-' ( (lv_to_2_0= RULE_INT ) )
             {
-            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1086:2: ( (lv_range_0_0= RULE_INT ) )
-            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1087:1: (lv_range_0_0= RULE_INT )
+            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1086:2: ( (lv_from_0_0= RULE_INT ) )
+            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1087:1: (lv_from_0_0= RULE_INT )
             {
-            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1087:1: (lv_range_0_0= RULE_INT )
-            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1088:3: lv_range_0_0= RULE_INT
+            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1087:1: (lv_from_0_0= RULE_INT )
+            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1088:3: lv_from_0_0= RULE_INT
             {
-            lv_range_0_0=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_rulemyRange2430); 
+            lv_from_0_0=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_rulemyRange2430); 
 
-            			newLeafNode(lv_range_0_0, grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_0_0()); 
+            			newLeafNode(lv_from_0_0, grammarAccess.getMyRangeAccess().getFromINTTerminalRuleCall_0_0()); 
             		
 
             	        if (current==null) {
@@ -2752,8 +2752,8 @@ public class InternalSmdpDslParser extends AbstractInternalAntlrParser {
             	        }
                    		setWithLastConsumed(
                    			current, 
-                   			"range",
-                    		lv_range_0_0, 
+                   			"from",
+                    		lv_from_0_0, 
                     		"INT");
             	    
 
@@ -2766,15 +2766,15 @@ public class InternalSmdpDslParser extends AbstractInternalAntlrParser {
 
                 	newLeafNode(otherlv_1, grammarAccess.getMyRangeAccess().getHyphenMinusKeyword_1());
                 
-            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1108:1: ( (lv_range_2_0= RULE_INT ) )
-            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1109:1: (lv_range_2_0= RULE_INT )
+            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1108:1: ( (lv_to_2_0= RULE_INT ) )
+            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1109:1: (lv_to_2_0= RULE_INT )
             {
-            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1109:1: (lv_range_2_0= RULE_INT )
-            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1110:3: lv_range_2_0= RULE_INT
+            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1109:1: (lv_to_2_0= RULE_INT )
+            // ../org.xtext.example.smdpdsl/src-gen/org/xtext/example/mydsl/parser/antlr/internal/InternalSmdpDsl.g:1110:3: lv_to_2_0= RULE_INT
             {
-            lv_range_2_0=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_rulemyRange2464); 
+            lv_to_2_0=(Token)match(input,RULE_INT,FollowSets000.FOLLOW_RULE_INT_in_rulemyRange2464); 
 
-            			newLeafNode(lv_range_2_0, grammarAccess.getMyRangeAccess().getRangeINTTerminalRuleCall_2_0()); 
+            			newLeafNode(lv_to_2_0, grammarAccess.getMyRangeAccess().getToINTTerminalRuleCall_2_0()); 
             		
 
             	        if (current==null) {
@@ -2782,8 +2782,8 @@ public class InternalSmdpDslParser extends AbstractInternalAntlrParser {
             	        }
                    		setWithLastConsumed(
                    			current, 
-                   			"range",
-                    		lv_range_2_0, 
+                   			"to",
+                    		lv_to_2_0, 
                     		"INT");
             	    
 

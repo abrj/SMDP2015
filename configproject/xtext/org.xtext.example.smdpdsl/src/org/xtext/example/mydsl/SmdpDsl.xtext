@@ -90,7 +90,7 @@ BooleanValue returns BooleanValue:
 	;
 
 myRange returns myRange:
-		range=INT '-' range=INT
+		from=INT '-' to=INT
 	;
 
 AnySimpleType returns type::AnySimpleType:

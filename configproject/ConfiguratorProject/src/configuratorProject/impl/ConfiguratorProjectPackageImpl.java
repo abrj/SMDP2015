@@ -558,8 +558,17 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getmyRange_Range() {
+	public EAttribute getmyRange_From() {
 		return (EAttribute)myRangeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getmyRange_To() {
+		return (EAttribute)myRangeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -659,7 +668,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		createEReference(myIdentifierEClass, MY_IDENTIFIER__MY_INTENTIFIER_IS);
 
 		myRangeEClass = createEClass(MY_RANGE);
-		createEAttribute(myRangeEClass, MY_RANGE__RANGE);
+		createEAttribute(myRangeEClass, MY_RANGE__FROM);
+		createEAttribute(myRangeEClass, MY_RANGE__TO);
 
 		// Create enums
 		myBinaryOparatorsEEnum = createEEnum(MY_BINARY_OPARATORS);
@@ -739,10 +749,10 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		initEClass(myLiteralEClass, myLiteral.class, "myLiteral", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(myStringEClass, myString.class, "myString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getmyString_Value(), theXMLTypePackage.getAnyURI(), "value", null, 1, 1, myString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getmyString_Value(), ecorePackage.getEString(), "value", null, 1, 1, myString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(myIntEClass, myInt.class, "myInt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getmyInt_Value(), theXMLTypePackage.getInt(), "value", null, 1, 1, myInt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getmyInt_Value(), ecorePackage.getEInt(), "value", null, 1, 1, myInt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(boolLiteralEClass, BoolLiteral.class, "BoolLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBoolLiteral_Value(), theXMLTypePackage.getBoolean(), "value", null, 1, 1, BoolLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -763,7 +773,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		initEReference(getmyIdentifier_MyIntentifierIs(), this.getmyAttribute(), null, "myIntentifierIs", null, 1, 1, myIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(myRangeEClass, myRange.class, "myRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getmyRange_Range(), theXMLTypePackage.getAnySimpleType(), "range", null, 1, 1, myRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getmyRange_From(), ecorePackage.getEInt(), "from", null, 1, 1, myRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getmyRange_To(), ecorePackage.getEInt(), "to", null, 1, 1, myRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(myBinaryOparatorsEEnum, myBinaryOparators.class, "myBinaryOparators");

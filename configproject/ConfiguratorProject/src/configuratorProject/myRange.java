@@ -11,7 +11,8 @@ package configuratorProject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link configuratorProject.myRange#getRange <em>Range</em>}</li>
+ *   <li>{@link configuratorProject.myRange#getFrom <em>From</em>}</li>
+ *   <li>{@link configuratorProject.myRange#getTo <em>To</em>}</li>
  * </ul>
  * </p>
  *
@@ -21,29 +22,55 @@ package configuratorProject;
  */
 public interface myRange extends myValue {
 	/**
-	 * Returns the value of the '<em><b>Range</b></em>' attribute.
+	 * Returns the value of the '<em><b>From</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Range</em>' attribute isn't clear,
+	 * If the meaning of the '<em>From</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Range</em>' attribute.
-	 * @see #setRange(Object)
-	 * @see configuratorProject.ConfiguratorProjectPackage#getmyRange_Range()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnySimpleType" required="true"
+	 * @return the value of the '<em>From</em>' attribute.
+	 * @see #setFrom(int)
+	 * @see configuratorProject.ConfiguratorProjectPackage#getmyRange_From()
+	 * @model required="true"
 	 * @generated
 	 */
-	Object getRange();
+	int getFrom();
 
 	/**
-	 * Sets the value of the '{@link configuratorProject.myRange#getRange <em>Range</em>}' attribute.
+	 * Sets the value of the '{@link configuratorProject.myRange#getFrom <em>From</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Range</em>' attribute.
-	 * @see #getRange()
+	 * @param value the new value of the '<em>From</em>' attribute.
+	 * @see #getFrom()
 	 * @generated
 	 */
-	void setRange(Object value);
+	void setFrom(int value);
+
+	/**
+	 * Returns the value of the '<em><b>To</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>To</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>To</em>' attribute.
+	 * @see #setTo(int)
+	 * @see configuratorProject.ConfiguratorProjectPackage#getmyRange_To()
+	 * @model required="true"
+	 * @generated
+	 */
+	int getTo();
+
+	/**
+	 * Sets the value of the '{@link configuratorProject.myRange#getTo <em>To</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>To</em>' attribute.
+	 * @see #getTo()
+	 * @generated
+	 */
+	void setTo(int value);
 
 } // myRange

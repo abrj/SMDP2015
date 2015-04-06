@@ -31,7 +31,7 @@ public interface myInt extends myLiteral {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(int)
 	 * @see configuratorProject.ConfiguratorProjectPackage#getmyInt_Value()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.Int" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	int getValue();

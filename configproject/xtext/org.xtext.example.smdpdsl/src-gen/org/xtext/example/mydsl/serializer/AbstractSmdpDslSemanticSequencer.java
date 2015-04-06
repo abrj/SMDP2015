@@ -261,10 +261,20 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 	
 	/**
 	 * Constraint:
-	 *     (range=INT range=INT)
+	 *     (from=INT to=INT)
 	 */
 	protected void sequence_myRange(EObject context, myRange semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_RANGE__FROM) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_RANGE__FROM));
+			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_RANGE__TO) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_RANGE__TO));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getMyRangeAccess().getFromINTTerminalRuleCall_0_0(), semanticObject.getFrom());
+		feeder.accept(grammarAccess.getMyRangeAccess().getToINTTerminalRuleCall_2_0(), semanticObject.getTo());
+		feeder.finish();
 	}
 	
 	

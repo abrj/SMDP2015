@@ -82,8 +82,8 @@ public class SmdpDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMyEnumAccess().getValuesAssignment_1_1(), "rule__MyEnum__ValuesAssignment_1_1");
 					put(grammarAccess.getBooleanValueAccess().getTrueValueAssignment_0(), "rule__BooleanValue__TrueValueAssignment_0");
 					put(grammarAccess.getBooleanValueAccess().getFalseValueAssignment_2(), "rule__BooleanValue__FalseValueAssignment_2");
-					put(grammarAccess.getMyRangeAccess().getRangeAssignment_0(), "rule__MyRange__RangeAssignment_0");
-					put(grammarAccess.getMyRangeAccess().getRangeAssignment_2(), "rule__MyRange__RangeAssignment_2");
+					put(grammarAccess.getMyRangeAccess().getFromAssignment_0(), "rule__MyRange__FromAssignment_0");
+					put(grammarAccess.getMyRangeAccess().getToAssignment_2(), "rule__MyRange__ToAssignment_2");
 				}
 			};
 		}
