@@ -27,7 +27,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myObject/myAttributeContains"/>
     </genClasses>
     <genClasses ecoreClass="configuratorProject.ecore#//myConstraint">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myConstraint/myConstraintContains"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myConstraint/myIfConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myConstraint/myThenConstraint"/>
     </genClasses>
     <genClasses ecoreClass="configuratorProject.ecore#//myAttribute">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myAttribute/myAttributeContains"/>
@@ -43,22 +44,14 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myUnary/myUnaryExpression"/>
     </genClasses>
     <genClasses ecoreClass="configuratorProject.ecore#//myLiteral"/>
-    <genClasses ecoreClass="configuratorProject.ecore#//myString">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myString/value"/>
-    </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//myInt">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myInt/value"/>
-    </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//BoolLiteral">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//BoolLiteral/value"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//MyBoolLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//MyBoolLiteral/value"/>
     </genClasses>
     <genClasses ecoreClass="configuratorProject.ecore#//myValue"/>
-    <genClasses ecoreClass="configuratorProject.ecore#//myEnum">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myEnum/values"/>
-    </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//BooleanValue">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//BooleanValue/trueValue"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//BooleanValue/falseValue"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myEnum"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myBoolean">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myBoolean/trueValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myBoolean/falseValue"/>
     </genClasses>
     <genClasses ecoreClass="configuratorProject.ecore#//myNamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myNamedElement/name"/>
@@ -68,6 +61,13 @@
     </genClasses>
     <genClasses ecoreClass="configuratorProject.ecore#//myRange">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myRange/from"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myRange/to"/>
+    </genClasses>
+    <genClasses ecoreClass="configuratorProject.ecore#//myStringEnum">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myStringEnum/values"/>
+    </genClasses>
+    <genClasses ecoreClass="configuratorProject.ecore#//myNumberEnum">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myNumberEnum/values"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

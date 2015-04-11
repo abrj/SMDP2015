@@ -482,14 +482,14 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class AnyURIElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AnyURI");
-		private final Keyword cAnyURIKeyword = (Keyword)rule.eContents().get(1);
+		private final RuleCall cEStringParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		/// * TODO: implement this rule and an appropriate IValueConverter * / AnyURI returns type::AnyURI:
-		//	"AnyURI";
+		//	EString;
 		public ParserRule getRule() { return rule; }
 
-		//"AnyURI"
-		public Keyword getAnyURIKeyword() { return cAnyURIKeyword; }
+		//EString
+		public RuleCall getEStringParserRuleCall() { return cEStringParserRuleCall; }
 	}
 
 	public class Int0Elements extends AbstractParserRuleElementFinder {
@@ -518,38 +518,70 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class MyEnumElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myEnum");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cValuesAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cValuesEStringParserRuleCall_0_0 = (RuleCall)cValuesAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cValuesAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cValuesEStringParserRuleCall_1_1_0 = (RuleCall)cValuesAssignment_1_1.eContents().get(0);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Assignment cValuesAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final RuleCall cValuesEStringParserRuleCall_0_0_0 = (RuleCall)cValuesAssignment_0_0.eContents().get(0);
+		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
+		private final Keyword cCommaKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
+		private final Assignment cValuesAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
+		private final RuleCall cValuesEStringParserRuleCall_0_1_1_0 = (RuleCall)cValuesAssignment_0_1_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Assignment cValuesAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final RuleCall cValuesINTTerminalRuleCall_1_0_0 = (RuleCall)cValuesAssignment_1_0.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
+		private final Keyword cCommaKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Assignment cValuesAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
+		private final RuleCall cValuesINTTerminalRuleCall_1_1_1_0 = (RuleCall)cValuesAssignment_1_1_1.eContents().get(0);
 		
 		//myEnum:
-		//	values+=EString ("," values+=EString)*;
+		//	values+=EString ("," values+=EString)* | values+=INT ("," values+=INT)*;
 		public ParserRule getRule() { return rule; }
 
+		//values+=EString ("," values+=EString)* | values+=INT ("," values+=INT)*
+		public Alternatives getAlternatives() { return cAlternatives; }
+
 		//values+=EString ("," values+=EString)*
-		public Group getGroup() { return cGroup; }
+		public Group getGroup_0() { return cGroup_0; }
 
 		//values+=EString
-		public Assignment getValuesAssignment_0() { return cValuesAssignment_0; }
+		public Assignment getValuesAssignment_0_0() { return cValuesAssignment_0_0; }
 
 		//EString
-		public RuleCall getValuesEStringParserRuleCall_0_0() { return cValuesEStringParserRuleCall_0_0; }
+		public RuleCall getValuesEStringParserRuleCall_0_0_0() { return cValuesEStringParserRuleCall_0_0_0; }
 
 		//("," values+=EString)*
-		public Group getGroup_1() { return cGroup_1; }
+		public Group getGroup_0_1() { return cGroup_0_1; }
 
 		//","
-		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
+		public Keyword getCommaKeyword_0_1_0() { return cCommaKeyword_0_1_0; }
 
 		//values+=EString
-		public Assignment getValuesAssignment_1_1() { return cValuesAssignment_1_1; }
+		public Assignment getValuesAssignment_0_1_1() { return cValuesAssignment_0_1_1; }
 
 		//EString
-		public RuleCall getValuesEStringParserRuleCall_1_1_0() { return cValuesEStringParserRuleCall_1_1_0; }
+		public RuleCall getValuesEStringParserRuleCall_0_1_1_0() { return cValuesEStringParserRuleCall_0_1_1_0; }
+
+		//values+=INT ("," values+=INT)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//values+=INT
+		public Assignment getValuesAssignment_1_0() { return cValuesAssignment_1_0; }
+
+		//INT
+		public RuleCall getValuesINTTerminalRuleCall_1_0_0() { return cValuesINTTerminalRuleCall_1_0_0; }
+
+		//("," values+=INT)*
+		public Group getGroup_1_1() { return cGroup_1_1; }
+
+		//","
+		public Keyword getCommaKeyword_1_1_0() { return cCommaKeyword_1_1_0; }
+
+		//values+=INT
+		public Assignment getValuesAssignment_1_1_1() { return cValuesAssignment_1_1_1; }
+
+		//INT
+		public RuleCall getValuesINTTerminalRuleCall_1_1_1_0() { return cValuesINTTerminalRuleCall_1_1_1_0; }
 	}
 
 	public class BooleanValueElements extends AbstractParserRuleElementFinder {
@@ -936,7 +968,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	/// * TODO: implement this rule and an appropriate IValueConverter * / AnyURI returns type::AnyURI:
-	//	"AnyURI";
+	//	EString;
 	public AnyURIElements getAnyURIAccess() {
 		return (pAnyURI != null) ? pAnyURI : (pAnyURI = new AnyURIElements());
 	}
@@ -966,7 +998,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//myEnum:
-	//	values+=EString ("," values+=EString)*;
+	//	values+=EString ("," values+=EString)* | values+=INT ("," values+=INT)*;
 	public MyEnumElements getMyEnumAccess() {
 		return (pMyEnum != null) ? pMyEnum : (pMyEnum = new MyEnumElements());
 	}

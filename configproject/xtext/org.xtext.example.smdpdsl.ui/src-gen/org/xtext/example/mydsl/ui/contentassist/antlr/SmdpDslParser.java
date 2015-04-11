@@ -40,6 +40,7 @@ public class SmdpDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMyExpressionAccess().getAlternatives(), "rule__MyExpression__Alternatives");
 					put(grammarAccess.getMyValueAccess().getAlternatives(), "rule__MyValue__Alternatives");
 					put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
+					put(grammarAccess.getMyEnumAccess().getAlternatives(), "rule__MyEnum__Alternatives");
 					put(grammarAccess.getMyBinaryOparatorsAccess().getAlternatives(), "rule__MyBinaryOparators__Alternatives");
 					put(grammarAccess.getMyModelAccess().getGroup(), "rule__MyModel__Group__0");
 					put(grammarAccess.getMyModelAccess().getGroup_2(), "rule__MyModel__Group_2__0");
@@ -53,8 +54,10 @@ public class SmdpDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMyAttributeAccess().getGroup(), "rule__MyAttribute__Group__0");
 					put(grammarAccess.getMyBinaryAccess().getGroup(), "rule__MyBinary__Group__0");
 					put(grammarAccess.getMyUnaryAccess().getGroup(), "rule__MyUnary__Group__0");
-					put(grammarAccess.getMyEnumAccess().getGroup(), "rule__MyEnum__Group__0");
+					put(grammarAccess.getMyEnumAccess().getGroup_0(), "rule__MyEnum__Group_0__0");
+					put(grammarAccess.getMyEnumAccess().getGroup_0_1(), "rule__MyEnum__Group_0_1__0");
 					put(grammarAccess.getMyEnumAccess().getGroup_1(), "rule__MyEnum__Group_1__0");
+					put(grammarAccess.getMyEnumAccess().getGroup_1_1(), "rule__MyEnum__Group_1_1__0");
 					put(grammarAccess.getBooleanValueAccess().getGroup(), "rule__BooleanValue__Group__0");
 					put(grammarAccess.getMyRangeAccess().getGroup(), "rule__MyRange__Group__0");
 					put(grammarAccess.getMyModelAccess().getNameAssignment_1(), "rule__MyModel__NameAssignment_1");
@@ -78,8 +81,10 @@ public class SmdpDslParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMyIntAccess().getValueAssignment(), "rule__MyInt__ValueAssignment");
 					put(grammarAccess.getBoolLiteralAccess().getValueAssignment(), "rule__BoolLiteral__ValueAssignment");
 					put(grammarAccess.getMyIdentifierAccess().getMyIntentifierIsAssignment(), "rule__MyIdentifier__MyIntentifierIsAssignment");
-					put(grammarAccess.getMyEnumAccess().getValuesAssignment_0(), "rule__MyEnum__ValuesAssignment_0");
-					put(grammarAccess.getMyEnumAccess().getValuesAssignment_1_1(), "rule__MyEnum__ValuesAssignment_1_1");
+					put(grammarAccess.getMyEnumAccess().getValuesAssignment_0_0(), "rule__MyEnum__ValuesAssignment_0_0");
+					put(grammarAccess.getMyEnumAccess().getValuesAssignment_0_1_1(), "rule__MyEnum__ValuesAssignment_0_1_1");
+					put(grammarAccess.getMyEnumAccess().getValuesAssignment_1_0(), "rule__MyEnum__ValuesAssignment_1_0");
+					put(grammarAccess.getMyEnumAccess().getValuesAssignment_1_1_1(), "rule__MyEnum__ValuesAssignment_1_1_1");
 					put(grammarAccess.getBooleanValueAccess().getTrueValueAssignment_0(), "rule__BooleanValue__TrueValueAssignment_0");
 					put(grammarAccess.getBooleanValueAccess().getFalseValueAssignment_2(), "rule__BooleanValue__FalseValueAssignment_2");
 					put(grammarAccess.getMyRangeAccess().getFromAssignment_0(), "rule__MyRange__FromAssignment_0");

@@ -13,7 +13,9 @@
         eType="#//myAttribute" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="myConstraint">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="myConstraintContains" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myIfConstraint" lowerBound="1"
+        eType="#//myExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="myThenConstraint" lowerBound="1"
         eType="#//myExpression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="myAttribute" eSuperTypes="#//myNamedElement">
@@ -48,25 +50,16 @@
     <eLiterals name="not"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="myLiteral" abstract="true" eSuperTypes="#//myExpression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="myString" eSuperTypes="#//myLiteral">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MyBoolLiteral" eSuperTypes="#//myLiteral">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="myInt" eSuperTypes="#//myLiteral">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BoolLiteral" eSuperTypes="#//myLiteral">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="myValue" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="myEnum" eSuperTypes="#//myValue">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" lowerBound="1"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanValue" eSuperTypes="#//myValue">
+  <eClassifiers xsi:type="ecore:EClass" name="myValue" abstract="true" eSuperTypes="#//myLiteral"/>
+  <eClassifiers xsi:type="ecore:EClass" name="myEnum" abstract="true" eSuperTypes="#//myValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="myBoolean" eSuperTypes="#//myValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="trueValue" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnyURI"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="falseValue" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnyURI"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="myNamedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -78,5 +71,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="myRange" eSuperTypes="#//myValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="to" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="myStringEnum" eSuperTypes="#//myEnum">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="myNumberEnum" eSuperTypes="#//myEnum">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
 </ecore:EPackage>

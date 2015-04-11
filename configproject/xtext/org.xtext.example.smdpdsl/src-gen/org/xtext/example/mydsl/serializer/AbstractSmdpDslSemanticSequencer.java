@@ -202,7 +202,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 	
 	/**
 	 * Constraint:
-	 *     (values+=EString values+=EString*)
+	 *     ((values+=EString values+=EString*) | (values+=INT values+=INT*))
 	 */
 	protected void sequence_myEnum(EObject context, myEnum semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

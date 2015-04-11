@@ -1,17 +1,27 @@
 carfactory {
  	bmw {
  		has 
- 			seatheat ["10","11", "12"],
+ 			seatheat ["10", "11", "12"],
  			doors ["4-Door":"2-Door"],
- 			wheel [40-34] 			
+ 			wheel [40-34],
+ 			numberOfSeat [1, 2, 4],
+ 			carType ["SlowCar", "FastCar", "BigCar"]
+ 			
+ 						
  		
  		Constrained by 
  			if left doors = right "4-Door"
  			then left seatheat can right 4,
  			
+ 			if left doors = right "4-Door"
+ 			then left carType can right left AnyURI && right AnyURI,
+ 			
  			if left wheel < right 39 
- 			then left doors can right not single AnyURI
-
+ 			then left doors can right seatheat,
+ 			
+ 			if left left numberOfSeat = right 4 && right 
+ 			left carType = right single "SlowCar" then
+ 			left doors can right single AnyURI
  	}	
 }
 

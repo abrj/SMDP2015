@@ -906,10 +906,15 @@ ruleAnyURI returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
     }
     @after { leaveRule(); }:
 
-	kw='AnyURI' 
-    {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getAnyURIAccess().getAnyURIKeyword()); 
+    { 
+        newCompositeNode(grammarAccess.getAnyURIAccess().getEStringParserRuleCall()); 
+    }
+    this_EString_0=ruleEString    {
+		$current.merge(this_EString_0);
+    }
+
+    { 
+        afterParserOrEnumRuleCall();
     }
 
     ;
@@ -961,10 +966,10 @@ rulemyEnum returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((
+(((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyEnumAccess().getValuesEStringParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getMyEnumAccess().getValuesEStringParserRuleCall_0_0_0()); 
 	    }
 		lv_values_0_0=ruleEString		{
 	        if ($current==null) {
@@ -981,12 +986,12 @@ rulemyEnum returns [EObject current=null]
 )
 )(	otherlv_1=',' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getMyEnumAccess().getCommaKeyword_1_0());
+    	newLeafNode(otherlv_1, grammarAccess.getMyEnumAccess().getCommaKeyword_0_1_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyEnumAccess().getValuesEStringParserRuleCall_1_1_0()); 
+	        newCompositeNode(grammarAccess.getMyEnumAccess().getValuesEStringParserRuleCall_0_1_1_0()); 
 	    }
 		lv_values_2_0=ruleEString		{
 	        if ($current==null) {
@@ -1002,6 +1007,47 @@ rulemyEnum returns [EObject current=null]
 
 )
 ))*)
+    |((
+(
+		lv_values_3_0=RULE_INT
+		{
+			newLeafNode(lv_values_3_0, grammarAccess.getMyEnumAccess().getValuesINTTerminalRuleCall_1_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMyEnumRule());
+	        }
+       		addWithLastConsumed(
+       			$current, 
+       			"values",
+        		lv_values_3_0, 
+        		"INT");
+	    }
+
+)
+)(	otherlv_4=',' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getMyEnumAccess().getCommaKeyword_1_1_0());
+    }
+(
+(
+		lv_values_5_0=RULE_INT
+		{
+			newLeafNode(lv_values_5_0, grammarAccess.getMyEnumAccess().getValuesINTTerminalRuleCall_1_1_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMyEnumRule());
+	        }
+       		addWithLastConsumed(
+       			$current, 
+       			"values",
+        		lv_values_5_0, 
+        		"INT");
+	    }
+
+)
+))*))
 ;
 
 

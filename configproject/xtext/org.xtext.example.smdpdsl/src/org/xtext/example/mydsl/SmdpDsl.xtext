@@ -15,7 +15,10 @@ myModel returns myModel:
 
 
 myExpression returns myExpression:
-	myBinary | myUnary | myString | myInt | BoolLiteral | myIdentifier;
+	myBinary | myUnary | myString | myInt | BoolLiteral | myIdentifier | myEnumValue;
+
+
+
 
 myValue returns myValue:
 	myEnum | BooleanValue | myRange;
@@ -58,6 +61,9 @@ myString returns myString:
 
 myInt returns myInt:
 	value=INT;
+	
+myEnumValue returns myEnumValue:
+	value=INT;
 
 BoolLiteral returns BoolLiteral:
 value=Boolean;
@@ -81,7 +87,7 @@ Boolean returns type::Boolean:
 	'Boolean' /* TODO: implement this rule and an appropriate IValueConverter */;
 
 myEnum returns myEnum:	
-		values+=EString ( "," values+=EString)* 
+		(values+=EString ( "," values+=EString)*)|(values+=INT ( "," values+=INT)*)
 	;
 
 BooleanValue returns BooleanValue:
