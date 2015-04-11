@@ -100,16 +100,8 @@ public class ConfiguratorProjectAdapterFactory extends AdapterFactoryImpl {
 				return createmyLiteralAdapter();
 			}
 			@Override
-			public Adapter casemyString(myString object) {
-				return createmyStringAdapter();
-			}
-			@Override
-			public Adapter casemyInt(myInt object) {
-				return createmyIntAdapter();
-			}
-			@Override
-			public Adapter caseBoolLiteral(BoolLiteral object) {
-				return createBoolLiteralAdapter();
+			public Adapter caseMyBoolLiteral(MyBoolLiteral object) {
+				return createMyBoolLiteralAdapter();
 			}
 			@Override
 			public Adapter casemyValue(myValue object) {
@@ -120,8 +112,8 @@ public class ConfiguratorProjectAdapterFactory extends AdapterFactoryImpl {
 				return createmyEnumAdapter();
 			}
 			@Override
-			public Adapter caseBooleanValue(BooleanValue object) {
-				return createBooleanValueAdapter();
+			public Adapter casemyBoolean(myBoolean object) {
+				return createmyBooleanAdapter();
 			}
 			@Override
 			public Adapter casemyNamedElement(myNamedElement object) {
@@ -134,6 +126,18 @@ public class ConfiguratorProjectAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casemyRange(myRange object) {
 				return createmyRangeAdapter();
+			}
+			@Override
+			public Adapter casemyStringEnum(myStringEnum object) {
+				return createmyStringEnumAdapter();
+			}
+			@Override
+			public Adapter casemyNumberEnum(myNumberEnum object) {
+				return createmyNumberEnumAdapter();
+			}
+			@Override
+			public Adapter casemyConcreteExpression(myConcreteExpression object) {
+				return createmyConcreteExpressionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -268,44 +272,16 @@ public class ConfiguratorProjectAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.myString <em>my String</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.MyBoolLiteral <em>My Bool Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.myString
+	 * @see configuratorProject.MyBoolLiteral
 	 * @generated
 	 */
-	public Adapter createmyStringAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.myInt <em>my Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see configuratorProject.myInt
-	 * @generated
-	 */
-	public Adapter createmyIntAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.BoolLiteral <em>Bool Literal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see configuratorProject.BoolLiteral
-	 * @generated
-	 */
-	public Adapter createBoolLiteralAdapter() {
+	public Adapter createMyBoolLiteralAdapter() {
 		return null;
 	}
 
@@ -338,16 +314,16 @@ public class ConfiguratorProjectAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.BooleanValue <em>Boolean Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myBoolean <em>my Boolean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see configuratorProject.BooleanValue
+	 * @see configuratorProject.myBoolean
 	 * @generated
 	 */
-	public Adapter createBooleanValueAdapter() {
+	public Adapter createmyBooleanAdapter() {
 		return null;
 	}
 
@@ -390,6 +366,48 @@ public class ConfiguratorProjectAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createmyRangeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myStringEnum <em>my String Enum</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see configuratorProject.myStringEnum
+	 * @generated
+	 */
+	public Adapter createmyStringEnumAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myNumberEnum <em>my Number Enum</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see configuratorProject.myNumberEnum
+	 * @generated
+	 */
+	public Adapter createmyNumberEnumAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link configuratorProject.myConcreteExpression <em>my Concrete Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see configuratorProject.myConcreteExpression
+	 * @generated
+	 */
+	public Adapter createmyConcreteExpressionAdapter() {
 		return null;
 	}
 

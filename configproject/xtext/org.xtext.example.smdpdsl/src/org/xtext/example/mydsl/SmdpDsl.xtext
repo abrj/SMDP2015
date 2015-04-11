@@ -3,7 +3,6 @@ grammar org.xtext.example.mydsl.SmdpDsl with org.eclipse.xtext.common.Terminals
 
 import "platform:/resource/ConfiguratorProject/model/configuratorProject.ecore" 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
-import "http://www.eclipse.org/emf/2003/XMLType" as type
 
 myModel returns myModel:
 	{myModel}
@@ -14,62 +13,71 @@ myModel returns myModel:
 
 
 
-myExpression returns myExpression:
-	myBinary | myUnary | myString | myInt | BoolLiteral | myIdentifier | myEnumValue;
-
-
-
 
 myValue returns myValue:
-	myEnum | BooleanValue | myRange;
+	myBoolean | myRange | myStringEnum | myNumberEnum;
+
+myExpression returns myExpression:
+	myBinary | myUnary | myBoolean | myRange | myStringEnum | myNumberEnum | myIdentifier;
 
 EString returns ecore::EString:
 	STRING | ID;
 
 myObject returns myObject:
-	{myObject}
+{myObject}
 	name=EString
 	'{'
 		('has' myAttributeContains+=myAttribute  ( "," myAttributeContains+=myAttribute)* )?
 		('Constrained by' myObjectHas+=myConstraint ( "," myObjectHas+=myConstraint)* )?	
 	'}';
 
+
 myConstraint returns myConstraint:
-	'if' myConstraintContains=myExpression
-	'then' myConstraintContains=myExpression
+		'if' myIfConstraint=myConcreteExpression
+		'then' myThenConstraint=myConcreteExpression
 	;
 
-myAttribute returns myAttribute:	
+myAttribute returns myAttribute:
 	name=EString
 	'['
 		myAttributeContains=myValue
 	']';
 
-myBinary returns myBinary:
-		'left' myBinaryLeft=myExpression // Fix left rec, remove empty quote
-		( Oparand=myBinaryOparators)?
-		'right' myBinaryRight=myExpression
-	;
-
-myUnary returns myUnary:
-		(Oparand=myUnaryOparators)?
-		'single' myUnaryExpression=myExpression // Fix left rec, remove empty quote
+myConcreteExpression returns myConcreteExpression:
+myConcreteEx=myExpression
 ;
 
-myString returns myString:
-	value=AnyURI;
+myBinary returns myBinary:
+	'('
+		myBinaryLeft=myConcreteExpression
+		(Oparand=myBinaryOparators)
+		myBinaryRight=myConcreteExpression
+		')'
+;
 
-myInt returns myInt:
-	value=INT;
-	
-myEnumValue returns myEnumValue:
-	value=INT;
+myUnary returns myUnary:
 
-BoolLiteral returns BoolLiteral:
-value=Boolean;
+		(Oparand=myUnaryOparators)
+		myUnaryExpression=myConcreteExpression
+	;
+
+myBoolean returns myBoolean:
+		trueValue=EString ':'
+		falseValue=EString
+	;
 
 myIdentifier returns myIdentifier:
-	myIntentifierIs=[myAttribute|EString];
+	'*'myIntentifierIs=[myAttribute|EString];
+
+myRange returns myRange:
+	from=INT '-' to=INT
+	;
+
+myStringEnum returns myStringEnum:
+values+=EString ( "," values+=EString)* ;
+
+myNumberEnum returns myNumberEnum:
+	values+=EDouble ( "," values+=EDouble)*;
 
 enum myBinaryOparators returns myBinaryOparators:
 				and = '&&' | or = '|' | gt = '<' | lt = '>' | eq = '=' | is = 'can' | if = 'if' | then = 'then';
@@ -77,27 +85,11 @@ enum myBinaryOparators returns myBinaryOparators:
 enum myUnaryOparators returns myUnaryOparators:
 				not = 'not';
 
-AnyURI returns type::AnyURI:
-	'AnyURI' /* TODO: implement this rule and an appropriate IValueConverter */;
+EBoolean returns ecore::EBoolean:
+	'true' | 'false';
 
-Int0 returns type::Int:
-	'Int' /* TODO: implement this rule and an appropriate IValueConverter */;
+EInt returns ecore::EInt:
+	'-'? INT;
 
-Boolean returns type::Boolean:
-	'Boolean' /* TODO: implement this rule and an appropriate IValueConverter */;
-
-myEnum returns myEnum:	
-		(values+=EString ( "," values+=EString)*)|(values+=INT ( "," values+=INT)*)
-	;
-
-BooleanValue returns BooleanValue:
-		trueValue=EString ':'
-		falseValue=EString
-	;
-
-myRange returns myRange:
-		from=INT '-' to=INT
-	;
-
-AnySimpleType returns type::AnySimpleType:
-	'AnySimpleType' /* TODO: implement this rule and an appropriate IValueConverter */;
+EDouble returns ecore::EDouble:
+	('-'? INT? '.' INT (('E'|'e') '-'? INT)?) | EInt;

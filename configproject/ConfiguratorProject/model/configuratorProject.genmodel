@@ -69,5 +69,8 @@
     <genClasses ecoreClass="configuratorProject.ecore#//myNumberEnum">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myNumberEnum/values"/>
     </genClasses>
+    <genClasses ecoreClass="configuratorProject.ecore#//myConcreteExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myConcreteExpression/myConcreteEx"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

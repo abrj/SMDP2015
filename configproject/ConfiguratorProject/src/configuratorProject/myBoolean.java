@@ -5,22 +5,22 @@ package configuratorProject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Boolean Value</b></em>'.
+ * A representation of the model object '<em><b>my Boolean</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link configuratorProject.BooleanValue#getTrueValue <em>True Value</em>}</li>
- *   <li>{@link configuratorProject.BooleanValue#getFalseValue <em>False Value</em>}</li>
+ *   <li>{@link configuratorProject.myBoolean#getTrueValue <em>True Value</em>}</li>
+ *   <li>{@link configuratorProject.myBoolean#getFalseValue <em>False Value</em>}</li>
  * </ul>
  * </p>
  *
- * @see configuratorProject.ConfiguratorProjectPackage#getBooleanValue()
+ * @see configuratorProject.ConfiguratorProjectPackage#getmyBoolean()
  * @model
  * @generated
  */
-public interface BooleanValue extends myValue {
+public interface myBoolean extends myValue {
 	/**
 	 * Returns the value of the '<em><b>True Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -31,14 +31,14 @@ public interface BooleanValue extends myValue {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>True Value</em>' attribute.
 	 * @see #setTrueValue(String)
-	 * @see configuratorProject.ConfiguratorProjectPackage#getBooleanValue_TrueValue()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
+	 * @see configuratorProject.ConfiguratorProjectPackage#getmyBoolean_TrueValue()
+	 * @model required="true"
 	 * @generated
 	 */
 	String getTrueValue();
 
 	/**
-	 * Sets the value of the '{@link configuratorProject.BooleanValue#getTrueValue <em>True Value</em>}' attribute.
+	 * Sets the value of the '{@link configuratorProject.myBoolean#getTrueValue <em>True Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>True Value</em>' attribute.
@@ -57,14 +57,14 @@ public interface BooleanValue extends myValue {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>False Value</em>' attribute.
 	 * @see #setFalseValue(String)
-	 * @see configuratorProject.ConfiguratorProjectPackage#getBooleanValue_FalseValue()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnyURI" required="true"
+	 * @see configuratorProject.ConfiguratorProjectPackage#getmyBoolean_FalseValue()
+	 * @model required="true"
 	 * @generated
 	 */
 	String getFalseValue();
 
 	/**
-	 * Sets the value of the '{@link configuratorProject.BooleanValue#getFalseValue <em>False Value</em>}' attribute.
+	 * Sets the value of the '{@link configuratorProject.myBoolean#getFalseValue <em>False Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>False Value</em>' attribute.
@@ -73,4 +73,4 @@ public interface BooleanValue extends myValue {
 	 */
 	void setFalseValue(String value);
 
-} // BooleanValue
+} // myBoolean

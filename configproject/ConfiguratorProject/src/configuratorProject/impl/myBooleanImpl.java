@@ -2,8 +2,8 @@
  */
 package configuratorProject.impl;
 
-import configuratorProject.BooleanValue;
 import configuratorProject.ConfiguratorProjectPackage;
+import configuratorProject.myBoolean;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,19 +13,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Boolean Value</b></em>'.
+ * An implementation of the model object '<em><b>my Boolean</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link configuratorProject.impl.BooleanValueImpl#getTrueValue <em>True Value</em>}</li>
- *   <li>{@link configuratorProject.impl.BooleanValueImpl#getFalseValue <em>False Value</em>}</li>
+ *   <li>{@link configuratorProject.impl.myBooleanImpl#getTrueValue <em>True Value</em>}</li>
+ *   <li>{@link configuratorProject.impl.myBooleanImpl#getFalseValue <em>False Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class BooleanValueImpl extends myValueImpl implements BooleanValue {
+public class myBooleanImpl extends myValueImpl implements myBoolean {
 	/**
 	 * The default value of the '{@link #getTrueValue() <em>True Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -71,7 +71,7 @@ public class BooleanValueImpl extends myValueImpl implements BooleanValue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BooleanValueImpl() {
+	protected myBooleanImpl() {
 		super();
 	}
 
@@ -82,7 +82,7 @@ public class BooleanValueImpl extends myValueImpl implements BooleanValue {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ConfiguratorProjectPackage.Literals.BOOLEAN_VALUE;
+		return ConfiguratorProjectPackage.Literals.MY_BOOLEAN;
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class BooleanValueImpl extends myValueImpl implements BooleanValue {
 		String oldTrueValue = trueValue;
 		trueValue = newTrueValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorProjectPackage.BOOLEAN_VALUE__TRUE_VALUE, oldTrueValue, trueValue));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorProjectPackage.MY_BOOLEAN__TRUE_VALUE, oldTrueValue, trueValue));
 	}
 
 	/**
@@ -124,7 +124,7 @@ public class BooleanValueImpl extends myValueImpl implements BooleanValue {
 		String oldFalseValue = falseValue;
 		falseValue = newFalseValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorProjectPackage.BOOLEAN_VALUE__FALSE_VALUE, oldFalseValue, falseValue));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorProjectPackage.MY_BOOLEAN__FALSE_VALUE, oldFalseValue, falseValue));
 	}
 
 	/**
@@ -135,9 +135,9 @@ public class BooleanValueImpl extends myValueImpl implements BooleanValue {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfiguratorProjectPackage.BOOLEAN_VALUE__TRUE_VALUE:
+			case ConfiguratorProjectPackage.MY_BOOLEAN__TRUE_VALUE:
 				return getTrueValue();
-			case ConfiguratorProjectPackage.BOOLEAN_VALUE__FALSE_VALUE:
+			case ConfiguratorProjectPackage.MY_BOOLEAN__FALSE_VALUE:
 				return getFalseValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -151,10 +151,10 @@ public class BooleanValueImpl extends myValueImpl implements BooleanValue {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfiguratorProjectPackage.BOOLEAN_VALUE__TRUE_VALUE:
+			case ConfiguratorProjectPackage.MY_BOOLEAN__TRUE_VALUE:
 				setTrueValue((String)newValue);
 				return;
-			case ConfiguratorProjectPackage.BOOLEAN_VALUE__FALSE_VALUE:
+			case ConfiguratorProjectPackage.MY_BOOLEAN__FALSE_VALUE:
 				setFalseValue((String)newValue);
 				return;
 		}
@@ -169,10 +169,10 @@ public class BooleanValueImpl extends myValueImpl implements BooleanValue {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfiguratorProjectPackage.BOOLEAN_VALUE__TRUE_VALUE:
+			case ConfiguratorProjectPackage.MY_BOOLEAN__TRUE_VALUE:
 				setTrueValue(TRUE_VALUE_EDEFAULT);
 				return;
-			case ConfiguratorProjectPackage.BOOLEAN_VALUE__FALSE_VALUE:
+			case ConfiguratorProjectPackage.MY_BOOLEAN__FALSE_VALUE:
 				setFalseValue(FALSE_VALUE_EDEFAULT);
 				return;
 		}
@@ -187,9 +187,9 @@ public class BooleanValueImpl extends myValueImpl implements BooleanValue {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfiguratorProjectPackage.BOOLEAN_VALUE__TRUE_VALUE:
+			case ConfiguratorProjectPackage.MY_BOOLEAN__TRUE_VALUE:
 				return TRUE_VALUE_EDEFAULT == null ? trueValue != null : !TRUE_VALUE_EDEFAULT.equals(trueValue);
-			case ConfiguratorProjectPackage.BOOLEAN_VALUE__FALSE_VALUE:
+			case ConfiguratorProjectPackage.MY_BOOLEAN__FALSE_VALUE:
 				return FALSE_VALUE_EDEFAULT == null ? falseValue != null : !FALSE_VALUE_EDEFAULT.equals(falseValue);
 		}
 		return super.eIsSet(featureID);
@@ -213,4 +213,4 @@ public class BooleanValueImpl extends myValueImpl implements BooleanValue {
 		return result.toString();
 	}
 
-} //BooleanValueImpl
+} //myBooleanImpl

@@ -78,21 +78,50 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightCurlyBracketKeyword_2_3() { return cRightCurlyBracketKeyword_2_3; }
 	}
 
+	public class MyValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myValue");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cMyBooleanParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cMyRangeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cMyStringEnumParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cMyNumberEnumParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		
+		//myValue:
+		//	myBoolean | myRange | myStringEnum | myNumberEnum;
+		public ParserRule getRule() { return rule; }
+
+		//myBoolean | myRange | myStringEnum | myNumberEnum
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//myBoolean
+		public RuleCall getMyBooleanParserRuleCall_0() { return cMyBooleanParserRuleCall_0; }
+
+		//myRange
+		public RuleCall getMyRangeParserRuleCall_1() { return cMyRangeParserRuleCall_1; }
+
+		//myStringEnum
+		public RuleCall getMyStringEnumParserRuleCall_2() { return cMyStringEnumParserRuleCall_2; }
+
+		//myNumberEnum
+		public RuleCall getMyNumberEnumParserRuleCall_3() { return cMyNumberEnumParserRuleCall_3; }
+	}
+
 	public class MyExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myExpression");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMyBinaryParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMyUnaryParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cMyStringParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cMyIntParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cBoolLiteralParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cMyIdentifierParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cMyBooleanParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cMyRangeParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cMyStringEnumParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cMyNumberEnumParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cMyIdentifierParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		
 		//myExpression:
-		//	myBinary | myUnary | myString | myInt | BoolLiteral | myIdentifier;
+		//	myBinary | myUnary | myBoolean | myRange | myStringEnum | myNumberEnum | myIdentifier;
 		public ParserRule getRule() { return rule; }
 
-		//myBinary | myUnary | myString | myInt | BoolLiteral | myIdentifier
+		//myBinary | myUnary | myBoolean | myRange | myStringEnum | myNumberEnum | myIdentifier
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//myBinary
@@ -101,41 +130,20 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		//myUnary
 		public RuleCall getMyUnaryParserRuleCall_1() { return cMyUnaryParserRuleCall_1; }
 
-		//myString
-		public RuleCall getMyStringParserRuleCall_2() { return cMyStringParserRuleCall_2; }
-
-		//myInt
-		public RuleCall getMyIntParserRuleCall_3() { return cMyIntParserRuleCall_3; }
-
-		//BoolLiteral
-		public RuleCall getBoolLiteralParserRuleCall_4() { return cBoolLiteralParserRuleCall_4; }
-
-		//myIdentifier
-		public RuleCall getMyIdentifierParserRuleCall_5() { return cMyIdentifierParserRuleCall_5; }
-	}
-
-	public class MyValueElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myValue");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cMyEnumParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cBooleanValueParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cMyRangeParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		
-		//myValue:
-		//	myEnum | BooleanValue | myRange;
-		public ParserRule getRule() { return rule; }
-
-		//myEnum | BooleanValue | myRange
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//myEnum
-		public RuleCall getMyEnumParserRuleCall_0() { return cMyEnumParserRuleCall_0; }
-
-		//BooleanValue
-		public RuleCall getBooleanValueParserRuleCall_1() { return cBooleanValueParserRuleCall_1; }
+		//myBoolean
+		public RuleCall getMyBooleanParserRuleCall_2() { return cMyBooleanParserRuleCall_2; }
 
 		//myRange
-		public RuleCall getMyRangeParserRuleCall_2() { return cMyRangeParserRuleCall_2; }
+		public RuleCall getMyRangeParserRuleCall_3() { return cMyRangeParserRuleCall_3; }
+
+		//myStringEnum
+		public RuleCall getMyStringEnumParserRuleCall_4() { return cMyStringEnumParserRuleCall_4; }
+
+		//myNumberEnum
+		public RuleCall getMyNumberEnumParserRuleCall_5() { return cMyNumberEnumParserRuleCall_5; }
+
+		//myIdentifier
+		public RuleCall getMyIdentifierParserRuleCall_6() { return cMyIdentifierParserRuleCall_6; }
 	}
 
 	public class EStringElements extends AbstractParserRuleElementFinder {
@@ -260,36 +268,36 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myConstraint");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cIfKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cMyConstraintContainsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cMyConstraintContainsMyExpressionParserRuleCall_1_0 = (RuleCall)cMyConstraintContainsAssignment_1.eContents().get(0);
+		private final Assignment cMyIfConstraintAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cMyIfConstraintMyConcreteExpressionParserRuleCall_1_0 = (RuleCall)cMyIfConstraintAssignment_1.eContents().get(0);
 		private final Keyword cThenKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cMyConstraintContainsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cMyConstraintContainsMyExpressionParserRuleCall_3_0 = (RuleCall)cMyConstraintContainsAssignment_3.eContents().get(0);
+		private final Assignment cMyThenConstraintAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMyThenConstraintMyConcreteExpressionParserRuleCall_3_0 = (RuleCall)cMyThenConstraintAssignment_3.eContents().get(0);
 		
 		//myConstraint:
-		//	"if" myConstraintContains=myExpression "then" myConstraintContains=myExpression;
+		//	"if" myIfConstraint=myConcreteExpression "then" myThenConstraint=myConcreteExpression;
 		public ParserRule getRule() { return rule; }
 
-		//"if" myConstraintContains=myExpression "then" myConstraintContains=myExpression
+		//"if" myIfConstraint=myConcreteExpression "then" myThenConstraint=myConcreteExpression
 		public Group getGroup() { return cGroup; }
 
 		//"if"
 		public Keyword getIfKeyword_0() { return cIfKeyword_0; }
 
-		//myConstraintContains=myExpression
-		public Assignment getMyConstraintContainsAssignment_1() { return cMyConstraintContainsAssignment_1; }
+		//myIfConstraint=myConcreteExpression
+		public Assignment getMyIfConstraintAssignment_1() { return cMyIfConstraintAssignment_1; }
 
-		//myExpression
-		public RuleCall getMyConstraintContainsMyExpressionParserRuleCall_1_0() { return cMyConstraintContainsMyExpressionParserRuleCall_1_0; }
+		//myConcreteExpression
+		public RuleCall getMyIfConstraintMyConcreteExpressionParserRuleCall_1_0() { return cMyIfConstraintMyConcreteExpressionParserRuleCall_1_0; }
 
 		//"then"
 		public Keyword getThenKeyword_2() { return cThenKeyword_2; }
 
-		//myConstraintContains=myExpression
-		public Assignment getMyConstraintContainsAssignment_3() { return cMyConstraintContainsAssignment_3; }
+		//myThenConstraint=myConcreteExpression
+		public Assignment getMyThenConstraintAssignment_3() { return cMyThenConstraintAssignment_3; }
 
-		//myExpression
-		public RuleCall getMyConstraintContainsMyExpressionParserRuleCall_3_0() { return cMyConstraintContainsMyExpressionParserRuleCall_3_0; }
+		//myConcreteExpression
+		public RuleCall getMyThenConstraintMyConcreteExpressionParserRuleCall_3_0() { return cMyThenConstraintMyConcreteExpressionParserRuleCall_3_0; }
 	}
 
 	public class MyAttributeElements extends AbstractParserRuleElementFinder {
@@ -328,52 +336,64 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightSquareBracketKeyword_3() { return cRightSquareBracketKeyword_3; }
 	}
 
+	public class MyConcreteExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myConcreteExpression");
+		private final Assignment cMyConcreteExAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cMyConcreteExMyExpressionParserRuleCall_0 = (RuleCall)cMyConcreteExAssignment.eContents().get(0);
+		
+		//myConcreteExpression:
+		//	myConcreteEx=myExpression;
+		public ParserRule getRule() { return rule; }
+
+		//myConcreteEx=myExpression
+		public Assignment getMyConcreteExAssignment() { return cMyConcreteExAssignment; }
+
+		//myExpression
+		public RuleCall getMyConcreteExMyExpressionParserRuleCall_0() { return cMyConcreteExMyExpressionParserRuleCall_0; }
+	}
+
 	public class MyBinaryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myBinary");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cMyBinaryLeftAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cMyBinaryLeftMyExpressionParserRuleCall_1_0 = (RuleCall)cMyBinaryLeftAssignment_1.eContents().get(0);
+		private final RuleCall cMyBinaryLeftMyConcreteExpressionParserRuleCall_1_0 = (RuleCall)cMyBinaryLeftAssignment_1.eContents().get(0);
 		private final Assignment cOparandAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cOparandMyBinaryOparatorsEnumRuleCall_2_0 = (RuleCall)cOparandAssignment_2.eContents().get(0);
-		private final Keyword cRightKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cMyBinaryRightAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cMyBinaryRightMyExpressionParserRuleCall_4_0 = (RuleCall)cMyBinaryRightAssignment_4.eContents().get(0);
+		private final Assignment cMyBinaryRightAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cMyBinaryRightMyConcreteExpressionParserRuleCall_3_0 = (RuleCall)cMyBinaryRightAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//myBinary:
-		//	"left" myBinaryLeft= // Fix left rec, remove empty quote
-		//	myExpression Oparand=myBinaryOparators? "right" myBinaryRight=myExpression;
+		//	"(" myBinaryLeft=myConcreteExpression Oparand=myBinaryOparators myBinaryRight=myConcreteExpression ")";
 		public ParserRule getRule() { return rule; }
 
-		//"left" myBinaryLeft= // Fix left rec, remove empty quote
-		//myExpression Oparand=myBinaryOparators? "right" myBinaryRight=myExpression
+		//"(" myBinaryLeft=myConcreteExpression Oparand=myBinaryOparators myBinaryRight=myConcreteExpression ")"
 		public Group getGroup() { return cGroup; }
 
-		//"left"
-		public Keyword getLeftKeyword_0() { return cLeftKeyword_0; }
+		//"("
+		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
 
-		//myBinaryLeft= // Fix left rec, remove empty quote
-		//myExpression
+		//myBinaryLeft=myConcreteExpression
 		public Assignment getMyBinaryLeftAssignment_1() { return cMyBinaryLeftAssignment_1; }
 
-		//// Fix left rec, remove empty quote
-		//myExpression
-		public RuleCall getMyBinaryLeftMyExpressionParserRuleCall_1_0() { return cMyBinaryLeftMyExpressionParserRuleCall_1_0; }
+		//myConcreteExpression
+		public RuleCall getMyBinaryLeftMyConcreteExpressionParserRuleCall_1_0() { return cMyBinaryLeftMyConcreteExpressionParserRuleCall_1_0; }
 
-		//Oparand=myBinaryOparators?
+		//Oparand=myBinaryOparators
 		public Assignment getOparandAssignment_2() { return cOparandAssignment_2; }
 
 		//myBinaryOparators
 		public RuleCall getOparandMyBinaryOparatorsEnumRuleCall_2_0() { return cOparandMyBinaryOparatorsEnumRuleCall_2_0; }
 
-		//"right"
-		public Keyword getRightKeyword_3() { return cRightKeyword_3; }
+		//myBinaryRight=myConcreteExpression
+		public Assignment getMyBinaryRightAssignment_3() { return cMyBinaryRightAssignment_3; }
 
-		//myBinaryRight=myExpression
-		public Assignment getMyBinaryRightAssignment_4() { return cMyBinaryRightAssignment_4; }
+		//myConcreteExpression
+		public RuleCall getMyBinaryRightMyConcreteExpressionParserRuleCall_3_0() { return cMyBinaryRightMyConcreteExpressionParserRuleCall_3_0; }
 
-		//myExpression
-		public RuleCall getMyBinaryRightMyExpressionParserRuleCall_4_0() { return cMyBinaryRightMyExpressionParserRuleCall_4_0; }
+		//")"
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
 	}
 
 	public class MyUnaryElements extends AbstractParserRuleElementFinder {
@@ -381,211 +401,31 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cOparandAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cOparandMyUnaryOparatorsEnumRuleCall_0_0 = (RuleCall)cOparandAssignment_0.eContents().get(0);
-		private final Keyword cSingleKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cMyUnaryExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cMyUnaryExpressionMyExpressionParserRuleCall_2_0 = (RuleCall)cMyUnaryExpressionAssignment_2.eContents().get(0);
+		private final Assignment cMyUnaryExpressionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cMyUnaryExpressionMyConcreteExpressionParserRuleCall_1_0 = (RuleCall)cMyUnaryExpressionAssignment_1.eContents().get(0);
 		
 		//myUnary:
-		//	Oparand=myUnaryOparators? "single" myUnaryExpression= // Fix left rec, remove empty quote
-		//	myExpression;
+		//	Oparand=myUnaryOparators myUnaryExpression=myConcreteExpression;
 		public ParserRule getRule() { return rule; }
 
-		//Oparand=myUnaryOparators? "single" myUnaryExpression= // Fix left rec, remove empty quote
-		//myExpression
+		//Oparand=myUnaryOparators myUnaryExpression=myConcreteExpression
 		public Group getGroup() { return cGroup; }
 
-		//Oparand=myUnaryOparators?
+		//Oparand=myUnaryOparators
 		public Assignment getOparandAssignment_0() { return cOparandAssignment_0; }
 
 		//myUnaryOparators
 		public RuleCall getOparandMyUnaryOparatorsEnumRuleCall_0_0() { return cOparandMyUnaryOparatorsEnumRuleCall_0_0; }
 
-		//"single"
-		public Keyword getSingleKeyword_1() { return cSingleKeyword_1; }
+		//myUnaryExpression=myConcreteExpression
+		public Assignment getMyUnaryExpressionAssignment_1() { return cMyUnaryExpressionAssignment_1; }
 
-		//myUnaryExpression= // Fix left rec, remove empty quote
-		//myExpression
-		public Assignment getMyUnaryExpressionAssignment_2() { return cMyUnaryExpressionAssignment_2; }
-
-		//// Fix left rec, remove empty quote
-		//myExpression
-		public RuleCall getMyUnaryExpressionMyExpressionParserRuleCall_2_0() { return cMyUnaryExpressionMyExpressionParserRuleCall_2_0; }
+		//myConcreteExpression
+		public RuleCall getMyUnaryExpressionMyConcreteExpressionParserRuleCall_1_0() { return cMyUnaryExpressionMyConcreteExpressionParserRuleCall_1_0; }
 	}
 
-	public class MyStringElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myString");
-		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueAnyURIParserRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
-		
-		//myString:
-		//	value=AnyURI;
-		public ParserRule getRule() { return rule; }
-
-		//value=AnyURI
-		public Assignment getValueAssignment() { return cValueAssignment; }
-
-		//AnyURI
-		public RuleCall getValueAnyURIParserRuleCall_0() { return cValueAnyURIParserRuleCall_0; }
-	}
-
-	public class MyIntElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myInt");
-		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueINTTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
-		
-		//myInt:
-		//	value=INT;
-		public ParserRule getRule() { return rule; }
-
-		//value=INT
-		public Assignment getValueAssignment() { return cValueAssignment; }
-
-		//INT
-		public RuleCall getValueINTTerminalRuleCall_0() { return cValueINTTerminalRuleCall_0; }
-	}
-
-	public class BoolLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BoolLiteral");
-		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueBooleanParserRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
-		
-		//BoolLiteral:
-		//	value=Boolean;
-		public ParserRule getRule() { return rule; }
-
-		//value=Boolean
-		public Assignment getValueAssignment() { return cValueAssignment; }
-
-		//Boolean
-		public RuleCall getValueBooleanParserRuleCall_0() { return cValueBooleanParserRuleCall_0; }
-	}
-
-	public class MyIdentifierElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myIdentifier");
-		private final Assignment cMyIntentifierIsAssignment = (Assignment)rule.eContents().get(1);
-		private final CrossReference cMyIntentifierIsMyAttributeCrossReference_0 = (CrossReference)cMyIntentifierIsAssignment.eContents().get(0);
-		private final RuleCall cMyIntentifierIsMyAttributeEStringParserRuleCall_0_1 = (RuleCall)cMyIntentifierIsMyAttributeCrossReference_0.eContents().get(1);
-		
-		//myIdentifier:
-		//	myIntentifierIs=[myAttribute|EString];
-		public ParserRule getRule() { return rule; }
-
-		//myIntentifierIs=[myAttribute|EString]
-		public Assignment getMyIntentifierIsAssignment() { return cMyIntentifierIsAssignment; }
-
-		//[myAttribute|EString]
-		public CrossReference getMyIntentifierIsMyAttributeCrossReference_0() { return cMyIntentifierIsMyAttributeCrossReference_0; }
-
-		//EString
-		public RuleCall getMyIntentifierIsMyAttributeEStringParserRuleCall_0_1() { return cMyIntentifierIsMyAttributeEStringParserRuleCall_0_1; }
-	}
-
-	public class AnyURIElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AnyURI");
-		private final RuleCall cEStringParserRuleCall = (RuleCall)rule.eContents().get(1);
-		
-		/// * TODO: implement this rule and an appropriate IValueConverter * / AnyURI returns type::AnyURI:
-		//	EString;
-		public ParserRule getRule() { return rule; }
-
-		//EString
-		public RuleCall getEStringParserRuleCall() { return cEStringParserRuleCall; }
-	}
-
-	public class Int0Elements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Int0");
-		private final Keyword cIntKeyword = (Keyword)rule.eContents().get(1);
-		
-		/// * TODO: implement this rule and an appropriate IValueConverter * / Int0 returns type::Int:
-		//	"Int";
-		public ParserRule getRule() { return rule; }
-
-		//"Int"
-		public Keyword getIntKeyword() { return cIntKeyword; }
-	}
-
-	public class BooleanElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Boolean");
-		private final Keyword cBooleanKeyword = (Keyword)rule.eContents().get(1);
-		
-		/// * TODO: implement this rule and an appropriate IValueConverter * / Boolean returns type::Boolean:
-		//	"Boolean";
-		public ParserRule getRule() { return rule; }
-
-		//"Boolean"
-		public Keyword getBooleanKeyword() { return cBooleanKeyword; }
-	}
-
-	public class MyEnumElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myEnum");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Assignment cValuesAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
-		private final RuleCall cValuesEStringParserRuleCall_0_0_0 = (RuleCall)cValuesAssignment_0_0.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cGroup_0.eContents().get(1);
-		private final Keyword cCommaKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
-		private final Assignment cValuesAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final RuleCall cValuesEStringParserRuleCall_0_1_1_0 = (RuleCall)cValuesAssignment_0_1_1.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Assignment cValuesAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cValuesINTTerminalRuleCall_1_0_0 = (RuleCall)cValuesAssignment_1_0.eContents().get(0);
-		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
-		private final Keyword cCommaKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
-		private final Assignment cValuesAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
-		private final RuleCall cValuesINTTerminalRuleCall_1_1_1_0 = (RuleCall)cValuesAssignment_1_1_1.eContents().get(0);
-		
-		//myEnum:
-		//	values+=EString ("," values+=EString)* | values+=INT ("," values+=INT)*;
-		public ParserRule getRule() { return rule; }
-
-		//values+=EString ("," values+=EString)* | values+=INT ("," values+=INT)*
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//values+=EString ("," values+=EString)*
-		public Group getGroup_0() { return cGroup_0; }
-
-		//values+=EString
-		public Assignment getValuesAssignment_0_0() { return cValuesAssignment_0_0; }
-
-		//EString
-		public RuleCall getValuesEStringParserRuleCall_0_0_0() { return cValuesEStringParserRuleCall_0_0_0; }
-
-		//("," values+=EString)*
-		public Group getGroup_0_1() { return cGroup_0_1; }
-
-		//","
-		public Keyword getCommaKeyword_0_1_0() { return cCommaKeyword_0_1_0; }
-
-		//values+=EString
-		public Assignment getValuesAssignment_0_1_1() { return cValuesAssignment_0_1_1; }
-
-		//EString
-		public RuleCall getValuesEStringParserRuleCall_0_1_1_0() { return cValuesEStringParserRuleCall_0_1_1_0; }
-
-		//values+=INT ("," values+=INT)*
-		public Group getGroup_1() { return cGroup_1; }
-
-		//values+=INT
-		public Assignment getValuesAssignment_1_0() { return cValuesAssignment_1_0; }
-
-		//INT
-		public RuleCall getValuesINTTerminalRuleCall_1_0_0() { return cValuesINTTerminalRuleCall_1_0_0; }
-
-		//("," values+=INT)*
-		public Group getGroup_1_1() { return cGroup_1_1; }
-
-		//","
-		public Keyword getCommaKeyword_1_1_0() { return cCommaKeyword_1_1_0; }
-
-		//values+=INT
-		public Assignment getValuesAssignment_1_1_1() { return cValuesAssignment_1_1_1; }
-
-		//INT
-		public RuleCall getValuesINTTerminalRuleCall_1_1_1_0() { return cValuesINTTerminalRuleCall_1_1_1_0; }
-	}
-
-	public class BooleanValueElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BooleanValue");
+	public class MyBooleanElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myBoolean");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTrueValueAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cTrueValueEStringParserRuleCall_0_0 = (RuleCall)cTrueValueAssignment_0.eContents().get(0);
@@ -593,7 +433,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cFalseValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cFalseValueEStringParserRuleCall_2_0 = (RuleCall)cFalseValueAssignment_2.eContents().get(0);
 		
-		//BooleanValue:
+		//myBoolean:
 		//	trueValue=EString ":" falseValue=EString;
 		public ParserRule getRule() { return rule; }
 
@@ -614,6 +454,34 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 
 		//EString
 		public RuleCall getFalseValueEStringParserRuleCall_2_0() { return cFalseValueEStringParserRuleCall_2_0; }
+	}
+
+	public class MyIdentifierElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myIdentifier");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cAsteriskKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cMyIntentifierIsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cMyIntentifierIsMyAttributeCrossReference_1_0 = (CrossReference)cMyIntentifierIsAssignment_1.eContents().get(0);
+		private final RuleCall cMyIntentifierIsMyAttributeEStringParserRuleCall_1_0_1 = (RuleCall)cMyIntentifierIsMyAttributeCrossReference_1_0.eContents().get(1);
+		
+		//myIdentifier:
+		//	"*" myIntentifierIs=[myAttribute|EString];
+		public ParserRule getRule() { return rule; }
+
+		//"*" myIntentifierIs=[myAttribute|EString]
+		public Group getGroup() { return cGroup; }
+
+		//"*"
+		public Keyword getAsteriskKeyword_0() { return cAsteriskKeyword_0; }
+
+		//myIntentifierIs=[myAttribute|EString]
+		public Assignment getMyIntentifierIsAssignment_1() { return cMyIntentifierIsAssignment_1; }
+
+		//[myAttribute|EString]
+		public CrossReference getMyIntentifierIsMyAttributeCrossReference_1_0() { return cMyIntentifierIsMyAttributeCrossReference_1_0; }
+
+		//EString
+		public RuleCall getMyIntentifierIsMyAttributeEStringParserRuleCall_1_0_1() { return cMyIntentifierIsMyAttributeEStringParserRuleCall_1_0_1; }
 	}
 
 	public class MyRangeElements extends AbstractParserRuleElementFinder {
@@ -648,16 +516,176 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getToINTTerminalRuleCall_2_0() { return cToINTTerminalRuleCall_2_0; }
 	}
 
-	public class AnySimpleTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AnySimpleType");
-		private final Keyword cAnySimpleTypeKeyword = (Keyword)rule.eContents().get(1);
+	public class MyStringEnumElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myStringEnum");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cValuesAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cValuesEStringParserRuleCall_0_0 = (RuleCall)cValuesAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cValuesAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cValuesEStringParserRuleCall_1_1_0 = (RuleCall)cValuesAssignment_1_1.eContents().get(0);
 		
-		/// * TODO: implement this rule and an appropriate IValueConverter * / AnySimpleType returns type::AnySimpleType:
-		//	"AnySimpleType";
+		//myStringEnum:
+		//	values+=EString ("," values+=EString)*;
 		public ParserRule getRule() { return rule; }
 
-		//"AnySimpleType"
-		public Keyword getAnySimpleTypeKeyword() { return cAnySimpleTypeKeyword; }
+		//values+=EString ("," values+=EString)*
+		public Group getGroup() { return cGroup; }
+
+		//values+=EString
+		public Assignment getValuesAssignment_0() { return cValuesAssignment_0; }
+
+		//EString
+		public RuleCall getValuesEStringParserRuleCall_0_0() { return cValuesEStringParserRuleCall_0_0; }
+
+		//("," values+=EString)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//","
+		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
+
+		//values+=EString
+		public Assignment getValuesAssignment_1_1() { return cValuesAssignment_1_1; }
+
+		//EString
+		public RuleCall getValuesEStringParserRuleCall_1_1_0() { return cValuesEStringParserRuleCall_1_1_0; }
+	}
+
+	public class MyNumberEnumElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "myNumberEnum");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cValuesAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cValuesEDoubleParserRuleCall_0_0 = (RuleCall)cValuesAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cValuesAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cValuesEDoubleParserRuleCall_1_1_0 = (RuleCall)cValuesAssignment_1_1.eContents().get(0);
+		
+		//myNumberEnum:
+		//	values+=EDouble ("," values+=EDouble)*;
+		public ParserRule getRule() { return rule; }
+
+		//values+=EDouble ("," values+=EDouble)*
+		public Group getGroup() { return cGroup; }
+
+		//values+=EDouble
+		public Assignment getValuesAssignment_0() { return cValuesAssignment_0; }
+
+		//EDouble
+		public RuleCall getValuesEDoubleParserRuleCall_0_0() { return cValuesEDoubleParserRuleCall_0_0; }
+
+		//("," values+=EDouble)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//","
+		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
+
+		//values+=EDouble
+		public Assignment getValuesAssignment_1_1() { return cValuesAssignment_1_1; }
+
+		//EDouble
+		public RuleCall getValuesEDoubleParserRuleCall_1_1_0() { return cValuesEDoubleParserRuleCall_1_1_0; }
+	}
+
+	public class EBooleanElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EBoolean");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cTrueKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cFalseKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		
+		//EBoolean returns ecore::EBoolean:
+		//	"true" | "false";
+		public ParserRule getRule() { return rule; }
+
+		//"true" | "false"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//"true"
+		public Keyword getTrueKeyword_0() { return cTrueKeyword_0; }
+
+		//"false"
+		public Keyword getFalseKeyword_1() { return cFalseKeyword_1; }
+	}
+
+	public class EIntElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EInt");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		
+		//EInt returns ecore::EInt:
+		//	"-"? INT;
+		public ParserRule getRule() { return rule; }
+
+		//"-"? INT
+		public Group getGroup() { return cGroup; }
+
+		//"-"?
+		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
+
+		//INT
+		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
+	}
+
+	public class EDoubleElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EDouble");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final RuleCall cINTTerminalRuleCall_0_3 = (RuleCall)cGroup_0.eContents().get(3);
+		private final Group cGroup_0_4 = (Group)cGroup_0.eContents().get(4);
+		private final Alternatives cAlternatives_0_4_0 = (Alternatives)cGroup_0_4.eContents().get(0);
+		private final Keyword cEKeyword_0_4_0_0 = (Keyword)cAlternatives_0_4_0.eContents().get(0);
+		private final Keyword cEKeyword_0_4_0_1 = (Keyword)cAlternatives_0_4_0.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_0_4_1 = (Keyword)cGroup_0_4.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_0_4_2 = (RuleCall)cGroup_0_4.eContents().get(2);
+		private final RuleCall cEIntParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//EDouble returns ecore::EDouble:
+		//	"-"? INT? "." INT (("E" | "e") "-"? INT)? | EInt;
+		public ParserRule getRule() { return rule; }
+
+		//"-"? INT? "." INT (("E" | "e") "-"? INT)? | EInt
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//"-"? INT? "." INT (("E" | "e") "-"? INT)?
+		public Group getGroup_0() { return cGroup_0; }
+
+		//"-"?
+		public Keyword getHyphenMinusKeyword_0_0() { return cHyphenMinusKeyword_0_0; }
+
+		//INT?
+		public RuleCall getINTTerminalRuleCall_0_1() { return cINTTerminalRuleCall_0_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_0_2() { return cFullStopKeyword_0_2; }
+
+		//INT
+		public RuleCall getINTTerminalRuleCall_0_3() { return cINTTerminalRuleCall_0_3; }
+
+		//(("E" | "e") "-"? INT)?
+		public Group getGroup_0_4() { return cGroup_0_4; }
+
+		//"E" | "e"
+		public Alternatives getAlternatives_0_4_0() { return cAlternatives_0_4_0; }
+
+		//"E"
+		public Keyword getEKeyword_0_4_0_0() { return cEKeyword_0_4_0_0; }
+
+		//"e"
+		public Keyword getEKeyword_0_4_0_1() { return cEKeyword_0_4_0_1; }
+
+		//"-"?
+		public Keyword getHyphenMinusKeyword_0_4_1() { return cHyphenMinusKeyword_0_4_1; }
+
+		//INT
+		public RuleCall getINTTerminalRuleCall_0_4_2() { return cINTTerminalRuleCall_0_4_2; }
+
+		//EInt
+		public RuleCall getEIntParserRuleCall_1() { return cEIntParserRuleCall_1; }
 	}
 	
 	
@@ -754,27 +782,25 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	private MyModelElements pMyModel;
-	private MyExpressionElements pMyExpression;
 	private MyValueElements pMyValue;
+	private MyExpressionElements pMyExpression;
 	private EStringElements pEString;
 	private MyObjectElements pMyObject;
 	private MyConstraintElements pMyConstraint;
 	private MyAttributeElements pMyAttribute;
+	private MyConcreteExpressionElements pMyConcreteExpression;
 	private MyBinaryElements pMyBinary;
 	private MyUnaryElements pMyUnary;
-	private MyStringElements pMyString;
-	private MyIntElements pMyInt;
-	private BoolLiteralElements pBoolLiteral;
+	private MyBooleanElements pMyBoolean;
 	private MyIdentifierElements pMyIdentifier;
+	private MyRangeElements pMyRange;
+	private MyStringEnumElements pMyStringEnum;
+	private MyNumberEnumElements pMyNumberEnum;
 	private MyBinaryOparatorsElements unknownRuleMyBinaryOparators;
 	private MyUnaryOparatorsElements unknownRuleMyUnaryOparators;
-	private AnyURIElements pAnyURI;
-	private Int0Elements pInt0;
-	private BooleanElements pBoolean;
-	private MyEnumElements pMyEnum;
-	private BooleanValueElements pBooleanValue;
-	private MyRangeElements pMyRange;
-	private AnySimpleTypeElements pAnySimpleType;
+	private EBooleanElements pEBoolean;
+	private EIntElements pEInt;
+	private EDoubleElements pEDouble;
 	
 	private final Grammar grammar;
 
@@ -824,24 +850,24 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getMyModelAccess().getRule();
 	}
 
-	//myExpression:
-	//	myBinary | myUnary | myString | myInt | BoolLiteral | myIdentifier;
-	public MyExpressionElements getMyExpressionAccess() {
-		return (pMyExpression != null) ? pMyExpression : (pMyExpression = new MyExpressionElements());
-	}
-	
-	public ParserRule getMyExpressionRule() {
-		return getMyExpressionAccess().getRule();
-	}
-
 	//myValue:
-	//	myEnum | BooleanValue | myRange;
+	//	myBoolean | myRange | myStringEnum | myNumberEnum;
 	public MyValueElements getMyValueAccess() {
 		return (pMyValue != null) ? pMyValue : (pMyValue = new MyValueElements());
 	}
 	
 	public ParserRule getMyValueRule() {
 		return getMyValueAccess().getRule();
+	}
+
+	//myExpression:
+	//	myBinary | myUnary | myBoolean | myRange | myStringEnum | myNumberEnum | myIdentifier;
+	public MyExpressionElements getMyExpressionAccess() {
+		return (pMyExpression != null) ? pMyExpression : (pMyExpression = new MyExpressionElements());
+	}
+	
+	public ParserRule getMyExpressionRule() {
+		return getMyExpressionAccess().getRule();
 	}
 
 	//EString returns ecore::EString:
@@ -866,7 +892,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//myConstraint:
-	//	"if" myConstraintContains=myExpression "then" myConstraintContains=myExpression;
+	//	"if" myIfConstraint=myConcreteExpression "then" myThenConstraint=myConcreteExpression;
 	public MyConstraintElements getMyConstraintAccess() {
 		return (pMyConstraint != null) ? pMyConstraint : (pMyConstraint = new MyConstraintElements());
 	}
@@ -885,9 +911,18 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getMyAttributeAccess().getRule();
 	}
 
+	//myConcreteExpression:
+	//	myConcreteEx=myExpression;
+	public MyConcreteExpressionElements getMyConcreteExpressionAccess() {
+		return (pMyConcreteExpression != null) ? pMyConcreteExpression : (pMyConcreteExpression = new MyConcreteExpressionElements());
+	}
+	
+	public ParserRule getMyConcreteExpressionRule() {
+		return getMyConcreteExpressionAccess().getRule();
+	}
+
 	//myBinary:
-	//	"left" myBinaryLeft= // Fix left rec, remove empty quote
-	//	myExpression Oparand=myBinaryOparators? "right" myBinaryRight=myExpression;
+	//	"(" myBinaryLeft=myConcreteExpression Oparand=myBinaryOparators myBinaryRight=myConcreteExpression ")";
 	public MyBinaryElements getMyBinaryAccess() {
 		return (pMyBinary != null) ? pMyBinary : (pMyBinary = new MyBinaryElements());
 	}
@@ -897,8 +932,7 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//myUnary:
-	//	Oparand=myUnaryOparators? "single" myUnaryExpression= // Fix left rec, remove empty quote
-	//	myExpression;
+	//	Oparand=myUnaryOparators myUnaryExpression=myConcreteExpression;
 	public MyUnaryElements getMyUnaryAccess() {
 		return (pMyUnary != null) ? pMyUnary : (pMyUnary = new MyUnaryElements());
 	}
@@ -907,44 +941,54 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getMyUnaryAccess().getRule();
 	}
 
-	//myString:
-	//	value=AnyURI;
-	public MyStringElements getMyStringAccess() {
-		return (pMyString != null) ? pMyString : (pMyString = new MyStringElements());
+	//myBoolean:
+	//	trueValue=EString ":" falseValue=EString;
+	public MyBooleanElements getMyBooleanAccess() {
+		return (pMyBoolean != null) ? pMyBoolean : (pMyBoolean = new MyBooleanElements());
 	}
 	
-	public ParserRule getMyStringRule() {
-		return getMyStringAccess().getRule();
-	}
-
-	//myInt:
-	//	value=INT;
-	public MyIntElements getMyIntAccess() {
-		return (pMyInt != null) ? pMyInt : (pMyInt = new MyIntElements());
-	}
-	
-	public ParserRule getMyIntRule() {
-		return getMyIntAccess().getRule();
-	}
-
-	//BoolLiteral:
-	//	value=Boolean;
-	public BoolLiteralElements getBoolLiteralAccess() {
-		return (pBoolLiteral != null) ? pBoolLiteral : (pBoolLiteral = new BoolLiteralElements());
-	}
-	
-	public ParserRule getBoolLiteralRule() {
-		return getBoolLiteralAccess().getRule();
+	public ParserRule getMyBooleanRule() {
+		return getMyBooleanAccess().getRule();
 	}
 
 	//myIdentifier:
-	//	myIntentifierIs=[myAttribute|EString];
+	//	"*" myIntentifierIs=[myAttribute|EString];
 	public MyIdentifierElements getMyIdentifierAccess() {
 		return (pMyIdentifier != null) ? pMyIdentifier : (pMyIdentifier = new MyIdentifierElements());
 	}
 	
 	public ParserRule getMyIdentifierRule() {
 		return getMyIdentifierAccess().getRule();
+	}
+
+	//myRange:
+	//	from=INT "-" to=INT;
+	public MyRangeElements getMyRangeAccess() {
+		return (pMyRange != null) ? pMyRange : (pMyRange = new MyRangeElements());
+	}
+	
+	public ParserRule getMyRangeRule() {
+		return getMyRangeAccess().getRule();
+	}
+
+	//myStringEnum:
+	//	values+=EString ("," values+=EString)*;
+	public MyStringEnumElements getMyStringEnumAccess() {
+		return (pMyStringEnum != null) ? pMyStringEnum : (pMyStringEnum = new MyStringEnumElements());
+	}
+	
+	public ParserRule getMyStringEnumRule() {
+		return getMyStringEnumAccess().getRule();
+	}
+
+	//myNumberEnum:
+	//	values+=EDouble ("," values+=EDouble)*;
+	public MyNumberEnumElements getMyNumberEnumAccess() {
+		return (pMyNumberEnum != null) ? pMyNumberEnum : (pMyNumberEnum = new MyNumberEnumElements());
+	}
+	
+	public ParserRule getMyNumberEnumRule() {
+		return getMyNumberEnumAccess().getRule();
 	}
 
 	//enum myBinaryOparators:
@@ -967,74 +1011,34 @@ public class SmdpDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getMyUnaryOparatorsAccess().getRule();
 	}
 
-	/// * TODO: implement this rule and an appropriate IValueConverter * / AnyURI returns type::AnyURI:
-	//	EString;
-	public AnyURIElements getAnyURIAccess() {
-		return (pAnyURI != null) ? pAnyURI : (pAnyURI = new AnyURIElements());
+	//EBoolean returns ecore::EBoolean:
+	//	"true" | "false";
+	public EBooleanElements getEBooleanAccess() {
+		return (pEBoolean != null) ? pEBoolean : (pEBoolean = new EBooleanElements());
 	}
 	
-	public ParserRule getAnyURIRule() {
-		return getAnyURIAccess().getRule();
+	public ParserRule getEBooleanRule() {
+		return getEBooleanAccess().getRule();
 	}
 
-	/// * TODO: implement this rule and an appropriate IValueConverter * / Int0 returns type::Int:
-	//	"Int";
-	public Int0Elements getInt0Access() {
-		return (pInt0 != null) ? pInt0 : (pInt0 = new Int0Elements());
+	//EInt returns ecore::EInt:
+	//	"-"? INT;
+	public EIntElements getEIntAccess() {
+		return (pEInt != null) ? pEInt : (pEInt = new EIntElements());
 	}
 	
-	public ParserRule getInt0Rule() {
-		return getInt0Access().getRule();
+	public ParserRule getEIntRule() {
+		return getEIntAccess().getRule();
 	}
 
-	/// * TODO: implement this rule and an appropriate IValueConverter * / Boolean returns type::Boolean:
-	//	"Boolean";
-	public BooleanElements getBooleanAccess() {
-		return (pBoolean != null) ? pBoolean : (pBoolean = new BooleanElements());
+	//EDouble returns ecore::EDouble:
+	//	"-"? INT? "." INT (("E" | "e") "-"? INT)? | EInt;
+	public EDoubleElements getEDoubleAccess() {
+		return (pEDouble != null) ? pEDouble : (pEDouble = new EDoubleElements());
 	}
 	
-	public ParserRule getBooleanRule() {
-		return getBooleanAccess().getRule();
-	}
-
-	//myEnum:
-	//	values+=EString ("," values+=EString)* | values+=INT ("," values+=INT)*;
-	public MyEnumElements getMyEnumAccess() {
-		return (pMyEnum != null) ? pMyEnum : (pMyEnum = new MyEnumElements());
-	}
-	
-	public ParserRule getMyEnumRule() {
-		return getMyEnumAccess().getRule();
-	}
-
-	//BooleanValue:
-	//	trueValue=EString ":" falseValue=EString;
-	public BooleanValueElements getBooleanValueAccess() {
-		return (pBooleanValue != null) ? pBooleanValue : (pBooleanValue = new BooleanValueElements());
-	}
-	
-	public ParserRule getBooleanValueRule() {
-		return getBooleanValueAccess().getRule();
-	}
-
-	//myRange:
-	//	from=INT "-" to=INT;
-	public MyRangeElements getMyRangeAccess() {
-		return (pMyRange != null) ? pMyRange : (pMyRange = new MyRangeElements());
-	}
-	
-	public ParserRule getMyRangeRule() {
-		return getMyRangeAccess().getRule();
-	}
-
-	/// * TODO: implement this rule and an appropriate IValueConverter * / AnySimpleType returns type::AnySimpleType:
-	//	"AnySimpleType";
-	public AnySimpleTypeElements getAnySimpleTypeAccess() {
-		return (pAnySimpleType != null) ? pAnySimpleType : (pAnySimpleType = new AnySimpleTypeElements());
-	}
-	
-	public ParserRule getAnySimpleTypeRule() {
-		return getAnySimpleTypeAccess().getRule();
+	public ParserRule getEDoubleRule() {
+		return getEDoubleAccess().getRule();
 	}
 
 	//terminal ID:

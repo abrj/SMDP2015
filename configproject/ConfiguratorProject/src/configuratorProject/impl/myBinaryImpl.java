@@ -5,7 +5,7 @@ package configuratorProject.impl;
 import configuratorProject.ConfiguratorProjectPackage;
 import configuratorProject.myBinary;
 import configuratorProject.myBinaryOparators;
-import configuratorProject.myExpression;
+import configuratorProject.myConcreteExpression;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -59,7 +59,7 @@ public class myBinaryImpl extends myExpressionImpl implements myBinary {
 	 * @generated
 	 * @ordered
 	 */
-	protected myExpression myBinaryLeft;
+	protected myConcreteExpression myBinaryLeft;
 
 	/**
 	 * The cached value of the '{@link #getMyBinaryRight() <em>My Binary Right</em>}' containment reference.
@@ -69,7 +69,7 @@ public class myBinaryImpl extends myExpressionImpl implements myBinary {
 	 * @generated
 	 * @ordered
 	 */
-	protected myExpression myBinaryRight;
+	protected myConcreteExpression myBinaryRight;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -116,7 +116,7 @@ public class myBinaryImpl extends myExpressionImpl implements myBinary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public myExpression getMyBinaryLeft() {
+	public myConcreteExpression getMyBinaryLeft() {
 		return myBinaryLeft;
 	}
 
@@ -125,8 +125,8 @@ public class myBinaryImpl extends myExpressionImpl implements myBinary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetMyBinaryLeft(myExpression newMyBinaryLeft, NotificationChain msgs) {
-		myExpression oldMyBinaryLeft = myBinaryLeft;
+	public NotificationChain basicSetMyBinaryLeft(myConcreteExpression newMyBinaryLeft, NotificationChain msgs) {
+		myConcreteExpression oldMyBinaryLeft = myBinaryLeft;
 		myBinaryLeft = newMyBinaryLeft;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfiguratorProjectPackage.MY_BINARY__MY_BINARY_LEFT, oldMyBinaryLeft, newMyBinaryLeft);
@@ -140,7 +140,7 @@ public class myBinaryImpl extends myExpressionImpl implements myBinary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMyBinaryLeft(myExpression newMyBinaryLeft) {
+	public void setMyBinaryLeft(myConcreteExpression newMyBinaryLeft) {
 		if (newMyBinaryLeft != myBinaryLeft) {
 			NotificationChain msgs = null;
 			if (myBinaryLeft != null)
@@ -159,7 +159,7 @@ public class myBinaryImpl extends myExpressionImpl implements myBinary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public myExpression getMyBinaryRight() {
+	public myConcreteExpression getMyBinaryRight() {
 		return myBinaryRight;
 	}
 
@@ -168,8 +168,8 @@ public class myBinaryImpl extends myExpressionImpl implements myBinary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetMyBinaryRight(myExpression newMyBinaryRight, NotificationChain msgs) {
-		myExpression oldMyBinaryRight = myBinaryRight;
+	public NotificationChain basicSetMyBinaryRight(myConcreteExpression newMyBinaryRight, NotificationChain msgs) {
+		myConcreteExpression oldMyBinaryRight = myBinaryRight;
 		myBinaryRight = newMyBinaryRight;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfiguratorProjectPackage.MY_BINARY__MY_BINARY_RIGHT, oldMyBinaryRight, newMyBinaryRight);
@@ -183,7 +183,7 @@ public class myBinaryImpl extends myExpressionImpl implements myBinary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMyBinaryRight(myExpression newMyBinaryRight) {
+	public void setMyBinaryRight(myConcreteExpression newMyBinaryRight) {
 		if (newMyBinaryRight != myBinaryRight) {
 			NotificationChain msgs = null;
 			if (myBinaryRight != null)
@@ -243,10 +243,10 @@ public class myBinaryImpl extends myExpressionImpl implements myBinary {
 				setOparand((myBinaryOparators)newValue);
 				return;
 			case ConfiguratorProjectPackage.MY_BINARY__MY_BINARY_LEFT:
-				setMyBinaryLeft((myExpression)newValue);
+				setMyBinaryLeft((myConcreteExpression)newValue);
 				return;
 			case ConfiguratorProjectPackage.MY_BINARY__MY_BINARY_RIGHT:
-				setMyBinaryRight((myExpression)newValue);
+				setMyBinaryRight((myConcreteExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -264,10 +264,10 @@ public class myBinaryImpl extends myExpressionImpl implements myBinary {
 				setOparand(OPARAND_EDEFAULT);
 				return;
 			case ConfiguratorProjectPackage.MY_BINARY__MY_BINARY_LEFT:
-				setMyBinaryLeft((myExpression)null);
+				setMyBinaryLeft((myConcreteExpression)null);
 				return;
 			case ConfiguratorProjectPackage.MY_BINARY__MY_BINARY_RIGHT:
-				setMyBinaryRight((myExpression)null);
+				setMyBinaryRight((myConcreteExpression)null);
 				return;
 		}
 		super.eUnset(featureID);

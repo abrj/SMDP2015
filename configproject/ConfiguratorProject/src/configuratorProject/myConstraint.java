@@ -12,7 +12,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link configuratorProject.myConstraint#getMyConstraintContains <em>My Constraint Contains</em>}</li>
+ *   <li>{@link configuratorProject.myConstraint#getMyIfConstraint <em>My If Constraint</em>}</li>
+ *   <li>{@link configuratorProject.myConstraint#getMyThenConstraint <em>My Then Constraint</em>}</li>
  * </ul>
  * </p>
  *
@@ -22,29 +23,55 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface myConstraint extends EObject {
 	/**
-	 * Returns the value of the '<em><b>My Constraint Contains</b></em>' containment reference.
+	 * Returns the value of the '<em><b>My If Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>My Constraint Contains</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>My If Constraint</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>My Constraint Contains</em>' containment reference.
-	 * @see #setMyConstraintContains(myExpression)
-	 * @see configuratorProject.ConfiguratorProjectPackage#getmyConstraint_MyConstraintContains()
+	 * @return the value of the '<em>My If Constraint</em>' containment reference.
+	 * @see #setMyIfConstraint(myConcreteExpression)
+	 * @see configuratorProject.ConfiguratorProjectPackage#getmyConstraint_MyIfConstraint()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	myExpression getMyConstraintContains();
+	myConcreteExpression getMyIfConstraint();
 
 	/**
-	 * Sets the value of the '{@link configuratorProject.myConstraint#getMyConstraintContains <em>My Constraint Contains</em>}' containment reference.
+	 * Sets the value of the '{@link configuratorProject.myConstraint#getMyIfConstraint <em>My If Constraint</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>My Constraint Contains</em>' containment reference.
-	 * @see #getMyConstraintContains()
+	 * @param value the new value of the '<em>My If Constraint</em>' containment reference.
+	 * @see #getMyIfConstraint()
 	 * @generated
 	 */
-	void setMyConstraintContains(myExpression value);
+	void setMyIfConstraint(myConcreteExpression value);
+
+	/**
+	 * Returns the value of the '<em><b>My Then Constraint</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>My Then Constraint</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>My Then Constraint</em>' containment reference.
+	 * @see #setMyThenConstraint(myConcreteExpression)
+	 * @see configuratorProject.ConfiguratorProjectPackage#getmyConstraint_MyThenConstraint()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	myConcreteExpression getMyThenConstraint();
+
+	/**
+	 * Sets the value of the '{@link configuratorProject.myConstraint#getMyThenConstraint <em>My Then Constraint</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>My Then Constraint</em>' containment reference.
+	 * @see #getMyThenConstraint()
+	 * @generated
+	 */
+	void setMyThenConstraint(myConcreteExpression value);
 
 } // myConstraint

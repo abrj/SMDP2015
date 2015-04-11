@@ -61,12 +61,12 @@ public interface myBinary extends myExpression {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>My Binary Left</em>' containment reference.
-	 * @see #setMyBinaryLeft(myExpression)
+	 * @see #setMyBinaryLeft(myConcreteExpression)
 	 * @see configuratorProject.ConfiguratorProjectPackage#getmyBinary_MyBinaryLeft()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	myExpression getMyBinaryLeft();
+	myConcreteExpression getMyBinaryLeft();
 
 	/**
 	 * Sets the value of the '{@link configuratorProject.myBinary#getMyBinaryLeft <em>My Binary Left</em>}' containment reference.
@@ -76,7 +76,7 @@ public interface myBinary extends myExpression {
 	 * @see #getMyBinaryLeft()
 	 * @generated
 	 */
-	void setMyBinaryLeft(myExpression value);
+	void setMyBinaryLeft(myConcreteExpression value);
 
 	/**
 	 * Returns the value of the '<em><b>My Binary Right</b></em>' containment reference.
@@ -87,12 +87,12 @@ public interface myBinary extends myExpression {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>My Binary Right</em>' containment reference.
-	 * @see #setMyBinaryRight(myExpression)
+	 * @see #setMyBinaryRight(myConcreteExpression)
 	 * @see configuratorProject.ConfiguratorProjectPackage#getmyBinary_MyBinaryRight()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	myExpression getMyBinaryRight();
+	myConcreteExpression getMyBinaryRight();
 
 	/**
 	 * Sets the value of the '{@link configuratorProject.myBinary#getMyBinaryRight <em>My Binary Right</em>}' containment reference.
@@ -102,6 +102,6 @@ public interface myBinary extends myExpression {
 	 * @see #getMyBinaryRight()
 	 * @generated
 	 */
-	void setMyBinaryRight(myExpression value);
+	void setMyBinaryRight(myConcreteExpression value);
 
 } // myBinary

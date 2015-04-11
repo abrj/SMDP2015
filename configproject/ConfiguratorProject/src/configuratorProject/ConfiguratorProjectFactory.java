@@ -76,49 +76,22 @@ public interface ConfiguratorProjectFactory extends EFactory {
 	myUnary createmyUnary();
 
 	/**
-	 * Returns a new object of class '<em>my String</em>'.
+	 * Returns a new object of class '<em>My Bool Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>my String</em>'.
+	 * @return a new object of class '<em>My Bool Literal</em>'.
 	 * @generated
 	 */
-	myString createmyString();
+	MyBoolLiteral createMyBoolLiteral();
 
 	/**
-	 * Returns a new object of class '<em>my Int</em>'.
+	 * Returns a new object of class '<em>my Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>my Int</em>'.
+	 * @return a new object of class '<em>my Boolean</em>'.
 	 * @generated
 	 */
-	myInt createmyInt();
-
-	/**
-	 * Returns a new object of class '<em>Bool Literal</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Bool Literal</em>'.
-	 * @generated
-	 */
-	BoolLiteral createBoolLiteral();
-
-	/**
-	 * Returns a new object of class '<em>my Enum</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>my Enum</em>'.
-	 * @generated
-	 */
-	myEnum createmyEnum();
-
-	/**
-	 * Returns a new object of class '<em>Boolean Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Boolean Value</em>'.
-	 * @generated
-	 */
-	BooleanValue createBooleanValue();
+	myBoolean createmyBoolean();
 
 	/**
 	 * Returns a new object of class '<em>my Identifier</em>'.
@@ -137,6 +110,33 @@ public interface ConfiguratorProjectFactory extends EFactory {
 	 * @generated
 	 */
 	myRange createmyRange();
+
+	/**
+	 * Returns a new object of class '<em>my String Enum</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>my String Enum</em>'.
+	 * @generated
+	 */
+	myStringEnum createmyStringEnum();
+
+	/**
+	 * Returns a new object of class '<em>my Number Enum</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>my Number Enum</em>'.
+	 * @generated
+	 */
+	myNumberEnum createmyNumberEnum();
+
+	/**
+	 * Returns a new object of class '<em>my Concrete Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>my Concrete Expression</em>'.
+	 * @generated
+	 */
+	myConcreteExpression createmyConcreteExpression();
 
 	/**
 	 * Returns the package supported by this factory.

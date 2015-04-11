@@ -63,13 +63,13 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 			case ConfiguratorProjectPackage.MY_ATTRIBUTE: return createmyAttribute();
 			case ConfiguratorProjectPackage.MY_BINARY: return createmyBinary();
 			case ConfiguratorProjectPackage.MY_UNARY: return createmyUnary();
-			case ConfiguratorProjectPackage.MY_STRING: return createmyString();
-			case ConfiguratorProjectPackage.MY_INT: return createmyInt();
-			case ConfiguratorProjectPackage.BOOL_LITERAL: return createBoolLiteral();
-			case ConfiguratorProjectPackage.MY_ENUM: return createmyEnum();
-			case ConfiguratorProjectPackage.BOOLEAN_VALUE: return createBooleanValue();
+			case ConfiguratorProjectPackage.MY_BOOL_LITERAL: return createMyBoolLiteral();
+			case ConfiguratorProjectPackage.MY_BOOLEAN: return createmyBoolean();
 			case ConfiguratorProjectPackage.MY_IDENTIFIER: return createmyIdentifier();
 			case ConfiguratorProjectPackage.MY_RANGE: return createmyRange();
+			case ConfiguratorProjectPackage.MY_STRING_ENUM: return createmyStringEnum();
+			case ConfiguratorProjectPackage.MY_NUMBER_ENUM: return createmyNumberEnum();
+			case ConfiguratorProjectPackage.MY_CONCRETE_EXPRESSION: return createmyConcreteExpression();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -174,9 +174,9 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public myString createmyString() {
-		myStringImpl myString = new myStringImpl();
-		return myString;
+	public MyBoolLiteral createMyBoolLiteral() {
+		MyBoolLiteralImpl myBoolLiteral = new MyBoolLiteralImpl();
+		return myBoolLiteral;
 	}
 
 	/**
@@ -184,39 +184,9 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public myInt createmyInt() {
-		myIntImpl myInt = new myIntImpl();
-		return myInt;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public BoolLiteral createBoolLiteral() {
-		BoolLiteralImpl boolLiteral = new BoolLiteralImpl();
-		return boolLiteral;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public myEnum createmyEnum() {
-		myEnumImpl myEnum = new myEnumImpl();
-		return myEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public BooleanValue createBooleanValue() {
-		BooleanValueImpl booleanValue = new BooleanValueImpl();
-		return booleanValue;
+	public myBoolean createmyBoolean() {
+		myBooleanImpl myBoolean = new myBooleanImpl();
+		return myBoolean;
 	}
 
 	/**
@@ -237,6 +207,36 @@ public class ConfiguratorProjectFactoryImpl extends EFactoryImpl implements Conf
 	public myRange createmyRange() {
 		myRangeImpl myRange = new myRangeImpl();
 		return myRange;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public myStringEnum createmyStringEnum() {
+		myStringEnumImpl myStringEnum = new myStringEnumImpl();
+		return myStringEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public myNumberEnum createmyNumberEnum() {
+		myNumberEnumImpl myNumberEnum = new myNumberEnumImpl();
+		return myNumberEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public myConcreteExpression createmyConcreteExpression() {
+		myConcreteExpressionImpl myConcreteExpression = new myConcreteExpressionImpl();
+		return myConcreteExpression;
 	}
 
 	/**

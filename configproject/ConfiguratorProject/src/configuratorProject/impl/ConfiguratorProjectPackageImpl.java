@@ -2,24 +2,25 @@
  */
 package configuratorProject.impl;
 
-import configuratorProject.BoolLiteral;
-import configuratorProject.BooleanValue;
 import configuratorProject.ConfiguratorProjectFactory;
 import configuratorProject.ConfiguratorProjectPackage;
+import configuratorProject.MyBoolLiteral;
 import configuratorProject.myAttribute;
 import configuratorProject.myBinary;
 import configuratorProject.myBinaryOparators;
+import configuratorProject.myBoolean;
+import configuratorProject.myConcreteExpression;
 import configuratorProject.myConstraint;
 import configuratorProject.myEnum;
 import configuratorProject.myExpression;
 import configuratorProject.myIdentifier;
-import configuratorProject.myInt;
 import configuratorProject.myLiteral;
 import configuratorProject.myModel;
 import configuratorProject.myNamedElement;
+import configuratorProject.myNumberEnum;
 import configuratorProject.myObject;
 import configuratorProject.myRange;
-import configuratorProject.myString;
+import configuratorProject.myStringEnum;
 import configuratorProject.myUnary;
 import configuratorProject.myUnaryOparators;
 import configuratorProject.myValue;
@@ -31,8 +32,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.eclipse.emf.ecore.xml.type.XMLTypePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -102,21 +101,7 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass myStringEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass myIntEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass boolLiteralEClass = null;
+	private EClass myBoolLiteralEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,7 +122,7 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass booleanValueEClass = null;
+	private EClass myBooleanEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -159,6 +144,27 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * @generated
 	 */
 	private EClass myRangeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass myStringEnumEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass myNumberEnumEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass myConcreteExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -219,9 +225,6 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		ConfiguratorProjectPackageImpl theConfiguratorProjectPackage = (ConfiguratorProjectPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ConfiguratorProjectPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ConfiguratorProjectPackageImpl());
 
 		isInited = true;
-
-		// Initialize simple dependencies
-		XMLTypePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theConfiguratorProjectPackage.createPackageContents();
@@ -297,8 +300,17 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getmyConstraint_MyConstraintContains() {
+	public EReference getmyConstraint_MyIfConstraint() {
 		return (EReference)myConstraintEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getmyConstraint_MyThenConstraint() {
+		return (EReference)myConstraintEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -405,8 +417,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getmyString() {
-		return myStringEClass;
+	public EClass getMyBoolLiteral() {
+		return myBoolLiteralEClass;
 	}
 
 	/**
@@ -414,44 +426,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getmyString_Value() {
-		return (EAttribute)myStringEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getmyInt() {
-		return myIntEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getmyInt_Value() {
-		return (EAttribute)myIntEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getBoolLiteral() {
-		return boolLiteralEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getBoolLiteral_Value() {
-		return (EAttribute)boolLiteralEClass.getEStructuralFeatures().get(0);
+	public EAttribute getMyBoolLiteral_Value() {
+		return (EAttribute)myBoolLiteralEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -477,8 +453,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getmyEnum_Values() {
-		return (EAttribute)myEnumEClass.getEStructuralFeatures().get(0);
+	public EClass getmyBoolean() {
+		return myBooleanEClass;
 	}
 
 	/**
@@ -486,8 +462,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getBooleanValue() {
-		return booleanValueEClass;
+	public EAttribute getmyBoolean_TrueValue() {
+		return (EAttribute)myBooleanEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -495,17 +471,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getBooleanValue_TrueValue() {
-		return (EAttribute)booleanValueEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getBooleanValue_FalseValue() {
-		return (EAttribute)booleanValueEClass.getEStructuralFeatures().get(1);
+	public EAttribute getmyBoolean_FalseValue() {
+		return (EAttribute)myBooleanEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -576,6 +543,60 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getmyStringEnum() {
+		return myStringEnumEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getmyStringEnum_Values() {
+		return (EAttribute)myStringEnumEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getmyNumberEnum() {
+		return myNumberEnumEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getmyNumberEnum_Values() {
+		return (EAttribute)myNumberEnumEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getmyConcreteExpression() {
+		return myConcreteExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getmyConcreteExpression_MyConcreteEx() {
+		return (EReference)myConcreteExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getmyBinaryOparators() {
 		return myBinaryOparatorsEEnum;
 	}
@@ -625,7 +646,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		createEReference(myObjectEClass, MY_OBJECT__MY_ATTRIBUTE_CONTAINS);
 
 		myConstraintEClass = createEClass(MY_CONSTRAINT);
-		createEReference(myConstraintEClass, MY_CONSTRAINT__MY_CONSTRAINT_CONTAINS);
+		createEReference(myConstraintEClass, MY_CONSTRAINT__MY_IF_CONSTRAINT);
+		createEReference(myConstraintEClass, MY_CONSTRAINT__MY_THEN_CONSTRAINT);
 
 		myAttributeEClass = createEClass(MY_ATTRIBUTE);
 		createEReference(myAttributeEClass, MY_ATTRIBUTE__MY_ATTRIBUTE_CONTAINS);
@@ -643,23 +665,16 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 
 		myLiteralEClass = createEClass(MY_LITERAL);
 
-		myStringEClass = createEClass(MY_STRING);
-		createEAttribute(myStringEClass, MY_STRING__VALUE);
-
-		myIntEClass = createEClass(MY_INT);
-		createEAttribute(myIntEClass, MY_INT__VALUE);
-
-		boolLiteralEClass = createEClass(BOOL_LITERAL);
-		createEAttribute(boolLiteralEClass, BOOL_LITERAL__VALUE);
+		myBoolLiteralEClass = createEClass(MY_BOOL_LITERAL);
+		createEAttribute(myBoolLiteralEClass, MY_BOOL_LITERAL__VALUE);
 
 		myValueEClass = createEClass(MY_VALUE);
 
 		myEnumEClass = createEClass(MY_ENUM);
-		createEAttribute(myEnumEClass, MY_ENUM__VALUES);
 
-		booleanValueEClass = createEClass(BOOLEAN_VALUE);
-		createEAttribute(booleanValueEClass, BOOLEAN_VALUE__TRUE_VALUE);
-		createEAttribute(booleanValueEClass, BOOLEAN_VALUE__FALSE_VALUE);
+		myBooleanEClass = createEClass(MY_BOOLEAN);
+		createEAttribute(myBooleanEClass, MY_BOOLEAN__TRUE_VALUE);
+		createEAttribute(myBooleanEClass, MY_BOOLEAN__FALSE_VALUE);
 
 		myNamedElementEClass = createEClass(MY_NAMED_ELEMENT);
 		createEAttribute(myNamedElementEClass, MY_NAMED_ELEMENT__NAME);
@@ -670,6 +685,15 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		myRangeEClass = createEClass(MY_RANGE);
 		createEAttribute(myRangeEClass, MY_RANGE__FROM);
 		createEAttribute(myRangeEClass, MY_RANGE__TO);
+
+		myStringEnumEClass = createEClass(MY_STRING_ENUM);
+		createEAttribute(myStringEnumEClass, MY_STRING_ENUM__VALUES);
+
+		myNumberEnumEClass = createEClass(MY_NUMBER_ENUM);
+		createEAttribute(myNumberEnumEClass, MY_NUMBER_ENUM__VALUES);
+
+		myConcreteExpressionEClass = createEClass(MY_CONCRETE_EXPRESSION);
+		createEReference(myConcreteExpressionEClass, MY_CONCRETE_EXPRESSION__MY_CONCRETE_EX);
 
 		// Create enums
 		myBinaryOparatorsEEnum = createEEnum(MY_BINARY_OPARATORS);
@@ -699,9 +723,6 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
-		// Obtain other dependent packages
-		XMLTypePackage theXMLTypePackage = (XMLTypePackage)EPackage.Registry.INSTANCE.getEPackage(XMLTypePackage.eNS_URI);
-
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -713,13 +734,14 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		myBinaryEClass.getESuperTypes().add(this.getmyExpression());
 		myUnaryEClass.getESuperTypes().add(this.getmyExpression());
 		myLiteralEClass.getESuperTypes().add(this.getmyExpression());
-		myStringEClass.getESuperTypes().add(this.getmyLiteral());
-		myIntEClass.getESuperTypes().add(this.getmyLiteral());
-		boolLiteralEClass.getESuperTypes().add(this.getmyLiteral());
+		myBoolLiteralEClass.getESuperTypes().add(this.getmyLiteral());
+		myValueEClass.getESuperTypes().add(this.getmyLiteral());
 		myEnumEClass.getESuperTypes().add(this.getmyValue());
-		booleanValueEClass.getESuperTypes().add(this.getmyValue());
+		myBooleanEClass.getESuperTypes().add(this.getmyValue());
 		myIdentifierEClass.getESuperTypes().add(this.getmyExpression());
 		myRangeEClass.getESuperTypes().add(this.getmyValue());
+		myStringEnumEClass.getESuperTypes().add(this.getmyEnum());
+		myNumberEnumEClass.getESuperTypes().add(this.getmyEnum());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(myModelEClass, myModel.class, "myModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -730,7 +752,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		initEReference(getmyObject_MyAttributeContains(), this.getmyAttribute(), null, "myAttributeContains", null, 0, -1, myObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(myConstraintEClass, myConstraint.class, "myConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getmyConstraint_MyConstraintContains(), this.getmyExpression(), null, "myConstraintContains", null, 1, 1, myConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmyConstraint_MyIfConstraint(), this.getmyConcreteExpression(), null, "myIfConstraint", null, 1, 1, myConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmyConstraint_MyThenConstraint(), this.getmyConcreteExpression(), null, "myThenConstraint", null, 1, 1, myConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(myAttributeEClass, myAttribute.class, "myAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getmyAttribute_MyAttributeContains(), this.getmyValue(), null, "myAttributeContains", null, 1, 1, myAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -739,32 +762,25 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 
 		initEClass(myBinaryEClass, myBinary.class, "myBinary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getmyBinary_Oparand(), this.getmyBinaryOparators(), "Oparand", "if", 0, 1, myBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getmyBinary_MyBinaryLeft(), this.getmyExpression(), null, "myBinaryLeft", null, 1, 1, myBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getmyBinary_MyBinaryRight(), this.getmyExpression(), null, "myBinaryRight", null, 1, 1, myBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmyBinary_MyBinaryLeft(), this.getmyConcreteExpression(), null, "myBinaryLeft", null, 1, 1, myBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmyBinary_MyBinaryRight(), this.getmyConcreteExpression(), null, "myBinaryRight", null, 1, 1, myBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(myUnaryEClass, myUnary.class, "myUnary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getmyUnary_Oparand(), this.getmyUnaryOparators(), "Oparand", null, 0, 1, myUnary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getmyUnary_MyUnaryExpression(), this.getmyExpression(), null, "myUnaryExpression", null, 1, 1, myUnary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmyUnary_MyUnaryExpression(), this.getmyConcreteExpression(), null, "myUnaryExpression", null, 1, 1, myUnary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(myLiteralEClass, myLiteral.class, "myLiteral", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(myStringEClass, myString.class, "myString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getmyString_Value(), ecorePackage.getEString(), "value", null, 1, 1, myString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(myIntEClass, myInt.class, "myInt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getmyInt_Value(), ecorePackage.getEInt(), "value", null, 1, 1, myInt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(boolLiteralEClass, BoolLiteral.class, "BoolLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBoolLiteral_Value(), theXMLTypePackage.getBoolean(), "value", null, 1, 1, BoolLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myBoolLiteralEClass, MyBoolLiteral.class, "MyBoolLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMyBoolLiteral_Value(), ecorePackage.getEBoolean(), "value", null, 1, 1, MyBoolLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(myValueEClass, myValue.class, "myValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(myEnumEClass, myEnum.class, "myEnum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getmyEnum_Values(), theXMLTypePackage.getAnySimpleType(), "values", null, 1, -1, myEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myEnumEClass, myEnum.class, "myEnum", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(booleanValueEClass, BooleanValue.class, "BooleanValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBooleanValue_TrueValue(), theXMLTypePackage.getAnyURI(), "trueValue", null, 1, 1, BooleanValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBooleanValue_FalseValue(), theXMLTypePackage.getAnyURI(), "falseValue", null, 1, 1, BooleanValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(myBooleanEClass, myBoolean.class, "myBoolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getmyBoolean_TrueValue(), ecorePackage.getEString(), "trueValue", null, 1, 1, myBoolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getmyBoolean_FalseValue(), ecorePackage.getEString(), "falseValue", null, 1, 1, myBoolean.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(myNamedElementEClass, myNamedElement.class, "myNamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getmyNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, myNamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -775,6 +791,15 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		initEClass(myRangeEClass, myRange.class, "myRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getmyRange_From(), ecorePackage.getEInt(), "from", null, 1, 1, myRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getmyRange_To(), ecorePackage.getEInt(), "to", null, 1, 1, myRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(myStringEnumEClass, myStringEnum.class, "myStringEnum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getmyStringEnum_Values(), ecorePackage.getEString(), "values", null, 1, -1, myStringEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(myNumberEnumEClass, myNumberEnum.class, "myNumberEnum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getmyNumberEnum_Values(), ecorePackage.getEDouble(), "values", null, 1, -1, myNumberEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(myConcreteExpressionEClass, myConcreteExpression.class, "myConcreteExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getmyConcreteExpression_MyConcreteEx(), this.getmyExpression(), null, "myConcreteEx", null, 1, 1, myConcreteExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(myBinaryOparatorsEEnum, myBinaryOparators.class, "myBinaryOparators");

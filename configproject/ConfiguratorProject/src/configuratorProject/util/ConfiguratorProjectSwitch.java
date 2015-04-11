@@ -120,33 +120,19 @@ public class ConfiguratorProjectSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.MY_STRING: {
-				myString myString = (myString)theEObject;
-				T result = casemyString(myString);
-				if (result == null) result = casemyLiteral(myString);
-				if (result == null) result = casemyExpression(myString);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ConfiguratorProjectPackage.MY_INT: {
-				myInt myInt = (myInt)theEObject;
-				T result = casemyInt(myInt);
-				if (result == null) result = casemyLiteral(myInt);
-				if (result == null) result = casemyExpression(myInt);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ConfiguratorProjectPackage.BOOL_LITERAL: {
-				BoolLiteral boolLiteral = (BoolLiteral)theEObject;
-				T result = caseBoolLiteral(boolLiteral);
-				if (result == null) result = casemyLiteral(boolLiteral);
-				if (result == null) result = casemyExpression(boolLiteral);
+			case ConfiguratorProjectPackage.MY_BOOL_LITERAL: {
+				MyBoolLiteral myBoolLiteral = (MyBoolLiteral)theEObject;
+				T result = caseMyBoolLiteral(myBoolLiteral);
+				if (result == null) result = casemyLiteral(myBoolLiteral);
+				if (result == null) result = casemyExpression(myBoolLiteral);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ConfiguratorProjectPackage.MY_VALUE: {
 				myValue myValue = (myValue)theEObject;
 				T result = casemyValue(myValue);
+				if (result == null) result = casemyLiteral(myValue);
+				if (result == null) result = casemyExpression(myValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -154,13 +140,17 @@ public class ConfiguratorProjectSwitch<T> extends Switch<T> {
 				myEnum myEnum = (myEnum)theEObject;
 				T result = casemyEnum(myEnum);
 				if (result == null) result = casemyValue(myEnum);
+				if (result == null) result = casemyLiteral(myEnum);
+				if (result == null) result = casemyExpression(myEnum);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ConfiguratorProjectPackage.BOOLEAN_VALUE: {
-				BooleanValue booleanValue = (BooleanValue)theEObject;
-				T result = caseBooleanValue(booleanValue);
-				if (result == null) result = casemyValue(booleanValue);
+			case ConfiguratorProjectPackage.MY_BOOLEAN: {
+				myBoolean myBoolean = (myBoolean)theEObject;
+				T result = casemyBoolean(myBoolean);
+				if (result == null) result = casemyValue(myBoolean);
+				if (result == null) result = casemyLiteral(myBoolean);
+				if (result == null) result = casemyExpression(myBoolean);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -181,6 +171,34 @@ public class ConfiguratorProjectSwitch<T> extends Switch<T> {
 				myRange myRange = (myRange)theEObject;
 				T result = casemyRange(myRange);
 				if (result == null) result = casemyValue(myRange);
+				if (result == null) result = casemyLiteral(myRange);
+				if (result == null) result = casemyExpression(myRange);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfiguratorProjectPackage.MY_STRING_ENUM: {
+				myStringEnum myStringEnum = (myStringEnum)theEObject;
+				T result = casemyStringEnum(myStringEnum);
+				if (result == null) result = casemyEnum(myStringEnum);
+				if (result == null) result = casemyValue(myStringEnum);
+				if (result == null) result = casemyLiteral(myStringEnum);
+				if (result == null) result = casemyExpression(myStringEnum);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfiguratorProjectPackage.MY_NUMBER_ENUM: {
+				myNumberEnum myNumberEnum = (myNumberEnum)theEObject;
+				T result = casemyNumberEnum(myNumberEnum);
+				if (result == null) result = casemyEnum(myNumberEnum);
+				if (result == null) result = casemyValue(myNumberEnum);
+				if (result == null) result = casemyLiteral(myNumberEnum);
+				if (result == null) result = casemyExpression(myNumberEnum);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfiguratorProjectPackage.MY_CONCRETE_EXPRESSION: {
+				myConcreteExpression myConcreteExpression = (myConcreteExpression)theEObject;
+				T result = casemyConcreteExpression(myConcreteExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -309,47 +327,17 @@ public class ConfiguratorProjectSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>my String</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>My Bool Literal</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>my String</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>My Bool Literal</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casemyString(myString object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>my Int</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>my Int</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casemyInt(myInt object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Bool Literal</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Bool Literal</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBoolLiteral(BoolLiteral object) {
+	public T caseMyBoolLiteral(MyBoolLiteral object) {
 		return null;
 	}
 
@@ -384,17 +372,17 @@ public class ConfiguratorProjectSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Value</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>my Boolean</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Value</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>my Boolean</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBooleanValue(BooleanValue object) {
+	public T casemyBoolean(myBoolean object) {
 		return null;
 	}
 
@@ -440,6 +428,51 @@ public class ConfiguratorProjectSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casemyRange(myRange object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>my String Enum</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>my String Enum</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casemyStringEnum(myStringEnum object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>my Number Enum</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>my Number Enum</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casemyNumberEnum(myNumberEnum object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>my Concrete Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>my Concrete Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casemyConcreteExpression(myConcreteExpression object) {
 		return null;
 	}
 

@@ -3,7 +3,7 @@
 package configuratorProject.impl;
 
 import configuratorProject.ConfiguratorProjectPackage;
-import configuratorProject.myString;
+import configuratorProject.MyBoolLiteral;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,44 +13,44 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>my String</b></em>'.
+ * An implementation of the model object '<em><b>My Bool Literal</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link configuratorProject.impl.myStringImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link configuratorProject.impl.MyBoolLiteralImpl#isValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class myStringImpl extends myLiteralImpl implements myString {
+public class MyBoolLiteralImpl extends myLiteralImpl implements MyBoolLiteral {
 	/**
-	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The default value of the '{@link #isValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #isValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String VALUE_EDEFAULT = null;
+	protected static final boolean VALUE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+	 * The cached value of the '{@link #isValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getValue()
+	 * @see #isValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected String value = VALUE_EDEFAULT;
+	protected boolean value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected myStringImpl() {
+	protected MyBoolLiteralImpl() {
 		super();
 	}
 
@@ -61,7 +61,7 @@ public class myStringImpl extends myLiteralImpl implements myString {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ConfiguratorProjectPackage.Literals.MY_STRING;
+		return ConfiguratorProjectPackage.Literals.MY_BOOL_LITERAL;
 	}
 
 	/**
@@ -69,7 +69,7 @@ public class myStringImpl extends myLiteralImpl implements myString {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getValue() {
+	public boolean isValue() {
 		return value;
 	}
 
@@ -78,11 +78,11 @@ public class myStringImpl extends myLiteralImpl implements myString {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setValue(String newValue) {
-		String oldValue = value;
+	public void setValue(boolean newValue) {
+		boolean oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorProjectPackage.MY_STRING__VALUE, oldValue, value));
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfiguratorProjectPackage.MY_BOOL_LITERAL__VALUE, oldValue, value));
 	}
 
 	/**
@@ -93,8 +93,8 @@ public class myStringImpl extends myLiteralImpl implements myString {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ConfiguratorProjectPackage.MY_STRING__VALUE:
-				return getValue();
+			case ConfiguratorProjectPackage.MY_BOOL_LITERAL__VALUE:
+				return isValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -107,8 +107,8 @@ public class myStringImpl extends myLiteralImpl implements myString {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ConfiguratorProjectPackage.MY_STRING__VALUE:
-				setValue((String)newValue);
+			case ConfiguratorProjectPackage.MY_BOOL_LITERAL__VALUE:
+				setValue((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -122,7 +122,7 @@ public class myStringImpl extends myLiteralImpl implements myString {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ConfiguratorProjectPackage.MY_STRING__VALUE:
+			case ConfiguratorProjectPackage.MY_BOOL_LITERAL__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
 		}
@@ -137,8 +137,8 @@ public class myStringImpl extends myLiteralImpl implements myString {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ConfiguratorProjectPackage.MY_STRING__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case ConfiguratorProjectPackage.MY_BOOL_LITERAL__VALUE:
+				return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -159,4 +159,4 @@ public class myStringImpl extends myLiteralImpl implements myString {
 		return result.toString();
 	}
 
-} //myStringImpl
+} //MyBoolLiteralImpl

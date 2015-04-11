@@ -5,21 +5,21 @@ package configuratorProject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>my String</b></em>'.
+ * A representation of the model object '<em><b>My Bool Literal</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link configuratorProject.myString#getValue <em>Value</em>}</li>
+ *   <li>{@link configuratorProject.MyBoolLiteral#isValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
- * @see configuratorProject.ConfiguratorProjectPackage#getmyString()
+ * @see configuratorProject.ConfiguratorProjectPackage#getMyBoolLiteral()
  * @model
  * @generated
  */
-public interface myString extends myLiteral {
+public interface MyBoolLiteral extends myLiteral {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -29,21 +29,21 @@ public interface myString extends myLiteral {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(String)
-	 * @see configuratorProject.ConfiguratorProjectPackage#getmyString_Value()
+	 * @see #setValue(boolean)
+	 * @see configuratorProject.ConfiguratorProjectPackage#getMyBoolLiteral_Value()
 	 * @model required="true"
 	 * @generated
 	 */
-	String getValue();
+	boolean isValue();
 
 	/**
-	 * Sets the value of the '{@link configuratorProject.myString#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link configuratorProject.MyBoolLiteral#isValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #getValue()
+	 * @see #isValue()
 	 * @generated
 	 */
-	void setValue(String value);
+	void setValue(boolean value);
 
-} // myString
+} // MyBoolLiteral

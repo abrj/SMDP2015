@@ -2,19 +2,18 @@ package org.xtext.example.mydsl.serializer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import configuratorProject.BoolLiteral;
-import configuratorProject.BooleanValue;
 import configuratorProject.ConfiguratorProjectPackage;
 import configuratorProject.myAttribute;
 import configuratorProject.myBinary;
+import configuratorProject.myBoolean;
+import configuratorProject.myConcreteExpression;
 import configuratorProject.myConstraint;
-import configuratorProject.myEnum;
 import configuratorProject.myIdentifier;
-import configuratorProject.myInt;
 import configuratorProject.myModel;
+import configuratorProject.myNumberEnum;
 import configuratorProject.myObject;
 import configuratorProject.myRange;
-import configuratorProject.myString;
+import configuratorProject.myStringEnum;
 import configuratorProject.myUnary;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
@@ -37,20 +36,6 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == ConfiguratorProjectPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case ConfiguratorProjectPackage.BOOL_LITERAL:
-				if(context == grammarAccess.getBoolLiteralRule() ||
-				   context == grammarAccess.getMyExpressionRule()) {
-					sequence_BoolLiteral(context, (BoolLiteral) semanticObject); 
-					return; 
-				}
-				else break;
-			case ConfiguratorProjectPackage.BOOLEAN_VALUE:
-				if(context == grammarAccess.getBooleanValueRule() ||
-				   context == grammarAccess.getMyValueRule()) {
-					sequence_BooleanValue(context, (BooleanValue) semanticObject); 
-					return; 
-				}
-				else break;
 			case ConfiguratorProjectPackage.MY_ATTRIBUTE:
 				if(context == grammarAccess.getMyAttributeRule()) {
 					sequence_myAttribute(context, (myAttribute) semanticObject); 
@@ -64,16 +49,23 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 					return; 
 				}
 				else break;
-			case ConfiguratorProjectPackage.MY_CONSTRAINT:
-				if(context == grammarAccess.getMyConstraintRule()) {
-					sequence_myConstraint(context, (myConstraint) semanticObject); 
+			case ConfiguratorProjectPackage.MY_BOOLEAN:
+				if(context == grammarAccess.getMyBooleanRule() ||
+				   context == grammarAccess.getMyExpressionRule() ||
+				   context == grammarAccess.getMyValueRule()) {
+					sequence_myBoolean(context, (myBoolean) semanticObject); 
 					return; 
 				}
 				else break;
-			case ConfiguratorProjectPackage.MY_ENUM:
-				if(context == grammarAccess.getMyEnumRule() ||
-				   context == grammarAccess.getMyValueRule()) {
-					sequence_myEnum(context, (myEnum) semanticObject); 
+			case ConfiguratorProjectPackage.MY_CONCRETE_EXPRESSION:
+				if(context == grammarAccess.getMyConcreteExpressionRule()) {
+					sequence_myConcreteExpression(context, (myConcreteExpression) semanticObject); 
+					return; 
+				}
+				else break;
+			case ConfiguratorProjectPackage.MY_CONSTRAINT:
+				if(context == grammarAccess.getMyConstraintRule()) {
+					sequence_myConstraint(context, (myConstraint) semanticObject); 
 					return; 
 				}
 				else break;
@@ -84,16 +76,17 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 					return; 
 				}
 				else break;
-			case ConfiguratorProjectPackage.MY_INT:
-				if(context == grammarAccess.getMyExpressionRule() ||
-				   context == grammarAccess.getMyIntRule()) {
-					sequence_myInt(context, (myInt) semanticObject); 
-					return; 
-				}
-				else break;
 			case ConfiguratorProjectPackage.MY_MODEL:
 				if(context == grammarAccess.getMyModelRule()) {
 					sequence_myModel(context, (myModel) semanticObject); 
+					return; 
+				}
+				else break;
+			case ConfiguratorProjectPackage.MY_NUMBER_ENUM:
+				if(context == grammarAccess.getMyExpressionRule() ||
+				   context == grammarAccess.getMyNumberEnumRule() ||
+				   context == grammarAccess.getMyValueRule()) {
+					sequence_myNumberEnum(context, (myNumberEnum) semanticObject); 
 					return; 
 				}
 				else break;
@@ -104,16 +97,18 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 				}
 				else break;
 			case ConfiguratorProjectPackage.MY_RANGE:
-				if(context == grammarAccess.getMyRangeRule() ||
+				if(context == grammarAccess.getMyExpressionRule() ||
+				   context == grammarAccess.getMyRangeRule() ||
 				   context == grammarAccess.getMyValueRule()) {
 					sequence_myRange(context, (myRange) semanticObject); 
 					return; 
 				}
 				else break;
-			case ConfiguratorProjectPackage.MY_STRING:
+			case ConfiguratorProjectPackage.MY_STRING_ENUM:
 				if(context == grammarAccess.getMyExpressionRule() ||
-				   context == grammarAccess.getMyStringRule()) {
-					sequence_myString(context, (myString) semanticObject); 
+				   context == grammarAccess.getMyStringEnumRule() ||
+				   context == grammarAccess.getMyValueRule()) {
+					sequence_myStringEnum(context, (myStringEnum) semanticObject); 
 					return; 
 				}
 				else break;
@@ -127,41 +122,6 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
-	
-	/**
-	 * Constraint:
-	 *     value=Boolean
-	 */
-	protected void sequence_BoolLiteral(EObject context, BoolLiteral semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.BOOL_LITERAL__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.BOOL_LITERAL__VALUE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getBoolLiteralAccess().getValueBooleanParserRuleCall_0(), semanticObject.isValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (trueValue=EString falseValue=EString)
-	 */
-	protected void sequence_BooleanValue(EObject context, BooleanValue semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.BOOLEAN_VALUE__TRUE_VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.BOOLEAN_VALUE__TRUE_VALUE));
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.BOOLEAN_VALUE__FALSE_VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.BOOLEAN_VALUE__FALSE_VALUE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getBooleanValueAccess().getTrueValueEStringParserRuleCall_0_0(), semanticObject.getTrueValue());
-		feeder.accept(grammarAccess.getBooleanValueAccess().getFalseValueEStringParserRuleCall_2_0(), semanticObject.getFalseValue());
-		feeder.finish();
-	}
-	
 	
 	/**
 	 * Constraint:
@@ -184,28 +144,77 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 	
 	/**
 	 * Constraint:
-	 *     (myBinaryLeft=myExpression Oparand=myBinaryOparators? myBinaryRight=myExpression)
+	 *     (myBinaryLeft=myConcreteExpression Oparand=myBinaryOparators myBinaryRight=myConcreteExpression)
 	 */
 	protected void sequence_myBinary(EObject context, myBinary semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_BINARY__OPARAND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_BINARY__OPARAND));
+			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_BINARY__MY_BINARY_LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_BINARY__MY_BINARY_LEFT));
+			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_BINARY__MY_BINARY_RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_BINARY__MY_BINARY_RIGHT));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getMyBinaryAccess().getMyBinaryLeftMyConcreteExpressionParserRuleCall_1_0(), semanticObject.getMyBinaryLeft());
+		feeder.accept(grammarAccess.getMyBinaryAccess().getOparandMyBinaryOparatorsEnumRuleCall_2_0(), semanticObject.getOparand());
+		feeder.accept(grammarAccess.getMyBinaryAccess().getMyBinaryRightMyConcreteExpressionParserRuleCall_3_0(), semanticObject.getMyBinaryRight());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (myConstraintContains=myExpression myConstraintContains=myExpression)
+	 *     (trueValue=EString falseValue=EString)
+	 */
+	protected void sequence_myBoolean(EObject context, myBoolean semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_BOOLEAN__TRUE_VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_BOOLEAN__TRUE_VALUE));
+			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_BOOLEAN__FALSE_VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_BOOLEAN__FALSE_VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getMyBooleanAccess().getTrueValueEStringParserRuleCall_0_0(), semanticObject.getTrueValue());
+		feeder.accept(grammarAccess.getMyBooleanAccess().getFalseValueEStringParserRuleCall_2_0(), semanticObject.getFalseValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     myConcreteEx=myExpression
+	 */
+	protected void sequence_myConcreteExpression(EObject context, myConcreteExpression semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_CONCRETE_EXPRESSION__MY_CONCRETE_EX) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_CONCRETE_EXPRESSION__MY_CONCRETE_EX));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getMyConcreteExpressionAccess().getMyConcreteExMyExpressionParserRuleCall_0(), semanticObject.getMyConcreteEx());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (myIfConstraint=myConcreteExpression myThenConstraint=myConcreteExpression)
 	 */
 	protected void sequence_myConstraint(EObject context, myConstraint semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     ((values+=EString values+=EString*) | (values+=INT values+=INT*))
-	 */
-	protected void sequence_myEnum(EObject context, myEnum semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_CONSTRAINT__MY_IF_CONSTRAINT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_CONSTRAINT__MY_IF_CONSTRAINT));
+			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_CONSTRAINT__MY_THEN_CONSTRAINT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_CONSTRAINT__MY_THEN_CONSTRAINT));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getMyConstraintAccess().getMyIfConstraintMyConcreteExpressionParserRuleCall_1_0(), semanticObject.getMyIfConstraint());
+		feeder.accept(grammarAccess.getMyConstraintAccess().getMyThenConstraintMyConcreteExpressionParserRuleCall_3_0(), semanticObject.getMyThenConstraint());
+		feeder.finish();
 	}
 	
 	
@@ -220,23 +229,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyIdentifierAccess().getMyIntentifierIsMyAttributeEStringParserRuleCall_0_1(), semanticObject.getMyIntentifierIs());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     value=INT
-	 */
-	protected void sequence_myInt(EObject context, myInt semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_INT__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_INT__VALUE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyIntAccess().getValueINTTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getMyIdentifierAccess().getMyIntentifierIsMyAttributeEStringParserRuleCall_1_0_1(), semanticObject.getMyIntentifierIs());
 		feeder.finish();
 	}
 	
@@ -246,6 +239,15 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 	 *     (name=EString (myModelContains+=myObject myModelContains+=myObject*)?)
 	 */
 	protected void sequence_myModel(EObject context, myModel semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (values+=EDouble values+=EDouble*)
+	 */
+	protected void sequence_myNumberEnum(EObject context, myNumberEnum semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -280,25 +282,28 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 	
 	/**
 	 * Constraint:
-	 *     value=AnyURI
+	 *     (values+=EString values+=EString*)
 	 */
-	protected void sequence_myString(EObject context, myString semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_STRING__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_STRING__VALUE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyStringAccess().getValueAnyURIParserRuleCall_0(), semanticObject.getValue());
-		feeder.finish();
+	protected void sequence_myStringEnum(EObject context, myStringEnum semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (Oparand=myUnaryOparators? myUnaryExpression=myExpression)
+	 *     (Oparand=myUnaryOparators myUnaryExpression=myConcreteExpression)
 	 */
 	protected void sequence_myUnary(EObject context, myUnary semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_UNARY__OPARAND) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_UNARY__OPARAND));
+			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_UNARY__MY_UNARY_EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_UNARY__MY_UNARY_EXPRESSION));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getMyUnaryAccess().getOparandMyUnaryOparatorsEnumRuleCall_0_0(), semanticObject.getOparand());
+		feeder.accept(grammarAccess.getMyUnaryAccess().getMyUnaryExpressionMyConcreteExpressionParserRuleCall_1_0(), semanticObject.getMyUnaryExpression());
+		feeder.finish();
 	}
 }

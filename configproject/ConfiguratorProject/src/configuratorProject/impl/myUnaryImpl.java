@@ -3,7 +3,7 @@
 package configuratorProject.impl;
 
 import configuratorProject.ConfiguratorProjectPackage;
-import configuratorProject.myExpression;
+import configuratorProject.myConcreteExpression;
 import configuratorProject.myUnary;
 import configuratorProject.myUnaryOparators;
 
@@ -58,7 +58,7 @@ public class myUnaryImpl extends myExpressionImpl implements myUnary {
 	 * @generated
 	 * @ordered
 	 */
-	protected myExpression myUnaryExpression;
+	protected myConcreteExpression myUnaryExpression;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -105,7 +105,7 @@ public class myUnaryImpl extends myExpressionImpl implements myUnary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public myExpression getMyUnaryExpression() {
+	public myConcreteExpression getMyUnaryExpression() {
 		return myUnaryExpression;
 	}
 
@@ -114,8 +114,8 @@ public class myUnaryImpl extends myExpressionImpl implements myUnary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetMyUnaryExpression(myExpression newMyUnaryExpression, NotificationChain msgs) {
-		myExpression oldMyUnaryExpression = myUnaryExpression;
+	public NotificationChain basicSetMyUnaryExpression(myConcreteExpression newMyUnaryExpression, NotificationChain msgs) {
+		myConcreteExpression oldMyUnaryExpression = myUnaryExpression;
 		myUnaryExpression = newMyUnaryExpression;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfiguratorProjectPackage.MY_UNARY__MY_UNARY_EXPRESSION, oldMyUnaryExpression, newMyUnaryExpression);
@@ -129,7 +129,7 @@ public class myUnaryImpl extends myExpressionImpl implements myUnary {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMyUnaryExpression(myExpression newMyUnaryExpression) {
+	public void setMyUnaryExpression(myConcreteExpression newMyUnaryExpression) {
 		if (newMyUnaryExpression != myUnaryExpression) {
 			NotificationChain msgs = null;
 			if (myUnaryExpression != null)
@@ -185,7 +185,7 @@ public class myUnaryImpl extends myExpressionImpl implements myUnary {
 				setOparand((myUnaryOparators)newValue);
 				return;
 			case ConfiguratorProjectPackage.MY_UNARY__MY_UNARY_EXPRESSION:
-				setMyUnaryExpression((myExpression)newValue);
+				setMyUnaryExpression((myConcreteExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -203,7 +203,7 @@ public class myUnaryImpl extends myExpressionImpl implements myUnary {
 				setOparand(OPARAND_EDEFAULT);
 				return;
 			case ConfiguratorProjectPackage.MY_UNARY__MY_UNARY_EXPRESSION:
-				setMyUnaryExpression((myExpression)null);
+				setMyUnaryExpression((myConcreteExpression)null);
 				return;
 		}
 		super.eUnset(featureID);

@@ -65,7 +65,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyNamedElement()
 	 * @generated
 	 */
-	int MY_NAMED_ELEMENT = 14;
+	int MY_NAMED_ELEMENT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -206,13 +206,22 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	int MY_CONSTRAINT = 2;
 
 	/**
-	 * The feature id for the '<em><b>My Constraint Contains</b></em>' containment reference.
+	 * The feature id for the '<em><b>My If Constraint</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MY_CONSTRAINT__MY_CONSTRAINT_CONTAINS = 0;
+	int MY_CONSTRAINT__MY_IF_CONSTRAINT = 0;
+
+	/**
+	 * The feature id for the '<em><b>My Then Constraint</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_CONSTRAINT__MY_THEN_CONSTRAINT = 1;
 
 	/**
 	 * The number of structural features of the '<em>my Constraint</em>' class.
@@ -221,7 +230,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MY_CONSTRAINT_FEATURE_COUNT = 1;
+	int MY_CONSTRAINT_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>my Constraint</em>' class.
@@ -436,14 +445,14 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	int MY_LITERAL_OPERATION_COUNT = MY_EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link configuratorProject.impl.myStringImpl <em>my String</em>}' class.
+	 * The meta object id for the '{@link configuratorProject.impl.MyBoolLiteralImpl <em>My Bool Literal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see configuratorProject.impl.myStringImpl
-	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyString()
+	 * @see configuratorProject.impl.MyBoolLiteralImpl
+	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getMyBoolLiteral()
 	 * @generated
 	 */
-	int MY_STRING = 8;
+	int MY_BOOL_LITERAL = 8;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -452,99 +461,25 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MY_STRING__VALUE = MY_LITERAL_FEATURE_COUNT + 0;
+	int MY_BOOL_LITERAL__VALUE = MY_LITERAL_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>my String</em>' class.
+	 * The number of structural features of the '<em>My Bool Literal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MY_STRING_FEATURE_COUNT = MY_LITERAL_FEATURE_COUNT + 1;
+	int MY_BOOL_LITERAL_FEATURE_COUNT = MY_LITERAL_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>my String</em>' class.
+	 * The number of operations of the '<em>My Bool Literal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MY_STRING_OPERATION_COUNT = MY_LITERAL_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link configuratorProject.impl.myIntImpl <em>my Int</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see configuratorProject.impl.myIntImpl
-	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyInt()
-	 * @generated
-	 */
-	int MY_INT = 9;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MY_INT__VALUE = MY_LITERAL_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>my Int</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MY_INT_FEATURE_COUNT = MY_LITERAL_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>my Int</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MY_INT_OPERATION_COUNT = MY_LITERAL_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link configuratorProject.impl.BoolLiteralImpl <em>Bool Literal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see configuratorProject.impl.BoolLiteralImpl
-	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getBoolLiteral()
-	 * @generated
-	 */
-	int BOOL_LITERAL = 10;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOL_LITERAL__VALUE = MY_LITERAL_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Bool Literal</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOL_LITERAL_FEATURE_COUNT = MY_LITERAL_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Bool Literal</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOL_LITERAL_OPERATION_COUNT = MY_LITERAL_OPERATION_COUNT + 0;
+	int MY_BOOL_LITERAL_OPERATION_COUNT = MY_LITERAL_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link configuratorProject.impl.myValueImpl <em>my Value</em>}' class.
@@ -554,7 +489,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyValue()
 	 * @generated
 	 */
-	int MY_VALUE = 11;
+	int MY_VALUE = 9;
 
 	/**
 	 * The number of structural features of the '<em>my Value</em>' class.
@@ -563,7 +498,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MY_VALUE_FEATURE_COUNT = 0;
+	int MY_VALUE_FEATURE_COUNT = MY_LITERAL_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>my Value</em>' class.
@@ -572,7 +507,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MY_VALUE_OPERATION_COUNT = 0;
+	int MY_VALUE_OPERATION_COUNT = MY_LITERAL_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link configuratorProject.impl.myEnumImpl <em>my Enum</em>}' class.
@@ -582,16 +517,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyEnum()
 	 * @generated
 	 */
-	int MY_ENUM = 12;
-
-	/**
-	 * The feature id for the '<em><b>Values</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MY_ENUM__VALUES = MY_VALUE_FEATURE_COUNT + 0;
+	int MY_ENUM = 10;
 
 	/**
 	 * The number of structural features of the '<em>my Enum</em>' class.
@@ -600,7 +526,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MY_ENUM_FEATURE_COUNT = MY_VALUE_FEATURE_COUNT + 1;
+	int MY_ENUM_FEATURE_COUNT = MY_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>my Enum</em>' class.
@@ -612,14 +538,14 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	int MY_ENUM_OPERATION_COUNT = MY_VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link configuratorProject.impl.BooleanValueImpl <em>Boolean Value</em>}' class.
+	 * The meta object id for the '{@link configuratorProject.impl.myBooleanImpl <em>my Boolean</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see configuratorProject.impl.BooleanValueImpl
-	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getBooleanValue()
+	 * @see configuratorProject.impl.myBooleanImpl
+	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyBoolean()
 	 * @generated
 	 */
-	int BOOLEAN_VALUE = 13;
+	int MY_BOOLEAN = 11;
 
 	/**
 	 * The feature id for the '<em><b>True Value</b></em>' attribute.
@@ -628,7 +554,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_VALUE__TRUE_VALUE = MY_VALUE_FEATURE_COUNT + 0;
+	int MY_BOOLEAN__TRUE_VALUE = MY_VALUE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>False Value</b></em>' attribute.
@@ -637,25 +563,25 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_VALUE__FALSE_VALUE = MY_VALUE_FEATURE_COUNT + 1;
+	int MY_BOOLEAN__FALSE_VALUE = MY_VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Boolean Value</em>' class.
+	 * The number of structural features of the '<em>my Boolean</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_VALUE_FEATURE_COUNT = MY_VALUE_FEATURE_COUNT + 2;
+	int MY_BOOLEAN_FEATURE_COUNT = MY_VALUE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Boolean Value</em>' class.
+	 * The number of operations of the '<em>my Boolean</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_VALUE_OPERATION_COUNT = MY_VALUE_OPERATION_COUNT + 0;
+	int MY_BOOLEAN_OPERATION_COUNT = MY_VALUE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link configuratorProject.impl.myIdentifierImpl <em>my Identifier</em>}' class.
@@ -665,7 +591,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyIdentifier()
 	 * @generated
 	 */
-	int MY_IDENTIFIER = 15;
+	int MY_IDENTIFIER = 13;
 
 	/**
 	 * The feature id for the '<em><b>My Intentifier Is</b></em>' reference.
@@ -702,7 +628,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyRange()
 	 * @generated
 	 */
-	int MY_RANGE = 16;
+	int MY_RANGE = 14;
 
 	/**
 	 * The feature id for the '<em><b>From</b></em>' attribute.
@@ -741,6 +667,117 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	int MY_RANGE_OPERATION_COUNT = MY_VALUE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link configuratorProject.impl.myStringEnumImpl <em>my String Enum</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see configuratorProject.impl.myStringEnumImpl
+	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyStringEnum()
+	 * @generated
+	 */
+	int MY_STRING_ENUM = 15;
+
+	/**
+	 * The feature id for the '<em><b>Values</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_STRING_ENUM__VALUES = MY_ENUM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>my String Enum</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_STRING_ENUM_FEATURE_COUNT = MY_ENUM_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>my String Enum</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_STRING_ENUM_OPERATION_COUNT = MY_ENUM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link configuratorProject.impl.myNumberEnumImpl <em>my Number Enum</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see configuratorProject.impl.myNumberEnumImpl
+	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyNumberEnum()
+	 * @generated
+	 */
+	int MY_NUMBER_ENUM = 16;
+
+	/**
+	 * The feature id for the '<em><b>Values</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_NUMBER_ENUM__VALUES = MY_ENUM_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>my Number Enum</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_NUMBER_ENUM_FEATURE_COUNT = MY_ENUM_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>my Number Enum</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_NUMBER_ENUM_OPERATION_COUNT = MY_ENUM_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link configuratorProject.impl.myConcreteExpressionImpl <em>my Concrete Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see configuratorProject.impl.myConcreteExpressionImpl
+	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyConcreteExpression()
+	 * @generated
+	 */
+	int MY_CONCRETE_EXPRESSION = 17;
+
+	/**
+	 * The feature id for the '<em><b>My Concrete Ex</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_CONCRETE_EXPRESSION__MY_CONCRETE_EX = 0;
+
+	/**
+	 * The number of structural features of the '<em>my Concrete Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_CONCRETE_EXPRESSION_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>my Concrete Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MY_CONCRETE_EXPRESSION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link configuratorProject.myBinaryOparators <em>my Binary Oparators</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -748,7 +785,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyBinaryOparators()
 	 * @generated
 	 */
-	int MY_BINARY_OPARATORS = 17;
+	int MY_BINARY_OPARATORS = 18;
 
 	/**
 	 * The meta object id for the '{@link configuratorProject.myUnaryOparators <em>my Unary Oparators</em>}' enum.
@@ -758,7 +795,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyUnaryOparators()
 	 * @generated
 	 */
-	int MY_UNARY_OPARATORS = 18;
+	int MY_UNARY_OPARATORS = 19;
 
 
 	/**
@@ -825,15 +862,26 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	EClass getmyConstraint();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link configuratorProject.myConstraint#getMyConstraintContains <em>My Constraint Contains</em>}'.
+	 * Returns the meta object for the containment reference '{@link configuratorProject.myConstraint#getMyIfConstraint <em>My If Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>My Constraint Contains</em>'.
-	 * @see configuratorProject.myConstraint#getMyConstraintContains()
+	 * @return the meta object for the containment reference '<em>My If Constraint</em>'.
+	 * @see configuratorProject.myConstraint#getMyIfConstraint()
 	 * @see #getmyConstraint()
 	 * @generated
 	 */
-	EReference getmyConstraint_MyConstraintContains();
+	EReference getmyConstraint_MyIfConstraint();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link configuratorProject.myConstraint#getMyThenConstraint <em>My Then Constraint</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>My Then Constraint</em>'.
+	 * @see configuratorProject.myConstraint#getMyThenConstraint()
+	 * @see #getmyConstraint()
+	 * @generated
+	 */
+	EReference getmyConstraint_MyThenConstraint();
 
 	/**
 	 * Returns the meta object for class '{@link configuratorProject.myAttribute <em>my Attribute</em>}'.
@@ -952,67 +1000,25 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	EClass getmyLiteral();
 
 	/**
-	 * Returns the meta object for class '{@link configuratorProject.myString <em>my String</em>}'.
+	 * Returns the meta object for class '{@link configuratorProject.MyBoolLiteral <em>My Bool Literal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>my String</em>'.
-	 * @see configuratorProject.myString
+	 * @return the meta object for class '<em>My Bool Literal</em>'.
+	 * @see configuratorProject.MyBoolLiteral
 	 * @generated
 	 */
-	EClass getmyString();
+	EClass getMyBoolLiteral();
 
 	/**
-	 * Returns the meta object for the attribute '{@link configuratorProject.myString#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link configuratorProject.MyBoolLiteral#isValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see configuratorProject.myString#getValue()
-	 * @see #getmyString()
+	 * @see configuratorProject.MyBoolLiteral#isValue()
+	 * @see #getMyBoolLiteral()
 	 * @generated
 	 */
-	EAttribute getmyString_Value();
-
-	/**
-	 * Returns the meta object for class '{@link configuratorProject.myInt <em>my Int</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>my Int</em>'.
-	 * @see configuratorProject.myInt
-	 * @generated
-	 */
-	EClass getmyInt();
-
-	/**
-	 * Returns the meta object for the attribute '{@link configuratorProject.myInt#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see configuratorProject.myInt#getValue()
-	 * @see #getmyInt()
-	 * @generated
-	 */
-	EAttribute getmyInt_Value();
-
-	/**
-	 * Returns the meta object for class '{@link configuratorProject.BoolLiteral <em>Bool Literal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Bool Literal</em>'.
-	 * @see configuratorProject.BoolLiteral
-	 * @generated
-	 */
-	EClass getBoolLiteral();
-
-	/**
-	 * Returns the meta object for the attribute '{@link configuratorProject.BoolLiteral#isValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see configuratorProject.BoolLiteral#isValue()
-	 * @see #getBoolLiteral()
-	 * @generated
-	 */
-	EAttribute getBoolLiteral_Value();
+	EAttribute getMyBoolLiteral_Value();
 
 	/**
 	 * Returns the meta object for class '{@link configuratorProject.myValue <em>my Value</em>}'.
@@ -1035,47 +1041,36 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	EClass getmyEnum();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link configuratorProject.myEnum#getValues <em>Values</em>}'.
+	 * Returns the meta object for class '{@link configuratorProject.myBoolean <em>my Boolean</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Values</em>'.
-	 * @see configuratorProject.myEnum#getValues()
-	 * @see #getmyEnum()
+	 * @return the meta object for class '<em>my Boolean</em>'.
+	 * @see configuratorProject.myBoolean
 	 * @generated
 	 */
-	EAttribute getmyEnum_Values();
+	EClass getmyBoolean();
 
 	/**
-	 * Returns the meta object for class '{@link configuratorProject.BooleanValue <em>Boolean Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Boolean Value</em>'.
-	 * @see configuratorProject.BooleanValue
-	 * @generated
-	 */
-	EClass getBooleanValue();
-
-	/**
-	 * Returns the meta object for the attribute '{@link configuratorProject.BooleanValue#getTrueValue <em>True Value</em>}'.
+	 * Returns the meta object for the attribute '{@link configuratorProject.myBoolean#getTrueValue <em>True Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>True Value</em>'.
-	 * @see configuratorProject.BooleanValue#getTrueValue()
-	 * @see #getBooleanValue()
+	 * @see configuratorProject.myBoolean#getTrueValue()
+	 * @see #getmyBoolean()
 	 * @generated
 	 */
-	EAttribute getBooleanValue_TrueValue();
+	EAttribute getmyBoolean_TrueValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link configuratorProject.BooleanValue#getFalseValue <em>False Value</em>}'.
+	 * Returns the meta object for the attribute '{@link configuratorProject.myBoolean#getFalseValue <em>False Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>False Value</em>'.
-	 * @see configuratorProject.BooleanValue#getFalseValue()
-	 * @see #getBooleanValue()
+	 * @see configuratorProject.myBoolean#getFalseValue()
+	 * @see #getmyBoolean()
 	 * @generated
 	 */
-	EAttribute getBooleanValue_FalseValue();
+	EAttribute getmyBoolean_FalseValue();
 
 	/**
 	 * Returns the meta object for class '{@link configuratorProject.myNamedElement <em>my Named Element</em>}'.
@@ -1150,6 +1145,69 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getmyRange_To();
+
+	/**
+	 * Returns the meta object for class '{@link configuratorProject.myStringEnum <em>my String Enum</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>my String Enum</em>'.
+	 * @see configuratorProject.myStringEnum
+	 * @generated
+	 */
+	EClass getmyStringEnum();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link configuratorProject.myStringEnum#getValues <em>Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Values</em>'.
+	 * @see configuratorProject.myStringEnum#getValues()
+	 * @see #getmyStringEnum()
+	 * @generated
+	 */
+	EAttribute getmyStringEnum_Values();
+
+	/**
+	 * Returns the meta object for class '{@link configuratorProject.myNumberEnum <em>my Number Enum</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>my Number Enum</em>'.
+	 * @see configuratorProject.myNumberEnum
+	 * @generated
+	 */
+	EClass getmyNumberEnum();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link configuratorProject.myNumberEnum#getValues <em>Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Values</em>'.
+	 * @see configuratorProject.myNumberEnum#getValues()
+	 * @see #getmyNumberEnum()
+	 * @generated
+	 */
+	EAttribute getmyNumberEnum_Values();
+
+	/**
+	 * Returns the meta object for class '{@link configuratorProject.myConcreteExpression <em>my Concrete Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>my Concrete Expression</em>'.
+	 * @see configuratorProject.myConcreteExpression
+	 * @generated
+	 */
+	EClass getmyConcreteExpression();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link configuratorProject.myConcreteExpression#getMyConcreteEx <em>My Concrete Ex</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>My Concrete Ex</em>'.
+	 * @see configuratorProject.myConcreteExpression#getMyConcreteEx()
+	 * @see #getmyConcreteExpression()
+	 * @generated
+	 */
+	EReference getmyConcreteExpression_MyConcreteEx();
 
 	/**
 	 * Returns the meta object for enum '{@link configuratorProject.myBinaryOparators <em>my Binary Oparators</em>}'.
@@ -1249,12 +1307,20 @@ public interface ConfiguratorProjectPackage extends EPackage {
 		EClass MY_CONSTRAINT = eINSTANCE.getmyConstraint();
 
 		/**
-		 * The meta object literal for the '<em><b>My Constraint Contains</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>My If Constraint</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MY_CONSTRAINT__MY_CONSTRAINT_CONTAINS = eINSTANCE.getmyConstraint_MyConstraintContains();
+		EReference MY_CONSTRAINT__MY_IF_CONSTRAINT = eINSTANCE.getmyConstraint_MyIfConstraint();
+
+		/**
+		 * The meta object literal for the '<em><b>My Then Constraint</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MY_CONSTRAINT__MY_THEN_CONSTRAINT = eINSTANCE.getmyConstraint_MyThenConstraint();
 
 		/**
 		 * The meta object literal for the '{@link configuratorProject.impl.myAttributeImpl <em>my Attribute</em>}' class.
@@ -1355,14 +1421,14 @@ public interface ConfiguratorProjectPackage extends EPackage {
 		EClass MY_LITERAL = eINSTANCE.getmyLiteral();
 
 		/**
-		 * The meta object literal for the '{@link configuratorProject.impl.myStringImpl <em>my String</em>}' class.
+		 * The meta object literal for the '{@link configuratorProject.impl.MyBoolLiteralImpl <em>My Bool Literal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see configuratorProject.impl.myStringImpl
-		 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyString()
+		 * @see configuratorProject.impl.MyBoolLiteralImpl
+		 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getMyBoolLiteral()
 		 * @generated
 		 */
-		EClass MY_STRING = eINSTANCE.getmyString();
+		EClass MY_BOOL_LITERAL = eINSTANCE.getMyBoolLiteral();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -1370,43 +1436,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MY_STRING__VALUE = eINSTANCE.getmyString_Value();
-
-		/**
-		 * The meta object literal for the '{@link configuratorProject.impl.myIntImpl <em>my Int</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see configuratorProject.impl.myIntImpl
-		 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyInt()
-		 * @generated
-		 */
-		EClass MY_INT = eINSTANCE.getmyInt();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MY_INT__VALUE = eINSTANCE.getmyInt_Value();
-
-		/**
-		 * The meta object literal for the '{@link configuratorProject.impl.BoolLiteralImpl <em>Bool Literal</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see configuratorProject.impl.BoolLiteralImpl
-		 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getBoolLiteral()
-		 * @generated
-		 */
-		EClass BOOL_LITERAL = eINSTANCE.getBoolLiteral();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BOOL_LITERAL__VALUE = eINSTANCE.getBoolLiteral_Value();
+		EAttribute MY_BOOL_LITERAL__VALUE = eINSTANCE.getMyBoolLiteral_Value();
 
 		/**
 		 * The meta object literal for the '{@link configuratorProject.impl.myValueImpl <em>my Value</em>}' class.
@@ -1429,22 +1459,14 @@ public interface ConfiguratorProjectPackage extends EPackage {
 		EClass MY_ENUM = eINSTANCE.getmyEnum();
 
 		/**
-		 * The meta object literal for the '<em><b>Values</b></em>' attribute list feature.
+		 * The meta object literal for the '{@link configuratorProject.impl.myBooleanImpl <em>my Boolean</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see configuratorProject.impl.myBooleanImpl
+		 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyBoolean()
 		 * @generated
 		 */
-		EAttribute MY_ENUM__VALUES = eINSTANCE.getmyEnum_Values();
-
-		/**
-		 * The meta object literal for the '{@link configuratorProject.impl.BooleanValueImpl <em>Boolean Value</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see configuratorProject.impl.BooleanValueImpl
-		 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getBooleanValue()
-		 * @generated
-		 */
-		EClass BOOLEAN_VALUE = eINSTANCE.getBooleanValue();
+		EClass MY_BOOLEAN = eINSTANCE.getmyBoolean();
 
 		/**
 		 * The meta object literal for the '<em><b>True Value</b></em>' attribute feature.
@@ -1452,7 +1474,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute BOOLEAN_VALUE__TRUE_VALUE = eINSTANCE.getBooleanValue_TrueValue();
+		EAttribute MY_BOOLEAN__TRUE_VALUE = eINSTANCE.getmyBoolean_TrueValue();
 
 		/**
 		 * The meta object literal for the '<em><b>False Value</b></em>' attribute feature.
@@ -1460,7 +1482,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute BOOLEAN_VALUE__FALSE_VALUE = eINSTANCE.getBooleanValue_FalseValue();
+		EAttribute MY_BOOLEAN__FALSE_VALUE = eINSTANCE.getmyBoolean_FalseValue();
 
 		/**
 		 * The meta object literal for the '{@link configuratorProject.impl.myNamedElementImpl <em>my Named Element</em>}' class.
@@ -1523,6 +1545,60 @@ public interface ConfiguratorProjectPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MY_RANGE__TO = eINSTANCE.getmyRange_To();
+
+		/**
+		 * The meta object literal for the '{@link configuratorProject.impl.myStringEnumImpl <em>my String Enum</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see configuratorProject.impl.myStringEnumImpl
+		 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyStringEnum()
+		 * @generated
+		 */
+		EClass MY_STRING_ENUM = eINSTANCE.getmyStringEnum();
+
+		/**
+		 * The meta object literal for the '<em><b>Values</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MY_STRING_ENUM__VALUES = eINSTANCE.getmyStringEnum_Values();
+
+		/**
+		 * The meta object literal for the '{@link configuratorProject.impl.myNumberEnumImpl <em>my Number Enum</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see configuratorProject.impl.myNumberEnumImpl
+		 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyNumberEnum()
+		 * @generated
+		 */
+		EClass MY_NUMBER_ENUM = eINSTANCE.getmyNumberEnum();
+
+		/**
+		 * The meta object literal for the '<em><b>Values</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MY_NUMBER_ENUM__VALUES = eINSTANCE.getmyNumberEnum_Values();
+
+		/**
+		 * The meta object literal for the '{@link configuratorProject.impl.myConcreteExpressionImpl <em>my Concrete Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see configuratorProject.impl.myConcreteExpressionImpl
+		 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyConcreteExpression()
+		 * @generated
+		 */
+		EClass MY_CONCRETE_EXPRESSION = eINSTANCE.getmyConcreteExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>My Concrete Ex</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MY_CONCRETE_EXPRESSION__MY_CONCRETE_EX = eINSTANCE.getmyConcreteExpression_MyConcreteEx();
 
 		/**
 		 * The meta object literal for the '{@link configuratorProject.myBinaryOparators <em>my Binary Oparators</em>}' enum.

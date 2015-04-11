@@ -7,8 +7,6 @@ import configuratorProject.myValue;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>my Value</b></em>'.
@@ -18,7 +16,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public abstract class myValueImpl extends MinimalEObjectImpl.Container implements myValue {
+public abstract class myValueImpl extends myLiteralImpl implements myValue {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
