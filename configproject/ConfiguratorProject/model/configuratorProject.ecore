@@ -14,9 +14,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="myConstraint">
     <eStructuralFeatures xsi:type="ecore:EReference" name="myIfConstraint" lowerBound="1"
-        eType="#//myConcreteExpression" containment="true"/>
+        eType="#//myExpression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="myThenConstraint" lowerBound="1"
-        eType="#//myConcreteExpression" containment="true"/>
+        eType="#//myExpression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="myAttribute" eSuperTypes="#//myNamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="myAttributeContains" lowerBound="1"
@@ -27,9 +27,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Oparand" eType="#//myBinaryOparators"
         defaultValueLiteral="if"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="myBinaryLeft" lowerBound="1"
-        eType="#//myConcreteExpression" containment="true"/>
+        eType="#//myExpression" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="myBinaryRight" lowerBound="1"
-        eType="#//myConcreteExpression" containment="true"/>
+        eType="#//myExpression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="myBinaryOparators">
     <eLiterals name="and"/>
@@ -44,7 +44,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="myUnary" eSuperTypes="#//myExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Oparand" eType="#//myUnaryOparators"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="myUnaryExpression" lowerBound="1"
-        eType="#//myConcreteExpression" containment="true"/>
+        eType="#//myExpression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="myUnaryOparators">
     <eLiterals name="not"/>
@@ -79,9 +79,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="myNumberEnum" eSuperTypes="#//myEnum">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" lowerBound="1"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="myConcreteExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="myConcreteEx" lowerBound="1"
-        eType="#//myExpression" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

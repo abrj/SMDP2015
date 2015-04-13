@@ -59,12 +59,12 @@ public interface myUnary extends myExpression {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>My Unary Expression</em>' containment reference.
-	 * @see #setMyUnaryExpression(myConcreteExpression)
+	 * @see #setMyUnaryExpression(myExpression)
 	 * @see configuratorProject.ConfiguratorProjectPackage#getmyUnary_MyUnaryExpression()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	myConcreteExpression getMyUnaryExpression();
+	myExpression getMyUnaryExpression();
 
 	/**
 	 * Sets the value of the '{@link configuratorProject.myUnary#getMyUnaryExpression <em>My Unary Expression</em>}' containment reference.
@@ -74,6 +74,6 @@ public interface myUnary extends myExpression {
 	 * @see #getMyUnaryExpression()
 	 * @generated
 	 */
-	void setMyUnaryExpression(myConcreteExpression value);
+	void setMyUnaryExpression(myExpression value);
 
 } // myUnary

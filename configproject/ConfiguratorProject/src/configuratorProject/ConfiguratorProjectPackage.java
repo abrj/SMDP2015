@@ -741,43 +741,6 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	int MY_NUMBER_ENUM_OPERATION_COUNT = MY_ENUM_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link configuratorProject.impl.myConcreteExpressionImpl <em>my Concrete Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see configuratorProject.impl.myConcreteExpressionImpl
-	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyConcreteExpression()
-	 * @generated
-	 */
-	int MY_CONCRETE_EXPRESSION = 17;
-
-	/**
-	 * The feature id for the '<em><b>My Concrete Ex</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MY_CONCRETE_EXPRESSION__MY_CONCRETE_EX = 0;
-
-	/**
-	 * The number of structural features of the '<em>my Concrete Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MY_CONCRETE_EXPRESSION_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>my Concrete Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MY_CONCRETE_EXPRESSION_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link configuratorProject.myBinaryOparators <em>my Binary Oparators</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -785,7 +748,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyBinaryOparators()
 	 * @generated
 	 */
-	int MY_BINARY_OPARATORS = 18;
+	int MY_BINARY_OPARATORS = 17;
 
 	/**
 	 * The meta object id for the '{@link configuratorProject.myUnaryOparators <em>my Unary Oparators</em>}' enum.
@@ -795,7 +758,7 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyUnaryOparators()
 	 * @generated
 	 */
-	int MY_UNARY_OPARATORS = 19;
+	int MY_UNARY_OPARATORS = 18;
 
 
 	/**
@@ -1189,27 +1152,6 @@ public interface ConfiguratorProjectPackage extends EPackage {
 	EAttribute getmyNumberEnum_Values();
 
 	/**
-	 * Returns the meta object for class '{@link configuratorProject.myConcreteExpression <em>my Concrete Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>my Concrete Expression</em>'.
-	 * @see configuratorProject.myConcreteExpression
-	 * @generated
-	 */
-	EClass getmyConcreteExpression();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link configuratorProject.myConcreteExpression#getMyConcreteEx <em>My Concrete Ex</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>My Concrete Ex</em>'.
-	 * @see configuratorProject.myConcreteExpression#getMyConcreteEx()
-	 * @see #getmyConcreteExpression()
-	 * @generated
-	 */
-	EReference getmyConcreteExpression_MyConcreteEx();
-
-	/**
 	 * Returns the meta object for enum '{@link configuratorProject.myBinaryOparators <em>my Binary Oparators</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1581,24 +1523,6 @@ public interface ConfiguratorProjectPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MY_NUMBER_ENUM__VALUES = eINSTANCE.getmyNumberEnum_Values();
-
-		/**
-		 * The meta object literal for the '{@link configuratorProject.impl.myConcreteExpressionImpl <em>my Concrete Expression</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see configuratorProject.impl.myConcreteExpressionImpl
-		 * @see configuratorProject.impl.ConfiguratorProjectPackageImpl#getmyConcreteExpression()
-		 * @generated
-		 */
-		EClass MY_CONCRETE_EXPRESSION = eINSTANCE.getmyConcreteExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>My Concrete Ex</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MY_CONCRETE_EXPRESSION__MY_CONCRETE_EX = eINSTANCE.getmyConcreteExpression_MyConcreteEx();
 
 		/**
 		 * The meta object literal for the '{@link configuratorProject.myBinaryOparators <em>my Binary Oparators</em>}' enum.

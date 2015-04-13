@@ -33,7 +33,7 @@
     <genClasses ecoreClass="configuratorProject.ecore#//myAttribute">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myAttribute/myAttributeContains"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//myExpression"/>
+    <genClasses image="false" ecoreClass="configuratorProject.ecore#//myExpression"/>
     <genClasses ecoreClass="configuratorProject.ecore#//myBinary">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myBinary/Oparand"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myBinary/myBinaryLeft"/>
@@ -43,17 +43,17 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myUnary/Oparand"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myUnary/myUnaryExpression"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//myLiteral"/>
+    <genClasses image="false" ecoreClass="configuratorProject.ecore#//myLiteral"/>
     <genClasses ecoreClass="configuratorProject.ecore#//MyBoolLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//MyBoolLiteral/value"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//myValue"/>
-    <genClasses ecoreClass="configuratorProject.ecore#//myEnum"/>
+    <genClasses image="false" ecoreClass="configuratorProject.ecore#//myValue"/>
+    <genClasses image="false" ecoreClass="configuratorProject.ecore#//myEnum"/>
     <genClasses ecoreClass="configuratorProject.ecore#//myBoolean">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myBoolean/trueValue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myBoolean/falseValue"/>
     </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//myNamedElement">
+    <genClasses image="false" ecoreClass="configuratorProject.ecore#//myNamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myNamedElement/name"/>
     </genClasses>
     <genClasses ecoreClass="configuratorProject.ecore#//myIdentifier">
@@ -68,9 +68,6 @@
     </genClasses>
     <genClasses ecoreClass="configuratorProject.ecore#//myNumberEnum">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myNumberEnum/values"/>
-    </genClasses>
-    <genClasses ecoreClass="configuratorProject.ecore#//myConcreteExpression">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myConcreteExpression/myConcreteEx"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

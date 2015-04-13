@@ -79,76 +79,70 @@ rulemyModel returns [EObject current=null]
     }
     @after { leaveRule(); }:
 ((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getMyModelAccess().getMyModelAction_0(),
-            $current);
-    }
-)(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyModelAccess().getNameEStringParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getMyModelAccess().getNameEStringParserRuleCall_0_0()); 
 	    }
-		lv_name_1_0=ruleEString		{
+		lv_name_0_0=ruleEString		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyModelRule());
 	        }
        		set(
        			$current, 
        			"name",
-        		lv_name_1_0, 
+        		lv_name_0_0, 
         		"EString");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_2='{' 
+)(	otherlv_1='{' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getMyModelAccess().getLeftCurlyBracketKeyword_2_0());
+    	newLeafNode(otherlv_1, grammarAccess.getMyModelAccess().getLeftCurlyBracketKeyword_1_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyModelAccess().getMyModelContainsMyObjectParserRuleCall_2_1_0()); 
+	        newCompositeNode(grammarAccess.getMyModelAccess().getMyModelContainsMyObjectParserRuleCall_1_1_0()); 
 	    }
-		lv_myModelContains_3_0=rulemyObject		{
+		lv_myModelContains_2_0=rulemyObject		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyModelRule());
 	        }
        		add(
        			$current, 
        			"myModelContains",
-        		lv_myModelContains_3_0, 
+        		lv_myModelContains_2_0, 
         		"myObject");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_4=',' 
+)(	otherlv_3=',' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getMyModelAccess().getCommaKeyword_2_2_0());
+    	newLeafNode(otherlv_3, grammarAccess.getMyModelAccess().getCommaKeyword_1_2_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyModelAccess().getMyModelContainsMyObjectParserRuleCall_2_2_1_0()); 
+	        newCompositeNode(grammarAccess.getMyModelAccess().getMyModelContainsMyObjectParserRuleCall_1_2_1_0()); 
 	    }
-		lv_myModelContains_5_0=rulemyObject		{
+		lv_myModelContains_4_0=rulemyObject		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyModelRule());
 	        }
        		add(
        			$current, 
        			"myModelContains",
-        		lv_myModelContains_5_0, 
+        		lv_myModelContains_4_0, 
         		"myObject");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))*	otherlv_6='}' 
+))*	otherlv_5='}' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getMyModelAccess().getRightCurlyBracketKeyword_2_3());
+    	newLeafNode(otherlv_5, grammarAccess.getMyModelAccess().getRightCurlyBracketKeyword_1_3());
     }
 )?)
 ;
@@ -193,111 +187,21 @@ rulemyValue returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getMyValueAccess().getMyStringEnumParserRuleCall_2()); 
+        newCompositeNode(grammarAccess.getMyValueAccess().getMyNumberEnumParserRuleCall_2()); 
     }
-    this_myStringEnum_2=rulemyStringEnum
+    this_myNumberEnum_2=rulemyNumberEnum
     { 
-        $current = $this_myStringEnum_2.current; 
+        $current = $this_myNumberEnum_2.current; 
         afterParserOrEnumRuleCall();
     }
 
     |
     { 
-        newCompositeNode(grammarAccess.getMyValueAccess().getMyNumberEnumParserRuleCall_3()); 
+        newCompositeNode(grammarAccess.getMyValueAccess().getMyStringEnumParserRuleCall_3()); 
     }
-    this_myNumberEnum_3=rulemyNumberEnum
+    this_myStringEnum_3=rulemyStringEnum
     { 
-        $current = $this_myNumberEnum_3.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
-// Entry rule entryRulemyExpression
-entryRulemyExpression returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getMyExpressionRule()); }
-	 iv_rulemyExpression=rulemyExpression 
-	 { $current=$iv_rulemyExpression.current; } 
-	 EOF 
-;
-
-// Rule myExpression
-rulemyExpression returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-    { 
-        newCompositeNode(grammarAccess.getMyExpressionAccess().getMyBinaryParserRuleCall_0()); 
-    }
-    this_myBinary_0=rulemyBinary
-    { 
-        $current = $this_myBinary_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getMyExpressionAccess().getMyUnaryParserRuleCall_1()); 
-    }
-    this_myUnary_1=rulemyUnary
-    { 
-        $current = $this_myUnary_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getMyExpressionAccess().getMyBooleanParserRuleCall_2()); 
-    }
-    this_myBoolean_2=rulemyBoolean
-    { 
-        $current = $this_myBoolean_2.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getMyExpressionAccess().getMyRangeParserRuleCall_3()); 
-    }
-    this_myRange_3=rulemyRange
-    { 
-        $current = $this_myRange_3.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getMyExpressionAccess().getMyStringEnumParserRuleCall_4()); 
-    }
-    this_myStringEnum_4=rulemyStringEnum
-    { 
-        $current = $this_myStringEnum_4.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getMyExpressionAccess().getMyNumberEnumParserRuleCall_5()); 
-    }
-    this_myNumberEnum_5=rulemyNumberEnum
-    { 
-        $current = $this_myNumberEnum_5.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-    { 
-        newCompositeNode(grammarAccess.getMyExpressionAccess().getMyIdentifierParserRuleCall_6()); 
-    }
-    this_myIdentifier_6=rulemyIdentifier
-    { 
-        $current = $this_myIdentifier_6.current; 
+        $current = $this_myStringEnum_3.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -358,85 +262,97 @@ rulemyObject returns [EObject current=null]
     }
     @after { leaveRule(); }:
 ((
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getMyObjectAccess().getMyObjectAction_0(),
-            $current);
-    }
-)(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyObjectAccess().getNameEStringParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getMyObjectAccess().getNameEStringParserRuleCall_0_0()); 
 	    }
-		lv_name_1_0=ruleEString		{
+		lv_name_0_0=ruleEString		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyObjectRule());
 	        }
        		set(
        			$current, 
        			"name",
-        		lv_name_1_0, 
+        		lv_name_0_0, 
         		"EString");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_2='{' 
+)	otherlv_1='{' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getMyObjectAccess().getLeftCurlyBracketKeyword_2());
+    	newLeafNode(otherlv_1, grammarAccess.getMyObjectAccess().getLeftCurlyBracketKeyword_1());
     }
-(	otherlv_3='has' 
+(	otherlv_2='has' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getMyObjectAccess().getHasKeyword_3_0());
+    	newLeafNode(otherlv_2, grammarAccess.getMyObjectAccess().getHasKeyword_2_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyObjectAccess().getMyAttributeContainsMyAttributeParserRuleCall_3_1_0()); 
+	        newCompositeNode(grammarAccess.getMyObjectAccess().getMyAttributeContainsMyAttributeParserRuleCall_2_1_0()); 
 	    }
-		lv_myAttributeContains_4_0=rulemyAttribute		{
+		lv_myAttributeContains_3_0=rulemyAttribute		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyObjectRule());
 	        }
        		add(
        			$current, 
        			"myAttributeContains",
-        		lv_myAttributeContains_4_0, 
+        		lv_myAttributeContains_3_0, 
         		"myAttribute");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)(	otherlv_5=',' 
+)(	otherlv_4=',' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getMyObjectAccess().getCommaKeyword_3_2_0());
+    	newLeafNode(otherlv_4, grammarAccess.getMyObjectAccess().getCommaKeyword_2_2_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyObjectAccess().getMyAttributeContainsMyAttributeParserRuleCall_3_2_1_0()); 
+	        newCompositeNode(grammarAccess.getMyObjectAccess().getMyAttributeContainsMyAttributeParserRuleCall_2_2_1_0()); 
 	    }
-		lv_myAttributeContains_6_0=rulemyAttribute		{
+		lv_myAttributeContains_5_0=rulemyAttribute		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyObjectRule());
 	        }
        		add(
        			$current, 
        			"myAttributeContains",
-        		lv_myAttributeContains_6_0, 
+        		lv_myAttributeContains_5_0, 
         		"myAttribute");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))*)?(	otherlv_7='Constrained by' 
+))*)?(	otherlv_6='Constrained by' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getMyObjectAccess().getConstrainedByKeyword_4_0());
+    	newLeafNode(otherlv_6, grammarAccess.getMyObjectAccess().getConstrainedByKeyword_3_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyObjectAccess().getMyObjectHasMyConstraintParserRuleCall_4_1_0()); 
+	        newCompositeNode(grammarAccess.getMyObjectAccess().getMyObjectHasMyConstraintParserRuleCall_3_1_0()); 
+	    }
+		lv_myObjectHas_7_0=rulemyConstraint		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMyObjectRule());
+	        }
+       		add(
+       			$current, 
+       			"myObjectHas",
+        		lv_myObjectHas_7_0, 
+        		"myConstraint");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getMyObjectAccess().getMyObjectHasMyConstraintParserRuleCall_3_2_0()); 
 	    }
 		lv_myObjectHas_8_0=rulemyConstraint		{
 	        if ($current==null) {
@@ -451,31 +367,9 @@ rulemyObject returns [EObject current=null]
 	    }
 
 )
-)(	otherlv_9=',' 
+)*)?	otherlv_9='}' 
     {
-    	newLeafNode(otherlv_9, grammarAccess.getMyObjectAccess().getCommaKeyword_4_2_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getMyObjectAccess().getMyObjectHasMyConstraintParserRuleCall_4_2_1_0()); 
-	    }
-		lv_myObjectHas_10_0=rulemyConstraint		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMyObjectRule());
-	        }
-       		add(
-       			$current, 
-       			"myObjectHas",
-        		lv_myObjectHas_10_0, 
-        		"myConstraint");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))*)?	otherlv_11='}' 
-    {
-    	newLeafNode(otherlv_11, grammarAccess.getMyObjectAccess().getRightCurlyBracketKeyword_5());
+    	newLeafNode(otherlv_9, grammarAccess.getMyObjectAccess().getRightCurlyBracketKeyword_4());
     }
 )
 ;
@@ -505,9 +399,9 @@ rulemyConstraint returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyConstraintAccess().getMyIfConstraintMyConcreteExpressionParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getMyConstraintAccess().getMyIfConstraintMyBinaryParserRuleCall_1_0()); 
 	    }
-		lv_myIfConstraint_1_0=rulemyConcreteExpression		{
+		lv_myIfConstraint_1_0=rulemyBinary		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyConstraintRule());
 	        }
@@ -515,7 +409,7 @@ rulemyConstraint returns [EObject current=null]
        			$current, 
        			"myIfConstraint",
         		lv_myIfConstraint_1_0, 
-        		"myConcreteExpression");
+        		"myBinary");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -527,9 +421,9 @@ rulemyConstraint returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyConstraintAccess().getMyThenConstraintMyConcreteExpressionParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getMyConstraintAccess().getMyThenConstraintMyBinaryParserRuleCall_3_0()); 
 	    }
-		lv_myThenConstraint_3_0=rulemyConcreteExpression		{
+		lv_myThenConstraint_3_0=rulemyBinary		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyConstraintRule());
 	        }
@@ -537,7 +431,7 @@ rulemyConstraint returns [EObject current=null]
        			$current, 
        			"myThenConstraint",
         		lv_myThenConstraint_3_0, 
-        		"myConcreteExpression");
+        		"myBinary");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -614,45 +508,6 @@ rulemyAttribute returns [EObject current=null]
 
 
 
-// Entry rule entryRulemyConcreteExpression
-entryRulemyConcreteExpression returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getMyConcreteExpressionRule()); }
-	 iv_rulemyConcreteExpression=rulemyConcreteExpression 
-	 { $current=$iv_rulemyConcreteExpression.current; } 
-	 EOF 
-;
-
-// Rule myConcreteExpression
-rulemyConcreteExpression returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getMyConcreteExpressionAccess().getMyConcreteExMyExpressionParserRuleCall_0()); 
-	    }
-		lv_myConcreteEx_0_0=rulemyExpression		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMyConcreteExpressionRule());
-	        }
-       		set(
-       			$current, 
-       			"myConcreteEx",
-        		lv_myConcreteEx_0_0, 
-        		"myExpression");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)
-;
-
-
-
-
-
 // Entry rule entryRulemyBinary
 entryRulemyBinary returns [EObject current=null] 
 	:
@@ -667,32 +522,25 @@ rulemyBinary returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='(' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getMyBinaryAccess().getLeftParenthesisKeyword_0());
+(
+    { 
+        newCompositeNode(grammarAccess.getMyBinaryAccess().getMyUnaryParserRuleCall_0()); 
     }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getMyBinaryAccess().getMyBinaryLeftMyConcreteExpressionParserRuleCall_1_0()); 
-	    }
-		lv_myBinaryLeft_1_0=rulemyConcreteExpression		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMyBinaryRule());
-	        }
-       		set(
-       			$current, 
-       			"myBinaryLeft",
-        		lv_myBinaryLeft_1_0, 
-        		"myConcreteExpression");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
+    this_myUnary_0=rulemyUnary
+    { 
+        $current = $this_myUnary_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+((
+    {
+        $current = forceCreateModelElementAndSet(
+            grammarAccess.getMyBinaryAccess().getMyBinaryMyBinaryLeftAction_1_0(),
+            $current);
+    }
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyBinaryAccess().getOparandMyBinaryOparatorsEnumRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getMyBinaryAccess().getOparandMyBinaryOparatorsEnumRuleCall_1_1_0()); 
 	    }
 		lv_Oparand_2_0=rulemyBinaryOparators		{
 	        if ($current==null) {
@@ -710,9 +558,9 @@ rulemyBinary returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyBinaryAccess().getMyBinaryRightMyConcreteExpressionParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getMyBinaryAccess().getMyBinaryRightMyUnaryParserRuleCall_1_2_0()); 
 	    }
-		lv_myBinaryRight_3_0=rulemyConcreteExpression		{
+		lv_myBinaryRight_3_0=rulemyUnary		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyBinaryRule());
 	        }
@@ -720,14 +568,98 @@ rulemyBinary returns [EObject current=null]
        			$current, 
        			"myBinaryRight",
         		lv_myBinaryRight_3_0, 
-        		"myConcreteExpression");
+        		"myUnary");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_4=')' 
+))*)
+;
+
+
+
+
+
+// Entry rule entryRulemyPrimary
+entryRulemyPrimary returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getMyPrimaryRule()); }
+	 iv_rulemyPrimary=rulemyPrimary 
+	 { $current=$iv_rulemyPrimary.current; } 
+	 EOF 
+;
+
+// Rule myPrimary
+rulemyPrimary returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+    { 
+        newCompositeNode(grammarAccess.getMyPrimaryAccess().getMyBooleanParserRuleCall_0()); 
+    }
+    this_myBoolean_0=rulemyBoolean
+    { 
+        $current = $this_myBoolean_0.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getMyPrimaryAccess().getMyRangeParserRuleCall_1()); 
+    }
+    this_myRange_1=rulemyRange
+    { 
+        $current = $this_myRange_1.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getMyPrimaryAccess().getMyNumberEnumParserRuleCall_2()); 
+    }
+    this_myNumberEnum_2=rulemyNumberEnum
+    { 
+        $current = $this_myNumberEnum_2.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getMyPrimaryAccess().getMyIdentifierParserRuleCall_3()); 
+    }
+    this_myIdentifier_3=rulemyIdentifier
+    { 
+        $current = $this_myIdentifier_3.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |(	otherlv_4='(' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getMyBinaryAccess().getRightParenthesisKeyword_4());
+    	newLeafNode(otherlv_4, grammarAccess.getMyPrimaryAccess().getLeftParenthesisKeyword_4_0());
+    }
+
+    { 
+        newCompositeNode(grammarAccess.getMyPrimaryAccess().getMyBinaryParserRuleCall_4_1()); 
+    }
+    this_myBinary_5=rulemyBinary
+    { 
+        $current = $this_myBinary_5.current; 
+        afterParserOrEnumRuleCall();
+    }
+	otherlv_6=')' 
+    {
+    	newLeafNode(otherlv_6, grammarAccess.getMyPrimaryAccess().getRightParenthesisKeyword_4_2());
+    }
+)
+    |
+    { 
+        newCompositeNode(grammarAccess.getMyPrimaryAccess().getMyStringEnumParserRuleCall_5()); 
+    }
+    this_myStringEnum_7=rulemyStringEnum
+    { 
+        $current = $this_myStringEnum_7.current; 
+        afterParserOrEnumRuleCall();
     }
 )
 ;
@@ -750,19 +682,25 @@ rulemyUnary returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((
+(((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getMyUnaryAccess().getMyUnaryAction_0_0(),
+            $current);
+    }
+)((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyUnaryAccess().getOparandMyUnaryOparatorsEnumRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getMyUnaryAccess().getOparandMyUnaryOparatorsEnumRuleCall_0_1_0_0()); 
 	    }
-		lv_Oparand_0_0=rulemyUnaryOparators		{
+		lv_Oparand_1_0=rulemyUnaryOparators		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyUnaryRule());
 	        }
        		set(
        			$current, 
        			"Oparand",
-        		lv_Oparand_0_0, 
+        		lv_Oparand_1_0, 
         		"myUnaryOparators");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -771,22 +709,32 @@ rulemyUnary returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getMyUnaryAccess().getMyUnaryExpressionMyConcreteExpressionParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getMyUnaryAccess().getMyUnaryExpressionMyPrimaryParserRuleCall_0_1_1_0()); 
 	    }
-		lv_myUnaryExpression_1_0=rulemyConcreteExpression		{
+		lv_myUnaryExpression_2_0=rulemyPrimary		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMyUnaryRule());
 	        }
        		set(
        			$current, 
        			"myUnaryExpression",
-        		lv_myUnaryExpression_1_0, 
-        		"myConcreteExpression");
+        		lv_myUnaryExpression_2_0, 
+        		"myPrimary");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))
+)))
+    |
+    { 
+        newCompositeNode(grammarAccess.getMyUnaryAccess().getMyPrimaryParserRuleCall_1()); 
+    }
+    this_myPrimary_3=rulemyPrimary
+    { 
+        $current = $this_myPrimary_3.current; 
+        afterParserOrEnumRuleCall();
+    }
+)
 ;
 
 
@@ -809,19 +757,19 @@ rulemyBoolean returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		{ 
-	        newCompositeNode(grammarAccess.getMyBooleanAccess().getTrueValueEStringParserRuleCall_0_0()); 
-	    }
-		lv_trueValue_0_0=ruleEString		{
+		lv_trueValue_0_0=RULE_STRING
+		{
+			newLeafNode(lv_trueValue_0_0, grammarAccess.getMyBooleanAccess().getTrueValueSTRINGTerminalRuleCall_0_0()); 
+		}
+		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMyBooleanRule());
+	            $current = createModelElement(grammarAccess.getMyBooleanRule());
 	        }
-       		set(
+       		setWithLastConsumed(
        			$current, 
        			"trueValue",
         		lv_trueValue_0_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
+        		"STRING");
 	    }
 
 )
@@ -831,19 +779,19 @@ rulemyBoolean returns [EObject current=null]
     }
 (
 (
-		{ 
-	        newCompositeNode(grammarAccess.getMyBooleanAccess().getFalseValueEStringParserRuleCall_2_0()); 
-	    }
-		lv_falseValue_2_0=ruleEString		{
+		lv_falseValue_2_0=RULE_STRING
+		{
+			newLeafNode(lv_falseValue_2_0, grammarAccess.getMyBooleanAccess().getFalseValueSTRINGTerminalRuleCall_2_0()); 
+		}
+		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMyBooleanRule());
+	            $current = createModelElement(grammarAccess.getMyBooleanRule());
 	        }
-       		set(
+       		setWithLastConsumed(
        			$current, 
        			"falseValue",
         		lv_falseValue_2_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
+        		"STRING");
 	    }
 
 )
@@ -868,10 +816,6 @@ rulemyIdentifier returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='*' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getMyIdentifierAccess().getAsteriskKeyword_0());
-    }
 (
 (
 		{
@@ -879,15 +823,13 @@ rulemyIdentifier returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getMyIdentifierRule());
 	        }
         }
-		{ 
-	        newCompositeNode(grammarAccess.getMyIdentifierAccess().getMyIntentifierIsMyAttributeCrossReference_1_0()); 
-	    }
-		ruleEString		{ 
-	        afterParserOrEnumRuleCall();
-	    }
+	otherlv_0=RULE_ID
+	{
+		newLeafNode(otherlv_0, grammarAccess.getMyIdentifierAccess().getMyIntentifierIsMyAttributeCrossReference_0()); 
+	}
 
 )
-))
+)
 ;
 
 
@@ -971,19 +913,19 @@ rulemyStringEnum returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		{ 
-	        newCompositeNode(grammarAccess.getMyStringEnumAccess().getValuesEStringParserRuleCall_0_0()); 
-	    }
-		lv_values_0_0=ruleEString		{
+		lv_values_0_0=RULE_STRING
+		{
+			newLeafNode(lv_values_0_0, grammarAccess.getMyStringEnumAccess().getValuesSTRINGTerminalRuleCall_0_0()); 
+		}
+		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMyStringEnumRule());
+	            $current = createModelElement(grammarAccess.getMyStringEnumRule());
 	        }
-       		add(
+       		addWithLastConsumed(
        			$current, 
        			"values",
         		lv_values_0_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
+        		"STRING");
 	    }
 
 )
@@ -993,19 +935,19 @@ rulemyStringEnum returns [EObject current=null]
     }
 (
 (
-		{ 
-	        newCompositeNode(grammarAccess.getMyStringEnumAccess().getValuesEStringParserRuleCall_1_1_0()); 
-	    }
-		lv_values_2_0=ruleEString		{
+		lv_values_2_0=RULE_STRING
+		{
+			newLeafNode(lv_values_2_0, grammarAccess.getMyStringEnumAccess().getValuesSTRINGTerminalRuleCall_1_1_0()); 
+		}
+		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMyStringEnumRule());
+	            $current = createModelElement(grammarAccess.getMyStringEnumRule());
 	        }
-       		add(
+       		addWithLastConsumed(
        			$current, 
        			"values",
         		lv_values_2_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
+        		"STRING");
 	    }
 
 )
@@ -1236,18 +1178,6 @@ rulemyBinaryOparators returns [Enumerator current=null]
 	{
         $current = grammarAccess.getMyBinaryOparatorsAccess().getIsEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_5, grammarAccess.getMyBinaryOparatorsAccess().getIsEnumLiteralDeclaration_5()); 
-    }
-)
-    |(	enumLiteral_6='if' 
-	{
-        $current = grammarAccess.getMyBinaryOparatorsAccess().getIfEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
-        newLeafNode(enumLiteral_6, grammarAccess.getMyBinaryOparatorsAccess().getIfEnumLiteralDeclaration_6()); 
-    }
-)
-    |(	enumLiteral_7='then' 
-	{
-        $current = grammarAccess.getMyBinaryOparatorsAccess().getThenEnumLiteralDeclaration_7().getEnumLiteral().getInstance();
-        newLeafNode(enumLiteral_7, grammarAccess.getMyBinaryOparatorsAccess().getThenEnumLiteralDeclaration_7()); 
     }
 ));
 

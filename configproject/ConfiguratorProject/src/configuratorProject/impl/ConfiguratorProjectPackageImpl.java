@@ -9,7 +9,6 @@ import configuratorProject.myAttribute;
 import configuratorProject.myBinary;
 import configuratorProject.myBinaryOparators;
 import configuratorProject.myBoolean;
-import configuratorProject.myConcreteExpression;
 import configuratorProject.myConstraint;
 import configuratorProject.myEnum;
 import configuratorProject.myExpression;
@@ -158,13 +157,6 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * @generated
 	 */
 	private EClass myNumberEnumEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass myConcreteExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -579,24 +571,6 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getmyConcreteExpression() {
-		return myConcreteExpressionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getmyConcreteExpression_MyConcreteEx() {
-		return (EReference)myConcreteExpressionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EEnum getmyBinaryOparators() {
 		return myBinaryOparatorsEEnum;
 	}
@@ -692,9 +666,6 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		myNumberEnumEClass = createEClass(MY_NUMBER_ENUM);
 		createEAttribute(myNumberEnumEClass, MY_NUMBER_ENUM__VALUES);
 
-		myConcreteExpressionEClass = createEClass(MY_CONCRETE_EXPRESSION);
-		createEReference(myConcreteExpressionEClass, MY_CONCRETE_EXPRESSION__MY_CONCRETE_EX);
-
 		// Create enums
 		myBinaryOparatorsEEnum = createEEnum(MY_BINARY_OPARATORS);
 		myUnaryOparatorsEEnum = createEEnum(MY_UNARY_OPARATORS);
@@ -752,8 +723,8 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 		initEReference(getmyObject_MyAttributeContains(), this.getmyAttribute(), null, "myAttributeContains", null, 0, -1, myObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(myConstraintEClass, myConstraint.class, "myConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getmyConstraint_MyIfConstraint(), this.getmyConcreteExpression(), null, "myIfConstraint", null, 1, 1, myConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getmyConstraint_MyThenConstraint(), this.getmyConcreteExpression(), null, "myThenConstraint", null, 1, 1, myConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmyConstraint_MyIfConstraint(), this.getmyExpression(), null, "myIfConstraint", null, 1, 1, myConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmyConstraint_MyThenConstraint(), this.getmyExpression(), null, "myThenConstraint", null, 1, 1, myConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(myAttributeEClass, myAttribute.class, "myAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getmyAttribute_MyAttributeContains(), this.getmyValue(), null, "myAttributeContains", null, 1, 1, myAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -762,12 +733,12 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 
 		initEClass(myBinaryEClass, myBinary.class, "myBinary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getmyBinary_Oparand(), this.getmyBinaryOparators(), "Oparand", "if", 0, 1, myBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getmyBinary_MyBinaryLeft(), this.getmyConcreteExpression(), null, "myBinaryLeft", null, 1, 1, myBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getmyBinary_MyBinaryRight(), this.getmyConcreteExpression(), null, "myBinaryRight", null, 1, 1, myBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmyBinary_MyBinaryLeft(), this.getmyExpression(), null, "myBinaryLeft", null, 1, 1, myBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmyBinary_MyBinaryRight(), this.getmyExpression(), null, "myBinaryRight", null, 1, 1, myBinary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(myUnaryEClass, myUnary.class, "myUnary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getmyUnary_Oparand(), this.getmyUnaryOparators(), "Oparand", null, 0, 1, myUnary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getmyUnary_MyUnaryExpression(), this.getmyConcreteExpression(), null, "myUnaryExpression", null, 1, 1, myUnary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getmyUnary_MyUnaryExpression(), this.getmyExpression(), null, "myUnaryExpression", null, 1, 1, myUnary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(myLiteralEClass, myLiteral.class, "myLiteral", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -797,9 +768,6 @@ public class ConfiguratorProjectPackageImpl extends EPackageImpl implements Conf
 
 		initEClass(myNumberEnumEClass, myNumberEnum.class, "myNumberEnum", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getmyNumberEnum_Values(), ecorePackage.getEDouble(), "values", null, 1, -1, myNumberEnum.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(myConcreteExpressionEClass, myConcreteExpression.class, "myConcreteExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getmyConcreteExpression_MyConcreteEx(), this.getmyExpression(), null, "myConcreteEx", null, 1, 1, myConcreteExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(myBinaryOparatorsEEnum, myBinaryOparators.class, "myBinaryOparators");

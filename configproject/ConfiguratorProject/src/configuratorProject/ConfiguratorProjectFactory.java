@@ -130,15 +130,6 @@ public interface ConfiguratorProjectFactory extends EFactory {
 	myNumberEnum createmyNumberEnum();
 
 	/**
-	 * Returns a new object of class '<em>my Concrete Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>my Concrete Expression</em>'.
-	 * @generated
-	 */
-	myConcreteExpression createmyConcreteExpression();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

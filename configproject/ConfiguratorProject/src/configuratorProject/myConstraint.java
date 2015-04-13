@@ -31,12 +31,12 @@ public interface myConstraint extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>My If Constraint</em>' containment reference.
-	 * @see #setMyIfConstraint(myConcreteExpression)
+	 * @see #setMyIfConstraint(myExpression)
 	 * @see configuratorProject.ConfiguratorProjectPackage#getmyConstraint_MyIfConstraint()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	myConcreteExpression getMyIfConstraint();
+	myExpression getMyIfConstraint();
 
 	/**
 	 * Sets the value of the '{@link configuratorProject.myConstraint#getMyIfConstraint <em>My If Constraint</em>}' containment reference.
@@ -46,7 +46,7 @@ public interface myConstraint extends EObject {
 	 * @see #getMyIfConstraint()
 	 * @generated
 	 */
-	void setMyIfConstraint(myConcreteExpression value);
+	void setMyIfConstraint(myExpression value);
 
 	/**
 	 * Returns the value of the '<em><b>My Then Constraint</b></em>' containment reference.
@@ -57,12 +57,12 @@ public interface myConstraint extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>My Then Constraint</em>' containment reference.
-	 * @see #setMyThenConstraint(myConcreteExpression)
+	 * @see #setMyThenConstraint(myExpression)
 	 * @see configuratorProject.ConfiguratorProjectPackage#getmyConstraint_MyThenConstraint()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	myConcreteExpression getMyThenConstraint();
+	myExpression getMyThenConstraint();
 
 	/**
 	 * Sets the value of the '{@link configuratorProject.myConstraint#getMyThenConstraint <em>My Then Constraint</em>}' containment reference.
@@ -72,6 +72,6 @@ public interface myConstraint extends EObject {
 	 * @see #getMyThenConstraint()
 	 * @generated
 	 */
-	void setMyThenConstraint(myConcreteExpression value);
+	void setMyThenConstraint(myExpression value);
 
 } // myConstraint

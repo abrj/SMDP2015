@@ -9,18 +9,18 @@ carfactory {
  			
  						
  		
- 		Constrained by 
- 			if (doors = "asd")
- 			then (seatheat can  4),
+ 		Constrained by
+ 			if doors = "asd"
+ 			then seatheat can  4
  			
- 			if (doors = "4-Door")
- 			then ((carType can "asd") && (carType can "asd")),
+ 			if doors = "4-Door"
+ 			then carType can "asd" && carType can "asd"
  			
- 			if (wheel < 39) 
- 			then (doors can 123,3123,12),
+ 			if (wheel < 39) && (carType < 4)
+ 			then doors can 123,3123,12
  			
- 			if ((*carType = 4) && (carType = "SlowCar")) then
- 			(*carType can "asd","asddsa")
+ 			if carType = 4 && carType = "SlowCar"
+ 			then carType can "asd","asddsa"
  	}	
 }
 

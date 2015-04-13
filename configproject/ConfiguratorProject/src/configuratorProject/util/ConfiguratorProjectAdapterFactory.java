@@ -136,10 +136,6 @@ public class ConfiguratorProjectAdapterFactory extends AdapterFactoryImpl {
 				return createmyNumberEnumAdapter();
 			}
 			@Override
-			public Adapter casemyConcreteExpression(myConcreteExpression object) {
-				return createmyConcreteExpressionAdapter();
-			}
-			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -394,20 +390,6 @@ public class ConfiguratorProjectAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createmyNumberEnumAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link configuratorProject.myConcreteExpression <em>my Concrete Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see configuratorProject.myConcreteExpression
-	 * @generated
-	 */
-	public Adapter createmyConcreteExpressionAdapter() {
 		return null;
 	}
 

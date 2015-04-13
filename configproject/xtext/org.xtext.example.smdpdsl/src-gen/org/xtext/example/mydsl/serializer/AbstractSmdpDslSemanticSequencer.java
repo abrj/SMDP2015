@@ -6,7 +6,6 @@ import configuratorProject.ConfiguratorProjectPackage;
 import configuratorProject.myAttribute;
 import configuratorProject.myBinary;
 import configuratorProject.myBoolean;
-import configuratorProject.myConcreteExpression;
 import configuratorProject.myConstraint;
 import configuratorProject.myIdentifier;
 import configuratorProject.myModel;
@@ -44,22 +43,21 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 				else break;
 			case ConfiguratorProjectPackage.MY_BINARY:
 				if(context == grammarAccess.getMyBinaryRule() ||
-				   context == grammarAccess.getMyExpressionRule()) {
+				   context == grammarAccess.getMyBinaryAccess().getMyBinaryMyBinaryLeftAction_1_0() ||
+				   context == grammarAccess.getMyPrimaryRule() ||
+				   context == grammarAccess.getMyUnaryRule()) {
 					sequence_myBinary(context, (myBinary) semanticObject); 
 					return; 
 				}
 				else break;
 			case ConfiguratorProjectPackage.MY_BOOLEAN:
-				if(context == grammarAccess.getMyBooleanRule() ||
-				   context == grammarAccess.getMyExpressionRule() ||
+				if(context == grammarAccess.getMyBinaryRule() ||
+				   context == grammarAccess.getMyBinaryAccess().getMyBinaryMyBinaryLeftAction_1_0() ||
+				   context == grammarAccess.getMyBooleanRule() ||
+				   context == grammarAccess.getMyPrimaryRule() ||
+				   context == grammarAccess.getMyUnaryRule() ||
 				   context == grammarAccess.getMyValueRule()) {
 					sequence_myBoolean(context, (myBoolean) semanticObject); 
-					return; 
-				}
-				else break;
-			case ConfiguratorProjectPackage.MY_CONCRETE_EXPRESSION:
-				if(context == grammarAccess.getMyConcreteExpressionRule()) {
-					sequence_myConcreteExpression(context, (myConcreteExpression) semanticObject); 
 					return; 
 				}
 				else break;
@@ -70,8 +68,11 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 				}
 				else break;
 			case ConfiguratorProjectPackage.MY_IDENTIFIER:
-				if(context == grammarAccess.getMyExpressionRule() ||
-				   context == grammarAccess.getMyIdentifierRule()) {
+				if(context == grammarAccess.getMyBinaryRule() ||
+				   context == grammarAccess.getMyBinaryAccess().getMyBinaryMyBinaryLeftAction_1_0() ||
+				   context == grammarAccess.getMyIdentifierRule() ||
+				   context == grammarAccess.getMyPrimaryRule() ||
+				   context == grammarAccess.getMyUnaryRule()) {
 					sequence_myIdentifier(context, (myIdentifier) semanticObject); 
 					return; 
 				}
@@ -83,8 +84,11 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 				}
 				else break;
 			case ConfiguratorProjectPackage.MY_NUMBER_ENUM:
-				if(context == grammarAccess.getMyExpressionRule() ||
+				if(context == grammarAccess.getMyBinaryRule() ||
+				   context == grammarAccess.getMyBinaryAccess().getMyBinaryMyBinaryLeftAction_1_0() ||
 				   context == grammarAccess.getMyNumberEnumRule() ||
+				   context == grammarAccess.getMyPrimaryRule() ||
+				   context == grammarAccess.getMyUnaryRule() ||
 				   context == grammarAccess.getMyValueRule()) {
 					sequence_myNumberEnum(context, (myNumberEnum) semanticObject); 
 					return; 
@@ -97,23 +101,31 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 				}
 				else break;
 			case ConfiguratorProjectPackage.MY_RANGE:
-				if(context == grammarAccess.getMyExpressionRule() ||
+				if(context == grammarAccess.getMyBinaryRule() ||
+				   context == grammarAccess.getMyBinaryAccess().getMyBinaryMyBinaryLeftAction_1_0() ||
+				   context == grammarAccess.getMyPrimaryRule() ||
 				   context == grammarAccess.getMyRangeRule() ||
+				   context == grammarAccess.getMyUnaryRule() ||
 				   context == grammarAccess.getMyValueRule()) {
 					sequence_myRange(context, (myRange) semanticObject); 
 					return; 
 				}
 				else break;
 			case ConfiguratorProjectPackage.MY_STRING_ENUM:
-				if(context == grammarAccess.getMyExpressionRule() ||
+				if(context == grammarAccess.getMyBinaryRule() ||
+				   context == grammarAccess.getMyBinaryAccess().getMyBinaryMyBinaryLeftAction_1_0() ||
+				   context == grammarAccess.getMyPrimaryRule() ||
 				   context == grammarAccess.getMyStringEnumRule() ||
+				   context == grammarAccess.getMyUnaryRule() ||
 				   context == grammarAccess.getMyValueRule()) {
 					sequence_myStringEnum(context, (myStringEnum) semanticObject); 
 					return; 
 				}
 				else break;
 			case ConfiguratorProjectPackage.MY_UNARY:
-				if(context == grammarAccess.getMyExpressionRule() ||
+				if(context == grammarAccess.getMyBinaryRule() ||
+				   context == grammarAccess.getMyBinaryAccess().getMyBinaryMyBinaryLeftAction_1_0() ||
+				   context == grammarAccess.getMyPrimaryRule() ||
 				   context == grammarAccess.getMyUnaryRule()) {
 					sequence_myUnary(context, (myUnary) semanticObject); 
 					return; 
@@ -144,7 +156,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 	
 	/**
 	 * Constraint:
-	 *     (myBinaryLeft=myConcreteExpression Oparand=myBinaryOparators myBinaryRight=myConcreteExpression)
+	 *     (myBinaryLeft=myBinary_myBinary_1_0 Oparand=myBinaryOparators myBinaryRight=myUnary)
 	 */
 	protected void sequence_myBinary(EObject context, myBinary semanticObject) {
 		if(errorAcceptor != null) {
@@ -157,16 +169,16 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyBinaryAccess().getMyBinaryLeftMyConcreteExpressionParserRuleCall_1_0(), semanticObject.getMyBinaryLeft());
-		feeder.accept(grammarAccess.getMyBinaryAccess().getOparandMyBinaryOparatorsEnumRuleCall_2_0(), semanticObject.getOparand());
-		feeder.accept(grammarAccess.getMyBinaryAccess().getMyBinaryRightMyConcreteExpressionParserRuleCall_3_0(), semanticObject.getMyBinaryRight());
+		feeder.accept(grammarAccess.getMyBinaryAccess().getMyBinaryMyBinaryLeftAction_1_0(), semanticObject.getMyBinaryLeft());
+		feeder.accept(grammarAccess.getMyBinaryAccess().getOparandMyBinaryOparatorsEnumRuleCall_1_1_0(), semanticObject.getOparand());
+		feeder.accept(grammarAccess.getMyBinaryAccess().getMyBinaryRightMyUnaryParserRuleCall_1_2_0(), semanticObject.getMyBinaryRight());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (trueValue=EString falseValue=EString)
+	 *     (trueValue=STRING falseValue=STRING)
 	 */
 	protected void sequence_myBoolean(EObject context, myBoolean semanticObject) {
 		if(errorAcceptor != null) {
@@ -177,31 +189,15 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyBooleanAccess().getTrueValueEStringParserRuleCall_0_0(), semanticObject.getTrueValue());
-		feeder.accept(grammarAccess.getMyBooleanAccess().getFalseValueEStringParserRuleCall_2_0(), semanticObject.getFalseValue());
+		feeder.accept(grammarAccess.getMyBooleanAccess().getTrueValueSTRINGTerminalRuleCall_0_0(), semanticObject.getTrueValue());
+		feeder.accept(grammarAccess.getMyBooleanAccess().getFalseValueSTRINGTerminalRuleCall_2_0(), semanticObject.getFalseValue());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     myConcreteEx=myExpression
-	 */
-	protected void sequence_myConcreteExpression(EObject context, myConcreteExpression semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ConfiguratorProjectPackage.Literals.MY_CONCRETE_EXPRESSION__MY_CONCRETE_EX) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ConfiguratorProjectPackage.Literals.MY_CONCRETE_EXPRESSION__MY_CONCRETE_EX));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyConcreteExpressionAccess().getMyConcreteExMyExpressionParserRuleCall_0(), semanticObject.getMyConcreteEx());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (myIfConstraint=myConcreteExpression myThenConstraint=myConcreteExpression)
+	 *     (myIfConstraint=myBinary myThenConstraint=myBinary)
 	 */
 	protected void sequence_myConstraint(EObject context, myConstraint semanticObject) {
 		if(errorAcceptor != null) {
@@ -212,15 +208,15 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyConstraintAccess().getMyIfConstraintMyConcreteExpressionParserRuleCall_1_0(), semanticObject.getMyIfConstraint());
-		feeder.accept(grammarAccess.getMyConstraintAccess().getMyThenConstraintMyConcreteExpressionParserRuleCall_3_0(), semanticObject.getMyThenConstraint());
+		feeder.accept(grammarAccess.getMyConstraintAccess().getMyIfConstraintMyBinaryParserRuleCall_1_0(), semanticObject.getMyIfConstraint());
+		feeder.accept(grammarAccess.getMyConstraintAccess().getMyThenConstraintMyBinaryParserRuleCall_3_0(), semanticObject.getMyThenConstraint());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     myIntentifierIs=[myAttribute|EString]
+	 *     myIntentifierIs=[myAttribute|ID]
 	 */
 	protected void sequence_myIdentifier(EObject context, myIdentifier semanticObject) {
 		if(errorAcceptor != null) {
@@ -229,7 +225,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyIdentifierAccess().getMyIntentifierIsMyAttributeEStringParserRuleCall_1_0_1(), semanticObject.getMyIntentifierIs());
+		feeder.accept(grammarAccess.getMyIdentifierAccess().getMyIntentifierIsMyAttributeIDTerminalRuleCall_0_1(), semanticObject.getMyIntentifierIs());
 		feeder.finish();
 	}
 	
@@ -282,7 +278,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 	
 	/**
 	 * Constraint:
-	 *     (values+=EString values+=EString*)
+	 *     (values+=STRING values+=STRING*)
 	 */
 	protected void sequence_myStringEnum(EObject context, myStringEnum semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -291,7 +287,7 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 	
 	/**
 	 * Constraint:
-	 *     (Oparand=myUnaryOparators myUnaryExpression=myConcreteExpression)
+	 *     (Oparand=myUnaryOparators myUnaryExpression=myPrimary)
 	 */
 	protected void sequence_myUnary(EObject context, myUnary semanticObject) {
 		if(errorAcceptor != null) {
@@ -302,8 +298,8 @@ public abstract class AbstractSmdpDslSemanticSequencer extends AbstractDelegatin
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMyUnaryAccess().getOparandMyUnaryOparatorsEnumRuleCall_0_0(), semanticObject.getOparand());
-		feeder.accept(grammarAccess.getMyUnaryAccess().getMyUnaryExpressionMyConcreteExpressionParserRuleCall_1_0(), semanticObject.getMyUnaryExpression());
+		feeder.accept(grammarAccess.getMyUnaryAccess().getOparandMyUnaryOparatorsEnumRuleCall_0_1_0_0(), semanticObject.getOparand());
+		feeder.accept(grammarAccess.getMyUnaryAccess().getMyUnaryExpressionMyPrimaryParserRuleCall_0_1_1_0(), semanticObject.getMyUnaryExpression());
 		feeder.finish();
 	}
 }

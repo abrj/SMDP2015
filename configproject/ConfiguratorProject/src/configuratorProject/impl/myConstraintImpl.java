@@ -3,8 +3,8 @@
 package configuratorProject.impl;
 
 import configuratorProject.ConfiguratorProjectPackage;
-import configuratorProject.myConcreteExpression;
 import configuratorProject.myConstraint;
+import configuratorProject.myExpression;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -38,7 +38,7 @@ public class myConstraintImpl extends MinimalEObjectImpl.Container implements my
 	 * @generated
 	 * @ordered
 	 */
-	protected myConcreteExpression myIfConstraint;
+	protected myExpression myIfConstraint;
 
 	/**
 	 * The cached value of the '{@link #getMyThenConstraint() <em>My Then Constraint</em>}' containment reference.
@@ -48,7 +48,7 @@ public class myConstraintImpl extends MinimalEObjectImpl.Container implements my
 	 * @generated
 	 * @ordered
 	 */
-	protected myConcreteExpression myThenConstraint;
+	protected myExpression myThenConstraint;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,7 +74,7 @@ public class myConstraintImpl extends MinimalEObjectImpl.Container implements my
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public myConcreteExpression getMyIfConstraint() {
+	public myExpression getMyIfConstraint() {
 		return myIfConstraint;
 	}
 
@@ -83,8 +83,8 @@ public class myConstraintImpl extends MinimalEObjectImpl.Container implements my
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetMyIfConstraint(myConcreteExpression newMyIfConstraint, NotificationChain msgs) {
-		myConcreteExpression oldMyIfConstraint = myIfConstraint;
+	public NotificationChain basicSetMyIfConstraint(myExpression newMyIfConstraint, NotificationChain msgs) {
+		myExpression oldMyIfConstraint = myIfConstraint;
 		myIfConstraint = newMyIfConstraint;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfiguratorProjectPackage.MY_CONSTRAINT__MY_IF_CONSTRAINT, oldMyIfConstraint, newMyIfConstraint);
@@ -98,7 +98,7 @@ public class myConstraintImpl extends MinimalEObjectImpl.Container implements my
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMyIfConstraint(myConcreteExpression newMyIfConstraint) {
+	public void setMyIfConstraint(myExpression newMyIfConstraint) {
 		if (newMyIfConstraint != myIfConstraint) {
 			NotificationChain msgs = null;
 			if (myIfConstraint != null)
@@ -117,7 +117,7 @@ public class myConstraintImpl extends MinimalEObjectImpl.Container implements my
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public myConcreteExpression getMyThenConstraint() {
+	public myExpression getMyThenConstraint() {
 		return myThenConstraint;
 	}
 
@@ -126,8 +126,8 @@ public class myConstraintImpl extends MinimalEObjectImpl.Container implements my
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetMyThenConstraint(myConcreteExpression newMyThenConstraint, NotificationChain msgs) {
-		myConcreteExpression oldMyThenConstraint = myThenConstraint;
+	public NotificationChain basicSetMyThenConstraint(myExpression newMyThenConstraint, NotificationChain msgs) {
+		myExpression oldMyThenConstraint = myThenConstraint;
 		myThenConstraint = newMyThenConstraint;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfiguratorProjectPackage.MY_CONSTRAINT__MY_THEN_CONSTRAINT, oldMyThenConstraint, newMyThenConstraint);
@@ -141,7 +141,7 @@ public class myConstraintImpl extends MinimalEObjectImpl.Container implements my
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMyThenConstraint(myConcreteExpression newMyThenConstraint) {
+	public void setMyThenConstraint(myExpression newMyThenConstraint) {
 		if (newMyThenConstraint != myThenConstraint) {
 			NotificationChain msgs = null;
 			if (myThenConstraint != null)
@@ -196,10 +196,10 @@ public class myConstraintImpl extends MinimalEObjectImpl.Container implements my
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case ConfiguratorProjectPackage.MY_CONSTRAINT__MY_IF_CONSTRAINT:
-				setMyIfConstraint((myConcreteExpression)newValue);
+				setMyIfConstraint((myExpression)newValue);
 				return;
 			case ConfiguratorProjectPackage.MY_CONSTRAINT__MY_THEN_CONSTRAINT:
-				setMyThenConstraint((myConcreteExpression)newValue);
+				setMyThenConstraint((myExpression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -214,10 +214,10 @@ public class myConstraintImpl extends MinimalEObjectImpl.Container implements my
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case ConfiguratorProjectPackage.MY_CONSTRAINT__MY_IF_CONSTRAINT:
-				setMyIfConstraint((myConcreteExpression)null);
+				setMyIfConstraint((myExpression)null);
 				return;
 			case ConfiguratorProjectPackage.MY_CONSTRAINT__MY_THEN_CONSTRAINT:
-				setMyThenConstraint((myConcreteExpression)null);
+				setMyThenConstraint((myExpression)null);
 				return;
 		}
 		super.eUnset(featureID);
