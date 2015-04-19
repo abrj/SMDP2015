@@ -1,18 +1,19 @@
 carfactory {
  	bmw {
  		has 
- 			seatheat [10.1,12.3,31.2],
+ 			seatheat [10.1,12.3,31.2,10.1],
  			doors ["4-Door":"2-Door"],
  			wheel [40-34],
- 			carType ["SlowCar", "FastCar", "BigCar"],
- 			numberOfSeat [10,12.3,31.2]
+ 			carType ["SlowCar", "FastCar", "BigCar", "BigCar","BigCar"],
+ 			numberOfSeat [10,12.3,31.2,31.2],
+ 			wheel [231-12]
  			
  						
  		
  		Constrained by
  			if doors = "asd"
  			then seatheat can  4
- 			
+ 			 			
  			if doors = "4-Door"
  			then carType can "asd" && carType can "asd"
  			

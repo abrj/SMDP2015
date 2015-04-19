@@ -3,6 +3,25 @@
  */
 package org.xtext.example.mydsl.validation;
 
+import com.google.common.base.Objects;
+import configuratorProject.myAttribute;
+import configuratorProject.myBinary;
+import configuratorProject.myBoolean;
+import configuratorProject.myConstraint;
+import configuratorProject.myExpression;
+import configuratorProject.myIdentifier;
+import configuratorProject.myLiteral;
+import configuratorProject.myNumberEnum;
+import configuratorProject.myObject;
+import configuratorProject.myRange;
+import configuratorProject.myStringEnum;
+import configuratorProject.myValue;
+import java.util.Arrays;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.xtext.example.mydsl.validation.AbstractSmdpDslValidator;
 
 /**
@@ -12,4 +31,266 @@ import org.xtext.example.mydsl.validation.AbstractSmdpDslValidator;
  */
 @SuppressWarnings("all")
 public class SmdpDslValidator extends AbstractSmdpDslValidator {
+  protected static Boolean _constraint(final myObject it) {
+    boolean _xblockexpression = false;
+    {
+      EList<myAttribute> _myAttributeContains = it.getMyAttributeContains();
+      final Function1<myAttribute, Boolean> _function = new Function1<myAttribute, Boolean>() {
+        public Boolean apply(final myAttribute attributeName) {
+          EList<myAttribute> _myAttributeContains = it.getMyAttributeContains();
+          final Function1<myAttribute, Boolean> _function = new Function1<myAttribute, Boolean>() {
+            public Boolean apply(final myAttribute it) {
+              return Boolean.valueOf(Objects.equal(it, attributeName));
+            }
+          };
+          Iterable<myAttribute> _filter = IterableExtensions.<myAttribute>filter(_myAttributeContains, _function);
+          int _size = IterableExtensions.size(_filter);
+          return Boolean.valueOf((_size == 1));
+        }
+      };
+      IterableExtensions.<myAttribute>forall(_myAttributeContains, _function);
+      EList<myConstraint> _myObjectHas = it.getMyObjectHas();
+      final Function1<myConstraint, Boolean> _function_1 = new Function1<myConstraint, Boolean>() {
+        public Boolean apply(final myConstraint con) {
+          myExpression _myIfConstraint = con.getMyIfConstraint();
+          return Boolean.valueOf(SmdpDslValidator.myValuesCheck(((myBinary) _myIfConstraint), it));
+        }
+      };
+      IterableExtensions.<myConstraint>forall(_myObjectHas, _function_1);
+      EList<myConstraint> _myObjectHas_1 = it.getMyObjectHas();
+      final Function1<myConstraint, Boolean> _function_2 = new Function1<myConstraint, Boolean>() {
+        public Boolean apply(final myConstraint con) {
+          myExpression _myThenConstraint = con.getMyThenConstraint();
+          return Boolean.valueOf(SmdpDslValidator.myValuesCheck(((myBinary) _myThenConstraint), it));
+        }
+      };
+      _xblockexpression = IterableExtensions.<myConstraint>forall(_myObjectHas_1, _function_2);
+    }
+    return _xblockexpression;
+  }
+  
+  protected static Boolean _constraint(final myNumberEnum it) {
+    boolean _and = false;
+    EList<Double> _values = it.getValues();
+    int _length = ((Object[])Conversions.unwrapArray(_values, Object.class)).length;
+    boolean _greaterThan = (_length > 0);
+    if (!_greaterThan) {
+      _and = false;
+    } else {
+      EList<Double> _values_1 = it.getValues();
+      final Function1<Double, Boolean> _function = new Function1<Double, Boolean>() {
+        public Boolean apply(final Double value) {
+          EList<Double> _values = it.getValues();
+          final Function1<Double, Boolean> _function = new Function1<Double, Boolean>() {
+            public Boolean apply(final Double it) {
+              return Boolean.valueOf(Objects.equal(it, value));
+            }
+          };
+          Iterable<Double> _filter = IterableExtensions.<Double>filter(_values, _function);
+          int _size = IterableExtensions.size(_filter);
+          return Boolean.valueOf((_size == 1));
+        }
+      };
+      boolean _forall = IterableExtensions.<Double>forall(_values_1, _function);
+      _and = _forall;
+    }
+    return _and;
+  }
+  
+  protected static Boolean _constraint(final myRange it) {
+    int _from = it.getFrom();
+    int _to = it.getTo();
+    return (_from < _to);
+  }
+  
+  protected static Boolean _constraint(final myBoolean it) {
+    boolean _and = false;
+    boolean _and_1 = false;
+    String _trueValue = it.getTrueValue();
+    String _falseValue = it.getFalseValue();
+    boolean _notEquals = (!Objects.equal(_trueValue, _falseValue));
+    if (!_notEquals) {
+      _and_1 = false;
+    } else {
+      String _trueValue_1 = it.getTrueValue();
+      boolean _notEquals_1 = (!Objects.equal(_trueValue_1, ""));
+      _and_1 = _notEquals_1;
+    }
+    if (!_and_1) {
+      _and = false;
+    } else {
+      String _falseValue_1 = it.getFalseValue();
+      boolean _notEquals_2 = (!Objects.equal(_falseValue_1, ""));
+      _and = _notEquals_2;
+    }
+    return _and;
+  }
+  
+  protected static Boolean _constraint(final myStringEnum it) {
+    boolean _and = false;
+    boolean _and_1 = false;
+    EList<String> _values = it.getValues();
+    int _length = ((Object[])Conversions.unwrapArray(_values, Object.class)).length;
+    boolean _greaterThan = (_length > 0);
+    if (!_greaterThan) {
+      _and_1 = false;
+    } else {
+      EList<String> _values_1 = it.getValues();
+      final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
+        public Boolean apply(final String s) {
+          return Boolean.valueOf((!Objects.equal(s, "")));
+        }
+      };
+      boolean _forall = IterableExtensions.<String>forall(_values_1, _function);
+      _and_1 = _forall;
+    }
+    if (!_and_1) {
+      _and = false;
+    } else {
+      EList<String> _values_2 = it.getValues();
+      final Function1<String, Boolean> _function_1 = new Function1<String, Boolean>() {
+        public Boolean apply(final String value) {
+          EList<String> _values = it.getValues();
+          final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
+            public Boolean apply(final String it) {
+              return Boolean.valueOf(Objects.equal(it, value));
+            }
+          };
+          Iterable<String> _filter = IterableExtensions.<String>filter(_values, _function);
+          int _size = IterableExtensions.size(_filter);
+          return Boolean.valueOf((_size == 1));
+        }
+      };
+      boolean _forall_1 = IterableExtensions.<String>forall(_values_2, _function_1);
+      _and = _forall_1;
+    }
+    return _and;
+  }
+  
+  protected static Boolean _constraint(final myConstraint it) {
+    return null;
+  }
+  
+  public static boolean myValuesCheck(final myBinary it, final myObject o) {
+    myExpression _myBinaryLeft = it.getMyBinaryLeft();
+    if ((_myBinaryLeft instanceof myBinary)) {
+      myExpression _myBinaryLeft_1 = it.getMyBinaryLeft();
+      return SmdpDslValidator.myValuesCheck(((myBinary) _myBinaryLeft_1), o);
+    }
+    myExpression _myBinaryRight = it.getMyBinaryRight();
+    if ((_myBinaryRight instanceof myBinary)) {
+      myExpression _myBinaryRight_1 = it.getMyBinaryRight();
+      return SmdpDslValidator.myValuesCheck(((myBinary) _myBinaryRight_1), o);
+    }
+    myExpression _myBinaryLeft_2 = it.getMyBinaryLeft();
+    if ((_myBinaryLeft_2 instanceof myIdentifier)) {
+      EList<myAttribute> _myAttributeContains = o.getMyAttributeContains();
+      final Function1<myAttribute, Boolean> _function = new Function1<myAttribute, Boolean>() {
+        public Boolean apply(final myAttribute a) {
+          myExpression _myBinaryLeft = it.getMyBinaryLeft();
+          return Boolean.valueOf(Objects.equal(a, ((myIdentifier) _myBinaryLeft)));
+        }
+      };
+      myAttribute _findFirst = IterableExtensions.<myAttribute>findFirst(_myAttributeContains, _function);
+      final myValue attributeValue = _findFirst.getMyAttributeContains();
+      if ((attributeValue instanceof myStringEnum)) {
+        myExpression _myBinaryRight_2 = it.getMyBinaryRight();
+        return SmdpDslValidator.myStringEnumValueCheck(((myStringEnum) attributeValue), ((myStringEnum) _myBinaryRight_2));
+      }
+      if ((attributeValue instanceof myNumberEnum)) {
+        myExpression _myBinaryRight_3 = it.getMyBinaryRight();
+        return SmdpDslValidator.myNumberEnumValueCheck(((myNumberEnum) attributeValue), ((myNumberEnum) _myBinaryRight_3));
+      }
+      if ((attributeValue instanceof myBoolean)) {
+        myExpression _myBinaryRight_4 = it.getMyBinaryRight();
+        return SmdpDslValidator.myBooleanValueCheck(((myBoolean) attributeValue), ((myLiteral) _myBinaryRight_4));
+      }
+      if ((attributeValue instanceof myRange)) {
+        myExpression _myBinaryRight_5 = it.getMyBinaryRight();
+        return SmdpDslValidator.myRangeValueCheck(((myRange) attributeValue), ((myNumberEnum) _myBinaryRight_5));
+      }
+    }
+    return false;
+  }
+  
+  public static boolean myStringEnumValueCheck(final myStringEnum it, final myStringEnum expectedValue) {
+    EList<String> _values = it.getValues();
+    EList<String> _values_1 = expectedValue.getValues();
+    return _values.containsAll(_values_1);
+  }
+  
+  public static boolean myNumberEnumValueCheck(final myNumberEnum it, final myNumberEnum expectedValue) {
+    EList<Double> _values = it.getValues();
+    EList<Double> _values_1 = expectedValue.getValues();
+    return _values.containsAll(_values_1);
+  }
+  
+  public static boolean myBooleanValueCheck(final myBoolean it, final myLiteral expectedValue) {
+    boolean _or = false;
+    String _trueValue = it.getTrueValue();
+    boolean _equals = Objects.equal(_trueValue, expectedValue);
+    if (_equals) {
+      _or = true;
+    } else {
+      String _falseValue = it.getFalseValue();
+      boolean _equals_1 = Objects.equal(_falseValue, expectedValue);
+      _or = _equals_1;
+    }
+    return _or;
+  }
+  
+  public static boolean myRangeValueCheck(final myRange it, final myLiteral expectedValue) {
+    if ((expectedValue instanceof myNumberEnum)) {
+      boolean _and = false;
+      int _from = it.getFrom();
+      EList<Double> _values = ((myNumberEnum)expectedValue).getValues();
+      Double _get = _values.get(0);
+      boolean _lessEqualsThan = (_from <= (_get).doubleValue());
+      if (!_lessEqualsThan) {
+        _and = false;
+      } else {
+        EList<Double> _values_1 = ((myNumberEnum)expectedValue).getValues();
+        Double _get_1 = _values_1.get(0);
+        int _to = it.getTo();
+        boolean _lessEqualsThan_1 = ((_get_1).doubleValue() <= _to);
+        _and = _lessEqualsThan_1;
+      }
+      return _and;
+    }
+    if ((expectedValue instanceof myRange)) {
+      boolean _and_1 = false;
+      int _from_1 = it.getFrom();
+      int _from_2 = ((myRange)expectedValue).getFrom();
+      boolean _lessEqualsThan_2 = (_from_1 <= _from_2);
+      if (!_lessEqualsThan_2) {
+        _and_1 = false;
+      } else {
+        int _to_1 = ((myRange)expectedValue).getTo();
+        int _to_2 = it.getTo();
+        boolean _lessEqualsThan_3 = (_to_1 <= _to_2);
+        _and_1 = _lessEqualsThan_3;
+      }
+      return _and_1;
+    }
+    return false;
+  }
+  
+  public static Boolean constraint(final EObject it) {
+    if (it instanceof myNumberEnum) {
+      return _constraint((myNumberEnum)it);
+    } else if (it instanceof myStringEnum) {
+      return _constraint((myStringEnum)it);
+    } else if (it instanceof myBoolean) {
+      return _constraint((myBoolean)it);
+    } else if (it instanceof myRange) {
+      return _constraint((myRange)it);
+    } else if (it instanceof myObject) {
+      return _constraint((myObject)it);
+    } else if (it instanceof myConstraint) {
+      return _constraint((myConstraint)it);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(it).toString());
+    }
+  }
 }
