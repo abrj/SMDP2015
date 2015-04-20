@@ -5,8 +5,7 @@ carfactory {
  			doors ["4-Door":"2-Door"],
  			wheel [40-34],
  			carType ["SlowCar", "FastCar", "BigCar", "BigCar","BigCar"],
- 			numberOfSeat [10,12.3,31.2,31.2],
- 			wheel [231-12]
+ 			numberOfSeat [11,12]
  			
  						
  		

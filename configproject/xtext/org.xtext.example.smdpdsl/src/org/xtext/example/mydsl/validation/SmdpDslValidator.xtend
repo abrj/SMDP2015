@@ -13,8 +13,17 @@
  			carType = 11
   */
 package org.xtext.example.mydsl.validation
-import org.eclipse.emf.ecore.EObject
-import configuratorProject.*;
+
+import configuratorProject.myBinary
+import configuratorProject.myBoolean
+import configuratorProject.myConstraint
+import configuratorProject.myIdentifier
+import configuratorProject.myLiteral
+import configuratorProject.myNumberEnum
+import configuratorProject.myObject
+import configuratorProject.myRange
+import configuratorProject.myStringEnum
+import org.eclipse.xtext.validation.Check
 
 /**
  * Custom validation rules. 
@@ -22,10 +31,12 @@ import configuratorProject.*;
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
 class SmdpDslValidator extends AbstractSmdpDslValidator {
-
-	def static dispatch constraint(myObject it) {
+	@Check
+	def void constraint(myObject it) {
 		// Attribute name must be unique
-		it.myAttributeContains.forall[ attributeName | myAttributeContains.filter[it == attributeName].size == 1]
+		if (!(it.myAttributeContains.forall[ attributeName | myAttributeContains.filter[name.equalsIgnoreCase(attributeName.name)].size == 1])){
+			error("A attribute should have a unique name", null);
+		}
 		
 		// Checks all if statements that the value exsist in out attribute list
 		it.myObjectHas.forall[con | myValuesCheck(con.myIfConstraint as myBinary, it)]
@@ -34,19 +45,21 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 		it.myObjectHas.forall[con | myValuesCheck(con.myThenConstraint as myBinary, it)]
 	}
 
-
-	def static dispatch  constraint(myNumberEnum it) {
-		(values.length > 0)
+	@Check
+	def constraint(myNumberEnum it) {
+		if (values.length == 0) {
+			error("All number enum must have a size of at least 1", null)
+		}
 		
-		&& 
+		
 		// Check that each value is unique
 		values.forall[ value | values.filter[it == value].size == 1]	
 	}
-	def static dispatch  constraint(myRange it) {
+	def  constraint(myRange it) {
 		from < to;
 	}
 	
-	def static dispatch  constraint(myBoolean it) {
+	def constraint(myBoolean it) {
 		trueValue != falseValue
 		
 		&&
@@ -59,7 +72,7 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 	}
 	
 
-	def static dispatch  constraint (myStringEnum it) { // example
+	def  constraint (myStringEnum it) { // example
 		(values.length > 0) 
 		
 		&& 
@@ -72,11 +85,8 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 		values.forall[ value | values.filter[it == value].size == 1]
 	}
 	
-	 def static dispatch  constraint (myConstraint it) { // example
-	 	//it.myIfConstraint.
-	 }
 	 
-	  def static boolean myValuesCheck(myBinary it, myObject o){
+	  def boolean myValuesCheck(myBinary it, myObject o){
 	  	if (it.myBinaryLeft instanceof myBinary){
 	  		return myValuesCheck(it.myBinaryLeft as myBinary, o)
 	  	}
@@ -105,15 +115,15 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 	  	return false;
 	  }
 	  
-	  def static boolean myStringEnumValueCheck(myStringEnum it, myStringEnum expectedValue){
+	  def boolean myStringEnumValueCheck(myStringEnum it, myStringEnum expectedValue){
 	  	return it.values.containsAll(expectedValue.values);
 	  }
 	  
-	  def static boolean myNumberEnumValueCheck(myNumberEnum it, myNumberEnum expectedValue){
+	  def boolean myNumberEnumValueCheck(myNumberEnum it, myNumberEnum expectedValue){
 	  	return it.values.containsAll(expectedValue.values);
 	  }
 	  
-	  def static boolean myBooleanValueCheck(myBoolean it, myLiteral expectedValue){
+	  def boolean myBooleanValueCheck(myBoolean it, myLiteral expectedValue){
 	  	return it.trueValue == expectedValue || it.falseValue == expectedValue;
 	  }
 	  
