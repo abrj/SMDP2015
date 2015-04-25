@@ -78,7 +78,11 @@ Workflow {
 			fragment = builder.BuilderIntegrationFragment auto-inject {}		
 
 			// generator API
-			fragment = generator.GeneratorFragment auto-inject {}
+			fragment = generator.GeneratorFragment auto-inject {
+				generateJavaMain = true
+    			generateMwe = true
+    			generateStub = true
+			}
 
 			// formatter API 
 			// fragment = formatting.FormatterFragment auto-inject {}

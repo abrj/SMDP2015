@@ -39,10 +39,14 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 		}
 		
 		// Checks all if statements that the value exsist in out attribute list
-		it.myObjectHas.forall[con | myValuesCheck(con.myIfConstraint as myBinary, it)]
+		if (!it.myObjectHas.forall[con | myValuesCheck(con.myIfConstraint as myBinary, it)]) {
+			error("One more more if statements contain a invalid value", null)
+		}
 		
 		// Checks all then statements that the value exsist in out attribute list
-		it.myObjectHas.forall[con | myValuesCheck(con.myThenConstraint as myBinary, it)]
+		if (!it.myObjectHas.forall[con | myValuesCheck(con.myThenConstraint as myBinary, it)]) {
+			error("One more more then statements contain a invalid value", null)
+		}
 	}
 
 	@Check
@@ -55,34 +59,33 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 		// Check that each value is unique
 		values.forall[ value | values.filter[it == value].size == 1]	
 	}
+	@Check
 	def  constraint(myRange it) {
-		from < to;
+		if (from < to) {
+			error("The start value in a range cannot be larger than the end value", null);
+		}
 	}
 	
+	@Check
 	def constraint(myBoolean it) {
-		trueValue != falseValue
+		if (trueValue == falseValue) {
+			error("The values for boolean can't be the same", null);
+		}
 		
-		&&
+		if (trueValue == "" || falseValue == ""){
+			error("Boolean must be asigned a value", null);
+		}
 		
-		trueValue != ""
-		
-		&& 
-		
-		falseValue != ""
 	}
 	
-
-	def  constraint (myStringEnum it) { // example
-		(values.length > 0) 
-		
-		&& 
-		
-		values.forall[s | s != ""]
-		
-		&&
-		
+	@Check
+	def  constraint (myStringEnum it) { // example	
 		// Check that each value is unique
-		values.forall[ value | values.filter[it == value].size == 1]
+		it.values.forEach[item | {
+			if (values.filter[p1 | p1.equalsIgnoreCase(item)].size > 1) {
+				error("String enum does not contain unique values: " + values.filter[p1 | p1.equalsIgnoreCase(item)].size, null);
+				}
+		}]
 	}
 	
 	 

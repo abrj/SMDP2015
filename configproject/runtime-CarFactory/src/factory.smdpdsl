@@ -4,13 +4,14 @@ carfactory {
  			seatheat [10.1,12.3,31.2,10.1],
  			doors ["4-Door":"2-Door"],
  			wheel [40-34],
- 			carType ["SlowCar", "FastCar", "BigCar", "BigCar","BigCar"],
+ 			martinaweSome ["Yes","Yeees"],
+ 			carType ["SlowCar", "FastCar", "BigCar", "FastCar"],
  			numberOfSeat [11,12]
  			
  						
  		
  		Constrained by
- 			if doors = "asd"
+ 			if doors = "asdf"
  			then seatheat can  4
  			 			
  			if doors = "4-Door"

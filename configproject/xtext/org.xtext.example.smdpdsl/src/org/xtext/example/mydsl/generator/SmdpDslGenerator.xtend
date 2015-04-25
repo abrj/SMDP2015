@@ -6,6 +6,11 @@ package org.xtext.example.mydsl.generator
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
+import configuratorProject.myAttribute
+import configuratorProject.*;
+import java.util.List
+import java.util.Iterator
+import configuratorProject.myStringEnum
 
 /**
  * Generates code from your model files on save.
@@ -14,11 +19,57 @@ import org.eclipse.xtext.generator.IFileSystemAccess
  */
 class SmdpDslGenerator implements IGenerator {
 	
+
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
-//				.join(', '))
+		val attributes = resource.allContents.filter(typeof(myAttribute)).toList();
+   	  	val xhtmlFileName = "generated/pages/asdf.html"
+   	  	fsa.generateFile(xhtmlFileName, generateHtmlMarkup(generateDropDown(attributes)))
 	}
+	
+	def generateDropDown(List<myAttribute> attributes) '''
+	«FOR attr:attributes»
+	<p>«attr.name»:</p> <select>
+	«IF attr.myAttributeContains instanceof myStringEnum»
+	«FOR v:(attr.myAttributeContains as myStringEnum).values»
+	<option value="«v»">«v»</option>
+	«ENDFOR»
+	«ENDIF»
+	
+	«IF attr.myAttributeContains instanceof myNumberEnum»
+	«FOR v:(attr.myAttributeContains as myNumberEnum).values»
+		<option value="«v»">«v»</option>
+	«ENDFOR»
+	«ENDIF»
+	
+	«IF attr.myAttributeContains instanceof myRange»
+	«FOR v:(attr.myAttributeContains as myRange).from..(attr.myAttributeContains as myRange).to»
+		<option value="«v»">«v»</option>
+	«ENDFOR»
+	«ENDIF»
+	
+	«IF attr.myAttributeContains instanceof myBoolean»
+	<option value="«(attr.myAttributeContains as myBoolean).trueValue»">«(attr.myAttributeContains as myBoolean).trueValue»</option>
+	<option value="«(attr.myAttributeContains as myBoolean).falseValue»">«(attr.myAttributeContains as myBoolean).falseValue»</option>
+	«ENDIF»
+	
+	
+	</select>
+	«ENDFOR»
+	'''
+	
+	
+	
+	def generateHtmlMarkup(CharSequence content)'''
+	<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+</head>
+<body>
+«content»
+</body>
+</html>'''
 }

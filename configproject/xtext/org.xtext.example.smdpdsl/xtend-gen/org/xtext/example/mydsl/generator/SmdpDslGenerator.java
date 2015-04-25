@@ -3,9 +3,24 @@
  */
 package org.xtext.example.mydsl.generator;
 
+import com.google.common.collect.Iterators;
+import configuratorProject.myAttribute;
+import configuratorProject.myBoolean;
+import configuratorProject.myNumberEnum;
+import configuratorProject.myRange;
+import configuratorProject.myStringEnum;
+import configuratorProject.myValue;
+import java.util.Iterator;
+import java.util.List;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.xbase.lib.IntegerRange;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
  * Generates code from your model files on save.
@@ -15,5 +30,145 @@ import org.eclipse.xtext.generator.IGenerator;
 @SuppressWarnings("all")
 public class SmdpDslGenerator implements IGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    Iterator<myAttribute> _filter = Iterators.<myAttribute>filter(_allContents, myAttribute.class);
+    final List<myAttribute> attributes = IteratorExtensions.<myAttribute>toList(_filter);
+    final String xhtmlFileName = "generated/pages/asdf.html";
+    CharSequence _generateDropDown = this.generateDropDown(attributes);
+    CharSequence _generateHtmlMarkup = this.generateHtmlMarkup(_generateDropDown);
+    fsa.generateFile(xhtmlFileName, _generateHtmlMarkup);
+  }
+  
+  public CharSequence generateDropDown(final List<myAttribute> attributes) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      for(final myAttribute attr : attributes) {
+        _builder.append("<p>");
+        String _name = attr.getName();
+        _builder.append(_name, "");
+        _builder.append(":</p> <select>");
+        _builder.newLineIfNotEmpty();
+        {
+          myValue _myAttributeContains = attr.getMyAttributeContains();
+          if ((_myAttributeContains instanceof myStringEnum)) {
+            {
+              myValue _myAttributeContains_1 = attr.getMyAttributeContains();
+              EList<String> _values = ((myStringEnum) _myAttributeContains_1).getValues();
+              for(final String v : _values) {
+                _builder.append("<option value=\"");
+                _builder.append(v, "");
+                _builder.append("\">");
+                _builder.append(v, "");
+                _builder.append("</option>");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          }
+        }
+        _builder.newLine();
+        {
+          myValue _myAttributeContains_2 = attr.getMyAttributeContains();
+          if ((_myAttributeContains_2 instanceof myNumberEnum)) {
+            {
+              myValue _myAttributeContains_3 = attr.getMyAttributeContains();
+              EList<Double> _values_1 = ((myNumberEnum) _myAttributeContains_3).getValues();
+              for(final Double v_1 : _values_1) {
+                _builder.append("<option value=\"");
+                _builder.append(v_1, "");
+                _builder.append("\">");
+                _builder.append(v_1, "");
+                _builder.append("</option>");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          }
+        }
+        _builder.newLine();
+        {
+          myValue _myAttributeContains_4 = attr.getMyAttributeContains();
+          if ((_myAttributeContains_4 instanceof myRange)) {
+            {
+              myValue _myAttributeContains_5 = attr.getMyAttributeContains();
+              int _from = ((myRange) _myAttributeContains_5).getFrom();
+              myValue _myAttributeContains_6 = attr.getMyAttributeContains();
+              int _to = ((myRange) _myAttributeContains_6).getTo();
+              IntegerRange _upTo = new IntegerRange(_from, _to);
+              for(final Integer v_2 : _upTo) {
+                _builder.append("<option value=\"");
+                _builder.append(v_2, "");
+                _builder.append("\">");
+                _builder.append(v_2, "");
+                _builder.append("</option>");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          }
+        }
+        _builder.newLine();
+        {
+          myValue _myAttributeContains_7 = attr.getMyAttributeContains();
+          if ((_myAttributeContains_7 instanceof myBoolean)) {
+            _builder.append("<option value=\"");
+            myValue _myAttributeContains_8 = attr.getMyAttributeContains();
+            String _trueValue = ((myBoolean) _myAttributeContains_8).getTrueValue();
+            _builder.append(_trueValue, "");
+            _builder.append("\">");
+            myValue _myAttributeContains_9 = attr.getMyAttributeContains();
+            String _trueValue_1 = ((myBoolean) _myAttributeContains_9).getTrueValue();
+            _builder.append(_trueValue_1, "");
+            _builder.append("</option>");
+            _builder.newLineIfNotEmpty();
+            _builder.append("<option value=\"");
+            myValue _myAttributeContains_10 = attr.getMyAttributeContains();
+            String _falseValue = ((myBoolean) _myAttributeContains_10).getFalseValue();
+            _builder.append(_falseValue, "");
+            _builder.append("\">");
+            myValue _myAttributeContains_11 = attr.getMyAttributeContains();
+            String _falseValue_1 = ((myBoolean) _myAttributeContains_11).getFalseValue();
+            _builder.append(_falseValue_1, "");
+            _builder.append("</option>");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.newLine();
+        _builder.newLine();
+        _builder.append("</select>");
+        _builder.newLine();
+      }
+    }
+    return _builder;
+  }
+  
+  public CharSequence generateHtmlMarkup(final CharSequence content) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t");
+    _builder.append("<!doctype html>");
+    _builder.newLine();
+    _builder.append("<html lang=\"en\">");
+    _builder.newLine();
+    _builder.append("<head>");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("<meta charset=\"utf-8\">");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("<title>The HTML5 Herald</title>");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("<meta name=\"description\" content=\"The HTML5 Herald\">");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("<meta name=\"author\" content=\"SitePoint\">");
+    _builder.newLine();
+    _builder.append("</head>");
+    _builder.newLine();
+    _builder.append("<body>");
+    _builder.newLine();
+    _builder.append(content, "");
+    _builder.newLineIfNotEmpty();
+    _builder.append("</body>");
+    _builder.newLine();
+    _builder.append("</html>");
+    return _builder;
   }
 }
