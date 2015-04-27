@@ -39,9 +39,13 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 		}
 		
 		// Checks all if statements that the value exsist in out attribute list
-		if (!it.myObjectHas.forall[con | myValuesCheck(con.myIfConstraint as myBinary, it)]) {
+		if (!it.myObjectHas.forall[con | {
+			myValuesCheck(con.myIfConstraint as myBinary, it)}
+			]
+			) {
 			error("One more more if statements contain a invalid value", null)
 		}
+		
 		
 		// Checks all then statements that the value exsist in out attribute list
 		if (!it.myObjectHas.forall[con | myValuesCheck(con.myThenConstraint as myBinary, it)]) {
@@ -61,7 +65,7 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 	}
 	@Check
 	def  constraint(myRange it) {
-		if (from < to) {
+		if (from > to) {
 			error("The start value in a range cannot be larger than the end value", null);
 		}
 	}

@@ -12,9 +12,9 @@ flowerShop{
  		
  		Constrained by
  			if bouquetType = "Funeral"
- 			then (colorTheme can "Pure White","Natural","Earth","Dark") && (greetingCard can "Simple White","Forest","Water)
+ 			then (colorTheme can "Pure White","Natural","Earth","Dark") && (greetingCard can "Simple White","Forest","Water")
 
-			if bouquetType = ("Wedding" || "I'm sorry")
+			if bouquetType = ("Wedding" | "I'm sorry")
 			then flowerCount > 15
 			
 			if colorTheme = "Earth"
@@ -27,7 +27,7 @@ flowerShop{
 			then bouquetType can "I'm sorry","Birthday"
 			
 			if bouquetType = "Valentine"
-			then ((colorTheme can "Romantic Red") && (greetingCard can "Heart","Simple White","Cherubs") || (flowerCount > 25)
+			then ((colorTheme can "Romantic Red") && (greetingCard can "Heart","Simple White","Cherubs") | (flowerCount > 25))
  	}	
 }
 

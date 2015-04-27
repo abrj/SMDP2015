@@ -4,7 +4,7 @@ carFactory {
  			carType ["SUV","Pickup","Minivan","Supercar","Sedan","Stationcar", "Microcar"],
  			enginType ["Diesel","Gas","Electric","Hybrid"],
  			doors ["5-Door","4-Door","2-Door"],
- 			seatType ["Racing Seats","Standard Seats","Hardwood Seats"]
+ 			seatType ["Racing Seats","Standard Seats","Hardwood Seats"],
  			seatHeat ["Seat Heat":"No Seat Heat"],
  			wheel [14-28],
  			numberOfSeat [2,4,5,7,8],
@@ -15,24 +15,24 @@ carFactory {
  		
  		Constrained by
  			if carType = "Supercar"
- 			then (numberOfSeats can 2) && (door can "2-door")
+ 			then (numberOfSeat can 2) && (doors can "2-door")
  			 			
  			if seatHeat = "Seat Heat"
  			then seatType can "Standard Seats"
  			
- 			if (wheel > 24) && (carType = ("SUV" || "Pickup")
+ 			if (wheel > 24) && (carType = ("SUV" | "Pickup"))
  			then enginType can "Diesel","Gas"
  			
- 			if enginType = ("Electric" || "Hybrid") 
+ 			if enginType = ("Electric" | "Hybrid") 
  			then carType can "Sedan","Stationcar","Microcar"
  			
  			if doors = "5-door"
- 			then carType can "SUV","Minivan","Sedan","Stationcar",
+ 			then carType can "SUV","Minivan","Sedan","Stationcar"
  			
- 			if (seatType = "Hardwood Seats") and (color = "LemonChiffon")
- 			then (engintType can "Gas") && (seatHeat can "Not Seat Heat")
+ 			if (seatType = "Hardwood Seats") && (color = "LemonChiffon")
+ 			then (enginType can "Gas") && (seatHeat can "Not Seat Heat")
  			
- 			if numberOfSeats > 5
+ 			if numberOfSeat > 5
  			then carType can "Stationcar","Minivan"
  			
  			if color = "DarkSalmon"

@@ -113,8 +113,8 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
   public void constraint(final myRange it) {
     int _from = it.getFrom();
     int _to = it.getTo();
-    boolean _lessThan = (_from < _to);
-    if (_lessThan) {
+    boolean _greaterThan = (_from > _to);
+    if (_greaterThan) {
       this.error("The start value in a range cannot be larger than the end value", null);
     }
   }
