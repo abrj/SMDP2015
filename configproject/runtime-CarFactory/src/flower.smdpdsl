@@ -1,42 +1,33 @@
-carFactory {
- 	BMW {
+flowerShop{
+ 	bouquet {
  		has 
- 			carType ["SUV","Pickup","Minivan","Supercar","Sedan","Stationcar", "Microcar"],
- 			enginType ["Diesel","Gas","Electric","Hybrid"],
- 			doors ["5-Door","4-Door","2-Door"],
- 			seatType ["Racing Seats","Standard Seats","Hardwood Seats"]
- 			seatHeat ["Seat Heat":"No Seat Heat"],
- 			wheel [14-28],
- 			numberOfSeat [2,4,5,7,8],
- 			color ["DarkSalmon","FloralWhite","MidnightBlue","OliveDrab","RosyBrown","LemonChiffon", "DimGray"]
-
- 			
+ 			bouquetType ["Wedding","Valentine","Mothers day","I'm sorry","Funeral","Birthday"],
+ 			flowerCount [2-30],
+ 			colorTheme ["Bright Yellow","Pure White","Romantic Red","Stylish Blue","Natural","Earth","Dark"],
+ 			wrapping ["Paper":"Plastic"],
+ 			wrappingColor ["Brown","Blue","White","Clear"],
+ 			greetingCard ["Clown","Heart","Simple White","Cherubs","Forest","Water"]
+ 				
  						
  		
  		Constrained by
- 			if carType = "Supercar"
- 			then (numberOfSeats can 2) && (door can "2-door")
- 			 			
- 			if seatHeat = "Seat Heat"
- 			then seatType can "Standard Seats"
- 			
- 			if (wheel > 24) && (carType = ("SUV" || "Pickup")
- 			then enginType can "Diesel","Gas"
- 			
- 			if enginType = ("Electric" || "Hybrid") 
- 			then carType can "Sedan","Stationcar","Microcar"
- 			
- 			if doors = "5-door"
- 			then carType can "SUV","Minivan","Sedan","Stationcar",
- 			
- 			if (seatType = "Hardwood Seats") and (color = "LemonChiffon")
- 			then (engintType can "Gas") && (seatHeat can "Not Seat Heat")
- 			
- 			if numberOfSeats > 5
- 			then carType can "Stationcar","Minivan"
- 			
- 			if color = "DarkSalmon"
- 			then carType can "Minivan","Microcar"
+ 			if bouquetType = "Funeral"
+ 			then (colorTheme can "Pure White","Natural","Earth","Dark") && (greetingCard can "Simple White","Forest","Water)
+
+			if bouquetType = ("Wedding" || "I'm sorry")
+			then flowerCount > 15
+			
+			if colorTheme = "Earth"
+			then greetingCard can "Forest","Water"
+			
+			if wrapping = "Paper"
+			then wrappingColor can "Brown","White"
+			
+			if greetingCard = "Clown"
+			then bouquetType can "I'm sorry","Birthday"
+			
+			if bouquetType = "Valentine"
+			then ((colorTheme can "Romantic Red") && (greetingCard can "Heart","Simple White","Cherubs") || (flowerCount > 25)
  	}	
 }
 
