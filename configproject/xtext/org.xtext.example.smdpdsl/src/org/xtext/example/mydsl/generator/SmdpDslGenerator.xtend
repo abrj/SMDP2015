@@ -106,21 +106,20 @@ public class HelloWorld {
   }
   
   public static void run(HashMap<String, List<String>> hm){
-  	Iterator it = hm.entrySet().iterator();
   	Scanner in = new Scanner(System.in);
-  	String userchoice;
-   	while (it.hasNext()) {
-        Map.Entry attr = (Map.Entry)it.next();
+  	int userchoice;
+  	List<String> values;
+   	for (String attr : hm.keySet() ) {
         System.out.println(attr + "\n");
-        List<String> values = hm.get(attr);
+        values = hm.get(attr);
         int i = 0;
         for(String s : values){
-        		System.out.println(i + " : " + values.get(i));
+        		System.out.println(i + " : " + s);
         		i++;
         	}
         System.out.println("Select a number for " + attr + "\n");
-  	 	userchoice = in.nextLine();
-  	 	System.out.println("you chose " + values.get(i));
+  	 	userchoice = Integer.parseInt(in.nextLine());
+  	 	System.out.println("you chose " + values.get(userchoice));
   		
   	}
   }
