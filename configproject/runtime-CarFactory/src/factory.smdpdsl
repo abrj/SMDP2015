@@ -1,26 +1,41 @@
-carfactory {
- 	bmw {
+carFactory {
+ 	BMW {
  		has 
- 			seatheat [10.1,12.3,31.2,10.1],
- 			doors ["4-Door":"2-Door"],
- 			wheel [40-34],
- 			carType ["SlowCar", "FastCar", "BigCar", "BigCar","BigCar"],
- 			numberOfSeat [11,12]
+ 			carType ["SUV","Pickup","Minivan","Supercar","Sedan","Stationcar", "Microcar"],
+ 			enginType ["Diesel","Gas","Electric","Hybrid"],
+ 			doors ["5-Door","4-Door","2-Door"],
+ 			seatType ["Racing Seats","Standard Seats","Hardwood Seats"]
+ 			seatHeat ["Seat Heat":"No Seat Heat"],
+ 			wheel [14-28],
+ 			numberOfSeat [2,4,5,7,8],
+ 			color ["DarkSalmon","FloralWhite","MidnightBlue","OliveDrab","RosyBrown","LemonChiffon", "DimGray"]
  			
  						
  		
  		Constrained by
- 			if doors = "asd"
- 			then seatheat can  4
+ 			if carType = "Supercar"
+ 			then (numberOfSeats can 2) && (door can "2-door")
  			 			
- 			if doors = "4-Door"
- 			then carType can "asd" && carType can "asd"
+ 			if seatHeat = "Seat Heat"
+ 			then seatType can "Standard Seats"
  			
- 			if (wheel < 39) && (carType < 4)
- 			then doors can 123,3123,12
+ 			if (wheel > 24) && (carType = ("SUV" || "Pickup")
+ 			then enginType can "Diesel","Gas"
  			
- 			if carType = 4 && carType = "SlowCar"
- 			then carType can "asd","asddsa"
+ 			if enginType = ("Electric" || "Hybrid") 
+ 			then carType can "Sedan","Stationcar","Microcar"
+ 			
+ 			if doors = "5-door"
+ 			then carType can "SUV","Minivan","Sedan","Stationcar",
+ 			
+ 			if (seatType = "Hardwood Seats") and (color = "LemonChiffon")
+ 			then (engintType can "Gas") && (seatHeat can "Not Seat Heat")
+ 			
+ 			if numberOfSeats > 5
+ 			then carType can "Stationcar","Minivan"
+ 			
+ 			if color = "DarkSalmon"
+ 			then carType can "Minivan","Microcar"
  	}	
 }
 
