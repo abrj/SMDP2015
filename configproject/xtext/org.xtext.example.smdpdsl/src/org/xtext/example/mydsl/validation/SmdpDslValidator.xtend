@@ -53,16 +53,16 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 		}
 	}
 
-	@Check
-	def constraint(myNumberEnum it) {
-		if (values.length == 0) {
-			error("All number enum must have a size of at least 1", null)
-		}
+	//@Check
+	//def constraint(myNumberEnum it) {
+		//if (values.length == 0) {
+			//error("All number enum must have a size of at least 1", null)
+		//}
 		
 		
 		// Check that each value is unique
-		values.forall[ value | values.filter[it == value].size == 1]	
-	}
+		//values.forall[ value | values.filter[it == value].size == 1]	
+	//}
 	@Check
 	def  constraint(myRange it) {
 		if (from > to) {
