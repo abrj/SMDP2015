@@ -9,6 +9,7 @@ carFactory {
  			wheel [14-28],
  			numberOfSeat [2,4,5,7,8],
  			color ["DarkSalmon","FloralWhite","MidnightBlue","OliveDrab","RosyBrown","LemonChiffon", "DimGray"]
+
  			
  						
  		

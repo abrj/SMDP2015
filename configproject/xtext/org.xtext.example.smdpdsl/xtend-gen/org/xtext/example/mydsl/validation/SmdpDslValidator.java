@@ -16,6 +16,7 @@ import configuratorProject.myObject;
 import configuratorProject.myRange;
 import configuratorProject.myStringEnum;
 import configuratorProject.myValue;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -60,7 +61,11 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
         return Boolean.valueOf(SmdpDslValidator.this.myValuesCheck(((myBinary) _myIfConstraint), it));
       }
     };
-    IterableExtensions.<myConstraint>forall(_myObjectHas, _function_1);
+    boolean _forall_1 = IterableExtensions.<myConstraint>forall(_myObjectHas, _function_1);
+    boolean _not_1 = (!_forall_1);
+    if (_not_1) {
+      this.error("One more more if statements contain a invalid value", null);
+    }
     EList<myConstraint> _myObjectHas_1 = it.getMyObjectHas();
     final Function1<myConstraint, Boolean> _function_2 = new Function1<myConstraint, Boolean>() {
       public Boolean apply(final myConstraint con) {
@@ -68,7 +73,11 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
         return Boolean.valueOf(SmdpDslValidator.this.myValuesCheck(((myBinary) _myThenConstraint), it));
       }
     };
-    IterableExtensions.<myConstraint>forall(_myObjectHas_1, _function_2);
+    boolean _forall_2 = IterableExtensions.<myConstraint>forall(_myObjectHas_1, _function_2);
+    boolean _not_2 = (!_forall_2);
+    if (_not_2) {
+      this.error("One more more then statements contain a invalid value", null);
+    }
   }
   
   @Check
@@ -100,74 +109,68 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
     return _xblockexpression;
   }
   
-  public boolean constraint(final myRange it) {
+  @Check
+  public void constraint(final myRange it) {
     int _from = it.getFrom();
     int _to = it.getTo();
-    return (_from < _to);
+    boolean _lessThan = (_from < _to);
+    if (_lessThan) {
+      this.error("The start value in a range cannot be larger than the end value", null);
+    }
   }
   
-  public boolean constraint(final myBoolean it) {
-    boolean _and = false;
-    boolean _and_1 = false;
+  @Check
+  public void constraint(final myBoolean it) {
     String _trueValue = it.getTrueValue();
     String _falseValue = it.getFalseValue();
-    boolean _notEquals = (!Objects.equal(_trueValue, _falseValue));
-    if (!_notEquals) {
-      _and_1 = false;
-    } else {
-      String _trueValue_1 = it.getTrueValue();
-      boolean _notEquals_1 = (!Objects.equal(_trueValue_1, ""));
-      _and_1 = _notEquals_1;
+    boolean _equals = Objects.equal(_trueValue, _falseValue);
+    if (_equals) {
+      this.error("The values for boolean can\'t be the same", null);
     }
-    if (!_and_1) {
-      _and = false;
+    boolean _or = false;
+    String _trueValue_1 = it.getTrueValue();
+    boolean _equals_1 = Objects.equal(_trueValue_1, "");
+    if (_equals_1) {
+      _or = true;
     } else {
       String _falseValue_1 = it.getFalseValue();
-      boolean _notEquals_2 = (!Objects.equal(_falseValue_1, ""));
-      _and = _notEquals_2;
+      boolean _equals_2 = Objects.equal(_falseValue_1, "");
+      _or = _equals_2;
     }
-    return _and;
+    if (_or) {
+      this.error("Boolean must be asigned a value", null);
+    }
   }
   
-  public boolean constraint(final myStringEnum it) {
-    boolean _and = false;
-    boolean _and_1 = false;
+  @Check
+  public void constraint(final myStringEnum it) {
     EList<String> _values = it.getValues();
-    int _length = ((Object[])Conversions.unwrapArray(_values, Object.class)).length;
-    boolean _greaterThan = (_length > 0);
-    if (!_greaterThan) {
-      _and_1 = false;
-    } else {
-      EList<String> _values_1 = it.getValues();
-      final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
-        public Boolean apply(final String s) {
-          return Boolean.valueOf((!Objects.equal(s, "")));
-        }
-      };
-      boolean _forall = IterableExtensions.<String>forall(_values_1, _function);
-      _and_1 = _forall;
-    }
-    if (!_and_1) {
-      _and = false;
-    } else {
-      EList<String> _values_2 = it.getValues();
-      final Function1<String, Boolean> _function_1 = new Function1<String, Boolean>() {
-        public Boolean apply(final String value) {
-          EList<String> _values = it.getValues();
-          final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
-            public Boolean apply(final String it) {
-              return Boolean.valueOf(Objects.equal(it, value));
+    final Consumer<String> _function = new Consumer<String>() {
+      public void accept(final String item) {
+        EList<String> _values = it.getValues();
+        final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
+          public Boolean apply(final String p1) {
+            return Boolean.valueOf(p1.equalsIgnoreCase(item));
+          }
+        };
+        Iterable<String> _filter = IterableExtensions.<String>filter(_values, _function);
+        int _size = IterableExtensions.size(_filter);
+        boolean _greaterThan = (_size > 1);
+        if (_greaterThan) {
+          EList<String> _values_1 = it.getValues();
+          final Function1<String, Boolean> _function_1 = new Function1<String, Boolean>() {
+            public Boolean apply(final String p1) {
+              return Boolean.valueOf(p1.equalsIgnoreCase(item));
             }
           };
-          Iterable<String> _filter = IterableExtensions.<String>filter(_values, _function);
-          int _size = IterableExtensions.size(_filter);
-          return Boolean.valueOf((_size == 1));
+          Iterable<String> _filter_1 = IterableExtensions.<String>filter(_values_1, _function_1);
+          int _size_1 = IterableExtensions.size(_filter_1);
+          String _plus = ("String enum does not contain unique values: " + Integer.valueOf(_size_1));
+          SmdpDslValidator.this.error(_plus, null);
         }
-      };
-      boolean _forall_1 = IterableExtensions.<String>forall(_values_2, _function_1);
-      _and = _forall_1;
-    }
-    return _and;
+      }
+    };
+    _values.forEach(_function);
   }
   
   public boolean myValuesCheck(final myBinary it, final myObject o) {
