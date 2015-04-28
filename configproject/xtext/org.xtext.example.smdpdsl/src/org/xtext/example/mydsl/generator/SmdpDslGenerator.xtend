@@ -24,6 +24,14 @@ class SmdpDslGenerator implements IGenerator {
 		val attributes = resource.allContents.filter(typeof(myAttribute)).toList();
    	  	val xhtmlFileName = "generated/pages/asdf.html"
    	  	fsa.generateFile(xhtmlFileName, generateHtmlMarkup(generateDropDown(attributes)))
+   	  	
+   	  	
+   	  	//Generate Java code
+   	  	val javaCode = generateJavaCode(attributes);
+   	  	val javaFile = "generated/java/HelloWorld.java"
+   	  	fsa.generateFile(javaFile, javaCode);
+   	  	
+   	  	
 	}
 	
 	def generateDropDown(List<myAttribute> attributes) '''
@@ -72,4 +80,50 @@ class SmdpDslGenerator implements IGenerator {
 «content»
 </body>
 </html>'''
+
+def generateJavaCode(List<myAttribute> attributes)'''
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import java.util.*;
+
+ 
+public class HelloWorld {
+  public static void main(final String[] args) {
+    InputOutput.<String>println("LETS GET TO IT..");
+    List<String> l;
+    HashMap<String, List<String>> hm = new HashMap<String, List<String>>();
+    
+    «FOR a:attributes»
+    «IF a.myAttributeContains instanceof myStringEnum»
+    l = new ArrayList<String>();
+	«FOR v:(a.myAttributeContains as myStringEnum).values»
+	l.add("«v»");
+	«ENDFOR»
+	hm.put("«a.name»", l);
+	«ENDIF»
+	«ENDFOR»
+        
+   	run(hm);
+  }
+  
+  public static void run(HashMap<String, List<String>> hm){
+  	Scanner in = new Scanner(System.in);
+  	int userchoice;
+  	List<String> values;
+   	for (String attr : hm.keySet() ) {
+        System.out.println(attr + "\n");
+        values = hm.get(attr);
+        int i = 0;
+        for(String s : values){
+        		System.out.println(i + " : " + s);
+        		i++;
+        	}
+        System.out.println("Select a number for " + attr + "\n");
+  	 	userchoice = Integer.parseInt(in.nextLine());
+  	 	System.out.println("you chose " + values.get(userchoice));
+  		
+  	}
+  }
+}
+'''
+
 }
