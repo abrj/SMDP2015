@@ -19,7 +19,6 @@ import configuratorProject.myValue;
 import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.validation.Check;
-import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.xtext.example.mydsl.validation.AbstractSmdpDslValidator;
@@ -34,20 +33,16 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
   @Check
   public void constraint(final myObject it) {
     EList<myAttribute> _myAttributeContains = it.getMyAttributeContains();
-    final Function1<myAttribute, Boolean> _function = new Function1<myAttribute, Boolean>() {
-      public Boolean apply(final myAttribute attributeName) {
-        EList<myAttribute> _myAttributeContains = it.getMyAttributeContains();
-        final Function1<myAttribute, Boolean> _function = new Function1<myAttribute, Boolean>() {
-          public Boolean apply(final myAttribute it) {
-            String _name = it.getName();
-            String _name_1 = attributeName.getName();
-            return Boolean.valueOf(_name.equalsIgnoreCase(_name_1));
-          }
-        };
-        Iterable<myAttribute> _filter = IterableExtensions.<myAttribute>filter(_myAttributeContains, _function);
-        int _size = IterableExtensions.size(_filter);
-        return Boolean.valueOf((_size == 1));
-      }
+    final Function1<myAttribute, Boolean> _function = (myAttribute attributeName) -> {
+      EList<myAttribute> _myAttributeContains_1 = it.getMyAttributeContains();
+      final Function1<myAttribute, Boolean> _function_1 = (myAttribute it_1) -> {
+        String _name = it_1.getName();
+        String _name_1 = attributeName.getName();
+        return Boolean.valueOf(_name.equalsIgnoreCase(_name_1));
+      };
+      Iterable<myAttribute> _filter = IterableExtensions.<myAttribute>filter(_myAttributeContains_1, _function_1);
+      int _size = IterableExtensions.size(_filter);
+      return Boolean.valueOf((_size == 1));
     };
     boolean _forall = IterableExtensions.<myAttribute>forall(_myAttributeContains, _function);
     boolean _not = (!_forall);
@@ -70,35 +65,6 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
     if (_not_1) {
       this.error("If statements contain a invalid value", null);
     }
-  }
-  
-  @Check
-  public boolean constraint(final myNumberEnum it) {
-    boolean _xblockexpression = false;
-    {
-      EList<Double> _values = it.getValues();
-      int _length = ((Object[])Conversions.unwrapArray(_values, Object.class)).length;
-      boolean _equals = (_length == 0);
-      if (_equals) {
-        this.error("All number enum must have a size of at least 1", null);
-      }
-      EList<Double> _values_1 = it.getValues();
-      final Function1<Double, Boolean> _function = new Function1<Double, Boolean>() {
-        public Boolean apply(final Double value) {
-          EList<Double> _values = it.getValues();
-          final Function1<Double, Boolean> _function = new Function1<Double, Boolean>() {
-            public Boolean apply(final Double it) {
-              return Boolean.valueOf(Objects.equal(it, value));
-            }
-          };
-          Iterable<Double> _filter = IterableExtensions.<Double>filter(_values, _function);
-          int _size = IterableExtensions.size(_filter);
-          return Boolean.valueOf((_size == 1));
-        }
-      };
-      _xblockexpression = IterableExtensions.<Double>forall(_values_1, _function);
-    }
-    return _xblockexpression;
   }
   
   @Check
@@ -137,29 +103,23 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
   @Check
   public void constraint(final myStringEnum it) {
     EList<String> _values = it.getValues();
-    final Consumer<String> _function = new Consumer<String>() {
-      public void accept(final String item) {
-        EList<String> _values = it.getValues();
-        final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
-          public Boolean apply(final String p1) {
-            return Boolean.valueOf(p1.equalsIgnoreCase(item));
-          }
+    final Consumer<String> _function = (String item) -> {
+      EList<String> _values_1 = it.getValues();
+      final Function1<String, Boolean> _function_1 = (String p1) -> {
+        return Boolean.valueOf(p1.equalsIgnoreCase(item));
+      };
+      Iterable<String> _filter = IterableExtensions.<String>filter(_values_1, _function_1);
+      int _size = IterableExtensions.size(_filter);
+      boolean _greaterThan = (_size > 1);
+      if (_greaterThan) {
+        EList<String> _values_2 = it.getValues();
+        final Function1<String, Boolean> _function_2 = (String p1) -> {
+          return Boolean.valueOf(p1.equalsIgnoreCase(item));
         };
-        Iterable<String> _filter = IterableExtensions.<String>filter(_values, _function);
-        int _size = IterableExtensions.size(_filter);
-        boolean _greaterThan = (_size > 1);
-        if (_greaterThan) {
-          EList<String> _values_1 = it.getValues();
-          final Function1<String, Boolean> _function_1 = new Function1<String, Boolean>() {
-            public Boolean apply(final String p1) {
-              return Boolean.valueOf(p1.equalsIgnoreCase(item));
-            }
-          };
-          Iterable<String> _filter_1 = IterableExtensions.<String>filter(_values_1, _function_1);
-          int _size_1 = IterableExtensions.size(_filter_1);
-          String _plus = ("String enum does not contain unique values: " + Integer.valueOf(_size_1));
-          SmdpDslValidator.this.error(_plus, null);
-        }
+        Iterable<String> _filter_1 = IterableExtensions.<String>filter(_values_2, _function_2);
+        int _size_1 = IterableExtensions.size(_filter_1);
+        String _plus = ("String enum does not contain unique values: " + Integer.valueOf(_size_1));
+        this.error(_plus, null);
       }
     };
     _values.forEach(_function);
