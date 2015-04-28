@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import configuratorProject.myAttribute
+import configuratorProject.myConstraint
 import configuratorProject.*;
 import java.util.List
 import java.util.Iterator
@@ -21,18 +22,23 @@ class SmdpDslGenerator implements IGenerator {
 	
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+		//Getting the attributes and constraints
 		val attributes = resource.allContents.filter(typeof(myAttribute)).toList();
+		val constraints = resource.allContents.filter(typeof(myConstraint)).toList();
+		
+		//Generate HTML file
    	  	val xhtmlFileName = "generated/pages/asdf.html"
    	  	fsa.generateFile(xhtmlFileName, generateHtmlMarkup(generateDropDown(attributes)))
    	  	
    	  	
-   	  	//Generate Java code
-   	  	val javaCode = generateJavaCode(attributes);
+   	  	//Generate Java file
+   	  	val javaCode = generateJavaCode(attributes, constraints);
    	  	val javaFile = "generated/java/HelloWorld.java"
    	  	fsa.generateFile(javaFile, javaCode);
    	  	
-   	  	
 	}
+	
+
 	
 	def generateDropDown(List<myAttribute> attributes) '''
 	«FOR attr:attributes»
@@ -59,13 +65,11 @@ class SmdpDslGenerator implements IGenerator {
 	<option value="«(attr.myAttributeContains as myBoolean).trueValue»">«(attr.myAttributeContains as myBoolean).trueValue»</option>
 	<option value="«(attr.myAttributeContains as myBoolean).falseValue»">«(attr.myAttributeContains as myBoolean).falseValue»</option>
 	«ENDIF»
-	
-	
 	</select>
 	«ENDFOR»
 	'''
 	
-	
+
 	
 	def generateHtmlMarkup(CharSequence content)'''
 	<!doctype html>
@@ -81,7 +85,11 @@ class SmdpDslGenerator implements IGenerator {
 </body>
 </html>'''
 
-def generateJavaCode(List<myAttribute> attributes)'''
+
+
+def generateJavaCode(List<myAttribute> attributes, List<myConstraint> constraints)
+'''
+
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import java.util.*;
 
@@ -102,8 +110,18 @@ public class HelloWorld {
 	«ENDIF»
 	«ENDFOR»
         
+        
+
+«««	«FOR con:constraints»
+«««	«val exprIf = con.myIfConstraint»
+«««	String s = «exprIf.»
+«««	System.out.println(s);
+«««	«ENDFOR»
+	
+	
    	run(hm);
   }
+  
   
   public static void run(HashMap<String, List<String>> hm){
   	Scanner in = new Scanner(System.in);
@@ -119,7 +137,12 @@ public class HelloWorld {
         	}
         System.out.println("Select a number for " + attr + "\n");
   	 	userchoice = Integer.parseInt(in.nextLine());
-  	 	System.out.println("you chose " + values.get(userchoice));
+  	 	if(0 <= userchoice && userchoice <=i){
+  	 		System.out.println("you chose " + values.get(userchoice));
+  	 	}
+  	 	else{
+  	 		System.out.println("wrong index given, skipping this attribute option");	
+  	 	}
   		
   	}
   }
