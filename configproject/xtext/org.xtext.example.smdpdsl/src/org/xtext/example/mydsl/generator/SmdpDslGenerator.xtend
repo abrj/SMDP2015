@@ -111,41 +111,48 @@ def String generateIfConstraintString(myBinary it, myIdentifier attribute, myBin
 
 		if (it.myBinaryLeft instanceof myValue && it.myBinaryRight instanceof myValue) {
 			if (att.myIntentifierIs.myAttributeContains instanceof myNumberEnum) {
-			return "(" + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " " +  (myBinaryLeft as myNumberEnum).values.get(0) + " || " + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " " +  (myBinaryRight as myNumberEnum).values.get(0) + ")";
+			return "(" + ConvertAttributeName(att.myIntentifierIs.name, att.myIntentifierIs.myAttributeContains) + " " + convertOperand(pOpe) + " " +  (myBinaryLeft as myNumberEnum).values.get(0) + " || " + ConvertAttributeName(att.myIntentifierIs.name, att.myIntentifierIs.myAttributeContains) + " " + convertOperand(pOpe) + " " +  (myBinaryRight as myNumberEnum).values.get(0) + ")";
 			}
 			if (att.myIntentifierIs.myAttributeContains instanceof myStringEnum) {
-			return "(" + att.myIntentifierIs.name + " " + convertOperand(pOpe) + "  \"" +  (myBinaryLeft as myStringEnum).values.get(0) + "\" || " + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " \"" +  (myBinaryRight as myStringEnum).values.get(0) + "\")";
+			return "(" + ConvertAttributeName(att.myIntentifierIs.name, att.myIntentifierIs.myAttributeContains) + " " + convertOperand(pOpe) + "  \"" +  (myBinaryLeft as myStringEnum).values.get(0) + "\" || " + ConvertAttributeName(att.myIntentifierIs.name, att.myIntentifierIs.myAttributeContains) + " " + convertOperand(pOpe) + " \"" +  (myBinaryRight as myStringEnum).values.get(0) + "\")";
 			}
 		}
 		
 		if (it.myBinaryLeft instanceof myValue && it.myBinaryRight instanceof myBinary) {
 			if (att.myIntentifierIs.myAttributeContains instanceof myNumberEnum) {
-				return "(" + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " " +  (myBinaryLeft as myNumberEnum).values.get(0) + " || " + generateIfConstraintString(it.myBinaryRight as myBinary, att, pOpe) + ")"
+				return "(" + ConvertAttributeName(att.myIntentifierIs.name, att.myIntentifierIs.myAttributeContains) + " " + convertOperand(pOpe) + " " +  (myBinaryLeft as myNumberEnum).values.get(0) + " || " + generateIfConstraintString(it.myBinaryRight as myBinary, att, pOpe) + ")"
 			}
 			if (att.myIntentifierIs.myAttributeContains instanceof myStringEnum) {
-				return "(" + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " \"" +  (myBinaryLeft as myStringEnum).values.get(0) + "\" || " + generateIfConstraintString(it.myBinaryRight as myBinary, att, pOpe) + ")"
+				return "(" + ConvertAttributeName(att.myIntentifierIs.name, att.myIntentifierIs.myAttributeContains) + " " + convertOperand(pOpe) + " \"" +  (myBinaryLeft as myStringEnum).values.get(0) + "\" || " + generateIfConstraintString(it.myBinaryRight as myBinary, att, pOpe) + ")"
 			}
 		}
 	  	
 	  	if (it.myBinaryLeft instanceof myIdentifier && it.myBinaryRight instanceof myValue) {
 	  		if (att.myIntentifierIs.myAttributeContains instanceof myNumberEnum) {
-	  			return "("+ att.myIntentifierIs.name + " " + convertOperand(oparand) + " " + (myBinaryRight as myNumberEnum).values.get(0) + ")";
+	  			return "("+ ConvertAttributeName(att.myIntentifierIs.name, att.myIntentifierIs.myAttributeContains) + " " + convertOperand(oparand) + " " + (myBinaryRight as myNumberEnum).values.get(0) + ")";
 	  		}
 	  		
 	  		if (att.myIntentifierIs.myAttributeContains instanceof myStringEnum) {
-	  			return "("+ att.myIntentifierIs.name + " " + convertOperand(oparand) + " \"" + (myBinaryRight as myStringEnum).values.get(0) + "\")";
+	  			return "("+ ConvertAttributeName(att.myIntentifierIs.name, att.myIntentifierIs.myAttributeContains) + " " + convertOperand(oparand) + " \"" + (myBinaryRight as myStringEnum).values.get(0) + "\")";
 	  		}
 	  		
 	  		if (att.myIntentifierIs.myAttributeContains instanceof myRange) {
-	  			return "(" + (att.myIntentifierIs.myAttributeContains as myRange).from + " <= " + att.myIntentifierIs.name + " && " + (att.myIntentifierIs.myAttributeContains as myRange).to + " >= " + att.myIntentifierIs.name + ")";
+	  			return "(" + (att.myIntentifierIs.myAttributeContains as myRange).from + " <= " + ConvertAttributeName(att.myIntentifierIs.name, att.myIntentifierIs.myAttributeContains) + " && " + (att.myIntentifierIs.myAttributeContains as myRange).to + " >= " + ConvertAttributeName(att.myIntentifierIs.name, att.myIntentifierIs.myAttributeContains) + ")";
 	  		}
 	  		
 	  		if (att.myIntentifierIs.myAttributeContains instanceof myBoolean) {
-	  			return "("+ att.myIntentifierIs.name + " " + convertOperand(oparand) + " \"" + (myBinaryRight as myStringEnum).values.get(0) + "\")";
+	  			return "("+ ConvertAttributeName(att.myIntentifierIs.name, att.myIntentifierIs.myAttributeContains) + " " + convertOperand(oparand) + " \"" + (myBinaryRight as myStringEnum).values.get(0) + "\")";
 	  		}
 	  		
 	  	}
 	  	return "FUCKED!"
+}
+
+def String ConvertAttributeName(String name, myValue type) {
+	if (type instanceof myRange || type instanceof myNumberEnum) {
+		return "Double.parseDouble(chosenValues.get(\"" + name + "\"))";
+	}
+	return "chosenValues.get(\"" + name + "\")"
 }
 
 def String generateThenConstraintString(myBinary it, myIdentifier attribute){
@@ -171,7 +178,7 @@ def String generateThenConstraintString(myBinary it, myIdentifier attribute){
 	  			}
 	  			return "l = new ArrayList<String>(){{
 			" + sb.toString +"}};" +
-	  		"removeNonPossibleValuesFromAttribute("+ att.myIntentifierIs.name  +", l, \"" + it.oparand + "\");"
+	  		"removeNonPossibleValuesFromAttribute(\""+ att.myIntentifierIs.name  +"\", l, \"" + it.oparand + "\");"
 	  		}
 	  		if (it.myBinaryRight instanceof myNumberEnum) {
 	  			for(v: (it.myBinaryRight as myNumberEnum).values) {
@@ -225,6 +232,7 @@ import java.util.*;
  
 public class HelloWorld {
 	public static HashMap<String, List<String>> constraintMap;
+	public static HashMap<String, String> chosenValues;
 	public static List<String> l;
 	public static List<Double> q;
 	«FOR a:attributes»
@@ -249,22 +257,35 @@ public class HelloWorld {
 	«FOR v:(a.myAttributeContains as myStringEnum).values»
 	l.add("«v»");
 	«ENDFOR»
-	
-	
 	hm.put("«a.name»", l);
 	«ENDIF»
-	«ENDFOR»
-        
-        
-««« Make java code from constraints
-	«FOR con:constraints»
-	«val exprIf = con.myIfConstraint as myBinary»
-	«val exprThen = con.myThenConstraint as myBinary»
-	if «generateIfConstraintString(exprIf, null, null)»{
-		«generateThenConstraintString(exprThen, null)»
-	}
-	«ENDFOR»
 	
+	«IF a.myAttributeContains instanceof myNumberEnum»
+	l = new ArrayList<String>();
+	«FOR v:(a.myAttributeContains as myNumberEnum).values»
+	l.add("«v»");
+	«ENDFOR»
+	hm.put("«a.name»", l);
+	«ENDIF»
+	
+	«IF a.myAttributeContains instanceof myBoolean»
+	l = new ArrayList<String>();
+	l.add("«(a.myAttributeContains as myBoolean).trueValue»");
+	l.add("«(a.myAttributeContains as myBoolean).falseValue»");
+	hm.put("«a.name»", l);
+	«ENDIF»
+	
+	«IF a.myAttributeContains instanceof myRange»
+	l = new ArrayList<String>();
+	«var from = (a.myAttributeContains as myRange).from»
+	«var to = (a.myAttributeContains as myRange).to»
+	for (int i = «from»; i <= «to»;i++) {
+		l.add(i +".0");
+		}
+	hm.put("«a.name»", l);
+	«ENDIF»
+	
+	«ENDFOR»
 	constraintMap = new HashMap<String,List<String>>(hm);
    	run(hm);
   }
@@ -306,10 +327,40 @@ public class HelloWorld {
   		}
   	}
   	constraintMap.put(attr,values);
+  }
+  
+  public static void buildConstraints() {
+  	««« Make java code from constraints
+	«FOR con:constraints»
+	«val exprIf = con.myIfConstraint as myBinary»
+	«val exprThen = con.myThenConstraint as myBinary»
+	if «generateIfConstraintString(exprIf, null, null)»{
+		«generateThenConstraintString(exprThen, null)»
+	}
+	«ENDFOR»
+  }
+  
+  public static boolean checkConstraints() {
+  List<String> values;
+  String value;
+  «FOR a:attributes»
+   values = constraintMap.get("«a.name»");
+  value = chosenValues.get("«a.name»");
+	if (values.size() > 0) {
+		System.out.println(value);
+		if (!values.contains(value)) {
+			return false;
+			}
+		} else {
+			return false;
+		}
+	«ENDFOR»
+	return true;
   }  
   
   public static void run(HashMap<String, List<String>> hm){
   	Scanner in = new Scanner(System.in);
+  	chosenValues = new HashMap<String, String>();
   	int userchoice;
   	List<String> values;
    	for (String attr : hm.keySet() ) {
@@ -324,12 +375,15 @@ public class HelloWorld {
   	 	userchoice = Integer.parseInt(in.nextLine());
   	 	if(0 <= userchoice && userchoice <=i){
   	 		System.out.println("you chose " + values.get(userchoice));
+  	 		chosenValues.put(attr, values.get(userchoice));
   	 	}
   	 	else{
   	 		System.out.println("wrong index given, skipping this attribute option");	
   	 	}
   		
   	}
+  	buildConstraints();
+  	System.out.println(checkConstraints());
   }
 }
 '''
