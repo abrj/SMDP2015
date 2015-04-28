@@ -7,6 +7,9 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import configuratorProject.myAttribute
+import configuratorProject.myConstraint
+import configuratorProject.myBinary;
+import configuratorProject.myIdentifier;
 import configuratorProject.*;
 
 import java.util.*;
@@ -19,137 +22,198 @@ import configuratorProject.myStringEnum
  *
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
-class SmdpDslGenerator implements IGenerator {
+class SmdpDslGenerator implements IGenerator {	
 
+	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+		//Getting the attributes and constraints
+		val attributes = resource.allContents.filter(typeof(myAttribute)).toList();
+		val constraints = resource.allContents.filter(typeof(myConstraint)).toList();
+		
+		//Generate HTML file
+   	  	val xhtmlFileName = "generated/pages/asdf.html"
+   	  	fsa.generateFile(xhtmlFileName, generateHtmlMarkup(generateDropDown(attributes)))
+   	  	
+   	  	
+   	  	//Generate Java file
+   	  	val javaCode = generateJavaCode(attributes, constraints);
+   	  	val javaFile = "generated/java/HelloWorld.java"
+   	  	fsa.generateFile(javaFile, javaCode);
+   	  	
+	}
+	
 
-    override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-        val attributes = resource.allContents.filter(typeof(myAttribute)).toList();
-        val xhtmlFileName = "generated/pages/asdf.html"
-        fsa.generateFile(xhtmlFileName, generateHtmlMarkup(generateDropDown(attributes)))
+	
+	def generateDropDown(List<myAttribute> attributes) '''
+	«FOR attr:attributes»
+	<p>«attr.name»:</p> <select>
+	«IF attr.myAttributeContains instanceof myStringEnum»
+	«FOR v:(attr.myAttributeContains as myStringEnum).values»
+	<option value="«v»">«v»</option>
+	«ENDFOR»
+	«ENDIF»
+	
+	«IF attr.myAttributeContains instanceof myNumberEnum»
+	«FOR v:(attr.myAttributeContains as myNumberEnum).values»
+		<option value="«v»">«v»</option>
+	«ENDFOR»
+	«ENDIF»
+	
+	«IF attr.myAttributeContains instanceof myRange»
+	«FOR v:(attr.myAttributeContains as myRange).from..(attr.myAttributeContains as myRange).to»
+		<option value="«v»">«v»</option>
+	«ENDFOR»
+	«ENDIF»
+	
+	«IF attr.myAttributeContains instanceof myBoolean»
+	<option value="«(attr.myAttributeContains as myBoolean).trueValue»">«(attr.myAttributeContains as myBoolean).trueValue»</option>
+	<option value="«(attr.myAttributeContains as myBoolean).falseValue»">«(attr.myAttributeContains as myBoolean).falseValue»</option>
+	«ENDIF»
+	</select>
+	«ENDFOR»
+	'''
+	
 
+	
+	def generateHtmlMarkup(CharSequence content)'''
+	<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+</head>
+<body>
+«content»
+</body>
+</html>'''
 
-        //Generate Java code
-        val javaCode = generateJavaCode(attributes);
-        val javaFile = "generated/java/HelloWorld.java"
-        fsa.generateFile(javaFile, javaCode);
+def String generateIfConstraintString(myBinary it, myIdentifier attribute, myBinaryOparators parentOperand){
+	  	var myIdentifier att;
+	  	var myBinaryOparators pOpe;
+	  	// If left is a identifier, get the attribute
+	  	if (it.myBinaryLeft instanceof myIdentifier) {
+	  		att = it.myBinaryLeft as myIdentifier;
+	  		pOpe = it.oparand;
+	  		
+	  	} else {
+	  		att = attribute;
+	  		pOpe = parentOperand;
+	  	}
+	  	
+	  	// If both left and right are binaries, then both sides must be true
+	  	if (it.myBinaryLeft instanceof myBinary && it.myBinaryRight instanceof myBinary)	{
+	  		return generateIfConstraintString(it.myBinaryLeft as myBinary, att, pOpe) + " " + convertOperand(oparand) + " " + generateIfConstraintString(it.myBinaryRight as myBinary, att, pOpe)
+	  	}
+	  	
+	  	if (it.myBinaryLeft instanceof myIdentifier && it.myBinaryRight instanceof myBinary) {
+				return generateIfConstraintString(it.myBinaryRight as myBinary, att, pOpe)
+	  	}
 
+		if (it.myBinaryLeft instanceof myValue && it.myBinaryRight instanceof myValue) {
+			if (att.myIntentifierIs.myAttributeContains instanceof myNumberEnum) {
+			return "(" + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " " +  (myBinaryLeft as myNumberEnum).values.get(0) + " || " + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " " +  (myBinaryRight as myNumberEnum).values.get(0) + ")";
+			}
+			if (att.myIntentifierIs.myAttributeContains instanceof myStringEnum) {
+			return "(" + att.myIntentifierIs.name + " " + convertOperand(pOpe) + "  \"" +  (myBinaryLeft as myStringEnum).values.get(0) + "\" || " + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " \"" +  (myBinaryRight as myStringEnum).values.get(0) + "\")";
+			}
+		}
+		
+		if (it.myBinaryLeft instanceof myValue && it.myBinaryRight instanceof myBinary) {
+			if (att.myIntentifierIs.myAttributeContains instanceof myNumberEnum) {
+				return "(" + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " " +  (myBinaryLeft as myNumberEnum).values.get(0) + " || " + generateIfConstraintString(it.myBinaryRight as myBinary, att, pOpe) + ")"
+			}
+			if (att.myIntentifierIs.myAttributeContains instanceof myStringEnum) {
+				return "(" + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " \"" +  (myBinaryLeft as myStringEnum).values.get(0) + "\" || " + generateIfConstraintString(it.myBinaryRight as myBinary, att, pOpe) + ")"
+			}
+		}
+	  	
+	  	if (it.myBinaryLeft instanceof myIdentifier && it.myBinaryRight instanceof myValue) {
+	  		if (att.myIntentifierIs.myAttributeContains instanceof myNumberEnum) {
+	  			return "("+ att.myIntentifierIs.name + " " + convertOperand(oparand) + " " + (myBinaryRight as myNumberEnum).values.get(0) + ")";
+	  		}
+	  		
+	  		if (att.myIntentifierIs.myAttributeContains instanceof myStringEnum) {
+	  			return "("+ att.myIntentifierIs.name + " " + convertOperand(oparand) + " \"" + (myBinaryRight as myStringEnum).values.get(0) + "\")";
+	  		}
+	  		
+	  		if (att.myIntentifierIs.myAttributeContains instanceof myRange) {
+	  			return "(" + (att.myIntentifierIs.myAttributeContains as myRange).from + " <= " + att.myIntentifierIs.name + " && " + (att.myIntentifierIs.myAttributeContains as myRange).to + " >= " + att.myIntentifierIs.name + ")";
+	  		}
+	  		
+	  		if (att.myIntentifierIs.myAttributeContains instanceof myBoolean) {
+	  			return "("+ att.myIntentifierIs.name + " " + convertOperand(oparand) + " \"" + (myBinaryRight as myStringEnum).values.get(0) + "\")";
+	  		}
+	  		
+	  	}
+	  	return "FUCKED!"
+}
 
-    }
+def String convertOperand(myBinaryOparators operand) {
+	if (operand == myBinaryOparators.EQ) {
+		return "=="
+	}
+	
+	if (operand == myBinaryOparators.AND) {
+		return "&&"
+	}
+	
+	if (operand == myBinaryOparators.OR) {
+		return "||"
+	}
+	
+	if (operand == myBinaryOparators.LT) {
+		return ">"
+	}
+	if (operand == myBinaryOparators.GT) {
+		return "<"
+	}
+	if (operand == myBinaryOparators.IS) {
+		return "=="
+	}
+	
+}
 
-    def generateDropDown(List<myAttribute> attributes) '''
-            «FOR attr:attributes»
-    <p>«attr.name»:</p> <select>
-    «IF attr.myAttributeContains instanceof myStringEnum»
-            «FOR v:(attr.myAttributeContains as myStringEnum).values»
-    <option value="«v»">«v»</option>
-            «ENDFOR»
-            «ENDIF»
+def generateJavaCode(List<myAttribute> attributes, List<myConstraint> constraints)
+'''
 
-            «IF attr.myAttributeContains instanceof myNumberEnum»
-            «FOR v:(attr.myAttributeContains as myNumberEnum).values»
-    <option value="«v»">«v»</option>
-            «ENDFOR»
-            «ENDIF»
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import java.util.*;
 
-            «IF attr.myAttributeContains instanceof myRange»
-            «FOR v:(attr.myAttributeContains as myRange).from..(attr.myAttributeContains as myRange).to»
-    <option value="«v»">«v»</option>
-            «ENDFOR»
-            «ENDIF»
-
-            «IF attr.myAttributeContains instanceof myBoolean»
-    <option value="«(attr.myAttributeContains as myBoolean).trueValue»">«(attr.myAttributeContains as myBoolean).trueValue»</option>
-    <option value="«(attr.myAttributeContains as myBoolean).falseValue»">«(attr.myAttributeContains as myBoolean).falseValue»</option>
-            «ENDIF»
-
-
-    </select>
-            «ENDFOR»
-            '''
-
-
-
-    def generateHtmlMarkup(CharSequence content)'''
-    <!doctype html>
-    <html lang="en">
-    <head>
-    <meta charset="utf-8">
-    <title>The HTML5 Herald</title>
-    <meta name="description" content="The HTML5 Herald">
-    <meta name="author" content="SitePoint">
-    </head>
-    <body>
-    «content»
-    </body>
-    </html>'''
-
-    def generateJavaCode(List<myAttribute> attributes)'''
-            import org.eclipse.xtext.xbase.lib.InputOutput;
-    import java.util.*;
-    //XML parsing imports below
-    import java.io.File;
-    import javax.xml.parsers.DocumentBuilder;
-    import javax.xml.parsers.DocumentBuilderFactory;
-    import javax.xml.parsers.ParserConfigurationException;
-    import javax.xml.transform.Transformer;
-    import javax.xml.transform.TransformerException;
-    import javax.xml.transform.TransformerFactory;
-    import javax.xml.transform.dom.DOMSource;
-    import javax.xml.transform.stream.StreamResult;
-
-    import org.w3c.dom.Attr;
-    import org.w3c.dom.Document;
-    import org.w3c.dom.Element;
-
-
-    public class HelloWorld {
-        public static Integer rangeInt = 0;
-        public static void main(final String[] args) {
-            InputOutput.<String>println("LETS GET TO IT..");
-            List<String> l;
-            HashMap<String, List<String>> hm = new HashMap<String, List<String>>();
-
-
-            «FOR a:attributes»
-            «IF a.myAttributeContains instanceof myStringEnum»
-            l = new ArrayList<String>();
-            «FOR v:(a.myAttributeContains as myStringEnum).values»
-            l.add("«v»");
-            «ENDFOR»
-            hm.put("«a.name»,string", l);
-            «ENDIF»
-
-            «IF a.myAttributeContains instanceof myNumberEnum»
-            l = new ArrayList<String>();
-            «FOR v:(a.myAttributeContains as myNumberEnum).values»
-            l.add("«v»");
-            «ENDFOR»
-            hm.put("«a.name»,number", l);
-            «ENDIF»
-
-            «IF a.myAttributeContains instanceof myRange»
-            l = new ArrayList<String>();
-            «FOR v:(a.myAttributeContains as myRange).from..(a.myAttributeContains as myRange).to»
-            l.add("«v»");
-            «ENDFOR»
-            hm.put("«a.name»,range", l);
-            «ENDIF»
-
-            «IF a.myAttributeContains instanceof myBoolean»
-            l = new ArrayList<String>();
-            l.add("«(a.myAttributeContains as myBoolean).trueValue»");
-            l.add("«(a.myAttributeContains as myBoolean).falseValue»");
-            hm.put("«a.name»,boolean", l);
-            «ENDIF»
-            «ENDFOR»
-
-            String[] attrSelection = new String[hm.size()];
-            String[] valueSelection = new String[hm.values().size()];
-
-            run(hm, attrSelection, valueSelection);
+ 
+public class HelloWorld {
+  public static void main(final String[] args) {
+    InputOutput.<String>println("LETS GET TO IT..");
+    List<String> l;
+    HashMap<String, List<String>> hm = new HashMap<String, List<String>>();
+    
+««« Make hashmap of attribute list
+    «FOR a:attributes»
+    «IF a.myAttributeContains instanceof myStringEnum»
+    l = new ArrayList<String>();
+	«FOR v:(a.myAttributeContains as myStringEnum).values»
+	l.add("«v»");
+	
+	
+	«ENDFOR»
+	hm.put("«a.name»", l);
+	«ENDIF»
+	«ENDFOR»
+        
+        
+««« Make java code from constraints
+	«FOR con:constraints»
+	«val exprIf = con.myIfConstraint as myBinary»
+	if «generateIfConstraintString(exprIf, null, null)»{
+		then 
+	}
+	«ENDFOR»
+	doSomething();
+	            run(hm, attrSelection, valueSelection);
             goXML(attrSelection, valueSelection);
-        }
-
+  }
+  
+  
         public static void run(HashMap<String, List<String>> hm, String[] attrSelection, String[] valueSelection){
             String[] split;
             String type;
@@ -194,48 +258,94 @@ class SmdpDslGenerator implements IGenerator {
             }
 
         }
-        public static void goXML(String[] as, String[] vs ) {
+}
+
+    public static Integer rangeInt = 0;
+    public static void doSomething() {
+            InputOutput.<String>println("LETS GET TO IT..");
+            List<String> l;
+            HashMap<String, List<String>> hm = new HashMap<String, List<String>>();
+
+
+            «FOR a:attributes»
+            «IF a.myAttributeContains instanceof myStringEnum»
+            l = new ArrayList<String>();
+            «FOR v:(a.myAttributeContains as myStringEnum).values»
+            l.add("«v»");
+            «ENDFOR»
+            hm.put("«a.name»,string", l);
+            «ENDIF»
+
+            «IF a.myAttributeContains instanceof myNumberEnum»
+            l = new ArrayList<String>();
+            «FOR v:(a.myAttributeContains as myNumberEnum).values»
+            l.add("«v»");
+            «ENDFOR»
+            hm.put("«a.name»,number", l);
+            «ENDIF»
+
+            «IF a.myAttributeContains instanceof myRange»
+            l = new ArrayList<String>();
+            «FOR v:(a.myAttributeContains as myRange).from..(a.myAttributeContains as myRange).to»
+            l.add("«v»");
+            «ENDFOR»
+            hm.put("«a.name»,range", l);
+            «ENDIF»
+
+            «IF a.myAttributeContains instanceof myBoolean»
+            l = new ArrayList<String>();
+            l.add("«(a.myAttributeContains as myBoolean).trueValue»");
+            l.add("«(a.myAttributeContains as myBoolean).falseValue»");
+            hm.put("«a.name»,boolean", l);
+            «ENDIF»
+            «ENDFOR»
+
+            String[] attrSelection = new String[hm.size()];
+            String[] valueSelection = new String[hm.values().size()];
+
+            }
+    public static void goXML(String[] as, String[] vs ) {
             System.out.println("Attribute: " + Arrays.toString(as) + "Value: " + Arrays.toString(vs));
             try {
 
-                DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-                DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
-                // root elements
-                Document doc = docBuilder.newDocument();
-                Element rootElement = doc.createElement("Attributes");
-                doc.appendChild(rootElement);
+            // root elements
+            Document doc = docBuilder.newDocument();
+            Element rootElement = doc.createElement("Attributes");
+            doc.appendChild(rootElement);
 
-                // attribute elements
-                for (int i = 0; i < as.length; i++) {
-                    Element attribute = doc.createElement(as[i]);
-                    rootElement.appendChild(attribute);
-                    Element value = doc.createElement("value");
-                    value.appendChild(doc.createTextNode(vs[i]));
-                    attribute.appendChild(value);
-                }
-
-
-                // write the content into xml file
-                TransformerFactory transformerFactory = TransformerFactory.newInstance();
-                Transformer transformer = transformerFactory.newTransformer();
-                DOMSource source = new DOMSource(doc);
-                StreamResult result = new StreamResult(new File("C:\\Users\\Rune\\Desktop\\YESSS.xml"));
-
-                // Output to console for testing
-                // StreamResult result = new StreamResult(System.out);
-
-                transformer.transform(source, result);
-
-                System.out.println("FILE SAVED TO DESKTOP #YOLO");
-
-            } catch (ParserConfigurationException pce) {
-                pce.printStackTrace();
-            } catch (TransformerException tfe) {
-                tfe.printStackTrace();
+            // attribute elements
+            for (int i = 0; i < as.length; i++) {
+            Element attribute = doc.createElement(as[i]);
+            rootElement.appendChild(attribute);
+            Element value = doc.createElement("value");
+            value.appendChild(doc.createTextNode(vs[i]));
+            attribute.appendChild(value);
             }
 
-        }
-    }    '''
+
+            // write the content into xml file
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File("C:\\Users\\Rune\\Desktop\\YESSS.xml"));
+
+            // Output to console for testing
+            // StreamResult result = new StreamResult(System.out);
+
+            transformer.transform(source, result);
+
+            System.out.println("FILE SAVED TO DESKTOP #YOLO");
+
+            } catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+            } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+            }
+
+            }
+'''
 
 }

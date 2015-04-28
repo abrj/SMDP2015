@@ -15,14 +15,15 @@
 package org.xtext.example.mydsl.validation
 
 import configuratorProject.myBinary
+import configuratorProject.myBinaryOparators
 import configuratorProject.myBoolean
 import configuratorProject.myConstraint
 import configuratorProject.myIdentifier
-import configuratorProject.myLiteral
 import configuratorProject.myNumberEnum
 import configuratorProject.myObject
 import configuratorProject.myRange
 import configuratorProject.myStringEnum
+import configuratorProject.myLiteral
 import org.eclipse.xtext.validation.Check
 
 /**
@@ -33,113 +34,181 @@ import org.eclipse.xtext.validation.Check
 class SmdpDslValidator extends AbstractSmdpDslValidator {
 	@Check
 	def void constraint(myObject it) {
+
 		// Attribute name must be unique
 		if (!(it.myAttributeContains.forall[ attributeName | myAttributeContains.filter[name.equalsIgnoreCase(attributeName.name)].size == 1])){
 			error("A attribute should have a unique name", null);
 		}
-		
-		// Checks all if statements that the value exsist in out attribute list
-		if (!it.myObjectHas.forall[con | {
-			myValuesCheck(con.myIfConstraint as myBinary, it)}
-			]
-			) {
-			error("One more more if statements contain a invalid value", null)
+	}
+	@Check
+	def void constraint(myConstraint it){
+		// Checks the then part of 
+		if (!myValuesCheck(myThenConstraint as myBinary, null)) {
+			error("Constraint contains illigal values", myThenConstraint, null)
 		}
 		
-		
-		// Checks all then statements that the value exsist in out attribute list
-		if (!it.myObjectHas.forall[con | myValuesCheck(con.myThenConstraint as myBinary, it)]) {
-			error("One more more then statements contain a invalid value", null)
+		if (!myValuesCheck(myIfConstraint as myBinary, null)) {
+				error("If statements contain a invalid value", myIfConstraint, null);
 		}
 	}
 
-	//@Check
-	//def constraint(myNumberEnum it) {
-		//if (values.length == 0) {
-			//error("All number enum must have a size of at least 1", null)
-		//}
-		
-		
-		// Check that each value is unique
-		//values.forall[ value | values.filter[it == value].size == 1]	
-	//}
 	@Check
-	def  constraint(myRange it) {
-		if (from > to) {
-			error("The start value in a range cannot be larger than the end value", null);
+	def constraint(myNumberEnum it) {
+		if (values.length == 0) {
+			error("All number enum must have a size of at least 1", it, null)
 		}
 	}
-	
+	@Check
+	def constraint(myRange it) {
+		if (from > to) {
+			error("The start value in a range cannot be larger than the end value", it, null);
+		}
+	}	
 	@Check
 	def constraint(myBoolean it) {
 		if (trueValue == falseValue) {
-			error("The values for boolean can't be the same", null);
+			error("The values for boolean can't be the same", it, null);
 		}
 		
 		if (trueValue == "" || falseValue == ""){
-			error("Boolean must be asigned a value", null);
+			error("Boolean must be asigned a value",it, null);
 		}
 		
-	}
-	
+	}	
 	@Check
 	def  constraint (myStringEnum it) { // example	
 		// Check that each value is unique
-		it.values.forEach[item | {
-			if (values.filter[p1 | p1.equalsIgnoreCase(item)].size > 1) {
-				error("String enum does not contain unique values: " + values.filter[p1 | p1.equalsIgnoreCase(item)].size, null);
-				}
-		}]
+		if (values.length == 0) {
+			error("String enum must contain a value",it,null)
+		}
 	}
-	
 	 
-	  def boolean myValuesCheck(myBinary it, myObject o){
-	  	if (it.myBinaryLeft instanceof myBinary){
-	  		return myValuesCheck(it.myBinaryLeft as myBinary, o)
-	  	}
-	  	if (it.myBinaryRight instanceof myBinary){
-	  		return myValuesCheck(it.myBinaryRight as myBinary, o)
+	 /* Helper method to go throuh the expression tree, to check if all values are valid
+	  * We don't take the operan into account, there for it will be possible to set values that are outside a range scope
+	  * if '<' or '>' is used. 
+	  */
+	  def boolean myValuesCheck(myBinary it, myIdentifier attribute){
+	  	// Hvis left er identifyer, find key
+	  	info("LEFT:" + it.myBinaryLeft + " - RIGHT: "+ it.myBinaryRight, null)
+	  	var boolean leftCorrect = false;
+	  	var boolean rightCorrect = false;
+	  	var myIdentifier att;
+	  	// If left is a identifier, get the attribute
+	  	if (it.myBinaryLeft instanceof myIdentifier) {
+	  		att = it.myBinaryLeft as myIdentifier;
+	  		leftCorrect = true;
+	  	} else {
+	  		att = attribute;
 	  	}
 	  	
-	  	if (it.myBinaryLeft instanceof myIdentifier) {
-			val attributeValue = o.myAttributeContains.findFirst[a | a ==(myBinaryLeft as myIdentifier)].myAttributeContains;
-	  		if (attributeValue instanceof myStringEnum) {
-	  			return myStringEnumValueCheck(attributeValue as myStringEnum, myBinaryRight as myStringEnum)
-	  		}
+	  	// If both left and right are binaries, then both sides must be true
+	  	if (it.myBinaryLeft instanceof myBinary && it.myBinaryRight instanceof myBinary)	{
+	  		return myValuesCheck(it.myBinaryLeft as myBinary, att) && myValuesCheck(it.myBinaryRight as myBinary, att)
+	  	}
+		
+		// If the right is a binary, then go one depth deeper.
+	  	if (it.myBinaryRight instanceof myBinary){
+	  		return myValuesCheck(it.myBinaryRight as myBinary, att)
+	  	}  	
+	  	//region Check the values in the left side
+	  	if (it.myBinaryLeft instanceof myStringEnum) {
+	  		// If the left is a string, then the value must either be a StringEnum or a Boolean
+	  		val attributeValue = att.myIntentifierIs.myAttributeContains;
 	  		
-	  		if (attributeValue instanceof myNumberEnum){
-	  			return myNumberEnumValueCheck(attributeValue as myNumberEnum, myBinaryRight as myNumberEnum)
+	  		if (attributeValue instanceof myStringEnum) {
+	  			leftCorrect = myStringEnumValueCheck(attributeValue as myStringEnum, myBinaryLeft as myStringEnum)
 	  		}
 	  		
 	  		if (attributeValue instanceof myBoolean){
-	  			return myBooleanValueCheck(attributeValue as myBoolean, myBinaryRight as myLiteral)
+	  			leftCorrect = myBooleanValueCheck(attributeValue as myBoolean, myBinaryLeft as myStringEnum)
+	  		}
+	  		
+	  		if (it.oparand != myBinaryOparators.OR) {
+	  			error("Operand cannot be other than '|'",it,null)
+	  			leftCorrect = false;
+	  		}
+	  	}
+	  	
+	  	if (it.myBinaryLeft instanceof myNumberEnum) {
+	  		val attributeValue = att.myIntentifierIs.myAttributeContains;
+	  		// If the left is a number, then the value must either be a NumberEnum or a Range
+	  		if (attributeValue instanceof myNumberEnum){
+	  			leftCorrect =  myNumberEnumValueCheck(attributeValue as myNumberEnum, myBinaryLeft as myNumberEnum)
 	  		}
 	  		
 	  		if (attributeValue instanceof myRange){
-	  			return myRangeValueCheck(attributeValue as myRange, myBinaryRight as myNumberEnum)
+	  			leftCorrect =  myRangeValueCheck(attributeValue as myRange, myBinaryLeft as myNumberEnum)
 	  		}
 	  	}
+	  	//endregion
+	  	
+	  	//region Check the values in the right side
+	  	if (it.myBinaryRight instanceof myStringEnum) {
+	  		val attributeValue = att.myIntentifierIs.myAttributeContains;
+	  		
+	  		if (attributeValue instanceof myStringEnum) {
+	  			rightCorrect = myStringEnumValueCheck(attributeValue as myStringEnum, myBinaryRight as myStringEnum)
+	  		}
+	  		
+	  		if (attributeValue instanceof myBoolean){
+	  			rightCorrect = myBooleanValueCheck(attributeValue as myBoolean, myBinaryRight as myStringEnum)
+	  		}
+	  	}
+	  	
+	  	if (it.myBinaryRight instanceof myNumberEnum) {
+	  		val attributeValue = att.myIntentifierIs.myAttributeContains;
+	  		if (attributeValue instanceof myNumberEnum){
+	  			rightCorrect = myNumberEnumValueCheck(attributeValue as myNumberEnum, myBinaryRight as myNumberEnum)
+	  		}
+	  		
+	  		if (attributeValue instanceof myRange){
+	  			rightCorrect = myRangeValueCheck(attributeValue as myRange, myBinaryRight as myNumberEnum)
+	  		}
+	  	}
+	  	//endregion
+	  	
+	  	// Check that both right, and left side is true	
+  	 	if (leftCorrect && rightCorrect) {
+  	 		return true
+  	 	}  		
 	  	return false;
 	  }
 	  
 	  def boolean myStringEnumValueCheck(myStringEnum it, myStringEnum expectedValue){
-	  	return it.values.containsAll(expectedValue.values);
+	  	val res = it.values.containsAll(expectedValue.values)
+	  	//warning(""+res, null)
+	  	return res;
 	  }
 	  
 	  def boolean myNumberEnumValueCheck(myNumberEnum it, myNumberEnum expectedValue){
-	  	return it.values.containsAll(expectedValue.values);
+	  	val res = it.values.containsAll(expectedValue.values)
+	  	//warning(""+res, null)
+	  	return res;
 	  }
 	  
 	  def boolean myBooleanValueCheck(myBoolean it, myLiteral expectedValue){
-	  	return it.trueValue == expectedValue || it.falseValue == expectedValue;
+	  	// Apparently the expected value gets mapped to a string enum.
+	  	val value = expectedValue as myStringEnum;
+	  	
+	  	//warning("Expected value" + value.values.get(0), null)
+	  	//warning("true value: " + it.trueValue, null)
+	  	//warning("false value: " + it.falseValue, null)
+	  	val res = it.trueValue.equalsIgnoreCase(value.values.get(0)) || it.falseValue.equalsIgnoreCase(value.values.get(0));
+	  	//warning(""+res, null)
+	  	return res;
 	  }
 	  
-	  def static boolean myRangeValueCheck(myRange it, myLiteral expectedValue){
-	  	if (expectedValue instanceof myNumberEnum) {  	
-	  		return it.from <= expectedValue.values.get(0)  && expectedValue.values.get(0)  <= it.to
+	  def boolean myRangeValueCheck(myRange it, myLiteral expectedValue){
+	  	if (expectedValue instanceof myNumberEnum) {
+	  		val res = (it.from <= expectedValue.values.get(0))  && (expectedValue.values.get(0)  <= it.to)
+	  		//warning("enum: "+res, null) 	
+	  		return res;
 	  	}
 	  	if (expectedValue instanceof myRange){
-	  		return it.from <= expectedValue.from && expectedValue.to <= it.to;
+	  		val res = it.from <= expectedValue.from && expectedValue.to <= it.to;
+	  		//warning("range: "+res, null) 	
+	  		return res;
 	  	}
+	  	return false;
 	  }
 }
