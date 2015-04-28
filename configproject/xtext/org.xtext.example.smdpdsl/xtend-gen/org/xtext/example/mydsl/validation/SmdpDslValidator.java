@@ -54,29 +54,21 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
     if (_not) {
       this.error("A attribute should have a unique name", null);
     }
-    EList<myConstraint> _myObjectHas = it.getMyObjectHas();
-    final Function1<myConstraint, Boolean> _function_1 = new Function1<myConstraint, Boolean>() {
-      public Boolean apply(final myConstraint con) {
-        myExpression _myIfConstraint = con.getMyIfConstraint();
-        return Boolean.valueOf(SmdpDslValidator.this.myValuesCheck(((myBinary) _myIfConstraint), it));
-      }
-    };
-    boolean _forall_1 = IterableExtensions.<myConstraint>forall(_myObjectHas, _function_1);
-    boolean _not_1 = (!_forall_1);
-    if (_not_1) {
-      this.error("One more more if statements contain a invalid value", null);
+  }
+  
+  @Check
+  public void constraint(final myConstraint it) {
+    myExpression _myThenConstraint = it.getMyThenConstraint();
+    boolean _myValuesCheck = this.myValuesCheck(((myBinary) _myThenConstraint), null);
+    boolean _not = (!_myValuesCheck);
+    if (_not) {
+      this.error("Constraint contains illigal values", null);
     }
-    EList<myConstraint> _myObjectHas_1 = it.getMyObjectHas();
-    final Function1<myConstraint, Boolean> _function_2 = new Function1<myConstraint, Boolean>() {
-      public Boolean apply(final myConstraint con) {
-        myExpression _myThenConstraint = con.getMyThenConstraint();
-        return Boolean.valueOf(SmdpDslValidator.this.myValuesCheck(((myBinary) _myThenConstraint), it));
-      }
-    };
-    boolean _forall_2 = IterableExtensions.<myConstraint>forall(_myObjectHas_1, _function_2);
-    boolean _not_2 = (!_forall_2);
-    if (_not_2) {
-      this.error("One more more then statements contain a invalid value", null);
+    myExpression _myIfConstraint = it.getMyIfConstraint();
+    boolean _myValuesCheck_1 = this.myValuesCheck(((myBinary) _myIfConstraint), null);
+    boolean _not_1 = (!_myValuesCheck_1);
+    if (_not_1) {
+      this.error("If statements contain a invalid value", null);
     }
   }
   
@@ -173,44 +165,117 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
     _values.forEach(_function);
   }
   
-  public boolean myValuesCheck(final myBinary it, final myObject o) {
+  /**
+   * Helper method to go throuh the expression tree, to check if all values are valid
+   * We don't take the operan into account, there for it will be possible to set values that are outside a range scope
+   * if '<' or '>' is used.
+   */
+  public boolean myValuesCheck(final myBinary it, final myIdentifier attribute) {
     myExpression _myBinaryLeft = it.getMyBinaryLeft();
-    if ((_myBinaryLeft instanceof myBinary)) {
-      myExpression _myBinaryLeft_1 = it.getMyBinaryLeft();
-      return this.myValuesCheck(((myBinary) _myBinaryLeft_1), o);
-    }
+    String _plus = ("LEFT:" + _myBinaryLeft);
+    String _plus_1 = (_plus + " - RIGHT: ");
     myExpression _myBinaryRight = it.getMyBinaryRight();
-    if ((_myBinaryRight instanceof myBinary)) {
-      myExpression _myBinaryRight_1 = it.getMyBinaryRight();
-      return this.myValuesCheck(((myBinary) _myBinaryRight_1), o);
+    String _plus_2 = (_plus_1 + _myBinaryRight);
+    this.info(_plus_2, null);
+    boolean leftCorrect = false;
+    boolean rightCorrect = false;
+    myIdentifier att = null;
+    myExpression _myBinaryLeft_1 = it.getMyBinaryLeft();
+    if ((_myBinaryLeft_1 instanceof myIdentifier)) {
+      myExpression _myBinaryLeft_2 = it.getMyBinaryLeft();
+      att = ((myIdentifier) _myBinaryLeft_2);
+      leftCorrect = true;
+    } else {
+      att = attribute;
     }
-    myExpression _myBinaryLeft_2 = it.getMyBinaryLeft();
-    if ((_myBinaryLeft_2 instanceof myIdentifier)) {
-      EList<myAttribute> _myAttributeContains = o.getMyAttributeContains();
-      final Function1<myAttribute, Boolean> _function = new Function1<myAttribute, Boolean>() {
-        public Boolean apply(final myAttribute a) {
-          myExpression _myBinaryLeft = it.getMyBinaryLeft();
-          return Boolean.valueOf(Objects.equal(a, ((myIdentifier) _myBinaryLeft)));
-        }
-      };
-      myAttribute _findFirst = IterableExtensions.<myAttribute>findFirst(_myAttributeContains, _function);
-      final myValue attributeValue = _findFirst.getMyAttributeContains();
-      if ((attributeValue instanceof myStringEnum)) {
+    boolean _and = false;
+    myExpression _myBinaryLeft_3 = it.getMyBinaryLeft();
+    if (!(_myBinaryLeft_3 instanceof myBinary)) {
+      _and = false;
+    } else {
+      myExpression _myBinaryRight_1 = it.getMyBinaryRight();
+      _and = (_myBinaryRight_1 instanceof myBinary);
+    }
+    if (_and) {
+      boolean _and_1 = false;
+      myExpression _myBinaryLeft_4 = it.getMyBinaryLeft();
+      boolean _myValuesCheck = this.myValuesCheck(((myBinary) _myBinaryLeft_4), att);
+      if (!_myValuesCheck) {
+        _and_1 = false;
+      } else {
         myExpression _myBinaryRight_2 = it.getMyBinaryRight();
-        return this.myStringEnumValueCheck(((myStringEnum) attributeValue), ((myStringEnum) _myBinaryRight_2));
+        boolean _myValuesCheck_1 = this.myValuesCheck(((myBinary) _myBinaryRight_2), att);
+        _and_1 = _myValuesCheck_1;
       }
-      if ((attributeValue instanceof myNumberEnum)) {
-        myExpression _myBinaryRight_3 = it.getMyBinaryRight();
-        return this.myNumberEnumValueCheck(((myNumberEnum) attributeValue), ((myNumberEnum) _myBinaryRight_3));
+      return _and_1;
+    }
+    myExpression _myBinaryRight_3 = it.getMyBinaryRight();
+    if ((_myBinaryRight_3 instanceof myBinary)) {
+      myExpression _myBinaryRight_4 = it.getMyBinaryRight();
+      return this.myValuesCheck(((myBinary) _myBinaryRight_4), att);
+    }
+    myExpression _myBinaryLeft_5 = it.getMyBinaryLeft();
+    if ((_myBinaryLeft_5 instanceof myStringEnum)) {
+      myAttribute _myIntentifierIs = att.getMyIntentifierIs();
+      final myValue attributeValue = _myIntentifierIs.getMyAttributeContains();
+      if ((attributeValue instanceof myStringEnum)) {
+        myExpression _myBinaryLeft_6 = it.getMyBinaryLeft();
+        boolean _myStringEnumValueCheck = this.myStringEnumValueCheck(((myStringEnum) attributeValue), ((myStringEnum) _myBinaryLeft_6));
+        leftCorrect = _myStringEnumValueCheck;
       }
       if ((attributeValue instanceof myBoolean)) {
-        myExpression _myBinaryRight_4 = it.getMyBinaryRight();
-        return this.myBooleanValueCheck(((myBoolean) attributeValue), ((myLiteral) _myBinaryRight_4));
+        myExpression _myBinaryLeft_7 = it.getMyBinaryLeft();
+        boolean _myBooleanValueCheck = this.myBooleanValueCheck(((myBoolean) attributeValue), ((myStringEnum) _myBinaryLeft_7));
+        leftCorrect = _myBooleanValueCheck;
       }
-      if ((attributeValue instanceof myRange)) {
-        myExpression _myBinaryRight_5 = it.getMyBinaryRight();
-        return SmdpDslValidator.myRangeValueCheck(((myRange) attributeValue), ((myNumberEnum) _myBinaryRight_5));
+    }
+    myExpression _myBinaryLeft_8 = it.getMyBinaryLeft();
+    if ((_myBinaryLeft_8 instanceof myNumberEnum)) {
+      myAttribute _myIntentifierIs_1 = att.getMyIntentifierIs();
+      final myValue attributeValue_1 = _myIntentifierIs_1.getMyAttributeContains();
+      if ((attributeValue_1 instanceof myNumberEnum)) {
+        myExpression _myBinaryLeft_9 = it.getMyBinaryLeft();
+        boolean _myNumberEnumValueCheck = this.myNumberEnumValueCheck(((myNumberEnum) attributeValue_1), ((myNumberEnum) _myBinaryLeft_9));
+        leftCorrect = _myNumberEnumValueCheck;
       }
+      if ((attributeValue_1 instanceof myRange)) {
+        myExpression _myBinaryLeft_10 = it.getMyBinaryLeft();
+        boolean _myRangeValueCheck = this.myRangeValueCheck(((myRange) attributeValue_1), ((myNumberEnum) _myBinaryLeft_10));
+        leftCorrect = _myRangeValueCheck;
+      }
+    }
+    myExpression _myBinaryRight_5 = it.getMyBinaryRight();
+    if ((_myBinaryRight_5 instanceof myStringEnum)) {
+      myAttribute _myIntentifierIs_2 = att.getMyIntentifierIs();
+      final myValue attributeValue_2 = _myIntentifierIs_2.getMyAttributeContains();
+      if ((attributeValue_2 instanceof myStringEnum)) {
+        myExpression _myBinaryRight_6 = it.getMyBinaryRight();
+        boolean _myStringEnumValueCheck_1 = this.myStringEnumValueCheck(((myStringEnum) attributeValue_2), ((myStringEnum) _myBinaryRight_6));
+        rightCorrect = _myStringEnumValueCheck_1;
+      }
+      if ((attributeValue_2 instanceof myBoolean)) {
+        myExpression _myBinaryRight_7 = it.getMyBinaryRight();
+        boolean _myBooleanValueCheck_1 = this.myBooleanValueCheck(((myBoolean) attributeValue_2), ((myStringEnum) _myBinaryRight_7));
+        rightCorrect = _myBooleanValueCheck_1;
+      }
+    }
+    myExpression _myBinaryRight_8 = it.getMyBinaryRight();
+    if ((_myBinaryRight_8 instanceof myNumberEnum)) {
+      myAttribute _myIntentifierIs_3 = att.getMyIntentifierIs();
+      final myValue attributeValue_3 = _myIntentifierIs_3.getMyAttributeContains();
+      if ((attributeValue_3 instanceof myNumberEnum)) {
+        myExpression _myBinaryRight_9 = it.getMyBinaryRight();
+        boolean _myNumberEnumValueCheck_1 = this.myNumberEnumValueCheck(((myNumberEnum) attributeValue_3), ((myNumberEnum) _myBinaryRight_9));
+        rightCorrect = _myNumberEnumValueCheck_1;
+      }
+      if ((attributeValue_3 instanceof myRange)) {
+        myExpression _myBinaryRight_10 = it.getMyBinaryRight();
+        boolean _myRangeValueCheck_1 = this.myRangeValueCheck(((myRange) attributeValue_3), ((myNumberEnum) _myBinaryRight_10));
+        rightCorrect = _myRangeValueCheck_1;
+      }
+    }
+    if ((leftCorrect && rightCorrect)) {
+      return true;
     }
     return false;
   }
@@ -218,30 +283,38 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
   public boolean myStringEnumValueCheck(final myStringEnum it, final myStringEnum expectedValue) {
     EList<String> _values = it.getValues();
     EList<String> _values_1 = expectedValue.getValues();
-    return _values.containsAll(_values_1);
+    final boolean res = _values.containsAll(_values_1);
+    return res;
   }
   
   public boolean myNumberEnumValueCheck(final myNumberEnum it, final myNumberEnum expectedValue) {
     EList<Double> _values = it.getValues();
     EList<Double> _values_1 = expectedValue.getValues();
-    return _values.containsAll(_values_1);
+    final boolean res = _values.containsAll(_values_1);
+    return res;
   }
   
   public boolean myBooleanValueCheck(final myBoolean it, final myLiteral expectedValue) {
+    final myStringEnum value = ((myStringEnum) expectedValue);
     boolean _or = false;
     String _trueValue = it.getTrueValue();
-    boolean _equals = Objects.equal(_trueValue, expectedValue);
-    if (_equals) {
+    EList<String> _values = value.getValues();
+    String _get = _values.get(0);
+    boolean _equalsIgnoreCase = _trueValue.equalsIgnoreCase(_get);
+    if (_equalsIgnoreCase) {
       _or = true;
     } else {
       String _falseValue = it.getFalseValue();
-      boolean _equals_1 = Objects.equal(_falseValue, expectedValue);
-      _or = _equals_1;
+      EList<String> _values_1 = value.getValues();
+      String _get_1 = _values_1.get(0);
+      boolean _equalsIgnoreCase_1 = _falseValue.equalsIgnoreCase(_get_1);
+      _or = _equalsIgnoreCase_1;
     }
-    return _or;
+    final boolean res = _or;
+    return res;
   }
   
-  public static boolean myRangeValueCheck(final myRange it, final myLiteral expectedValue) {
+  public boolean myRangeValueCheck(final myRange it, final myLiteral expectedValue) {
     if ((expectedValue instanceof myNumberEnum)) {
       boolean _and = false;
       int _from = it.getFrom();
@@ -257,7 +330,8 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
         boolean _lessEqualsThan_1 = ((_get_1).doubleValue() <= _to);
         _and = _lessEqualsThan_1;
       }
-      return _and;
+      final boolean res = _and;
+      return res;
     }
     if ((expectedValue instanceof myRange)) {
       boolean _and_1 = false;
@@ -272,7 +346,8 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
         boolean _lessEqualsThan_3 = (_to_1 <= _to_2);
         _and_1 = _lessEqualsThan_3;
       }
-      return _and_1;
+      final boolean res_1 = _and_1;
+      return res_1;
     }
     return false;
   }
