@@ -87,35 +87,53 @@ class SmdpDslGenerator implements IGenerator {
 </body>
 </html>'''
 
-def String generateIfConstraintString(myBinary it, myIdentifier attribute){
+def String generateIfConstraintString(myBinary it, myIdentifier attribute, myBinaryOparators parentOperand){
 	  	var myIdentifier att;
+	  	var myBinaryOparators pOpe;
 	  	// If left is a identifier, get the attribute
 	  	if (it.myBinaryLeft instanceof myIdentifier) {
 	  		att = it.myBinaryLeft as myIdentifier;
+	  		pOpe = it.oparand;
+	  		
 	  	} else {
 	  		att = attribute;
+	  		pOpe = parentOperand;
 	  	}
 	  	
 	  	// If both left and right are binaries, then both sides must be true
 	  	if (it.myBinaryLeft instanceof myBinary && it.myBinaryRight instanceof myBinary)	{
-	  		return generateIfConstraintString(it.myBinaryLeft as myBinary, att) + " " + oparand + " " + generateIfConstraintString(it.myBinaryRight as myBinary, att)
+	  		return generateIfConstraintString(it.myBinaryLeft as myBinary, att, pOpe) + " " + convertOperand(oparand) + " " + generateIfConstraintString(it.myBinaryRight as myBinary, att, pOpe)
 	  	}
 	  	
-	  	if (it.myBinaryRight instanceof myBinary) {
-	  		//return "(("+ att.myIntentifierIs.name + " " + oparand + " " + (myBinaryLeft as myStringEnum).values.get(0) + ") || " + generateIfConstraintString(it.myBinaryRight as myBinary, att) + ")";
+	  	if (it.myBinaryLeft instanceof myIdentifier && it.myBinaryRight instanceof myBinary) {
+				return generateIfConstraintString(it.myBinaryRight as myBinary, att, pOpe)
 	  	}
 
 		if (it.myBinaryLeft instanceof myValue && it.myBinaryRight instanceof myValue) {
-			//
+			if (att.myIntentifierIs.myAttributeContains instanceof myNumberEnum) {
+			return "(" + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " " +  (myBinaryLeft as myNumberEnum).values.get(0) + " || " + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " " +  (myBinaryRight as myNumberEnum).values.get(0) + ")";
+			}
+			if (att.myIntentifierIs.myAttributeContains instanceof myStringEnum) {
+			return "(" + att.myIntentifierIs.name + " " + convertOperand(pOpe) + "  \"" +  (myBinaryLeft as myStringEnum).values.get(0) + "\" || " + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " \"" +  (myBinaryRight as myStringEnum).values.get(0) + "\")";
+			}
+		}
+		
+		if (it.myBinaryLeft instanceof myValue && it.myBinaryRight instanceof myBinary) {
+			if (att.myIntentifierIs.myAttributeContains instanceof myNumberEnum) {
+				return "(" + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " " +  (myBinaryLeft as myNumberEnum).values.get(0) + " || " + generateIfConstraintString(it.myBinaryRight as myBinary, att, pOpe) + ")"
+			}
+			if (att.myIntentifierIs.myAttributeContains instanceof myStringEnum) {
+				return "(" + att.myIntentifierIs.name + " " + convertOperand(pOpe) + " \"" +  (myBinaryLeft as myStringEnum).values.get(0) + "\" || " + generateIfConstraintString(it.myBinaryRight as myBinary, att, pOpe) + ")"
+			}
 		}
 	  	
 	  	if (it.myBinaryLeft instanceof myIdentifier && it.myBinaryRight instanceof myValue) {
 	  		if (att.myIntentifierIs.myAttributeContains instanceof myNumberEnum) {
-	  			return "("+ att.myIntentifierIs.name + " " + oparand + " " + (myBinaryRight as myNumberEnum).values.get(0) + ")";
+	  			return "("+ att.myIntentifierIs.name + " " + convertOperand(oparand) + " " + (myBinaryRight as myNumberEnum).values.get(0) + ")";
 	  		}
 	  		
 	  		if (att.myIntentifierIs.myAttributeContains instanceof myStringEnum) {
-	  			return "("+ att.myIntentifierIs.name + " " + oparand + " " + (myBinaryRight as myStringEnum).values.get(0) + ")";
+	  			return "("+ att.myIntentifierIs.name + " " + convertOperand(oparand) + " \"" + (myBinaryRight as myStringEnum).values.get(0) + "\")";
 	  		}
 	  		
 	  		if (att.myIntentifierIs.myAttributeContains instanceof myRange) {
@@ -123,10 +141,36 @@ def String generateIfConstraintString(myBinary it, myIdentifier attribute){
 	  		}
 	  		
 	  		if (att.myIntentifierIs.myAttributeContains instanceof myBoolean) {
-	  			return "("+ att.myIntentifierIs.name + " " + oparand + " " + (myBinaryRight as myStringEnum).values.get(0) + ")";
+	  			return "("+ att.myIntentifierIs.name + " " + convertOperand(oparand) + " \"" + (myBinaryRight as myStringEnum).values.get(0) + "\")";
 	  		}
 	  		
 	  	}
+	  	return "FUCKED!"
+}
+
+def String convertOperand(myBinaryOparators operand) {
+	if (operand == myBinaryOparators.EQ) {
+		return "=="
+	}
+	
+	if (operand == myBinaryOparators.AND) {
+		return "&&"
+	}
+	
+	if (operand == myBinaryOparators.OR) {
+		return "||"
+	}
+	
+	if (operand == myBinaryOparators.LT) {
+		return ">"
+	}
+	if (operand == myBinaryOparators.GT) {
+		return "<"
+	}
+	if (operand == myBinaryOparators.IS) {
+		return "=="
+	}
+	
 }
 
 def generateJavaCode(List<myAttribute> attributes, List<myConstraint> constraints)
@@ -159,7 +203,9 @@ public class HelloWorld {
 ««« Make java code from constraints
 	«FOR con:constraints»
 	«val exprIf = con.myIfConstraint as myBinary»
-	"«generateIfConstraintString(exprIf, null)»";
+	if «generateIfConstraintString(exprIf, null, null)»{
+		then 
+	}
 	«ENDFOR»
 	
 	
