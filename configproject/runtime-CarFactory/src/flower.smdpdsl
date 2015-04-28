@@ -11,23 +11,26 @@ flowerShop{
  						
  		
  		Constrained by
- 			if bouquetType = "Funeral"
- 			then (colorTheme can "Pure White","Natural","Earth","Dark") && (greetingCard can "Simple White","Forest","Water")
+// 			if bouquetType = "Funeral"
+// 			then (colorTheme can "Pure White") && (greetingCard can "Simple White")
 
-			if bouquetType = ("Wedding" | "I'm sorry")
-			then flowerCount > 15
+			if flowerCount > 2
+			then bouquetType can "Wedding"
 			
-			if colorTheme = "Earth"
-			then greetingCard can "Forest","Water"
-			
-			if wrapping = "Paper"
-			then wrappingColor can "Brown","White"
-			
-			if greetingCard = "Clown"
-			then bouquetType can "I'm sorry","Birthday"
-			
-			if bouquetType = "Valentine"
-			then ((colorTheme can "Romantic Red") && (greetingCard can "Heart","Simple White","Cherubs") | (flowerCount > 25))
+//			if (bouquetType = ("Wedding" | "I'm sorry")) && (colorTheme = "Pure White") && (greetingCard = "Clown")
+//			then flowerCount > 15
+//			
+//			if colorTheme = "Earth"
+//			then greetingCard can "Forest","Water"
+//			
+//			if wrapping = "Paper"
+//			then wrappingColor can "Brown","White"
+//			
+//			if greetingCard = "Clown"
+//			then bouquetType can "I'm sorry","Birthday"
+//			
+//			if (bouquetType = "Valentine")
+//			then ((colorTheme can "Romantic Red") && (greetingCard can "Heart","Simple White","Cherubs") | (flowerCount > 30))
  	}	
 }
 

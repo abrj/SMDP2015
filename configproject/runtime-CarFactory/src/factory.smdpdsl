@@ -15,8 +15,8 @@ carFactory {
  		
  		Constrained by
  			if carType = "Supercar"
- 			then (numberOfSeat can 2) && (doors can "2-door")
- 			 			
+ 			then (seatHeat can "Seat Heat") && (doors can "2-Door")
+ 						 			
  			if seatHeat = "Seat Heat"
  			then seatType can "Standard Seats"
  			
@@ -26,11 +26,11 @@ carFactory {
  			if enginType = ("Electric" | "Hybrid") 
  			then carType can "Sedan","Stationcar","Microcar"
  			
- 			if doors = "5-door"
+ 			if doors = "5-Door"
  			then carType can "SUV","Minivan","Sedan","Stationcar"
  			
  			if (seatType = "Hardwood Seats") && (color = "LemonChiffon")
- 			then (enginType can "Gas") && (seatHeat can "Not Seat Heat")
+ 			then (enginType can "Gas") && (seatHeat can "No Seat Heat")
  			
  			if numberOfSeat > 5
  			then carType can "Stationcar","Minivan"

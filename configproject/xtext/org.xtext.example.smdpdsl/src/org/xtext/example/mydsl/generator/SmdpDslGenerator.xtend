@@ -224,11 +224,24 @@ def String convertOperand(myBinaryOparators operand) {
 	
 }
 
-def generateJavaCode(List<myAttribute> attributes, List<myConstraint> constraints)
+def generateJavaCode(List<myAttribute> attributes, List<myConstraint> constraints) {
 '''
 
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import java.util.*;
+//XML parsing imports below
+import java.io.File;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
  
 public class HelloWorld {
@@ -288,7 +301,9 @@ public class HelloWorld {
 	
 	«ENDFOR»
 	constraintMap = new HashMap<String,List<String>>(hm);
-   	run(hm);
+   	//run(hm);
+   	doSomething();
+    //goXML(attrSelection, valueSelection);
   }
   
   public static void removeNonPossibleValuesFromAttribute(String attr, List<String> possibleValues, String operator){
@@ -339,10 +354,6 @@ public class HelloWorld {
 		«generateThenConstraintString(exprThen, null)»
 	}
 	«ENDFOR»
-
-	doSomething();
-	            run(hm, attrSelection, valueSelection);
-            goXML(attrSelection, valueSelection);
   }
   
   public static boolean checkConstraints() {
@@ -364,23 +375,26 @@ public class HelloWorld {
   }  
   
         public static void run(HashMap<String, List<String>> hm, String[] attrSelection, String[] valueSelection){
+        	chosenValues = new HashMap<String, String>();
             String[] split;
             String type;
             String attrName;
             Scanner in = new Scanner(System.in);
             int userchoice;
             List<String> stringValues;
-
+			List<String> values;
             int j = 0;
 
             for (String attr : hm.keySet() ) {
                 //Splits the datatype from the attribute string and sets the attrName to the attribute name without the datatype
                 split = attr.split(",");
                 attrName = split[0];
+                values = hm.get(attr);
                 type = split[1];
                 System.out.println(attrName + "\n");
                 stringValues = hm.get(attr);
                 int i = 0;
+                rangeInt = 0;
                 //checks if the datatype is "range", if it is rangeInt variable saves the first number of the range and later subtracts it from the number
                 //entered by the user to make sure the number held in the arrayList and the number entered by the user is the same
                 if (type.equals("range")){
@@ -401,7 +415,11 @@ public class HelloWorld {
 
                 userchoice = Integer.parseInt(in.nextLine())-rangeInt;
                 System.out.println("you choose " + stringValues.get(userchoice));
-                chosenValues.put(attr, values.get(userchoice));
+                if (type.equals("range") || type.equals("number")) {
+                	chosenValues.put(attrName, stringValues.get(userchoice)+".0");
+                } else {
+                	chosenValues.put(attrName, stringValues.get(userchoice));
+                }
 
                 //saves the selected value for xml parsing
                 valueSelection[j] = stringValues.get(userchoice);
@@ -410,8 +428,6 @@ public class HelloWorld {
   	buildConstraints();
   	System.out.println(checkConstraints());
         }
-
-}
 
     public static Integer rangeInt = 0;
     public static void doSomething() {
@@ -452,10 +468,9 @@ public class HelloWorld {
             hm.put("«a.name»,boolean", l);
             «ENDIF»
             «ENDFOR»
-
-            String[] attrSelection = new String[hm.size()];
-            String[] valueSelection = new String[hm.values().size()];
-
+               	String[] attrSelection = new String[hm.size()];
+    			String[] valueSelection = new String[hm.values().size()];
+				run(hm, attrSelection, valueSelection);
             }
     public static void goXML(String[] as, String[] vs ) {
             System.out.println("Attribute: " + Arrays.toString(as) + "Value: " + Arrays.toString(vs));
@@ -497,8 +512,8 @@ public class HelloWorld {
             } catch (TransformerException tfe) {
             tfe.printStackTrace();
             }
-
+            }
             }
 '''
-
+}
 }
