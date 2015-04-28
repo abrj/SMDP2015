@@ -8,6 +8,8 @@ import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import configuratorProject.myAttribute
 import configuratorProject.myConstraint
+import configuratorProject.myBinary;
+import configuratorProject.myIdentifier;
 import configuratorProject.*;
 import java.util.List
 import java.util.Iterator
@@ -85,7 +87,47 @@ class SmdpDslGenerator implements IGenerator {
 </body>
 </html>'''
 
+def String generateIfConstraintString(myBinary it, myIdentifier attribute){
+	  	var myIdentifier att;
+	  	// If left is a identifier, get the attribute
+	  	if (it.myBinaryLeft instanceof myIdentifier) {
+	  		att = it.myBinaryLeft as myIdentifier;
+	  	} else {
+	  		att = attribute;
+	  	}
+	  	
+	  	// If both left and right are binaries, then both sides must be true
+	  	if (it.myBinaryLeft instanceof myBinary && it.myBinaryRight instanceof myBinary)	{
+	  		return generateIfConstraintString(it.myBinaryLeft as myBinary, att) + " " + oparand + " " + generateIfConstraintString(it.myBinaryRight as myBinary, att)
+	  	}
+	  	
+	  	if (it.myBinaryRight instanceof myBinary) {
+	  		//return "(("+ att.myIntentifierIs.name + " " + oparand + " " + (myBinaryLeft as myStringEnum).values.get(0) + ") || " + generateIfConstraintString(it.myBinaryRight as myBinary, att) + ")";
+	  	}
 
+		if (it.myBinaryLeft instanceof myValue && it.myBinaryRight instanceof myValue) {
+			//
+		}
+	  	
+	  	if (it.myBinaryLeft instanceof myIdentifier && it.myBinaryRight instanceof myValue) {
+	  		if (att.myIntentifierIs.myAttributeContains instanceof myNumberEnum) {
+	  			return "("+ att.myIntentifierIs.name + " " + oparand + " " + (myBinaryRight as myNumberEnum).values.get(0) + ")";
+	  		}
+	  		
+	  		if (att.myIntentifierIs.myAttributeContains instanceof myStringEnum) {
+	  			return "("+ att.myIntentifierIs.name + " " + oparand + " " + (myBinaryRight as myStringEnum).values.get(0) + ")";
+	  		}
+	  		
+	  		if (att.myIntentifierIs.myAttributeContains instanceof myRange) {
+	  			return "(" + (att.myIntentifierIs.myAttributeContains as myRange).from + " <= " + att.myIntentifierIs.name + " && " + (att.myIntentifierIs.myAttributeContains as myRange).to + " >= " + att.myIntentifierIs.name + ")";
+	  		}
+	  		
+	  		if (att.myIntentifierIs.myAttributeContains instanceof myBoolean) {
+	  			return "("+ att.myIntentifierIs.name + " " + oparand + " " + (myBinaryRight as myStringEnum).values.get(0) + ")";
+	  		}
+	  		
+	  	}
+}
 
 def generateJavaCode(List<myAttribute> attributes, List<myConstraint> constraints)
 '''
@@ -100,23 +142,25 @@ public class HelloWorld {
     List<String> l;
     HashMap<String, List<String>> hm = new HashMap<String, List<String>>();
     
+««« Make hashmap of attribute list
     «FOR a:attributes»
     «IF a.myAttributeContains instanceof myStringEnum»
     l = new ArrayList<String>();
 	«FOR v:(a.myAttributeContains as myStringEnum).values»
 	l.add("«v»");
+	
+	
 	«ENDFOR»
 	hm.put("«a.name»", l);
 	«ENDIF»
 	«ENDFOR»
         
         
-
-«««	«FOR con:constraints»
-«««	«val exprIf = con.myIfConstraint»
-«««	String s = «exprIf.»
-«««	System.out.println(s);
-«««	«ENDFOR»
+««« Make java code from constraints
+	«FOR con:constraints»
+	«val exprIf = con.myIfConstraint as myBinary»
+	"«generateIfConstraintString(exprIf, null)»";
+	«ENDFOR»
 	
 	
    	run(hm);
