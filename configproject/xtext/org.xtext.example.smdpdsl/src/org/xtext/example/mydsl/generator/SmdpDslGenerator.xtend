@@ -11,17 +11,18 @@ import configuratorProject.myConstraint
 import configuratorProject.myBinary;
 import configuratorProject.myIdentifier;
 import configuratorProject.*;
-import java.util.List
-import java.util.Iterator
+
+import java.util.*;
+
 import configuratorProject.myStringEnum
+
 
 /**
  * Generates code from your model files on save.
- * 
+ *
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
-class SmdpDslGenerator implements IGenerator {
-	
+class SmdpDslGenerator implements IGenerator {	
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		//Getting the attributes and constraints
@@ -338,6 +339,10 @@ public class HelloWorld {
 		«generateThenConstraintString(exprThen, null)»
 	}
 	«ENDFOR»
+
+	doSomething();
+	            run(hm, attrSelection, valueSelection);
+            goXML(attrSelection, valueSelection);
   }
   
   public static boolean checkConstraints() {
@@ -358,34 +363,142 @@ public class HelloWorld {
 	return true;
   }  
   
-  public static void run(HashMap<String, List<String>> hm){
-  	Scanner in = new Scanner(System.in);
-  	chosenValues = new HashMap<String, String>();
-  	int userchoice;
-  	List<String> values;
-   	for (String attr : hm.keySet() ) {
-        System.out.println(attr + "\n");
-        values = hm.get(attr);
-        int i = 0;
-        for(String s : values){
-        		System.out.println(i + " : " + s);
-        		i++;
-        	}
-        System.out.println("Select a number for " + attr + "\n");
-  	 	userchoice = Integer.parseInt(in.nextLine());
-  	 	if(0 <= userchoice && userchoice <=i){
-  	 		System.out.println("you chose " + values.get(userchoice));
-  	 		chosenValues.put(attr, values.get(userchoice));
-  	 	}
-  	 	else{
-  	 		System.out.println("wrong index given, skipping this attribute option");	
-  	 	}
-  		
-  	}
+        public static void run(HashMap<String, List<String>> hm, String[] attrSelection, String[] valueSelection){
+            String[] split;
+            String type;
+            String attrName;
+            Scanner in = new Scanner(System.in);
+            int userchoice;
+            List<String> stringValues;
+
+            int j = 0;
+
+            for (String attr : hm.keySet() ) {
+                //Splits the datatype from the attribute string and sets the attrName to the attribute name without the datatype
+                split = attr.split(",");
+                attrName = split[0];
+                type = split[1];
+                System.out.println(attrName + "\n");
+                stringValues = hm.get(attr);
+                int i = 0;
+                //checks if the datatype is "range", if it is rangeInt variable saves the first number of the range and later subtracts it from the number
+                //entered by the user to make sure the number held in the arrayList and the number entered by the user is the same
+                if (type.equals("range")){
+                    rangeInt = Integer.parseInt(stringValues.get(0));
+                    System.out.println("Select a range from " + stringValues.get(0) + " to " + stringValues.get(stringValues.size()-1));
+                }else {
+                    for(String s : stringValues){
+
+                        System.out.println(i + " : " + s);
+                        i++;
+                    }
+                }
+
+                System.out.println("Select a number for " + attrName + "\n");
+                System.out.println("Type of data " + type + "\n");
+                //saves the selected attribute for xml parsing
+                attrSelection[j] = attrName;
+
+                userchoice = Integer.parseInt(in.nextLine())-rangeInt;
+                System.out.println("you choose " + stringValues.get(userchoice));
+                chosenValues.put(attr, values.get(userchoice));
+
+                //saves the selected value for xml parsing
+                valueSelection[j] = stringValues.get(userchoice);
+                ++j;
+            }
   	buildConstraints();
   	System.out.println(checkConstraints());
-  }
+        }
+
 }
+
+    public static Integer rangeInt = 0;
+    public static void doSomething() {
+            InputOutput.<String>println("LETS GET TO IT..");
+            List<String> l;
+            HashMap<String, List<String>> hm = new HashMap<String, List<String>>();
+
+
+            «FOR a:attributes»
+            «IF a.myAttributeContains instanceof myStringEnum»
+            l = new ArrayList<String>();
+            «FOR v:(a.myAttributeContains as myStringEnum).values»
+            l.add("«v»");
+            «ENDFOR»
+            hm.put("«a.name»,string", l);
+            «ENDIF»
+
+            «IF a.myAttributeContains instanceof myNumberEnum»
+            l = new ArrayList<String>();
+            «FOR v:(a.myAttributeContains as myNumberEnum).values»
+            l.add("«v»");
+            «ENDFOR»
+            hm.put("«a.name»,number", l);
+            «ENDIF»
+
+            «IF a.myAttributeContains instanceof myRange»
+            l = new ArrayList<String>();
+            «FOR v:(a.myAttributeContains as myRange).from..(a.myAttributeContains as myRange).to»
+            l.add("«v»");
+            «ENDFOR»
+            hm.put("«a.name»,range", l);
+            «ENDIF»
+
+            «IF a.myAttributeContains instanceof myBoolean»
+            l = new ArrayList<String>();
+            l.add("«(a.myAttributeContains as myBoolean).trueValue»");
+            l.add("«(a.myAttributeContains as myBoolean).falseValue»");
+            hm.put("«a.name»,boolean", l);
+            «ENDIF»
+            «ENDFOR»
+
+            String[] attrSelection = new String[hm.size()];
+            String[] valueSelection = new String[hm.values().size()];
+
+            }
+    public static void goXML(String[] as, String[] vs ) {
+            System.out.println("Attribute: " + Arrays.toString(as) + "Value: " + Arrays.toString(vs));
+            try {
+
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+            // root elements
+            Document doc = docBuilder.newDocument();
+            Element rootElement = doc.createElement("Attributes");
+            doc.appendChild(rootElement);
+
+            // attribute elements
+            for (int i = 0; i < as.length; i++) {
+            Element attribute = doc.createElement(as[i]);
+            rootElement.appendChild(attribute);
+            Element value = doc.createElement("value");
+            value.appendChild(doc.createTextNode(vs[i]));
+            attribute.appendChild(value);
+            }
+
+
+            // write the content into xml file
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File("C:\\Users\\Rune\\Desktop\\YESSS.xml"));
+
+            // Output to console for testing
+            // StreamResult result = new StreamResult(System.out);
+
+            transformer.transform(source, result);
+
+            System.out.println("FILE SAVED TO DESKTOP #YOLO");
+
+            } catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+            } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+            }
+
+            }
 '''
 
 }
