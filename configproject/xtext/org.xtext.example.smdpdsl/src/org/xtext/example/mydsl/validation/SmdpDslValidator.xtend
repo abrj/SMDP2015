@@ -15,14 +15,15 @@
 package org.xtext.example.mydsl.validation
 
 import configuratorProject.myBinary
+import configuratorProject.myBinaryOparators
 import configuratorProject.myBoolean
 import configuratorProject.myConstraint
 import configuratorProject.myIdentifier
-import configuratorProject.myLiteral
 import configuratorProject.myNumberEnum
 import configuratorProject.myObject
 import configuratorProject.myRange
 import configuratorProject.myStringEnum
+import configuratorProject.myLiteral
 import org.eclipse.xtext.validation.Check
 
 /**
@@ -41,49 +42,45 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 	}
 	@Check
 	def void constraint(myConstraint it){
+		// Checks the then part of 
 		if (!myValuesCheck(myThenConstraint as myBinary, null)) {
-			error("Constraint contains illigal values", null)
+			error("Constraint contains illigal values", myThenConstraint, null)
 		}
 		
 		if (!myValuesCheck(myIfConstraint as myBinary, null)) {
-				error("If statements contain a invalid value", null);
+				error("If statements contain a invalid value", myIfConstraint, null);
 		}
 	}
 
-	//@Check
-	//def constraint(myNumberEnum it) {
-		//if (values.length == 0) {
-			//error("All number enum must have a size of at least 1", null)
-		//}
-		
-		// Check that each value is unique
-		//values.forall[ value | values.filter[it == value].size == 1]	
-	//}
+	@Check
+	def constraint(myNumberEnum it) {
+		if (values.length == 0) {
+			error("All number enum must have a size of at least 1", it, null)
+		}
+	}
 	@Check
 	def constraint(myRange it) {
 		if (from > to) {
-			error("The start value in a range cannot be larger than the end value", null);
+			error("The start value in a range cannot be larger than the end value", it, null);
 		}
 	}	
 	@Check
 	def constraint(myBoolean it) {
 		if (trueValue == falseValue) {
-			error("The values for boolean can't be the same", null);
+			error("The values for boolean can't be the same", it, null);
 		}
 		
 		if (trueValue == "" || falseValue == ""){
-			error("Boolean must be asigned a value", null);
+			error("Boolean must be asigned a value",it, null);
 		}
 		
 	}	
 	@Check
 	def  constraint (myStringEnum it) { // example	
 		// Check that each value is unique
-		it.values.forEach[item | {
-			if (values.filter[p1 | p1.equalsIgnoreCase(item)].size > 1) {
-				error("String enum does not contain unique values: " + values.filter[p1 | p1.equalsIgnoreCase(item)].size, null);
-				}
-		}]
+		if (values.length == 0) {
+			error("String enum must contain a value",it,null)
+		}
 	}
 	 
 	 /* Helper method to go throuh the expression tree, to check if all values are valid
@@ -113,9 +110,9 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 	  	if (it.myBinaryRight instanceof myBinary){
 	  		return myValuesCheck(it.myBinaryRight as myBinary, att)
 	  	}  	
-	  	
-	  	// Check the values in the left side
+	  	//region Check the values in the left side
 	  	if (it.myBinaryLeft instanceof myStringEnum) {
+	  		// If the left is a string, then the value must either be a StringEnum or a Boolean
 	  		val attributeValue = att.myIntentifierIs.myAttributeContains;
 	  		
 	  		if (attributeValue instanceof myStringEnum) {
@@ -125,10 +122,16 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 	  		if (attributeValue instanceof myBoolean){
 	  			leftCorrect = myBooleanValueCheck(attributeValue as myBoolean, myBinaryLeft as myStringEnum)
 	  		}
+	  		
+	  		if (it.oparand != myBinaryOparators.OR) {
+	  			error("Operand cannot be other than '|'",it,null)
+	  			leftCorrect = false;
+	  		}
 	  	}
 	  	
 	  	if (it.myBinaryLeft instanceof myNumberEnum) {
 	  		val attributeValue = att.myIntentifierIs.myAttributeContains;
+	  		// If the left is a number, then the value must either be a NumberEnum or a Range
 	  		if (attributeValue instanceof myNumberEnum){
 	  			leftCorrect =  myNumberEnumValueCheck(attributeValue as myNumberEnum, myBinaryLeft as myNumberEnum)
 	  		}
@@ -137,8 +140,9 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 	  			leftCorrect =  myRangeValueCheck(attributeValue as myRange, myBinaryLeft as myNumberEnum)
 	  		}
 	  	}
+	  	//endregion
 	  	
-	  	// Check the values in the right side.
+	  	//region Check the values in the right side
 	  	if (it.myBinaryRight instanceof myStringEnum) {
 	  		val attributeValue = att.myIntentifierIs.myAttributeContains;
 	  		
@@ -161,7 +165,9 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 	  			rightCorrect = myRangeValueCheck(attributeValue as myRange, myBinaryRight as myNumberEnum)
 	  		}
 	  	}
-	  		
+	  	//endregion
+	  	
+	  	// Check that both right, and left side is true	
   	 	if (leftCorrect && rightCorrect) {
   	 		return true
   	 	}  		
@@ -203,5 +209,6 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 	  		//warning("range: "+res, null) 	
 	  		return res;
 	  	}
+	  	return false;
 	  }
 }
