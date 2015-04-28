@@ -102,7 +102,7 @@ def String generateIfConstraintString(myBinary it, myIdentifier attribute, myBin
 	  	
 	  	// If both left and right are binaries, then both sides must be true
 	  	if (it.myBinaryLeft instanceof myBinary && it.myBinaryRight instanceof myBinary)	{
-	  		return generateIfConstraintString(it.myBinaryLeft as myBinary, att, pOpe) + " " + convertOperand(oparand) + " " + generateIfConstraintString(it.myBinaryRight as myBinary, att, pOpe)
+	  		return "(" + generateIfConstraintString(it.myBinaryLeft as myBinary, att, pOpe) + " " + convertOperand(oparand) + " " + generateIfConstraintString(it.myBinaryRight as myBinary, att, pOpe) +")"
 	  	}
 	  	
 	  	if (it.myBinaryLeft instanceof myIdentifier && it.myBinaryRight instanceof myBinary) {
@@ -148,6 +148,39 @@ def String generateIfConstraintString(myBinary it, myIdentifier attribute, myBin
 	  	return "FUCKED!"
 }
 
+def String generateThenConstraintString(myBinary it, myIdentifier attribute){
+	var myIdentifier att;
+	  	// If left is a identifier, get the attribute
+	  	if (it.myBinaryLeft instanceof myIdentifier) {
+	  		att = it.myBinaryLeft as myIdentifier;	  		
+	  	} else {
+	  		att = attribute;
+	  	}
+	  	
+	  	if (it.myBinaryLeft instanceof myIdentifier && it.myBinaryRight instanceof myValue) {
+	  		var StringBuilder sb = new StringBuilder();
+	  		if (it.myBinaryRight instanceof myStringEnum) {
+	  			for(v: (it.myBinaryRight as myStringEnum).values) {
+	  				sb.append("add(\""+ v +"\");");
+	  			}
+	  		}
+	  		if (it.myBinaryRight instanceof myNumberEnum) {
+	  			for(v: (it.myBinaryRight as myNumberEnum).values) {
+	  				sb.append("add(\""+ v +"\");");
+	  			}
+	  		}
+	  		
+	  		
+	  		
+	  		return "l = new ArrayList<String>(){{
+			" + sb.toString +"}};" +
+	  		"removeNonPossibleValuesFromAttribute("+ att.myIntentifierIs.name  +", l);"
+	  	}
+	  	
+	  	
+	  	return "";
+}
+
 def String convertOperand(myBinaryOparators operand) {
 	if (operand == myBinaryOparators.EQ) {
 		return "=="
@@ -181,10 +214,22 @@ import java.util.*;
 
  
 public class HelloWorld {
+	public static HashMap<String, List<String>> constraintMap;
+	public static List<String> l;
+	«FOR a:attributes»
+	«IF a.myAttributeContains instanceof myNumberEnum»
+	public static double «a.name»;
+	«ELSEIF a.myAttributeContains instanceof myRange»
+	public static double «a.name»;
+	«ELSE»
+	public static String «a.name»;
+	«ENDIF»
+	«ENDFOR»
   public static void main(final String[] args) {
     InputOutput.<String>println("LETS GET TO IT..");
     List<String> l;
     HashMap<String, List<String>> hm = new HashMap<String, List<String>>();
+    
     
 ««« Make hashmap of attribute list
     «FOR a:attributes»
@@ -192,9 +237,9 @@ public class HelloWorld {
     l = new ArrayList<String>();
 	«FOR v:(a.myAttributeContains as myStringEnum).values»
 	l.add("«v»");
-	
-	
 	«ENDFOR»
+	
+	
 	hm.put("«a.name»", l);
 	«ENDIF»
 	«ENDFOR»
@@ -203,15 +248,26 @@ public class HelloWorld {
 ««« Make java code from constraints
 	«FOR con:constraints»
 	«val exprIf = con.myIfConstraint as myBinary»
+	«val exprThen = con.myThenConstraint as myBinary»
 	if «generateIfConstraintString(exprIf, null, null)»{
-		then 
+		«generateThenConstraintString(exprThen, null)»
 	}
 	«ENDFOR»
 	
-	
+	constraintMap = new HashMap<String,List<String>>(hm);
    	run(hm);
   }
   
+  public static void removeNonPossibleValuesFromAttribute(String attr, List<String> possibleValues){
+  	List<String> values = constraintMap.get(attr);
+  	for(int i = values.size()-1; i >= 0; i--){
+  		String currentValue = values.get(i);
+  		if(!possibleValues.contains(currentValue)){
+  			values.remove(i);
+  		}
+  	}
+  	constraintMap.put(attr,values);
+  }
   
   public static void run(HashMap<String, List<String>> hm){
   	Scanner in = new Scanner(System.in);
