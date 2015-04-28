@@ -149,6 +149,11 @@ def String generateIfConstraintString(myBinary it, myIdentifier attribute, myBin
 }
 
 def String generateThenConstraintString(myBinary it, myIdentifier attribute){
+	
+	if (it.myBinaryLeft instanceof myBinary && it.myBinaryRight instanceof myBinary){
+	  		return generateThenConstraintString(it.myBinaryLeft as myBinary, null) + generateThenConstraintString(it.myBinaryRight as myBinary, null);
+	  	}	
+	
 	var myIdentifier att;
 	  	// If left is a identifier, get the attribute
 	  	if (it.myBinaryLeft instanceof myIdentifier) {
@@ -162,19 +167,24 @@ def String generateThenConstraintString(myBinary it, myIdentifier attribute){
 	  		if (it.myBinaryRight instanceof myStringEnum) {
 	  			for(v: (it.myBinaryRight as myStringEnum).values) {
 	  				sb.append("add(\""+ v +"\");");
+	  				
 	  			}
+	  			return "l = new ArrayList<String>(){{
+			" + sb.toString +"}};" +
+	  		"removeNonPossibleValuesFromAttribute("+ att.myIntentifierIs.name  +", l, \"" + it.oparand + "\");"
 	  		}
 	  		if (it.myBinaryRight instanceof myNumberEnum) {
 	  			for(v: (it.myBinaryRight as myNumberEnum).values) {
-	  				sb.append("add(\""+ v +"\");");
+	  				sb.append("add("+ v +");");
 	  			}
+	  			return "q = new ArrayList<Double>(){{
+			" + sb.toString +"}};" +
+	  		"removeNonPossibleValuesFromAttributeNumber(\""+ att.myIntentifierIs.name  +"\", q, \"" + it.oparand + "\");"
 	  		}
 	  		
+	  	
 	  		
 	  		
-	  		return "l = new ArrayList<String>(){{
-			" + sb.toString +"}};" +
-	  		"removeNonPossibleValuesFromAttribute("+ att.myIntentifierIs.name  +", l);"
 	  	}
 	  	
 	  	
@@ -216,6 +226,7 @@ import java.util.*;
 public class HelloWorld {
 	public static HashMap<String, List<String>> constraintMap;
 	public static List<String> l;
+	public static List<Double> q;
 	«FOR a:attributes»
 	«IF a.myAttributeContains instanceof myNumberEnum»
 	public static double «a.name»;
@@ -258,16 +269,44 @@ public class HelloWorld {
    	run(hm);
   }
   
-  public static void removeNonPossibleValuesFromAttribute(String attr, List<String> possibleValues){
+  public static void removeNonPossibleValuesFromAttribute(String attr, List<String> possibleValues, String operator){
   	List<String> values = constraintMap.get(attr);
   	for(int i = values.size()-1; i >= 0; i--){
   		String currentValue = values.get(i);
-  		if(!possibleValues.contains(currentValue)){
+  		if(operator == "is"){
+  			if(!possibleValues.contains(currentValue)){
   			values.remove(i);
+  			}
   		}
+  		
   	}
   	constraintMap.put(attr,values);
   }
+  
+  public static void removeNonPossibleValuesFromAttributeNumber(String attr, List<Double> possibleValues, String operator){
+  	List<String> values = constraintMap.get(attr);
+  	for(int i = values.size()-1; i >= 0; i--){
+  		String currentValue = values.get(i);
+  		double doubleValue = Double.parseDouble(currentValue);
+  		if(operator == "is"){
+  			if(!possibleValues.contains(doubleValue)){
+  			values.remove(i);
+  			}
+  		}
+  		if(operator == "lt"){
+  			if(doubleValue < possibleValues.get(0)){
+  				values.remove(i);
+  			}
+  		}
+  		
+  		if(operator == "gt"){
+  			if(doubleValue > possibleValues.get(0)){
+  				values.remove(i);
+  			}
+  		}
+  	}
+  	constraintMap.put(attr,values);
+  }  
   
   public static void run(HashMap<String, List<String>> hm){
   	Scanner in = new Scanner(System.in);
