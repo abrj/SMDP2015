@@ -6,6 +6,7 @@ package org.xtext.example.mydsl.validation;
 import com.google.common.base.Objects;
 import configuratorProject.myAttribute;
 import configuratorProject.myBinary;
+import configuratorProject.myBinaryOparators;
 import configuratorProject.myBoolean;
 import configuratorProject.myConstraint;
 import configuratorProject.myExpression;
@@ -16,7 +17,6 @@ import configuratorProject.myObject;
 import configuratorProject.myRange;
 import configuratorProject.myStringEnum;
 import configuratorProject.myValue;
-import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -62,43 +62,26 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
     boolean _myValuesCheck = this.myValuesCheck(((myBinary) _myThenConstraint), null);
     boolean _not = (!_myValuesCheck);
     if (_not) {
-      this.error("Constraint contains illigal values", null);
+      myExpression _myThenConstraint_1 = it.getMyThenConstraint();
+      this.error("Constraint contains illigal values", _myThenConstraint_1, null);
     }
     myExpression _myIfConstraint = it.getMyIfConstraint();
     boolean _myValuesCheck_1 = this.myValuesCheck(((myBinary) _myIfConstraint), null);
     boolean _not_1 = (!_myValuesCheck_1);
     if (_not_1) {
-      this.error("If statements contain a invalid value", null);
+      myExpression _myIfConstraint_1 = it.getMyIfConstraint();
+      this.error("If statements contain a invalid value", _myIfConstraint_1, null);
     }
   }
   
   @Check
-  public boolean constraint(final myNumberEnum it) {
-    boolean _xblockexpression = false;
-    {
-      EList<Double> _values = it.getValues();
-      int _length = ((Object[])Conversions.unwrapArray(_values, Object.class)).length;
-      boolean _equals = (_length == 0);
-      if (_equals) {
-        this.error("All number enum must have a size of at least 1", null);
-      }
-      EList<Double> _values_1 = it.getValues();
-      final Function1<Double, Boolean> _function = new Function1<Double, Boolean>() {
-        public Boolean apply(final Double value) {
-          EList<Double> _values = it.getValues();
-          final Function1<Double, Boolean> _function = new Function1<Double, Boolean>() {
-            public Boolean apply(final Double it) {
-              return Boolean.valueOf(Objects.equal(it, value));
-            }
-          };
-          Iterable<Double> _filter = IterableExtensions.<Double>filter(_values, _function);
-          int _size = IterableExtensions.size(_filter);
-          return Boolean.valueOf((_size == 1));
-        }
-      };
-      _xblockexpression = IterableExtensions.<Double>forall(_values_1, _function);
+  public void constraint(final myNumberEnum it) {
+    EList<Double> _values = it.getValues();
+    int _length = ((Object[])Conversions.unwrapArray(_values, Object.class)).length;
+    boolean _equals = (_length == 0);
+    if (_equals) {
+      this.error("All number enum must have a size of at least 1", it, null);
     }
-    return _xblockexpression;
   }
   
   @Check
@@ -107,7 +90,7 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
     int _to = it.getTo();
     boolean _greaterThan = (_from > _to);
     if (_greaterThan) {
-      this.error("The start value in a range cannot be larger than the end value", null);
+      this.error("The start value in a range cannot be larger than the end value", it, null);
     }
   }
   
@@ -117,7 +100,7 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
     String _falseValue = it.getFalseValue();
     boolean _equals = Objects.equal(_trueValue, _falseValue);
     if (_equals) {
-      this.error("The values for boolean can\'t be the same", null);
+      this.error("The values for boolean can\'t be the same", it, null);
     }
     boolean _or = false;
     String _trueValue_1 = it.getTrueValue();
@@ -130,39 +113,18 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
       _or = _equals_2;
     }
     if (_or) {
-      this.error("Boolean must be asigned a value", null);
+      this.error("Boolean must be asigned a value", it, null);
     }
   }
   
   @Check
   public void constraint(final myStringEnum it) {
     EList<String> _values = it.getValues();
-    final Consumer<String> _function = new Consumer<String>() {
-      public void accept(final String item) {
-        EList<String> _values = it.getValues();
-        final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
-          public Boolean apply(final String p1) {
-            return Boolean.valueOf(p1.equalsIgnoreCase(item));
-          }
-        };
-        Iterable<String> _filter = IterableExtensions.<String>filter(_values, _function);
-        int _size = IterableExtensions.size(_filter);
-        boolean _greaterThan = (_size > 1);
-        if (_greaterThan) {
-          EList<String> _values_1 = it.getValues();
-          final Function1<String, Boolean> _function_1 = new Function1<String, Boolean>() {
-            public Boolean apply(final String p1) {
-              return Boolean.valueOf(p1.equalsIgnoreCase(item));
-            }
-          };
-          Iterable<String> _filter_1 = IterableExtensions.<String>filter(_values_1, _function_1);
-          int _size_1 = IterableExtensions.size(_filter_1);
-          String _plus = ("String enum does not contain unique values: " + Integer.valueOf(_size_1));
-          SmdpDslValidator.this.error(_plus, null);
-        }
-      }
-    };
-    _values.forEach(_function);
+    int _length = ((Object[])Conversions.unwrapArray(_values, Object.class)).length;
+    boolean _equals = (_length == 0);
+    if (_equals) {
+      this.error("String enum must contain a value", it, null);
+    }
   }
   
   /**
@@ -227,6 +189,12 @@ public class SmdpDslValidator extends AbstractSmdpDslValidator {
         myExpression _myBinaryLeft_7 = it.getMyBinaryLeft();
         boolean _myBooleanValueCheck = this.myBooleanValueCheck(((myBoolean) attributeValue), ((myStringEnum) _myBinaryLeft_7));
         leftCorrect = _myBooleanValueCheck;
+      }
+      myBinaryOparators _oparand = it.getOparand();
+      boolean _notEquals = (!Objects.equal(_oparand, myBinaryOparators.OR));
+      if (_notEquals) {
+        this.error("Operand cannot be other than \'|\'", it, null);
+        leftCorrect = false;
       }
     }
     myExpression _myBinaryLeft_8 = it.getMyBinaryLeft();
