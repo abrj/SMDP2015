@@ -39,6 +39,10 @@ class SmdpDslGenerator implements IGenerator {
    	  	val javaFile = "generated/java/HelloWorld.java"
    	  	fsa.generateFile(javaFile, javaCode);
    	  	
+   	  	// Martins java codegen
+   	  	val javaGen = new JavaCodeGenerator();
+   	  	javaGen.doGenerate(resource, fsa)
+   	  	
 	}
 	
 
