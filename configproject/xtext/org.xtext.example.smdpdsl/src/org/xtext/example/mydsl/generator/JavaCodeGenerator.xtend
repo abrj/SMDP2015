@@ -32,6 +32,10 @@ class JavaCodeGenerator implements IGenerator {
 	import java.util.HashMap;
 	import java.util.List;
 	import java.util.Scanner;
+	import java.io.FileWriter;
+	import java.text.SimpleDateFormat;
+	import java.io.IOException;
+	import java.util.Date;
 	
 	
 	public class JavaCodeGen {
@@ -52,6 +56,9 @@ class JavaCodeGenerator implements IGenerator {
 			run();
 			buildContrains();
 			System.out.println("Valid? " + checkConstraints());
+			if (checkConstraints()) {
+				writeToFile();
+			}
 		}
 		
 		public static void InitializeAttribute(){
@@ -64,6 +71,10 @@ class JavaCodeGenerator implements IGenerator {
 		
 		public static boolean checkConstraints() {
 		'''+ generateCheckConstraints(attributes)+ '''
+		}
+		
+		public static void writeToFile() {
+			'''+ generateTxtFile + '''
 		}
 		
 		public static void run() {
@@ -224,9 +235,11 @@ class JavaCodeGenerator implements IGenerator {
 	   if (values.size() > 0) {
 	   System.out.println(value);
 	   if (!values.contains(value)) {
+	   System.out.println("«a.name» does not contain a valid value");	
 	   return false;
 	   }
 	   } else {
+	   System.out.println("«a.name» does not contain a valid value");
 	   return false;
 	   }
 		«ENDFOR»
@@ -359,5 +372,22 @@ class JavaCodeGenerator implements IGenerator {
 		}
 }
 
-
+	def generateTxtFile() {
+		'''
+		String fileName = new SimpleDateFormat("'result-'yyyyMMddhhmm'.txt'").format(new Date());
+		FileWriter writer;
+try {
+	writer = new FileWriter(fileName);
+	for (String entry : ChosenValues.keySet()) {
+		String key = entry;
+		String value = ChosenValues.get(key);
+		writer.append(key + ": " + value +"\r\n");
+	}
+	writer.close();
+} catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
+		'''
+	}
 }

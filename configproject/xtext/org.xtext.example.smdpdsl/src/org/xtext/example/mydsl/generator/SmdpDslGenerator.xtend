@@ -41,7 +41,11 @@ class SmdpDslGenerator implements IGenerator {
    	  	
    	  	// Martins java codegen
    	  	val javaGen = new JavaCodeGenerator();
-   	  	javaGen.doGenerate(resource, fsa)
+   	  	javaGen.doGenerate(resource, fsa);
+   	  	
+   	  	//Javascript Code-gen
+   	  	val javaScriptGen = new JavaScriptCodeGenerator();
+   	  	javaScriptGen.doGenerate(resource, fsa);
    	  	
 	}
 	
