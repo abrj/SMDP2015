@@ -48,11 +48,11 @@ class JavaScriptCodeGenerator implements IGenerator {
 				console.log(Attributes);
 			}
 			
-			
+			'''+ genereateTextOutput +'''
 			</script>
 		  
 		  
-		  
+		  <button onclick="save()">Save</button>
 		</head>
 		<body onload="generateInitialAttributes()">
 		
@@ -66,7 +66,7 @@ class JavaScriptCodeGenerator implements IGenerator {
 	
 	def generateDropDown(List<myAttribute> attributes) '''
 	«FOR attr:attributes»
-	<p>«attr.name»:</p> <select >
+	<p>«attr.name»:</p> <select id="«attr.name»"">
 	«IF attr.myAttributeContains instanceof myStringEnum»
 	«FOR v:(attr.myAttributeContains as myStringEnum).values»
 	<option value="«v»">«v»</option>
@@ -130,6 +130,34 @@ class JavaScriptCodeGenerator implements IGenerator {
 			Attributes["«a.name»"] = attributeValues;
 			«ENDIF»
 		«ENDFOR»
+		'''
+	}
+
+	def genereateTextOutput(){
+		'''
+		function download(filename, text) {
+  var pom = document.createElement('a');
+  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  pom.setAttribute('download', filename);
+
+  pom.style.display = 'none';
+  document.body.appendChild(pom);
+
+  pom.click();
+
+  document.body.removeChild(pom);
+}
+		
+		function save() {
+		
+		dropdowns = document.body.querySelectorAll('select');
+		result = "";
+		for (i = 0; i < dropdowns.length; i++) { 
+    		result += dropdowns[i].id + ": " + dropdowns[i].value + "\r\n";
+		}
+		
+		download("results.txt", result);
+		}
 		'''
 	}
 	
