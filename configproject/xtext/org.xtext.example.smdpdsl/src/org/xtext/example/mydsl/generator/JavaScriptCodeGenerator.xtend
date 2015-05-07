@@ -32,29 +32,49 @@ class JavaScriptCodeGenerator implements IGenerator {
 			<title>Configurator</title>
 		  
 			<script type="text/javascript">
+			
+			function clone(obj) {
+				if (null == obj || "object" != typeof obj) return obj;
+    			var copy = obj.constructor();
+    			for (var attr in obj) {
+        			if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
+    				}
+    			return copy;
+			}
+			
 			var Attributes = {};
 			var AttributeTypeMap = {};
 			var ConstraintMap = {};
 			function generateInitialAttributes() {
 				''' + generateInitializeAttributes(attributes) + '''
-				ConstraintMap = Attributes.slice();
+				ConstraintMap = clone(Attributes);
 			}
 			
 			function generateBuildConstraints() {
+				ConstraintMap = clone(Attributes);
 				''' + generateBuildConstraints(constraints) + '''
-				console.log(Attributes);
+			}
+			function generateCheckConstraints() {
+				''' + generateCheckConstraints(attributes) + '''
 			}
 			
+			'''+ genereateTextOutput +'''
+			'''+ generateStaticMethods +'''
 			
+			document.addEventListener('DOMContentLoaded', function() {
+				generateInitialAttributes();
+			});
 			</script>
 		  
 		  
 		  
 		</head>
-		<body onload="generateInitialAttributes()">
+		<body>
 		
 		''' + generateDropDown(attributes) + '''
 		
+		<button onclick="generateBuildConstraints(),generateCheckConstraints()">Check</button>
+		<button onclick="save()">Save</button>
 		</body>
 		</html>
 		'''
@@ -63,7 +83,7 @@ class JavaScriptCodeGenerator implements IGenerator {
 	
 	def generateDropDown(List<myAttribute> attributes) '''
 	«FOR attr:attributes»
-	<p>«attr.name»:</p> <select >
+	<p>«attr.name»:</p> <select id="«attr.name»"">
 	«IF attr.myAttributeContains instanceof myStringEnum»
 	«FOR v:(attr.myAttributeContains as myStringEnum).values»
 	<option value="«v»">«v»</option>
@@ -95,38 +115,70 @@ class JavaScriptCodeGenerator implements IGenerator {
 		
 		«FOR a:attributes»
 		    «IF a.myAttributeContains instanceof myStringEnum»
-			var attributeValues = {};
+			var attributeValues = [];
+			var i = 0;
 			«FOR v:(a.myAttributeContains as myStringEnum).values»
-			attributeValues["«v»"] = "«v»";
+			attributeValues[i] = "«v»";
+			i++;
 			«ENDFOR»
 			Attributes["«a.name»"] = attributeValues;
 			«ENDIF»
 			
 			«IF a.myAttributeContains instanceof myNumberEnum»
-			var attributeValues = {};
+			var attributeValues = [];
+			var i = 0;
 			«FOR v:(a.myAttributeContains as myNumberEnum).values»
-			attributeValues["«v»"] = "«v»";
+			attributeValues[i] = "«v»";
+			i++;
 			«ENDFOR»
 			Attributes["«a.name»"] = attributeValues;
 			«ENDIF»
 			
 			«IF a.myAttributeContains instanceof myBoolean»
-			var attributeValues = {};
-			attributeValues["true"] = "«(a.myAttributeContains as myBoolean).trueValue»";
-			attributeValues["false"] = "«(a.myAttributeContains as myBoolean).falseValue»";
+			var attributeValues = [];
+			attributeValues[0] = "«(a.myAttributeContains as myBoolean).trueValue»";
+			attributeValues[1] = "«(a.myAttributeContains as myBoolean).falseValue»";
 			Attributes["«a.name»"] = attributeValues;
 			«ENDIF»
 			
 			«IF a.myAttributeContains instanceof myRange»
-			var attributeValues = {};
+			var attributeValues = [];
 			«var from = (a.myAttributeContains as myRange).from»
 			«var to = (a.myAttributeContains as myRange).to»
-			for ( i = «from»; i <= «to»;i++) {
-				attributeValues[i] = (i +".0");
-				}
+			«FOR i : from ..< (to+1)»
+				attributeValues[«i-from»] = «i as double»;
+			«ENDFOR»
 			Attributes["«a.name»"] = attributeValues;
 			«ENDIF»
 		«ENDFOR»
+		'''
+	}
+
+	def genereateTextOutput(){
+		'''
+		function download(filename, text) {
+  var pom = document.createElement('a');
+  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  pom.setAttribute('download', filename);
+
+  pom.style.display = 'none';
+  document.body.appendChild(pom);
+
+  pom.click();
+
+  document.body.removeChild(pom);
+}
+		
+		function save() {
+		
+		dropdowns = document.body.querySelectorAll('select');
+		result = "";
+		for (i = 0; i < dropdowns.length; i++) { 
+    		result += dropdowns[i].id + ": " + dropdowns[i].value + "\r\n";
+		}
+		
+		download("results.txt", result);
+		}
 		'''
 	}
 	
@@ -222,19 +274,22 @@ class JavaScriptCodeGenerator implements IGenerator {
 		  			for(v: (it.myBinaryRight as myStringEnum).values) {
 		  				sb.append("\""+ v +"\",");
 		  			}
-		  			return "removeNonPossibleValuesFromAttribute(\""+ att.myIntentifierIs.name  +"\", {" + sb.toString +"}, \"" + it.oparand + "\");"
+		  			return "removeNonPossibleValuesFromAttribute(\""+ att.myIntentifierIs.name  +"\", [" + sb.toString +"], \"" + it.oparand + "\");"
 		  		}
 		  		if (it.myBinaryRight instanceof myNumberEnum) {
 		  			for(v: (it.myBinaryRight as myNumberEnum).values) {
-		  				sb.append("add("+ v +");");
+		  				sb.append(""+ v +",");
 		  			}
-		  			return "removeNonPossibleValuesFromAttributeNumber(\""+ att.myIntentifierIs.name  +"\", {" + sb.toString +"}, \"" + it.oparand + "\");"
+		  			return "removeNonPossibleValuesFromAttributeNumber(\""+ att.myIntentifierIs.name  +"\", [" + sb.toString +"], \"" + it.oparand + "\");"
 		  		}
 		  	}
 		  	return "";
 	}
 
 	def String ConvertAttributeName(String name, myValue type) {
+		if (type instanceof myRange || type instanceof myNumberEnum) {
+			return "parseInt(document.querySelector(\"#" + name + "\").value)";
+		}
 		return "document.querySelector(\"#" + name + "\").value"
 	}
 	
@@ -262,45 +317,66 @@ class JavaScriptCodeGenerator implements IGenerator {
 		}
 	}
 	
+	def generateCheckConstraints(List<myAttribute> attributes) {
+		'''
+		values = [];
+  		var value;
+	  «FOR a:attributes»
+	   values = ConstraintMap["«a.name»"];
+	   value = «ConvertAttributeName(a.name, a.myAttributeContains)»;
+	   if (values.length > 0) {
+	   if (values.indexOf(value)==-1) {
+	   alert("«a.name» does not contain a valid value");	
+	   return false;
+	   }
+	   } else {
+	   alert("«a.name» does not contain a valid value");
+	   return false;
+	   }
+		«ENDFOR»
+		alert("true");
+		return true;
+	'''
+	}
+	
 	def generateStaticMethods(){
 	'''
-	  public static void removeNonPossibleValuesFromAttribute(String attr, List<String> possibleValues, String operator){
-	  	List<String> values = ConstraintMap.get(attr);
-	  	for(int i = values.size()-1; i >= 0; i--){
-	  		String currentValue = values.get(i);
+	  function removeNonPossibleValuesFromAttribute(attr, possibleValues, operator){
+	  	values = ConstraintMap[attr];
+	  	for(i = values.length-1; i >= 0; i--){
+	  		currentValue = values[i];
 	  		if(operator == "is"){
-	  			if(!possibleValues.contains(currentValue)){
-	  			values.remove(i);
+	  			if(possibleValues.indexOf(currentValue)==-1){
+	  			values.splice(i,1);
 	  			}
 	  		}
 	  		
 	  	}
-	  	ConstraintMap.put(attr,values);
+	  	ConstraintMap[attr] = values;
 	  }
 	  
-	  public static void removeNonPossibleValuesFromAttributeNumber(String attr, List<Double> possibleValues, String operator){
-	  	List<String> values = ConstraintMap.get(attr);
-	  	for(int i = values.size()-1; i >= 0; i--){
-	  		String currentValue = values.get(i);
-	  		double doubleValue = Double.parseDouble(currentValue);
+	  function removeNonPossibleValuesFromAttributeNumber(attr, possibleValues, operator){
+	  	values = ConstraintMap[attr];
+	  	for(i = values.length-1; i >= 0; i--){
+	  		doubleValue = values[i];
 	  		if(operator == "is"){
-	  			if(!possibleValues.contains(doubleValue)){
-	  			values.remove(i);
+	  			if(possibleValues.indexOf(doubleValue)==-1){
+	  			values.splice(i,1);
 	  			}
 	  		}
 	  		if(operator == "lt"){
-	  			if(doubleValue < possibleValues.get(0)){
-	  				values.remove(i);
+	  			if(doubleValue < possibleValues[0]){
+	  				values.splice(i,1);
 	  			}
 	  		}
 	  		
 	  		if(operator == "gt"){
-	  			if(doubleValue > possibleValues.get(0)){
-	  				values.remove(i);
+	  			if(doubleValue > possibleValues[0]){
+	  				values.splice(i,1);
 	  			}
 	  		}
 	  	}
-	  	ConstraintMap.put(attr,values);
+	  	ConstraintMap[attr] = values;
 	  }
 	'''
 	}
