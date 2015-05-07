@@ -16,4 +16,10 @@ import javax.inject.Inject
 
 class SmdpDslValidatorTest {
 	
+	/*
+	 * Test af alle værdi for attribute typer som har en valideringsregl
+	 * Test af myValue check (Sammen med constaints) motherfucker klam metode
+	 * 
+	 */
+	
 }

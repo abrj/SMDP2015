@@ -15,5 +15,11 @@ import javax.inject.Inject
 @InjectWith(typeof(SmdpDslInjectorProvider))
 
 class SmdpDslGeneratorTest {
+	/*
+	 * Test af Java gen og JS gen
+	 * Test de forskellige metoder, f.eks. fjernelse af valgmuligheder.
+	 * Test 
+	 * 
+	 */
 	
 }

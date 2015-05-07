@@ -33,6 +33,13 @@ class SmdpDslParserTest {
 		val myObject = model.myModelContains.get(0)
 		Assert::assertEquals("BMW", myObject.name)
 		
+		/*
+		 * 1 test for korrekt model
+		 * 1 test for tom model
+		 * 1 tets for myObject
+		 * 1 test for attributer
+		 * 1 test for constraints
+		 */
 		
 	}
 }
