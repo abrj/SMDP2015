@@ -21,18 +21,11 @@ import org.junit.Before
 @InjectWith(typeof(SmdpDslInjectorProvider))
 
 class SmdpDslValidatorTest {
-	@Inject extension ParseHelper<myModel>;
-	/*
-	 * Test af alle værdi for attribute typer som har en valideringsregl
-	 * Test af myValue check (Sammen med constaints) motherfucker klam metode
-	 * 
-	 */
-	 
+	@Inject extension ParseHelper<myModel>; 
 	 val validator = new SmdpDslValidator();
 	  
 	 @Test
 	 def void WithEmptyString(){
-	 	//ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		CarFactory {
 			BMW {
@@ -71,7 +64,6 @@ class SmdpDslValidatorTest {
 	
 		 @Test
 	 def void DublicateAttributesName(){
-	 	//ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		CarFactory {
 			BMW {
@@ -297,5 +289,4 @@ class SmdpDslValidatorTest {
 		val myCon = myObject.myAttributeContains.get(0).myAttributeContains as myNumberEnum;
 		Assert::assertTrue(validator.constraint(myCon))
 	}		
-	
 }

@@ -126,7 +126,6 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 	  * if '<' or '>' is used. 
 	  */
 	  def boolean myValuesCheck(myBinary it, myIdentifier attribute){
-	  	// Hvis left er identifyer, find key
 	  	var boolean leftCorrect = false;
 	  	var boolean rightCorrect = false;
 	  	var myIdentifier att;
@@ -195,12 +194,10 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 	  	if (it.myBinaryRight instanceof myNumberEnum) {
 	  		val attributeValue = att.myIntentifierIs.myAttributeContains;
 	  		if (attributeValue instanceof myNumberEnum){
-	  			//System.out.println(attributeValue);
 	  			rightCorrect = myNumberEnumValueCheck(attributeValue as myNumberEnum, myBinaryRight as myNumberEnum)
 	  		}
 	  		
 	  		if (attributeValue instanceof myRange){
-	  			//System.out.println(attributeValue);
 	  			rightCorrect = myRangeValueCheck(attributeValue as myRange, myBinaryRight as myNumberEnum)
 	  		}
 	  	}
