@@ -132,7 +132,7 @@
 
 % 2. An Example textual model in your DSL (in concrete syntax). No commentary is expected.
 \section{An Example textual model}
-\java{../configproject/runtime-CarFactory/src/factory.smdpdsl}{Concrete syntax}
+\java{../configproject/runtime-CarFactory/src/factory.smdpdsl}{Concrete syntax of a CarFactory}
 
 % 3. The Meta-model of your language (abstract syntax). Consider using several views, to improve presentation. No commentary is expected.
 \section{The Meta-model}
@@ -151,12 +151,12 @@
 
 % 4. Static semantics (constraints, type system). If you have a type checker describe briefly how it works and present the key rules (functions). If you have constraints, includethe entire implementation of the constraints in Xtend with comments explaining the intended semantics in English. No further description is needed.
 \section{Static semantics}
-\lstinputlisting[language=Java, firstline=35, lastline=244, caption="Descriptive text"]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/validation/SmdpDslvalidator.xtend}
+\lstinputlisting[language=Java, firstline=35, lastline=244, caption=Static Constraints]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/validation/SmdpDslvalidator.xtend}
 
 
 % 5. Xtext grammar of your language (Concrete Syntax). Just include the .xtext file. You can omit the top imports and other boiler plate, but we want to see all productions. No commentary is expected.
 \section{Xtext grammar of your language}
-\java{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/SmdpDsl.xtext}{static}
+\java{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/SmdpDsl.xtext}{Xtext Grammar}
 
 % 6. Descriptions of back-ends: the most relevant fragments of your back ends implementation with commentary (max 5 pages in total for both back-ends, not 10 pages). Describe briefly the architecture selected for the two backends (perhaps present an architectural diagram), and show the key aspects of implementation of both back-ends.
 \section{Description of back-ends}
@@ -165,21 +165,21 @@ We have implemented two code generators, one in html + JavaScript and one in Jav
 The architecture of both solutions is similar; in each solution, constraints is converted into a set of language specific, valid if statements. With help from a couple of generated helper methods, invalid assignments is removed from the possible values. The assignment is then validated by going through each attribute to check if there are still any values left and if the selected value is still available.\\
 The actual conversion of constraints from our domain specific language to either JavaScript or Java is done with a recursive function 'generateIfConstraintString', the function traverses the binary tree and builds a 'if statement'. 
 
-\lstinputlisting[language=Java, firstline=252, lastline=272, caption="Descriptive text"]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaCodeGenerator.xtend}
+\lstinputlisting[language=Java, firstline=252, lastline=272, caption=generateIfConstraintString method from JavaCodeGenerator.xtend]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaCodeGenerator.xtend}
 
 This function uses two helper methods; the first, 'ConvertAttributeName', retrieves the value the user has selected for a given attribute, the other, 'convertOperand', converts our operands from our DSL specific operand type (can, has i.e.) to the language specific equivalent.
 For JavaScript, ConvertAttributeName looks like this:
 
-\lstinputlisting[language=Java, firstline=289, lastline=294,caption="DESCRIPTIVE TEXT HERE"]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaScriptCodeGenerator.xtend}
+\lstinputlisting[language=Java, firstline=289, lastline=294,caption=ConvertAttributeName method from JavaScriptCodeGenerator.xtend]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaScriptCodeGenerator.xtend}
 
 It’s using a HTML5 dom selector to get the selected value and convert it to a double if it’s expected.
 The equivalent in the Java, selects the value from a HashMap.
 
-\lstinputlisting[language=Java, firstline=344, lastline=349,caption="DESCRIPTIVE TEXT HERE"]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaCodeGenerator.xtend}
+\lstinputlisting[language=Java, firstline=344, lastline=349,caption=ConvertAttributeName method from JavaCodeGenerator.xtend]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaCodeGenerator.xtend}
 
 The 'then' part of the if-statement is converted into code that removes invalid values in the recursive method “generateThenConstraintString”. This is again using ”convertOperand” to convert the operand, the generated code is using a hardcoded function to remove the values at runtime.
 % SMDP2015\configproject\xtext\org.xtext.example.smdpdsl\src\org\xtext\example\mydsl\generator\ JavaCodeGenerator.xtend (313-334)
-\lstinputlisting[language=Java, firstline=313, lastline=334,caption="DESCRIPTIVE TEXT HERE"]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaCodeGenerator.xtend}
+\lstinputlisting[language=Java, firstline=313, lastline=334,caption=generateThenConstraintString method from JavaCodeGenerator.xtend]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaCodeGenerator.xtend}
 
 \subsection{Back-end |}
 \subsection{Back-end ||}
