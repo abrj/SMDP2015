@@ -135,7 +135,7 @@
 \java{../configproject/runtime-CarFactory/src/factory.smdpdsl}{Concrete syntax of a CarFactory}
 
 % 3. The Meta-model of your language (abstract syntax). Consider using several views, to improve presentation. No commentary is expected.
-\section{The Views of Meta-Model}
+\section{The Views of the Meta-Model}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.65]{pictures/metamodel.png}
@@ -157,12 +157,12 @@
 
 % 4. Static semantics (constraints, type system). If you have a type checker describe briefly how it works and present the key rules (functions). If you have constraints, includethe entire implementation of the constraints in Xtend with comments explaining the intended semantics in English. No further description is needed.
 \section{The Static semantics}
-\lstinputlisting[language=Java, firstline=35, lastline=244, caption=Static Constraints]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/validation/SmdpDslvalidator.xtend}
+\lstinputlisting[language=Java, firstline=35, lastline=241, caption=Static Constraints]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/validation/SmdpDslvalidator.xtend}
 
 
 % 5. Xtext grammar of your language (Concrete Syntax). Just include the .xtext file. You can omit the top imports and other boiler plate, but we want to see all productions. No commentary is expected.
 \section{The Xtext grammar}
-\java{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/SmdpDsl.xtext}{Xtext Grammar}
+\lstinputlisting[language=Java, firstline=7, lastline=82, caption=Xtext Grammar from SmdpDsl.xtext]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/SmdpDsl.xtext}
 
 % 6. Descriptions of back-ends: the most relevant fragments of your back ends implementation with commentary (max 5 pages in total for both back-ends, not 10 pages). Describe briefly the architecture selected for the two backends (perhaps present an architectural diagram), and show the key aspects of implementation of both back-ends.
 \section{The Back-ends}
@@ -185,7 +185,7 @@ The equivalent in the Java, selects the value from a HashMap.
 
 The \textit{then} part of the \textit{if-statement} is converted into code that removes invalid values in the recursive method \textit{generateThenConstraintString}. This is again using \textit{convertOperand} to convert the operand, the generated code is using a hardcoded function to remove the values at runtime.
 
-\lstinputlisting[language=Java, firstline=313, lastline=334,caption=generateThenConstraintString method from JavaCodeGenerator.xtend]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaCodeGenerator.xtend}
+\lstinputlisting[language=Java, firstline=313, lastline=334,caption=part of generateThenConstraintString method from JavaCodeGenerator.xtend]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaCodeGenerator.xtend}
 
 
 % 7. Test methods and artefacts: Hand in max 1 page description of your test strategy (half a page is recommended) plus max 3 pages of examples of test cases. All in a single PDF file
@@ -212,11 +212,11 @@ Below is listed a handfull of testcases, showing how we try to get full code cov
 \lstinputlisting[language=Java, firstline=218, lastline=243,caption=Example of negative test from SmdpDslParserTest.xtend]{../configproject/xtext/org.xtext.example.smdpdsl.tests/src/org/xtext/example/smdpdsl/tests/SmdpDslParserTest.xtend}
 
 % Examples of validaton tests
-\lstinputlisting[language=Java, firstline=33, lastline=87,caption=Test examples from SmdpDslValidatorTest.xtend]{../configproject/xtext/org.xtext.example.smdpdsl.tests/src/org/xtext/example/smdpdsl/tests/SmdpDslValidatorTest.xtend}
+\lstinputlisting[language=Java, firstline=27, lastline=79,caption=Test examples from SmdpDslValidatorTest.xtend]{../configproject/xtext/org.xtext.example.smdpdsl.tests/src/org/xtext/example/smdpdsl/tests/SmdpDslValidatorTest.xtend}
 
-\lstinputlisting[language=Java, firstline=108, lastline=125,caption=Test examples from SmdpDslValidatorTest.xtend]{../configproject/xtext/org.xtext.example.smdpdsl.tests/src/org/xtext/example/smdpdsl/tests/SmdpDslValidatorTest.xtend}
+\lstinputlisting[language=Java, firstline=100, lastline=117,caption=Test examples from SmdpDslValidatorTest.xtend]{../configproject/xtext/org.xtext.example.smdpdsl.tests/src/org/xtext/example/smdpdsl/tests/SmdpDslValidatorTest.xtend}
 
-\lstinputlisting[language=Java, firstline=273, lastline=285,caption=Test examples from SmdpDslValidatorTest.xtend]{../configproject/xtext/org.xtext.example.smdpdsl.tests/src/org/xtext/example/smdpdsl/tests/SmdpDslValidatorTest.xtend}
+\lstinputlisting[language=Java, firstline=165, lastline=277,caption=Test examples from SmdpDslValidatorTest.xtend]{../configproject/xtext/org.xtext.example.smdpdsl.tests/src/org/xtext/example/smdpdsl/tests/SmdpDslValidatorTest.xtend}
 
 
 
