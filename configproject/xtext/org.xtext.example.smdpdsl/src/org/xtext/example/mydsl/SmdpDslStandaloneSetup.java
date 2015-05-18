@@ -3,6 +3,11 @@
 */
 package org.xtext.example.mydsl;
 
+import com.google.inject.Injector;
+
+import configuratorProject.ConfiguratorProjectPackage;
+import configuratorProject.impl.ConfiguratorProjectPackageImpl;
+
 /**
  * Initialization support for running Xtext languages 
  * without equinox extension registry
@@ -11,6 +16,18 @@ public class SmdpDslStandaloneSetup extends SmdpDslStandaloneSetupGenerated{
 
 	public static void doSetup() {
 		new SmdpDslStandaloneSetup().createInjectorAndDoEMFRegistration();
+	}
+	
+	@Override
+	public Injector createInjectorAndDoEMFRegistration() {
+		
+		
+		ConfiguratorProjectPackageImpl.init();
+		org.eclipse.xtext.common.TerminalsStandaloneSetup.doSetup();
+
+		Injector injector = createInjector();
+		register(injector);
+		return injector;
 	}
 }
 
