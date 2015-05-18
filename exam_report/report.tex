@@ -24,7 +24,7 @@
 \usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
 \usepackage[english]{babel} % English language/hyphenation
 \usepackage{amsmath,amsfonts,amsthm} % Math packages
-
+\usepackage{float}
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
 \usepackage{graphicx}
 \usepackage{sectsty} % Allows customizing section commands
@@ -136,24 +136,26 @@
 
 % 3. The Meta-model of your language (abstract syntax). Consider using several views, to improve presentation. No commentary is expected.
 \section{The Meta-model}
-\begin{figure}[ht!]
+\begin{figure}[H]
 \centering
-\includegraphics[scale=0.7]{pictures/taxView.jpg}
+\includegraphics[scale=0.6]{pictures/taxView.jpg}
 \caption{Taxonomy View}
 \end{figure}
 
-\begin{figure}[ht!]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.7]{pictures/partView.jpg}
 \caption{Partonomy View}
 \end{figure}
 
-\begin{figure}[ht!]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.7]{pictures/mrha.pdf}
 \caption{meta model}
 \end{figure}
 
+
+\newpage
 % 4. Static semantics (constraints, type system). If you have a type checker describe briefly how it works and present the key rules (functions). If you have constraints, includethe entire implementation of the constraints in Xtend with comments explaining the intended semantics in English. No further description is needed.
 \section{Static semantics}
 
