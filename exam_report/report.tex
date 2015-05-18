@@ -163,14 +163,14 @@
 
 % 6. Descriptions of back-ends: the most relevant fragments of your back ends implementation with commentary (max 5 pages in total for both back-ends, not 10 pages). Describe briefly the architecture selected for the two backends (perhaps present an architectural diagram), and show the key aspects of implementation of both back-ends.
 \section{Description of back-ends}
-We have implemented two code generators, one in html + JavaScript and one in Java. Our HTML consist of a dropdown for each attribute, containing all possible values. After selecting a value for each attribute, the JavaScript checks if it is a valid assignment. The Java code guides the user through each attribute, shows the possible values and then checks the assignment in the end. Both saves a valid assignment to a txt file.\\
+We have implemented two code generators, one in html + JavaScript and one in Java. Our HTML consist of a dropdown for each attribute, containing all possible values. After selecting a value for each attribute, the JavaScript checks if it is a valid assignment. The Java code guides the user through each attribute, shows the possible values, and then checks the assignment in the end. Both saves a valid assignment to a txt file.\\
 
-The architecture of both solutions is similar; in each solution, constraints is converted into a set of language specific valid if statements. With help from a couple of generated helper methods, invalid assignments is removed from the possible values, the assignment is then validated by going through each attribute to check if the is still any values left and if the selected value is still available.\\
+The architecture of both solutions is similar; in each solution, constraints is converted into a set of language specific, valid if statements. With help from a couple of generated helper methods, invalid assignments is removed from the possible values. The assignment is then validated by going through each attribute to check if there are still any values left and if the selected value is still available.\\
 The actual conversion of constraints from our domain specific language to either JavaScript or Java is done with a recursive function 'generateIfConstraintString', the function traverses the binary tree and builds a 'if statement'. 
 
 \lstinputlisting[language=Java, firstline=252, lastline=272, caption="Descriptive text"]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaCodeGenerator.xtend}
 
-This function uses two helper methods; the first, “ConvertAttributeName”, retrieves the value the user has selected for a given attribute, the other, ”convertOperand”, converts our operands from our DSL specific operand type (can, has i.e.) to the language specific equivalent.
+This function uses two helper methods; the first, 'ConvertAttributeName', retrieves the value the user has selected for a given attribute, the other, 'convertOperand', converts our operands from our DSL specific operand type (can, has i.e.) to the language specific equivalent.
 For JavaScript, ConvertAttributeName looks like this:
 
 \lstinputlisting[language=Java, firstline=289, lastline=294,caption="DESCRIPTIVE TEXT HERE"]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaScriptCodeGenerator.xtend}
@@ -180,7 +180,7 @@ The equivalent in the Java, selects the value from a HashMap.
 
 \lstinputlisting[language=Java, firstline=344, lastline=349,caption="DESCRIPTIVE TEXT HERE"]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaCodeGenerator.xtend}
 
-The then part of the if-statement is converted into code that removes invalid values in the recursive method “generateThenConstraintString”. This is again using ”convertOperand” to convert the operand, the generated code is using a hardcoded function to remove the values at runtime.
+The 'then' part of the if-statement is converted into code that removes invalid values in the recursive method “generateThenConstraintString”. This is again using ”convertOperand” to convert the operand, the generated code is using a hardcoded function to remove the values at runtime.
 % SMDP2015\configproject\xtext\org.xtext.example.smdpdsl\src\org\xtext\example\mydsl\generator\ JavaCodeGenerator.xtend (313-334)
 \lstinputlisting[language=Java, firstline=313, lastline=334,caption="DESCRIPTIVE TEXT HERE"]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaCodeGenerator.xtend}
 
