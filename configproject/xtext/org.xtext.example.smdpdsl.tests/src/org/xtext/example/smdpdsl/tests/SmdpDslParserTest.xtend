@@ -10,7 +10,6 @@ import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.xtext.example.mydsl.SmdpDslInjectorProvider
-import org.eclipse.emf.common.util.BasicEList;
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(SmdpDslInjectorProvider))
@@ -19,36 +18,9 @@ class SmdpDslParserTest {
 	@Inject extension ParseHelper<myModel>;
 	
 	
-	
-	
-	@Test
-	def void testParsing() {
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
-		val model = '''
-		CarFactory {
-			BMW {
-			}
-		}
-		'''.parse;
-		
-		val myModel = model
-		Assert::assertEquals("CarFactory", myModel.name)
-		
-		val myObject = model.myModelContains.get(0)
-		Assert::assertEquals("BMW", myObject.name)
-		
-		/*
-		 * 1 test for korrekt model
-		 * 1 test for tom model
-		 * 1 tets for myObject
-		 * 1 test for attributer
-		 * 1 test for constraints
-		 */	
-	}
-	
 	//Model with empty name
 	@Test
-	def void testModelWithoutName(){
+	def void testMyModelWithoutName(){
 		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 {
@@ -60,7 +32,7 @@ class SmdpDslParserTest {
 	
 	//Model with name "CarFactory"
 	@Test
-	def void testModelWithName(){
+	def void testMyModelWithName(){
 		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
@@ -72,7 +44,7 @@ class SmdpDslParserTest {
 	
 	//Model with 0 myObjects
 	@Test
-	def void testModelWithoutMyObject(){
+	def void testMyModelWithoutMyObjects(){
 		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
@@ -84,13 +56,13 @@ class SmdpDslParserTest {
 	
 	//Model with one myObject without name
 	@Test
-	def void testModelWithMyObjectWithoutName(){
+	def void testMyModelWithMyObjectsWithoutName(){
 		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
-		 	{
-		 		
-		 	}
+		 {
+			
+		 }
 
 		 }
 		'''.parse;
@@ -99,7 +71,7 @@ class SmdpDslParserTest {
 	
 	//Model with 1 myObject
 	@Test
-	def void testModelWithOneMyObject(){
+	def void testMyModelWithOneMyObjects(){
 		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
@@ -109,12 +81,13 @@ class SmdpDslParserTest {
 		 }
 		'''.parse;
 		Assert::assertEquals("BMW", model.myModelContains.get(0).name);	
+		Assert::assertEquals(1, model.myModelContains.size());
 	}
 	
 		
-	//Model with n myObjects 
+	//Model with many myObjects 
 	@Test
-	def void testModelWithManyMyObjects(){
+	def void testMyModelWithManyMyObjects(){
 		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
@@ -134,27 +107,28 @@ class SmdpDslParserTest {
 		catch(Exception e){
 			Assert::assertTrue(e instanceof IndexOutOfBoundsException);
 		}
-		Assert::assertNotEquals(2, model.myModelContains.size());			
+		Assert::assertNotEquals(2, model.myModelContains.size());
+		Assert::assertEquals(1, model.myModelContains.size());			
 	}
 	
 		
-	//Model without attributes
+	//Model with myObjects without attributes
 	@Test
-	def void testMyObjectWithoutAttributes(){
+	def void testMyObjectsWithoutAttributes(){
 		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
-		 BMW{
+		 	BMW{
 		 
-		 }
+		 	}
 		}
 		'''.parse;
 		Assert::assertEquals(0, model.myModelContains.get(0).myAttributeContains.size());	
 	}	
 
-	//Model without attributes
+	//Model with myObjects empty attributes list
 	@Test
-	def void testMyObjectWithEmptyAttributesList(){
+	def void testMyObjectsWithEmptyAttributesList(){
 		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
@@ -163,13 +137,13 @@ class SmdpDslParserTest {
 			}
 		 }
 		'''.parse;
-		Assert::assertEquals(1, model.myModelContains.get(0).myAttributeContains.size());	//Should have size of 0
+		Assert::assertEquals(1, model.myModelContains.get(0).myAttributeContains.size());	//Should have size of 0, there is a parse error
 		Assert::assertEquals(null, model.myModelContains.get(0).myAttributeContains.get(0).name)	
 	}
 			
-	//Model with 1 attribute
+	//Model with myObjects with 1 attribute
 	@Test
-	def void testMyObjectWithOneMyAttributes(){
+	def void testMyObjectsWithOneMyAttributes(){
 		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
@@ -183,9 +157,9 @@ class SmdpDslParserTest {
 		Assert::assertEquals(1, model.myModelContains.get(0).myAttributeContains.size());
 		Assert::assertEquals("carType", model.myModelContains.get(0).myAttributeContains.get(0).name);	
 	}		
-	//Model with n attributes
+	//Model with myObjects with many attributes
 	@Test
-	def void testMyObjectWithManyMyAttributes(){
+	def void testMyObjectsWithManyMyAttributes(){
 		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
@@ -203,7 +177,7 @@ class SmdpDslParserTest {
 		Assert::assertEquals("engineType", model.myModelContains.get(0).myAttributeContains.get(1).name);
 		Assert::assertEquals("wheel", model.myModelContains.get(0).myAttributeContains.get(2).name);	
 	}
-	//Model with n attributes
+	//Model with myObjects with many attributes without comma - Negative test
 	@Test
 	def void testMyObjectWithManyMyAttributesWithoutComma(){
 		ConfiguratorProjectPackage.eINSTANCE.eClass()
@@ -229,10 +203,66 @@ class SmdpDslParserTest {
 		}	
 	}		
 	
-	
-	//Model without myConstraint
-	
-	//Model with 1 myConstraint
-	
-	//Model with n myConstraint
+	//Model with myObject without myConstraint
+	@Test
+	def void testMyObjectsWithoutConstraints(){
+		ConfiguratorProjectPackage.eINSTANCE.eClass()
+		val model = '''
+		CarFactory{
+			BWM{
+				has
+					carType["SUV","Pickup"],
+					engineType["Diesel","Gas","Electric"],
+					wheel[14-28]
+					
+				Constrained by
+									
+		}
+		'''.parse;
+		Assert::assertEquals(0, model.myModelContains.get(0).myObjectHas.size());
+		
+	}
+	//Model with myObject with 1 myConstraint
+	@Test
+	def void testMyObjectWithOneConstraints(){
+		ConfiguratorProjectPackage.eINSTANCE.eClass()
+		val model = '''
+		CarFactory{
+			BWM{
+				has
+					carType["SUV","Pickup"],
+					engineType["Diesel","Gas","Electric"],
+					wheel[14-28]
+					
+				Constrained by
+					if carType="SUV"
+					then wheel can 20		
+		}
+		'''.parse;
+		Assert::assertEquals(1, model.myModelContains.get(0).myObjectHas.size());
+		
+		
+	}	
+	//Model with myObject with many myConstraint
+	@Test
+	def void testMyObjectsWithManyConstraints(){
+		ConfiguratorProjectPackage.eINSTANCE.eClass()
+		val model = '''
+		CarFactory{
+			BWM{
+				has
+					carType["SUV","Pickup"],
+					engineType["Diesel","Gas","Electric"],
+					wheel[14-28]
+					
+				Constrained by
+					if carType= "SUV"
+					then wheel can 20
+					
+					if engineType = "Diesel"
+					then carType can "SUV"		
+		}
+		'''.parse;
+		Assert::assertEquals(2, model.myModelContains.get(0).myObjectHas.size());
+		}	
 }
