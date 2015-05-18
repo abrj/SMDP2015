@@ -187,8 +187,6 @@ The \textit{then} part of the \textit{if-statement} is converted into code that 
 
 \lstinputlisting[language=Java, firstline=313, lastline=334,caption=generateThenConstraintString method from JavaCodeGenerator.xtend]{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/generator/JavaCodeGenerator.xtend}
 
-\subsection{Back-end |}
-\subsection{Back-end ||}
 
 % 7. Test methods and artefacts: Hand in max 1 page description of your test strategy (half a page is recommended) plus max 3 pages of examples of test cases. All in a single PDF file
 \section{Test methods and artefacts}
@@ -204,7 +202,7 @@ In all three files we want to use the same snippets of concrete syntax written i
 The above section outlines how the testing part of the project could and should have been made. We have not been able to achieve this fully. One reason being, that we had problems with the way we wanted to test functionality of the generator. A fully implementation of this testing strategy would have lead to a more robust system and it would imply a system with a higher guarantee of expected behavior. \\
 Furthermore, all tests have been created towards the end of the project, which isn't optimal in terms of using the test results. Because of this lateness, we have found errors in the project which have not been possible to correct this late in the project.\\
 
-Below is listed a handfull of testcases, showing how we try to get full code coverage. First is four test cases showing how the parser handles different inputs for our 'model' and 'object' productions. After this a negative test in the parser, suppose to fail because of missing commas. The next 5 tests cases are examples of our testing of our Xtend constraints for validation.  
+Below is listed a handfull of testcases, showing how we try to get full code coverage. First is four test cases showing how the parser handles different inputs for our \textit{model} and \textit{object} productions. After this a negative test in the parser, suppose to fail because of missing commas. The next 5 tests cases are examples of our testing of our Xtend constraints for validation.  
 
 \newpage
 
