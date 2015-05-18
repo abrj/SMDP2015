@@ -10,6 +10,7 @@ import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.xtext.example.mydsl.SmdpDslInjectorProvider
+import org.junit.Before
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(SmdpDslInjectorProvider))
@@ -18,10 +19,14 @@ class SmdpDslParserTest {
 	@Inject extension ParseHelper<myModel>;
 	
 	
+	@Before
+	def void setup(){
+		ConfiguratorProjectPackage.eINSTANCE.eClass()	
+	}
+	
 	//Model with empty name
 	@Test
 	def void testMyModelWithoutName(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()	
 		val model = '''
 		 {
 
@@ -33,7 +38,6 @@ class SmdpDslParserTest {
 	//Model with name "CarFactory"
 	@Test
 	def void testMyModelWithName(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
 
@@ -44,7 +48,6 @@ class SmdpDslParserTest {
 	//Model with name in quotes
 	@Test
 	def void testMyModelWithNameInQuotes(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		"CarFactory Berlin"{
 			
@@ -56,7 +59,6 @@ class SmdpDslParserTest {
 	//Model with whitespace separated name
 	@Test
 	def void testMyModelWithWhitespaceSeparatedName(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		CarFactory Berlin{
 			
@@ -71,7 +73,6 @@ class SmdpDslParserTest {
 	//Model with 0 myObjects
 	@Test
 	def void testMyModelWithoutMyObjects(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
 
@@ -83,7 +84,6 @@ class SmdpDslParserTest {
 	//Model with one myObject without name
 	@Test
 	def void testMyModelWithMyObjectsWithoutName(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
 		 	{
@@ -98,7 +98,6 @@ class SmdpDslParserTest {
 	//Model with 1 myObject
 	@Test
 	def void testMyModelWithOneMyObjects(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
 			BMW{
@@ -114,7 +113,6 @@ class SmdpDslParserTest {
 	//Model with many myObjects 
 	@Test
 	def void testMyModelWithManyMyObjects(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
 			BMW{
@@ -141,7 +139,6 @@ class SmdpDslParserTest {
 	//Model with myObjects without attributes
 	@Test
 	def void testMyObjectsWithoutAttributes(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
 		 	BMW{
@@ -155,7 +152,6 @@ class SmdpDslParserTest {
 	//Model with myObjects empty attributes list
 	@Test
 	def void testMyObjectsWithEmptyAttributesList(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
 			BMW{
@@ -171,7 +167,6 @@ class SmdpDslParserTest {
 	//Model with myObjects with 1 attribute without name
 	@Test
 	def void testMyObjectsWithOneMyAttributesWithoutName(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
 			BMW{
@@ -189,7 +184,6 @@ class SmdpDslParserTest {
 	//Model with myObjects with 1 attribute
 	@Test
 	def void testMyObjectsWithOneMyAttributes(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
 			BMW{
@@ -205,7 +199,6 @@ class SmdpDslParserTest {
 	//Model with myObjects with many attributes
 	@Test
 	def void testMyObjectsWithManyMyAttributes(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
 			BMW{
@@ -225,7 +218,7 @@ class SmdpDslParserTest {
 	//Model with myObjects with many attributes without comma - Negative test
 	@Test
 	def void testMyObjectWithManyMyAttributesWithoutComma(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
+		//ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
 			BMW{
@@ -251,7 +244,6 @@ class SmdpDslParserTest {
 	//Model with myObject without myConstraint
 	@Test
 	def void testMyObjectsWithoutConstraints(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		CarFactory{
 			BWM{
@@ -270,7 +262,6 @@ class SmdpDslParserTest {
 	//Model with myObject with 1 myConstraint
 	@Test
 	def void testMyObjectWithOneConstraints(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		CarFactory{
 			BWM{
@@ -291,7 +282,6 @@ class SmdpDslParserTest {
 	//Model with myObject with many myConstraint
 	@Test
 	def void testMyObjectsWithManyConstraints(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		CarFactory{
 			BWM{
