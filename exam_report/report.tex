@@ -198,5 +198,22 @@ In all three files we want to use the same snippets of concrete syntax written i
 The above section outlines how the testing part of the project could and should have been made. We have not been able to achieve this fully. One reason being, that we had problems with the way we wanted to test functionality of the generator. A fully implementation of this testing strategy would have lead to a more robust system and it would imply a system with a higher guarantee of expected behavior. \\
 Furthermore, all tests have been created towards the end of the project, which isn't optimal in terms of using the test results. Because of this lateness, we have found errors in the project which have not been possible to correct this late in the project.
 
+
+\newpage
+
+% Examples of parser tests
+\lstinputlisting[language=Java, firstline=73, lastline=137,caption=Test examples from SmdpDslParserTest.xtend]{../configproject/xtext/org.xtext.example.smdpdsl.tests/src/org/xtext/example/smdpdsl/tests/SmdpDslParserTest.xtend}
+
+\lstinputlisting[language=Java, firstline=218, lastline=243,caption=Example of negative test from SmdpDslParserTest.xtend]{../configproject/xtext/org.xtext.example.smdpdsl.tests/src/org/xtext/example/smdpdsl/tests/SmdpDslParserTest.xtend}
+
+% Examples of validaton tests
+\lstinputlisting[language=Java, firstline=33, lastline=87,caption=Test examples from SmdpDslValidatorTest.xtend]{../configproject/xtext/org.xtext.example.smdpdsl.tests/src/org/xtext/example/smdpdsl/tests/SmdpDslValidatorTest.xtend}
+
+\lstinputlisting[language=Java, firstline=108, lastline=125,caption=Test examples from SmdpDslValidatorTest.xtend]{../configproject/xtext/org.xtext.example.smdpdsl.tests/src/org/xtext/example/smdpdsl/tests/SmdpDslValidatorTest.xtend}
+
+\lstinputlisting[language=Java, firstline=273, lastline=285,caption=Test examples from SmdpDslValidatorTest.xtend]{../configproject/xtext/org.xtext.example.smdpdsl.tests/src/org/xtext/example/smdpdsl/tests/SmdpDslValidatorTest.xtend}
+
+
+
 %-------- END --------------------------------------------------------------------------------
 \end{document}
