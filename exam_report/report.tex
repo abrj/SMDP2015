@@ -190,16 +190,16 @@ The then part of the if-statement is converted into code that removes invalid va
 % 7. Test methods and artefacts: Hand in max 1 page description of your test strategy (half a page is recommended) plus max 3 pages of examples of test cases. All in a single PDF file
 \section{Test methods and artefacts}
 The overall goal for the test phase, have been to make tests covering all possible paths of the implementation, also known as 'path coverage'. This would include testing all possible outcomes in a path.\\ 
-This means that the number of tests needed to archive full code coverage is determined by the number of possible paths, in each of the steps from the meta-model until the user frontend. Each path sould be tested for both positive and negative testcases.\\
+This means that the number of tests needed to archive full code coverage is determined by the number of possible paths, in each of the steps from the meta-model until the user frontend. Each path should be tested for both positive and negative testcases.\\
 
-To archive this goal we wish to construgt a series of unit-tests within our project using JUnit and Xtend. These tests have been split into three files: SmdpDslParserTest.xtend, SmdpDslGeneratorTest.xtend and SmdpDslValidator.xtend. Each file represents test coverage for one of the three major blocks used in the process from DSL to generated code.\\
+To archive this goal we wish to construct a series of unit-tests within our project using JUnit and Xtend. These tests have been split into three files: SmdpDslParserTest.xtend, SmdpDslGeneratorTest.xtend and SmdpDslValidator.xtend. Each file represents test coverage for one of the three major blocks used in the process from DSL to generated code.\\
 The file SmdpDslParserTest.xtend contains all tests of the parser, where each test is related to one or more production(s) in the grammar in SmdpDsl.xtext, testing how the types from the concrete syntax is inferred from the model and how the parser behaves when given an unexpected input.\\ 
 SmdpDslValidator.xtend tests our constraints found in SmdpDslValidator.xtend, which is used to validate our DSL. Again, this is testing both intented and unintented input.\\ 
 The SmdpDslGeneratorTest.xtend file should tests two different aspects of the code. The first is testing that the generated code has the expected layout and syntax and the second being testing that generated code is functioning. \\
 In all three files we want to use the same snippets of concrete syntax written in SmdpDsl to act as test caseses.\newline
 
 The above section outlines how the testing part of the project could and should have been made. We have not been able to achieve this fully. One reason being, that we had problems with the way we wanted to test functionality of the generator. A fully implementation of this testing strategy would have lead to a more robust system and it would imply a system with a higher guarantee of expected behavior. \\
-Furthermore, all tests have been created towards the end of the project, which isn't optimal in terms of using the test results. Because of this, we have found errors in the project which have not been possible to correct this late in the project.
+Furthermore, all tests have been created towards the end of the project, which isn't optimal in terms of using the test results. Because of this lateness, we have found errors in the project which have not been possible to correct this late in the project.
 
 %-------- END --------------------------------------------------------------------------------
 \end{document}
