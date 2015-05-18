@@ -124,8 +124,8 @@
 
 % 2. An Example textual model in your DSL (in concrete syntax). No commentary is expected.
 \section{An Example textual model}
-
 \java{../configproject/runtime-CarFactory/src/factory.smdpdsl}{Concrete syntax}
+
 % 3. The Meta-model of your language (abstract syntax). Consider using several views, to improve presentation. No commentary is expected.
 \section{The Meta-model}
 
@@ -141,13 +141,22 @@
 % 5. Xtext grammar of your language (Concrete Syntax). Just include the .xtext file. You can omit the top imports and other boiler plate, but we want to see all productions. No commentary is expected.
 \section{Xtext grammar of your language}
 \java{../configproject/xtext/org.xtext.example.smdpdsl/src/org/xtext/example/mydsl/SmdpDsl.xtext}{static}
+
 % 6. Descriptions of back-ends: the most relevant fragments of your back ends implementation with commentary (max 5 pages in total for both back-ends, not 10 pages). Describe briefly the architecture selected for the two backends (perhaps present an architectural diagram), and show the key aspects of implementation of both back-ends.
 \section{Description of back-ends}
 \subsection{Back-end |}
 \subsection{Back-end ||}
 
-% 7. Test methods and artefacts: Hand in max 1 page description of your test strategy (half apage is recommended) plus max 3 pages of examples of test cases. All in a single PDF file
+% 7. Test methods and artefacts: Hand in max 1 page description of your test strategy (half a page is recommended) plus max 3 pages of examples of test cases. All in a single PDF file
 \section{Test methods and artefacts}
+The tests for this project, have been split in three files: SmdpDslParserTest.xtend, SmdpDslGeneratorTest.xtend and SmdpDslValidator.xtend.\\
+The tests for the parser tests how the types from the concrete syntax is inferred from the model and how the parser behaves when given an unexpected input, like a instance of a model which contains two strings in the name instead of one. The tests are created to test input of size zero, one and many, which means that most tests are represented in three cases.\\
+The focus of the tests made in SmdpDslValidator have been to test how well  
 
+
+
+All tests have been created towards the end of the project, which isn't optimal in terms of being able to use the tests and results from the tests. Some of the tests have shown that some errors exists in the project. One example of this is the testMyObjectsWithEmptyAttributesList method in SmdpDslParserTest. In this test no attributes have provided, but the size of attributes is one, but should have been zero.\\
+If this test was made at an earlier stage of the project, it would have been possible to resolve this error. But due to time constraint at the time of writing the tests, the error, and others found in different tests, are still present.\\
+Even though some of the tests have demonstrated unexpected outputs, we believe that these can be catogorized as minor errors without a critical impact on the system. 
 %-------- END --------------------------------------------------------------------------------
 \end{document}
