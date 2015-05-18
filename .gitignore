@@ -3,4 +3,5 @@ exam_report/report.fdb_latexmk
 exam_report/report.log
 exam_report/report.synctex.gz
 exam_report/report.pdf
+exam_report/.DS_Store
 
