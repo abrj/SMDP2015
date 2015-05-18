@@ -25,6 +25,7 @@ import configuratorProject.myRange
 import configuratorProject.myStringEnum
 import configuratorProject.myLiteral
 import org.eclipse.xtext.validation.Check
+import configuratorProject.ConfiguratorProjectPackage
 
 /**
  * Custom validation rules. 
@@ -33,40 +34,67 @@ import org.eclipse.xtext.validation.Check
  */
 class SmdpDslValidator extends AbstractSmdpDslValidator {
 	@Check
-	def void constraint(myObject it) {
-
-		// Attribute name must be unique
+	def boolean constraint(myObject it) {
+		try {
+			// Attribute name must be unique
 		if (!(it.myAttributeContains.forall[ attributeName | myAttributeContains.filter[name.equalsIgnoreCase(attributeName.name)].size == 1])){
 			error("A attribute should have a unique name", null);
 		}
+		return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 	@Check
-	def void constraint(myConstraint it){
+	def boolean constraint(myConstraint it){
 		// Checks the then part of 
-		if (!myValuesCheck(myThenConstraint as myBinary, null)) {
+		try {
+			if (!myValuesCheck(myThenConstraint as myBinary, null)) {
 			error("Constraint contains illigal values", myThenConstraint, null)
 		}
 		
 		if (!myValuesCheck(myIfConstraint as myBinary, null)) {
 				error("If statements contain a invalid value", myIfConstraint, null);
 		}
+		return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 
 	@Check
-	def constraint(myNumberEnum it) {
-		if (values.length == 0) {
+	def boolean constraint(myNumberEnum it) {
+		try {
+			if (values.length == 0) {
 			error("All number enum must have a size of at least 1", it, null)
+		}
+		return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 	@Check
-	def constraint(myRange it) {
-		if (from > to) {
+	def boolean constraint(myRange it) {
+		try {
+			if (from > to) {
 			error("The start value in a range cannot be larger than the end value", it, null);
 		}
+		return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 	}	
 	@Check
-	def constraint(myBoolean it) {
-		if (trueValue == falseValue) {
+	def boolean constraint(myBoolean it) {
+		try {
+			if (trueValue == falseValue) {
 			error("The values for boolean can't be the same", it, null);
 		}
 		
@@ -74,12 +102,22 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 			error("Boolean must be asigned a value",it, null);
 		}
 		
+		return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}	
 	@Check
-	def  constraint (myStringEnum it) { // example	
-		// Check that each value is unique
-		if (values.length == 0) {
-			error("String enum must contain a value",it,null)
+	def boolean constraint (myStringEnum it) {
+		try {
+			if (values.length == 0 || values.exists[v | v.equalsIgnoreCase("")]) {
+				error("String enum must contain a value",it, null)	
+			}
+			return true
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 	 
@@ -89,7 +127,6 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 	  */
 	  def boolean myValuesCheck(myBinary it, myIdentifier attribute){
 	  	// Hvis left er identifyer, find key
-	  	info("LEFT:" + it.myBinaryLeft + " - RIGHT: "+ it.myBinaryRight, null)
 	  	var boolean leftCorrect = false;
 	  	var boolean rightCorrect = false;
 	  	var myIdentifier att;
@@ -158,10 +195,12 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 	  	if (it.myBinaryRight instanceof myNumberEnum) {
 	  		val attributeValue = att.myIntentifierIs.myAttributeContains;
 	  		if (attributeValue instanceof myNumberEnum){
+	  			//System.out.println(attributeValue);
 	  			rightCorrect = myNumberEnumValueCheck(attributeValue as myNumberEnum, myBinaryRight as myNumberEnum)
 	  		}
 	  		
 	  		if (attributeValue instanceof myRange){
+	  			//System.out.println(attributeValue);
 	  			rightCorrect = myRangeValueCheck(attributeValue as myRange, myBinaryRight as myNumberEnum)
 	  		}
 	  	}
@@ -176,37 +215,28 @@ class SmdpDslValidator extends AbstractSmdpDslValidator {
 	  
 	  def boolean myStringEnumValueCheck(myStringEnum it, myStringEnum expectedValue){
 	  	val res = it.values.containsAll(expectedValue.values)
-	  	//warning(""+res, null)
 	  	return res;
 	  }
 	  
 	  def boolean myNumberEnumValueCheck(myNumberEnum it, myNumberEnum expectedValue){
 	  	val res = it.values.containsAll(expectedValue.values)
-	  	//warning(""+res, null)
 	  	return res;
 	  }
 	  
 	  def boolean myBooleanValueCheck(myBoolean it, myLiteral expectedValue){
 	  	// Apparently the expected value gets mapped to a string enum.
 	  	val value = expectedValue as myStringEnum;
-	  	
-	  	//warning("Expected value" + value.values.get(0), null)
-	  	//warning("true value: " + it.trueValue, null)
-	  	//warning("false value: " + it.falseValue, null)
 	  	val res = it.trueValue.equalsIgnoreCase(value.values.get(0)) || it.falseValue.equalsIgnoreCase(value.values.get(0));
-	  	//warning(""+res, null)
 	  	return res;
 	  }
 	  
 	  def boolean myRangeValueCheck(myRange it, myLiteral expectedValue){
-	  	if (expectedValue instanceof myNumberEnum) {
-	  		val res = (it.from <= expectedValue.values.get(0))  && (expectedValue.values.get(0)  <= it.to)
-	  		//warning("enum: "+res, null) 	
+	  	  	if (expectedValue instanceof myNumberEnum) {
+	  		val res = expectedValue.values.forall[v | it.from <= v  && v <= it.to]
 	  		return res;
 	  	}
 	  	if (expectedValue instanceof myRange){
 	  		val res = it.from <= expectedValue.from && expectedValue.to <= it.to;
-	  		//warning("range: "+res, null) 	
 	  		return res;
 	  	}
 	  	return false;
