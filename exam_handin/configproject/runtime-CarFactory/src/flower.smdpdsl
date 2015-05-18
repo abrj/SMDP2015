@@ -1,0 +1,38 @@
+
+flowerShop{
+ 	bouquet {
+ 		has 
+ 			bouquetType ["Wedding","Valentine","Mothers day","I'm sorry","Funeral","Birthday"],
+ 			flowerCount [2-30],
+ 			colorTheme ["Bright Yellow","Pure White","Romantic Red","Stylish Blue","Natural","Earth","Dark"],
+ 			wrapping ["Paper":"Plastic"],
+ 			wrappingColor ["Brown","Blue","White","Clear"],
+ 			greetingCard ["Clown","Heart","Simple White","Cherubs","Forest","Water"]
+ 				
+ 						
+ 		
+ 		Constrained by
+ 			if bouquetType = "Funeral"
+ 			then (colorTheme can "Pure White") && (greetingCard can "Simple White")
+
+			if flowerCount > 2
+			then bouquetType can "Wedding"
+			
+			if (bouquetType = ("Wedding" | "I'm sorry")) && (colorTheme = "Pure White") && (greetingCard = "Clown")
+			then flowerCount > 15
+			
+			if colorTheme = "Earth"
+			then greetingCard can "Forest","Water"
+			
+			if wrapping = "Paper"
+			then wrappingColor can "Brown","White"
+			
+			if greetingCard = "Clown"
+			then bouquetType can "I'm sorry","Birthday"
+			
+			if (bouquetType = "Valentine")
+			then ((colorTheme can "Romantic Red") && (greetingCard can "Heart","Simple White","Cherubs")) | (flowerCount > 29)
+ 	}	
+}
+
+	

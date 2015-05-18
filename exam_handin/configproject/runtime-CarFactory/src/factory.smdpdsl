@@ -1,0 +1,11 @@
+carFactory {
+ 	BMW {
+ 		has 
+ 			seatHeat ["Seat Heat":"No Seat Heat"],
+ 			wheel [14-28]					
+ 		
+ 		Constrained by					 			
+ 			if seatHeat = "Seat Heat"
+ 			then wheel can 14,23
+ 	}	
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ConfiguratorProject/src" modelPluginID="ConfiguratorProject"
+    modelName="ConfiguratorProject" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>configuratorProject.ecore</foreignModel>
+  <genPackages prefix="ConfiguratorProject" disposableProviderFactory="true" ecorePackage="configuratorProject.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="configuratorProject.ecore#//myBinaryOparators">
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/and"/>
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/or"/>
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/gt"/>
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/lt"/>
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/eq"/>
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/is"/>
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/if"/>
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myBinaryOparators/then"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="configuratorProject.ecore#//myUnaryOparators">
+      <genEnumLiterals ecoreEnumLiteral="configuratorProject.ecore#//myUnaryOparators/not"/>
+    </genEnums>
+    <genClasses ecoreClass="configuratorProject.ecore#//myModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myModel/myModelContains"/>
+    </genClasses>
+    <genClasses ecoreClass="configuratorProject.ecore#//myObject">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myObject/myObjectHas"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myObject/myAttributeContains"/>
+    </genClasses>
+    <genClasses ecoreClass="configuratorProject.ecore#//myConstraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myConstraint/myIfConstraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myConstraint/myThenConstraint"/>
+    </genClasses>
+    <genClasses ecoreClass="configuratorProject.ecore#//myAttribute">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myAttribute/myAttributeContains"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="configuratorProject.ecore#//myExpression"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myBinary">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myBinary/Oparand"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myBinary/myBinaryLeft"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myBinary/myBinaryRight"/>
+    </genClasses>
+    <genClasses ecoreClass="configuratorProject.ecore#//myUnary">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myUnary/Oparand"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myUnary/myUnaryExpression"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="configuratorProject.ecore#//myLiteral"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//MyBoolLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//MyBoolLiteral/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="configuratorProject.ecore#//myValue"/>
+    <genClasses image="false" ecoreClass="configuratorProject.ecore#//myEnum"/>
+    <genClasses ecoreClass="configuratorProject.ecore#//myBoolean">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myBoolean/trueValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myBoolean/falseValue"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="configuratorProject.ecore#//myNamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myNamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="configuratorProject.ecore#//myIdentifier">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference configuratorProject.ecore#//myIdentifier/myIntentifierIs"/>
+    </genClasses>
+    <genClasses ecoreClass="configuratorProject.ecore#//myRange">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myRange/from"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myRange/to"/>
+    </genClasses>
+    <genClasses ecoreClass="configuratorProject.ecore#//myStringEnum">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myStringEnum/values"/>
+    </genClasses>
+    <genClasses ecoreClass="configuratorProject.ecore#//myNumberEnum">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute configuratorProject.ecore#//myNumberEnum/values"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

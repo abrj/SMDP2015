@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Configurator</title>
+  
+	<script type="text/javascript">
+	
+	function clone(obj) {
+		if (null == obj || "object" != typeof obj) return obj;
+    			var copy = obj.constructor();
+    			for (var attr in obj) {
+        			if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
+    				}
+    			return copy;
+	}
+	
+	var Attributes = {};
+	var AttributeTypeMap = {};
+	var ConstraintMap = {};
+	function generateInitialAttributes() {
+
+var attributeValues = [];
+var i = 0;
+attributeValues[i] = "Wedding";
+i++;
+attributeValues[i] = "Valentine";
+i++;
+attributeValues[i] = "Mothers day";
+i++;
+attributeValues[i] = "I'm sorry";
+i++;
+attributeValues[i] = "Funeral";
+i++;
+attributeValues[i] = "Birthday";
+i++;
+Attributes["bouquetType"] = attributeValues;
+
+
+
+
+
+
+var attributeValues = [];
+attributeValues[0] = 2.0;
+attributeValues[1] = 3.0;
+attributeValues[2] = 4.0;
+attributeValues[3] = 5.0;
+attributeValues[4] = 6.0;
+attributeValues[5] = 7.0;
+attributeValues[6] = 8.0;
+attributeValues[7] = 9.0;
+attributeValues[8] = 10.0;
+attributeValues[9] = 11.0;
+attributeValues[10] = 12.0;
+attributeValues[11] = 13.0;
+attributeValues[12] = 14.0;
+attributeValues[13] = 15.0;
+attributeValues[14] = 16.0;
+attributeValues[15] = 17.0;
+attributeValues[16] = 18.0;
+attributeValues[17] = 19.0;
+attributeValues[18] = 20.0;
+attributeValues[19] = 21.0;
+attributeValues[20] = 22.0;
+attributeValues[21] = 23.0;
+attributeValues[22] = 24.0;
+attributeValues[23] = 25.0;
+attributeValues[24] = 26.0;
+attributeValues[25] = 27.0;
+attributeValues[26] = 28.0;
+attributeValues[27] = 29.0;
+attributeValues[28] = 30.0;
+Attributes["flowerCount"] = attributeValues;
+var attributeValues = [];
+var i = 0;
+attributeValues[i] = "Bright Yellow";
+i++;
+attributeValues[i] = "Pure White";
+i++;
+attributeValues[i] = "Romantic Red";
+i++;
+attributeValues[i] = "Stylish Blue";
+i++;
+attributeValues[i] = "Natural";
+i++;
+attributeValues[i] = "Earth";
+i++;
+attributeValues[i] = "Dark";
+i++;
+Attributes["colorTheme"] = attributeValues;
+
+
+
+
+
+var attributeValues = [];
+attributeValues[0] = "Paper";
+attributeValues[1] = "Plastic";
+Attributes["wrapping"] = attributeValues;
+
+var attributeValues = [];
+var i = 0;
+attributeValues[i] = "Brown";
+i++;
+attributeValues[i] = "Blue";
+i++;
+attributeValues[i] = "White";
+i++;
+attributeValues[i] = "Clear";
+i++;
+Attributes["wrappingColor"] = attributeValues;
+
+
+
+var attributeValues = [];
+var i = 0;
+attributeValues[i] = "Clown";
+i++;
+attributeValues[i] = "Heart";
+i++;
+attributeValues[i] = "Simple White";
+i++;
+attributeValues[i] = "Cherubs";
+i++;
+attributeValues[i] = "Forest";
+i++;
+attributeValues[i] = "Water";
+i++;
+Attributes["greetingCard"] = attributeValues;
+
+
+
+	ConstraintMap = clone(Attributes);
+}
+
+function generateBuildConstraints() {
+	ConstraintMap = clone(Attributes);
+if (document.querySelector("#bouquetType").value == "Funeral"){
+	removeNonPossibleValuesFromAttribute("colorTheme", ["Pure White",], "is");removeNonPossibleValuesFromAttribute("greetingCard", ["Simple White",], "is");
+}
+if (2 <= parseInt(document.querySelector("#flowerCount").value) && 30 >= parseInt(document.querySelector("#flowerCount").value)){
+	removeNonPossibleValuesFromAttribute("bouquetType", ["Wedding",], "is");
+}
+if (((document.querySelector("#bouquetType").value ==  "Wedding" || document.querySelector("#bouquetType").value == "I'm sorry") && (document.querySelector("#colorTheme").value == "Pure White")) && (document.querySelector("#greetingCard").value == "Clown")){
+	removeNonPossibleValuesFromAttributeNumber("flowerCount", [15.0,], "lt");
+}
+if (document.querySelector("#colorTheme").value == "Earth"){
+	removeNonPossibleValuesFromAttribute("greetingCard", ["Forest","Water",], "is");
+}
+if (document.querySelector("#wrapping").value == "Paper"){
+	removeNonPossibleValuesFromAttribute("wrappingColor", ["Brown","White",], "is");
+}
+if (document.querySelector("#greetingCard").value == "Clown"){
+	removeNonPossibleValuesFromAttribute("bouquetType", ["I'm sorry","Birthday",], "is");
+}
+if (document.querySelector("#bouquetType").value == "Valentine"){
+	removeNonPossibleValuesFromAttribute("colorTheme", ["Romantic Red",], "is");removeNonPossibleValuesFromAttribute("greetingCard", ["Heart","Simple White","Cherubs",], "is");removeNonPossibleValuesFromAttributeNumber("flowerCount", [29.0,], "lt");
+}
+}
+function generateCheckConstraints() {
+values = [];
+  		var value;
+	  values = ConstraintMap["bouquetType"];
+	  value = document.querySelector("#bouquetType").value;
+	  if (values.length > 0) {
+	  if (values.indexOf(value)==-1) {
+	  alert("bouquetType does not contain a valid value");	
+	  return false;
+	  }
+	  } else {
+	  alert("bouquetType does not contain a valid value");
+	  return false;
+	  }
+	  values = ConstraintMap["flowerCount"];
+	  value = parseInt(document.querySelector("#flowerCount").value);
+	  if (values.length > 0) {
+	  if (values.indexOf(value)==-1) {
+	  alert("flowerCount does not contain a valid value");	
+	  return false;
+	  }
+	  } else {
+	  alert("flowerCount does not contain a valid value");
+	  return false;
+	  }
+	  values = ConstraintMap["colorTheme"];
+	  value = document.querySelector("#colorTheme").value;
+	  if (values.length > 0) {
+	  if (values.indexOf(value)==-1) {
+	  alert("colorTheme does not contain a valid value");	
+	  return false;
+	  }
+	  } else {
+	  alert("colorTheme does not contain a valid value");
+	  return false;
+	  }
+	  values = ConstraintMap["wrapping"];
+	  value = document.querySelector("#wrapping").value;
+	  if (values.length > 0) {
+	  if (values.indexOf(value)==-1) {
+	  alert("wrapping does not contain a valid value");	
+	  return false;
+	  }
+	  } else {
+	  alert("wrapping does not contain a valid value");
+	  return false;
+	  }
+	  values = ConstraintMap["wrappingColor"];
+	  value = document.querySelector("#wrappingColor").value;
+	  if (values.length > 0) {
+	  if (values.indexOf(value)==-1) {
+	  alert("wrappingColor does not contain a valid value");	
+	  return false;
+	  }
+	  } else {
+	  alert("wrappingColor does not contain a valid value");
+	  return false;
+	  }
+	  values = ConstraintMap["greetingCard"];
+	  value = document.querySelector("#greetingCard").value;
+	  if (values.length > 0) {
+	  if (values.indexOf(value)==-1) {
+	  alert("greetingCard does not contain a valid value");	
+	  return false;
+	  }
+	  } else {
+	  alert("greetingCard does not contain a valid value");
+	  return false;
+	  }
+alert("true");
+return true;
+}
+
+		function download(filename, text) {
+  var pom = document.createElement('a');
+  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  pom.setAttribute('download', filename);
+
+  pom.style.display = 'none';
+  document.body.appendChild(pom);
+
+  pom.click();
+
+  document.body.removeChild(pom);
+}
+		
+		function save() {
+		
+		dropdowns = document.body.querySelectorAll('select');
+		result = "";
+		for (i = 0; i < dropdowns.length; i++) { 
+    		result += dropdowns[i].id + ": " + dropdowns[i].value + "\r\n";
+		}
+		
+		download("results.txt", result);
+		}
+function removeNonPossibleValuesFromAttribute(attr, possibleValues, operator){
+	values = ConstraintMap[attr];
+	for(i = values.length-1; i >= 0; i--){
+		currentValue = values[i];
+		if(operator == "is"){
+			if(possibleValues.indexOf(currentValue)==-1){
+			values.splice(i,1);
+			}
+		}
+		
+	}
+	ConstraintMap[attr] = values;
+}
+
+function removeNonPossibleValuesFromAttributeNumber(attr, possibleValues, operator){
+	values = ConstraintMap[attr];
+	for(i = values.length-1; i >= 0; i--){
+		doubleValue = values[i];
+		if(operator == "is"){
+			if(possibleValues.indexOf(doubleValue)==-1){
+			values.splice(i,1);
+			}
+		}
+		if(operator == "lt"){
+			if(doubleValue < possibleValues[0]){
+				values.splice(i,1);
+			}
+		}
+		
+		if(operator == "gt"){
+			if(doubleValue > possibleValues[0]){
+				values.splice(i,1);
+			}
+		}
+	}
+	ConstraintMap[attr] = values;
+}
+	
+	document.addEventListener('DOMContentLoaded', function() {
+		generateInitialAttributes();
+	});
+	</script>
+  
+  
+  
+</head>
+<body>
+
+<p>bouquetType:</p> <select id="bouquetType"">
+<option value="Wedding">Wedding</option>
+<option value="Valentine">Valentine</option>
+<option value="Mothers day">Mothers day</option>
+<option value="I'm sorry">I'm sorry</option>
+<option value="Funeral">Funeral</option>
+<option value="Birthday">Birthday</option>
+
+
+
+</select>
+<p>flowerCount:</p> <select id="flowerCount"">
+
+
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+
+</select>
+<p>colorTheme:</p> <select id="colorTheme"">
+<option value="Bright Yellow">Bright Yellow</option>
+<option value="Pure White">Pure White</option>
+<option value="Romantic Red">Romantic Red</option>
+<option value="Stylish Blue">Stylish Blue</option>
+<option value="Natural">Natural</option>
+<option value="Earth">Earth</option>
+<option value="Dark">Dark</option>
+
+
+
+</select>
+<p>wrapping:</p> <select id="wrapping"">
+
+
+
+<option value="Paper">Paper</option>
+<option value="Plastic">Plastic</option>
+</select>
+<p>wrappingColor:</p> <select id="wrappingColor"">
+<option value="Brown">Brown</option>
+<option value="Blue">Blue</option>
+<option value="White">White</option>
+<option value="Clear">Clear</option>
+
+
+
+</select>
+<p>greetingCard:</p> <select id="greetingCard"">
+<option value="Clown">Clown</option>
+<option value="Heart">Heart</option>
+<option value="Simple White">Simple White</option>
+<option value="Cherubs">Cherubs</option>
+<option value="Forest">Forest</option>
+<option value="Water">Water</option>
+
+
+
+</select>
+
+<button onclick="generateBuildConstraints(),generateCheckConstraints()">Check</button>
+<button onclick="save()">Save</button>
+</body>
+</html>
