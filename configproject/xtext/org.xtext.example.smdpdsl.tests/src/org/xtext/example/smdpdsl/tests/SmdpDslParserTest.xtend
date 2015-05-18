@@ -60,9 +60,9 @@ class SmdpDslParserTest {
 		ConfiguratorProjectPackage.eINSTANCE.eClass()
 		val model = '''
 		 CarFactory{
-		 {
+		 	{
 			
-		 }
+		 	}
 
 		 }
 		'''.parse;
@@ -140,6 +140,25 @@ class SmdpDslParserTest {
 		Assert::assertEquals(1, model.myModelContains.get(0).myAttributeContains.size());	//Should have size of 0, there is a parse error
 		Assert::assertEquals(null, model.myModelContains.get(0).myAttributeContains.get(0).name)	
 	}
+	
+	
+	//Model with myObjects with 1 attribute without name
+	@Test
+	def void testMyObjectsWithOneMyAttributesWithoutName(){
+		ConfiguratorProjectPackage.eINSTANCE.eClass()
+		val model = '''
+		 CarFactory{
+			BMW{
+				has
+					[]
+				
+			}
+		 }
+		'''.parse;
+		Assert::assertEquals(1, model.myModelContains.get(0).myAttributeContains.size());
+		Assert::assertEquals(null, model.myModelContains.get(0).myAttributeContains.get(0).name);	
+	}	
+	
 			
 	//Model with myObjects with 1 attribute
 	@Test
