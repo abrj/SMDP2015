@@ -135,7 +135,7 @@
 \caption{meta model}
 \end{figure}
 
-% 4. Static semantics (constraints, type system). If you have a type checker describe brieflyhow it works and present the key rules (functions). If you have constraints, includethe entire implementation of the constraints in Xtend with comments explaining the intended semantics in English. No further description is needed.
+% 4. Static semantics (constraints, type system). If you have a type checker describe briefly how it works and present the key rules (functions). If you have constraints, includethe entire implementation of the constraints in Xtend with comments explaining the intended semantics in English. No further description is needed.
 \section{Static semantics}
 
 % 5. Xtext grammar of your language (Concrete Syntax). Just include the .xtext file. You can omit the top imports and other boiler plate, but we want to see all productions. No commentary is expected.
@@ -149,14 +149,17 @@
 
 % 7. Test methods and artefacts: Hand in max 1 page description of your test strategy (half a page is recommended) plus max 3 pages of examples of test cases. All in a single PDF file
 \section{Test methods and artefacts}
-The tests for this project, have been split in three files: SmdpDslParserTest.xtend, SmdpDslGeneratorTest.xtend and SmdpDslValidator.xtend.\\
-The tests for the parser tests how the types from the concrete syntax is inferred from the model and how the parser behaves when given an unexpected input, like a instance of a model which contains two strings in the name instead of one. The tests are created to test input of size zero, one and many, which means that most tests are represented in three cases.\\
-The focus of the tests made in SmdpDslValidator have been to test how well  
+The overall goal for the test phase, have been to make tests covering all possible paths of the implementation, also known as 'path coverage'. This would include testing all possible outcomes in a path.\\ 
+This means that the number of tests needed to archive full code coverage is determined by the number of possible paths, in each of the steps from the meta-model until the user frontend. Each path sould be tested for both positive and negative testcases.\\
 
+To archive this goal we wish to construgt a series of unit-tests within our project using JUnit and Xtend. These tests have been split into three files: SmdpDslParserTest.xtend, SmdpDslGeneratorTest.xtend and SmdpDslValidator.xtend. Each file represents test coverage for one of the three major blocks used in the process from DSL to generated code.\\
+The file SmdpDslParserTest.xtend contains all tests of the parser, where each test is related to one or more production(s) in the grammar in SmdpDsl.xtext, testing how the types from the concrete syntax is inferred from the model and how the parser behaves when given an unexpected input.\\ 
+SmdpDslValidator.xtend tests our constraints found in SmdpDslValidator.xtend, which is used to validate our DSL. Again, this is testing both intented and unintented input.\\ 
+The SmdpDslGeneratorTest.xtend file should tests two different aspects of the code. The first is testing that the generated code has the expected layout and syntax and the second being testing that generated code is functioning. \\
+In all three files we want to use the same snippets of concrete syntax written in SmdpDsl to act as test caseses.\newline
 
+The above section outlines how the testing part of the project could and should have been made. We have not been able to achieve this fully. One reason being, that we had problems with the way we wanted to test functionality of the generator. A fully implementation of this testing strategy would have lead to a more robust system and it would imply a system with a higher guarantee of expected behavior. \\
+Furthermore, all tests have been created towards the end of the project, which isn't optimal in terms of using the test results. Because of this, we have found errors in the project which have not been possible to correct this late in the project.
 
-All tests have been created towards the end of the project, which isn't optimal in terms of being able to use the tests and results from the tests. Some of the tests have shown that some errors exists in the project. One example of this is the testMyObjectsWithEmptyAttributesList method in SmdpDslParserTest. In this test no attributes have provided, but the size of attributes is one, but should have been zero.\\
-If this test was made at an earlier stage of the project, it would have been possible to resolve this error. But due to time constraint at the time of writing the tests, the error, and others found in different tests, are still present.\\
-Even though some of the tests have demonstrated unexpected outputs, we believe that these can be catogorized as minor errors without a critical impact on the system. 
 %-------- END --------------------------------------------------------------------------------
 \end{document}
