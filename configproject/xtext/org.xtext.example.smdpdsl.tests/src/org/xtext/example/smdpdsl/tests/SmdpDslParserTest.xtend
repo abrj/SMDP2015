@@ -21,7 +21,7 @@ class SmdpDslParserTest {
 	//Model with empty name
 	@Test
 	def void testMyModelWithoutName(){
-		ConfiguratorProjectPackage.eINSTANCE.eClass()
+		ConfiguratorProjectPackage.eINSTANCE.eClass()	
 		val model = '''
 		 {
 
@@ -41,6 +41,32 @@ class SmdpDslParserTest {
 		'''.parse;
 		Assert::assertEquals("CarFactory", model.name)	
 	}	
+	//Model with name in quotes
+	@Test
+	def void testMyModelWithNameInQuotes(){
+		ConfiguratorProjectPackage.eINSTANCE.eClass()
+		val model = '''
+		"CarFactory Berlin"{
+			
+		}
+		'''.parse;
+		Assert::assertEquals("CarFactory Berlin", model.name);
+	}
+	
+	//Model with whitespace separated name
+	@Test
+	def void testMyModelWithWhitespaceSeparatedName(){
+		ConfiguratorProjectPackage.eINSTANCE.eClass()
+		val model = '''
+		CarFactory Berlin{
+			
+		}
+		'''.parse;
+		Assert::assertNotEquals("CarFactory Berlin", model.name);
+		Assert::assertEquals("CarFactory", model.name);
+	}
+		
+	
 	
 	//Model with 0 myObjects
 	@Test
